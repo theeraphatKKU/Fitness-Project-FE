@@ -1,0 +1,75 @@
+/* Home.css */
+.home-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.home-nav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.home-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.home-nav ul li {
+    float: left;
+    padding: 14px 16px;
+}
+
+.home-nav ul li a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.home-nav ul li a:hover {
+    background-color: #111;
+}
+
+.home-nav ul li input[type="text"] {
+    padding: 6px;
+    margin-left: 16px;
+    border: none;
+    border-radius: 4px;
+}
+
+.home-header {
+    /*background-color: #f87c8b;*/
+    background-image: url('https://images.ctfassets.net/drib7o8rcbyf/5etd2gDXxyQaoKjqIuiGMK/0f5d6ecd9aa9378b54a48f49c637425b/athletic-training.webp?fm=jpg&fl=progressive&fit=fill&w=640');
+    background-size: cover; 
+    background-position: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.home-header h1 {
+    color: #ffeb3b; 
+}
+
+.home-header p {
+    color: #ffffff; 
+}
+
+.home-AboutUs {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 0px;
+}
+
+.home-programs {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.home-footer {
+    margin-top: 40px;
+}
+
