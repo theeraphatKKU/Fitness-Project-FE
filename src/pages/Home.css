@@ -1,75 +1,376 @@
 /* Home.css */
+
 .home-container {
-    text-align: center;
-    padding: 20px;
-}
-
-.home-nav {
-    background-color: #333;
-    overflow: hidden;
-}
-
-.home-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    width: 1440px;
+    height: 3424px;
+    position: relative;
+    background: rgb(255, 255, 255);
+  }
+  
+  /* Overlay */
+  .overlay {
+    width: 1440px;
+    height: 580px;
+    position: absolute;
+    left: 5px;
+    top: 1542px;
+    background: rgba(0, 0, 0, 0.40);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Navigation Bar */
+  .navbar {
+    width: 1440px;
+    height: 114.06px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0D0403;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+  }
+  
+  .navbar-logo {
+    width: 73px;
+    height: 75.69px;
+    position: absolute;
+    left: 48px;
+    top: 19.70px;
+  }
+  
+  .navbar-title {
+    width: 177px;
+    height: 31.11px;
+    position: absolute;
+    left: 146px;
+    top: 41.47px;
+    color: white;
+    font-size: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  
+  .navbar-links {
+    position: absolute;
+    left: 540px;
+    top: 48px;
     display: flex;
     align-items: center;
-}
-
-.home-nav ul li {
-    float: left;
-    padding: 14px 16px;
-}
-
-.home-nav ul li a {
+  }
+  
+  .navbar-link {
+    margin: 0 10px;
+    color: white;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  
+  .search-container {
+    position: relative;
+    margin-left: 20px;
+  }
+  
+  .search-input {
+    width: 236px;
+    height: 39.40px;
+    background: white;
+    border: 1px solid black;
+    padding-left: 10px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #7D7D7D;
+  }
+  
+  .search-icon {
+    width: 24px;
+    height: 24.88px;
+    position: absolute;
+    right: 0;
+    top: 7px;
+  }
+  
+  .search-icon .circle {
+    width: 12px;
+    height: 12.44px;
+    position: absolute;
+    left: 5px;
+    top: 5.18px;
+    border-radius: 50%;
+    border: 1px #222222 solid;
+  }
+  
+  .search-icon .dot {
+    width: 3px;
+    height: 3.11px;
+    position: absolute;
+    left: 17px;
+    top: 17.63px;
+    border: 1px #222222 solid;
+  }
+  
+  .profile-icon {
+    width: 50px;
+    height: 51.84px;
+    position: absolute;
+    left: 1352px;
+    top: 1269px;
+    background: white;
+    border-radius: 9999px;
+    border: 0.50px black solid;
+  }
+  
+  .profile-icon .profile-circle {
+    width: 25.49px;
+    height: 27.91px;
+    position: absolute;
+    left: 4.26px;
+    top: 3.67px;
+    background: #24292E;
+  }
+  
+  .profile-icon .profile-dot {
+    /* สามารถเพิ่มสไตล์เพิ่มเติมได้ที่นี่ */
+  }
+  
+  .notification-icon {
+    width: 24px;
+    height: 24.88px;
+    position: absolute;
+    left: 1297px;
+    top: 45.62px;
+  }
+  
+  .notification-icon .notification-bell {
+    width: 12px;
+    height: 12.44px;
+    position: absolute;
+    left: 5px;
+    top: 5.18px;
+    border-radius: 50%;
+    border: 1px #222222 solid;
+  }
+  
+  .notification-icon .notification-dot {
+    width: 3px;
+    height: 3.11px;
+    position: absolute;
+    left: 17px;
+    top: 17.63px;
+    border: 1px #222222 solid;
+  }
+  
+  /* Header Section */
+  .home-header {
+    width: 1440px;
+    height: 566px;
+    position: absolute;
+    left: 0;
+    top: 108px;
+    background-image: url('https://images.ctfassets.net/drib7o8rcbyf/5etd2gDXxyQaoKjqIuiGMK/0f5d6ecd9aa9378b54a48f49c637425b/athletic-training.webp?fm=jpg&fl=progressive&fit=fill&w=640');
+    background-size: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: white;
     text-align: center;
-    text-decoration: none;
-}
-
-.home-nav ul li a:hover {
-    background-color: #111;
-}
-
-.home-nav ul li input[type="text"] {
-    padding: 6px;
-    margin-left: 16px;
-    border: none;
-    border-radius: 4px;
-}
-
-.home-header {
-    /*background-color: #f87c8b;*/
-    background-image: url('https://images.ctfassets.net/drib7o8rcbyf/5etd2gDXxyQaoKjqIuiGMK/0f5d6ecd9aa9378b54a48f49c637425b/athletic-training.webp?fm=jpg&fl=progressive&fit=fill&w=640');
-    background-size: cover; 
-    background-position: center;
-    padding: 20px;
+  }
+  
+  .home-header h1 {
+    font-size: 60px;
+    font-family: 'Inria Serif', serif;
+    font-weight: 700;
     margin-bottom: 20px;
-    color: #ffffff;
-}
-
-.home-header h1 {
-    color: #ffeb3b; 
-}
-
-.home-header p {
-    color: #ffffff; 
-}
-
-.home-AboutUs {
-    background-color: #e9ecef;
+  }
+  
+  .home-header p {
+    font-size: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  
+  /* About Us Section */
+  .about-us-title {
+    position: absolute;
+    left: 572px;
+    top: 739px;
+    color: black;
+    font-size: 60px;
+    font-family: 'Inria Serif', serif;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .about-us-content {
+    width: 728px;
+    height: 495px;
+    position: absolute;
+    left: 607px;
+    top: 850px;
+    background: #EEEEEE;
     padding: 20px;
-    border-radius: 0px;
-}
+    font-size: 32px;
+    font-family: 'Inria Sans', sans-serif;
+    font-weight: 400;
+    color: black;
+  }
+  
+  /* Promotion Section */
+  .promotion-banner {
+    position: absolute;
+    left: 537px;
+    top: 1542px;
+    color: white;
+    font-size: 60px;
+    font-family: 'Inria Serif', serif;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .promotion-overlay {
+    width: 1440px;
+    height: 580px;
+    position: absolute;
+    left: 5px;
+    top: 1542px;
+    background: rgba(0, 0, 0, 0.40);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Join Now Section */
+  .join-now-title {
+    position: absolute;
+    left: 573px;
+    top: 2244px;
+    color: black;
+    font-size: 60px;
+    font-family: 'Inria Serif', serif;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .join-now-content {
+    width: 656px;
+    height: 164px;
+    position: absolute;
+    left: 161px;
+    top: 2466px;
+    text-align: center;
+    color: black;
+    font-size: 32px;
+    font-family: 'Inria Serif', serif;
+    font-weight: 300;
+    background: #EEEEEE;
+    padding: 70px;
 
-.home-programs {
-    background-color: #e9ecef;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.home-footer {
-    margin-top: 40px;
-}
-
+  }
+  
+  .join-now-actions {
+    position: absolute;
+    left: 250px;
+    top: 2600px;
+    display: flex;
+  }
+  
+  .login {
+    color: #716564;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .signup {
+    color: black;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin-right: 10px;
+  }
+  
+  .register-button {
+    width: 484px;
+    height: 56px;
+    background: #0D0403;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .register-button::after {
+    content: 'ลงทะเบียน';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Images */
+  .banner-image {
+    width: 1440px;
+    height: 559px;
+    position: absolute;
+    left: -1px;
+    top: 115px;
+  }
+  
+  .decoration-image {
+    width: 538px;
+    height: 556px;
+    position: absolute;
+    left: 110px;
+    top: 836px;
+  }
+  
+  .fitness-image-1 {
+    width: 380px;
+    height: 377px;
+    position: absolute;
+    left: 83px;
+    top: 1641px;
+  }
+  
+  .fitness-image-2 {
+    width: 355px;
+    height: 377px;
+    position: absolute;
+    left: 524px;
+    top: 1641px;
+  }
+  
+  .fitness-image-3 {
+    width: 382px;
+    height: 377px;
+    position: absolute;
+    left: 958px;
+    top: 1641px;
+  }
+  
+  .extra-image {
+    width: 518px;
+    height: 575px;
+    position: absolute;
+    left: 817px;
+    top: 2361px;
+  }
+  
+  /* Footer */
+  /* .footer {
+    width: 1275px;
+    height: 575px;
+    position: absolute;
+    left: 107px;
+    top: 2936px;
+    background: #F1F1F1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px black solid;
+  } */
+  
