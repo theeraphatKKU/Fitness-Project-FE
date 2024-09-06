@@ -1,376 +1,221 @@
 /* Home.css */
 
 .home-container {
-    width: 1440px;
-    height: 3424px;
-    position: relative;
-    background: rgb(255, 255, 255);
-  }
-  
-  /* Overlay */
-  .overlay {
-    width: 1440px;
-    height: 580px;
-    position: absolute;
-    left: 5px;
-    top: 1542px;
-    background: rgba(0, 0, 0, 0.40);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  
-  /* Navigation Bar */
-  .navbar {
-    width: 1440px;
-    height: 114.06px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #0D0403;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-  }
-  
-  .navbar-logo {
-    width: 73px;
-    height: 75.69px;
-    position: absolute;
-    left: 48px;
-    top: 19.70px;
-  }
-  
-  .navbar-title {
-    width: 177px;
-    height: 31.11px;
-    position: absolute;
-    left: 146px;
-    top: 41.47px;
-    color: white;
-    font-size: 25px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-  }
-  
-  .navbar-links {
-    position: absolute;
-    left: 540px;
-    top: 48px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-link {
-    margin: 0 10px;
-    color: white;
-    font-size: 20px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    cursor: pointer;
-  }
-  
-  .search-container {
-    position: relative;
-    margin-left: 20px;
-  }
-  
-  .search-input {
-    width: 236px;
-    height: 39.40px;
-    background: white;
-    border: 1px solid black;
-    padding-left: 10px;
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-    color: #7D7D7D;
-  }
-  
-  .search-icon {
-    width: 24px;
-    height: 24.88px;
-    position: absolute;
-    right: 0;
-    top: 7px;
-  }
-  
-  .search-icon .circle {
-    width: 12px;
-    height: 12.44px;
-    position: absolute;
-    left: 5px;
-    top: 5.18px;
-    border-radius: 50%;
-    border: 1px #222222 solid;
-  }
-  
-  .search-icon .dot {
-    width: 3px;
-    height: 3.11px;
-    position: absolute;
-    left: 17px;
-    top: 17.63px;
-    border: 1px #222222 solid;
-  }
-  
-  .profile-icon {
-    width: 50px;
-    height: 51.84px;
-    position: absolute;
-    left: 1352px;
-    top: 1269px;
-    background: white;
-    border-radius: 9999px;
-    border: 0.50px black solid;
-  }
-  
-  .profile-icon .profile-circle {
-    width: 25.49px;
-    height: 27.91px;
-    position: absolute;
-    left: 4.26px;
-    top: 3.67px;
-    background: #24292E;
-  }
-  
-  .profile-icon .profile-dot {
-    /* สามารถเพิ่มสไตล์เพิ่มเติมได้ที่นี่ */
-  }
-  
-  .notification-icon {
-    width: 24px;
-    height: 24.88px;
-    position: absolute;
-    left: 1297px;
-    top: 45.62px;
-  }
-  
-  .notification-icon .notification-bell {
-    width: 12px;
-    height: 12.44px;
-    position: absolute;
-    left: 5px;
-    top: 5.18px;
-    border-radius: 50%;
-    border: 1px #222222 solid;
-  }
-  
-  .notification-icon .notification-dot {
-    width: 3px;
-    height: 3.11px;
-    position: absolute;
-    left: 17px;
-    top: 17.63px;
-    border: 1px #222222 solid;
-  }
-  
-  /* Header Section */
-  .home-header {
-    width: 1440px;
-    height: 566px;
-    position: absolute;
-    left: 0;
-    top: 108px;
-    background-image: url('https://images.ctfassets.net/drib7o8rcbyf/5etd2gDXxyQaoKjqIuiGMK/0f5d6ecd9aa9378b54a48f49c637425b/athletic-training.webp?fm=jpg&fl=progressive&fit=fill&w=640');
-    background-size: cover;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-  }
-  
-  .home-header h1 {
-    font-size: 60px;
-    font-family: 'Inria Serif', serif;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  
-  .home-header p {
-    font-size: 25px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-  }
-  
-  /* About Us Section */
-  .about-us-title {
-    position: absolute;
-    left: 572px;
-    top: 739px;
-    color: black;
-    font-size: 60px;
-    font-family: 'Inria Serif', serif;
-    font-weight: 700;
-    text-align: center;
-  }
-  
-  .about-us-content {
-    width: 728px;
-    height: 495px;
-    position: absolute;
-    left: 607px;
-    top: 850px;
-    background: #EEEEEE;
-    padding: 20px;
-    font-size: 32px;
-    font-family: 'Inria Sans', sans-serif;
-    font-weight: 400;
-    color: black;
-  }
-  
-  /* Promotion Section */
-  .promotion-banner {
-    position: absolute;
-    left: 537px;
-    top: 1542px;
-    color: white;
-    font-size: 60px;
-    font-family: 'Inria Serif', serif;
-    font-weight: 700;
-    text-align: center;
-  }
-  
-  .promotion-overlay {
-    width: 1440px;
-    height: 580px;
-    position: absolute;
-    left: 5px;
-    top: 1542px;
-    background: rgba(0, 0, 0, 0.40);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  
-  /* Join Now Section */
-  .join-now-title {
-    position: absolute;
-    left: 573px;
-    top: 2244px;
-    color: black;
-    font-size: 60px;
-    font-family: 'Inria Serif', serif;
-    font-weight: 700;
-    text-align: center;
-  }
-  
-  .join-now-content {
-    width: 656px;
-    height: 164px;
-    position: absolute;
-    left: 161px;
-    top: 2466px;
-    text-align: center;
-    color: black;
-    font-size: 32px;
-    font-family: 'Inria Serif', serif;
-    font-weight: 300;
-    background: #EEEEEE;
-    padding: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 20px;
+  position: relative;
+}
 
-  }
-  
-  .join-now-actions {
-    position: absolute;
-    left: 250px;
-    top: 2600px;
-    display: flex;
-  }
-  
-  .login {
-    color: #716564;
-    font-size: 18px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  .signup {
-    color: black;
-    font-size: 18px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    margin-right: 10px;
-  }
-  
-  .register-button {
-    width: 484px;
-    height: 56px;
-    background: #0D0403;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 25px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .register-button::after {
-    content: 'ลงทะเบียน';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  /* Images */
-  .banner-image {
-    width: 1440px;
-    height: 559px;
-    position: absolute;
-    left: -1px;
-    top: 115px;
-  }
-  
-  .decoration-image {
-    width: 538px;
-    height: 556px;
-    position: absolute;
-    left: 110px;
-    top: 836px;
-  }
-  
-  .fitness-image-1 {
-    width: 380px;
-    height: 377px;
-    position: absolute;
-    left: 83px;
-    top: 1641px;
-  }
-  
-  .fitness-image-2 {
-    width: 355px;
-    height: 377px;
-    position: absolute;
-    left: 524px;
-    top: 1641px;
-  }
-  
-  .fitness-image-3 {
-    width: 382px;
-    height: 377px;
-    position: absolute;
-    left: 958px;
-    top: 1641px;
-  }
-  
-  .extra-image {
-    width: 518px;
-    height: 575px;
-    position: absolute;
-    left: 817px;
-    top: 2361px;
-  }
-  
-  /* Footer */
-  /* .footer {
-    width: 1275px;
-    height: 575px;
-    position: absolute;
-    left: 107px;
-    top: 2936px;
-    background: #F1F1F1;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: 1px black solid;
-  } */
-  
+.header-section {
+  position: relative;
+}
+
+.home-header {
+  width: 110%;
+  height: 579px;
+  background-image: url('https://images.ctfassets.net/drib7o8rcbyf/5etd2gDXxyQaoKjqIuiGMK/0f5d6ecd9aa9378b54a48f49c637425b/athletic-training.webp?fm=jpg&fl=progressive&fit=fill&w=640');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative; /* Position relative for z-index to work */
+  z-index: 1; /* Ensure the header is above other elements */
+}
+
+/* Optional shadow effect */
+.home-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Adjust the color and opacity as needed */
+  z-index: -1; /* Place the shadow behind the header content */
+}
+
+.home-header h1 {
+  font-size: 60px;
+  font-family: 'Inria Serif', serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.home-header p {
+  font-size: 25px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+/* About Us Section */
+.about-us-title {
+  font-size: 60px;
+  font-family: 'Inria Serif', serif;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+  margin: 50px 0 20px;
+}
+
+.about-us-container {
+  display: flex;
+  justify-content: space-between; /* จัดเนื้อหาให้กระจายไปทางซ้ายและขวา */
+  align-items: center; /* จัดแนวกลางในแนวตั้ง */
+  width: 100%;
+  max-width: 1200px; /* จำกัดความกว้างสูงสุดของส่วนนี้ */
+  margin: 50px auto; /* จัดกลางและเว้นระยะห่างด้านบนและล่าง */
+}
+
+.about-us-content {
+  flex: 1; /* ให้เนื้อหาขยายเต็มที่ */
+  font-size: 32px;
+  font-family: 'Inria Serif', serif;
+  font-weight: 300;
+  color: black;
+  background: #EEEEEE;
+  padding: 40px;
+  margin-right: 20px; /* ระยะห่างจากรูปภาพ */
+  text-align: center; /* จัดเนื้อหาไปที่ด้านขวา */
+}
+
+.about-us-image {
+  flex: 1; /* ให้รูปภาพขยายเต็มที่ */
+  max-width: 400px; /* จำกัดขนาดรูปภาพ */
+  margin-left: 20px; /* ระยะห่างจากเนื้อหา */
+}
+
+/* Promotion Section */
+.promotion-banner {
+  font-size: 60px;
+  font-family: 'Inria Serif', serif;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin: 50px 0 20px;
+}
+
+.promotion-overlay {
+  width: 100%;
+  height: 580px;
+  background: rgba(0, 0, 0, 0.40);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Images */
+.decoration-image {
+  width: 80%;
+  max-width: 800px;
+  margin-top: -50px; /* เลื่อนให้เข้ากับการออกแบบ */
+}
+
+.fitness-image-1, .fitness-image-2, .fitness-image-3, .extra-image {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px;
+}
+
+/* Join Now Section */
+.join-now-container {
+  border: 2px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 800px;
+  margin: 100px auto;
+}
+
+.join-now-title {
+  color: black;
+  font-size: 60px;
+  font-family: 'Inria Serif', serif;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.join-now-content {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  color: black;
+  font-size: 32px;
+  font-family: 'Inria Serif', serif;
+  font-weight: 300;
+  background: #EEEEEE;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.join-now-actions {
+  text-align: center;
+}
+
+.register-button {
+  width: 100%;
+  max-width: 400px;
+  height: 56px;
+  background: #0D0403;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 25px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.register-button:hover {
+  background-color: #333;
+}
+
+.join-now-links {
+  text-align: center;
+}
+
+.signup {
+  color: #716564;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.login {
+  color: #716564;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.login:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  padding: 20px;
+  background: #F1F1F1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  margin-top: 50px;
+}
