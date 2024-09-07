@@ -3,26 +3,27 @@ import React from 'react';
 
 const ContactUs = () => {
   return (
-    <div className="contactus-container">
-      <h1>Contact Us</h1>
-      <h3>Hello test</h3>
-      {/* <p>Have questions? Get in touch with us!</p>
-      <form className="contact-form">
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" />
+
+    <div className="contactUs-container">
+      <h1 className="contact-title">Contact Us</h1>
+      <p className="contact-subtitle">ช่องทางการติดต่อ</p>
+      <section className="contact-info">
+        <div className="contact-details">
+          <div className="contact-label">ที่ตั้ง:</div>
+          <div className="contact-text">
+            เลขที่ 892 หมู่ 12 หมู่บ้าน - ซอย - ถนน มข-บ้านวัดป่าโนนม่วง Mueang Khon Kaen District, Khon Kaen 40000
+          </div>
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" />
+        <div className="contact-details">
+          <div className="contact-label">เวลาเปิดร้าน:</div>
+          <div className="contact-text">จันทร์ - อาทิตย์ 10:00 น. - 20:00 น.</div>
         </div>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <textarea id="message" name="message"></textarea>
+        <div className="contact-details">
+          <div className="contact-label">ช่องทางการติดต่อ:</div>
         </div>
-        <button type="submit">Send</button>
-      </form> */}
+      </section>
     </div>
+
   );
 };
 

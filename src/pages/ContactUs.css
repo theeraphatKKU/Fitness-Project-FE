@@ -1,0 +1,11 @@
+.contactUs-container{
+    flex: 1 1;
+    font-size: 32px;
+    font-family: 'Inria Serif', serif;
+    font-weight: 300;
+    color: black;
+    background: #EEEEEE;
+    padding: 40px;
+    margin-right: 20px;
+    text-align: center;
+}
