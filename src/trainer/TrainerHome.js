@@ -1,4 +1,5 @@
 // src/pages/public/Home.js
+//http://localhost:3000/trainer-home คัดลอกเพื่อโกทูหน้าของเทรนเนอร์
 import React from 'react';
 import TrainerNavbar from '../trainer/TrainerNavbar';
 import './TrainerHome.css';

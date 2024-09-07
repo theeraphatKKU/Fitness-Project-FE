@@ -8,7 +8,7 @@ import ContactUs from './pages/ContactUs';
 import Login from './pages/Login'; 
 import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
-import TrainerHome from '../src/trainer/TrainerHome';
+import TrainerHome from './trainer/TrainerHome';
 import TrainerWorkspace from './trainer/TrainerWorkspace';
 
 
