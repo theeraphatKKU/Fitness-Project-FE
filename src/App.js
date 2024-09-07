@@ -8,6 +8,8 @@ import ContactUs from './pages/ContactUs';
 import Login from './pages/Login'; 
 import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
+import Register2 from './pages/Register2'; // Add this import
+// import Register3 from './pages/Register3'; 
 
 function App() {
   return (
@@ -19,9 +21,13 @@ function App() {
           <Route path="/program" element={<Program />} />
           <Route path="/membership" element={<Membership />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/login" element={<Login />} /> {/* เพิ่ม Route สำหรับ Login */}
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/register2" element={<Register2 />} /> {/* Add routes */}
+          {/* <Route path="/register3" element={<Register3 />} /> */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          {/* Optional: Add a route for 404 */}
+          <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}
         </Routes>
       </div>
     </Router>
