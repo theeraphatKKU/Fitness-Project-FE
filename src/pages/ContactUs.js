@@ -5,6 +5,7 @@ const ContactUs = () => {
   return (
     <div className="contactus-container">
       <h1>Contact Us</h1>
+      <h3>Hello test</h3>
       {/* <p>Have questions? Get in touch with us!</p>
       <form className="contact-form">
         <div>
