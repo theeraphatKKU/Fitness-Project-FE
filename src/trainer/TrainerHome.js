@@ -1,16 +1,13 @@
 // src/pages/public/Home.js
 import React from 'react';
-import './Home.css';
+import TrainerNavbar from '../trainer/TrainerNavbar';
+import './TrainerHome.css';
 import { Link } from 'react-router-dom';
 
-function Home() {
+function TrainerHome() {
   return (
     <div>
-      <Link to="/trainer-home">
-        <button>Go to Trainer Home ฝากไว้สมมุติว่า log in trainer แล้ว</button>
-      </Link>
-      <div className="home-container">
-        {/* Header Section */}
+      <TrainerNavbar />
         <header className="home-header">
           <h1>Welcome to CS Fitness</h1>
           <p>Join us and start your fitness journey today!</p>
@@ -64,8 +61,8 @@ function Home() {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 }
 
-export default Home;
+export default TrainerHome;

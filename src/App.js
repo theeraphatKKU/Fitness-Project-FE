@@ -8,6 +8,9 @@ import ContactUs from './pages/ContactUs';
 import Login from './pages/Login'; 
 import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
+import TrainerHome from '../src/trainer/TrainerHome';
+
+
 
 function App() {
   return (
@@ -22,6 +25,8 @@ function App() {
           <Route path="/login" element={<Login />} /> {/* เพิ่ม Route สำหรับ Login */}
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}
+          
         </Routes>
       </div>
     </Router>
