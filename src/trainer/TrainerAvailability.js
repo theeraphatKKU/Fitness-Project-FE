@@ -1,5 +1,6 @@
 import React from 'react';
 import TrainerNavbar from './TrainerNavbar';
+
 function TrainerAvailability() {
   return (
     <div>
