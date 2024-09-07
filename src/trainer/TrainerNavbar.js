@@ -13,9 +13,9 @@ const TrainerNavbar = () => {
             <div className="navbar-title">CS Fitness</div>
             <div className="navbar-links">
                 <Link to="/trainer-home" className="navbar-link">Home</Link>
-                <Link to="/t-program" className="navbar-link">Program</Link>
-                <Link to="/trainer-workspace" className="navbar-link">Work Space</Link>
-                <Link to="/t-contact-us" className="navbar-link">Contact us</Link>
+                <Link to="/program" className="navbar-link">Program</Link>
+                <Link to="/trainer-workspace" className="navbar-link">Work space</Link>
+                <Link to="/contact-us" className="navbar-link">Contact us</Link>
 
 
                 {/* ไอคอนรูปคนสำหรับไปหน้า Login */}

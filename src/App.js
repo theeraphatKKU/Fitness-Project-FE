@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
 import TrainerHome from '../src/trainer/TrainerHome';
+import TrainerWorkspace from './trainer/TrainerWorkspace';
 
 
 
@@ -25,8 +26,8 @@ function App() {
           <Route path="/login" element={<Login />} /> {/* เพิ่ม Route สำหรับ Login */}
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}
-          
+          <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}/trainer-workspace
+          <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
         </Routes>
       </div>
     </Router>
