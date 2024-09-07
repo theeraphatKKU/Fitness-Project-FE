@@ -1,0 +1,58 @@
+.schedule-button {
+  width: 50rem; /* ปรับขนาดปุ่ม */
+  height: 10rem; /* ความสูงของปุ่ม */
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* จัดข้อความให้ชิดซ้าย */
+  background-color: #F5F5F5; /* สีพื้นหลัง */
+  color: #000000; /* สีข้อความ */
+  border: none; /* ซ่อนขอบปุ่ม */
+  padding: 0; /* เอาช่องว่างรอบปุ่มออก */
+  cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อ hover */
+  margin: 0 auto 40px;
+}
+
+.button-image-s {
+  height: 100%; /* ให้ความสูงของรูปพอดีกับปุ่ม */
+  width: auto; /* ให้สัดส่วนของรูปภาพถูกต้อง */
+  margin-left: 0; /* จัดรูปให้ชิดซ้ายสุด */
+  margin-right: 10px; /* ช่องว่างระหว่างรูปภาพกับข้อความ */
+  border: none; /* เอากรอบรูปภาพออก */
+  padding: 0; /* เอาช่องว่างรอบรูปภาพออก */
+}
+
+.button-text-s {
+  text-align: left;
+  padding-left: 0;
+}
+
+
+.availability-button {
+  width: 50rem; /* ปรับขนาดปุ่ม */
+  height: 10rem; /* ความสูงของปุ่ม */
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* จัดข้อความให้ชิดซ้าย */
+  background-color: #F5F5F5; /* สีพื้นหลัง */
+  color: #000000; /* สีข้อความ */
+  border: none; /* ซ่อนขอบปุ่ม */
+  padding: 0; /* เอาช่องว่างรอบปุ่มออก */
+  cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อ hover */
+  margin: 0 auto 40px;
+}
+
+.button-image-a {
+  height: 100%; /* ให้ความสูงของรูปพอดีกับปุ่ม */
+  width: auto; /* ให้สัดส่วนของรูปภาพถูกต้อง */
+  margin-left: 0; /* จัดรูปให้ชิดซ้ายสุด */
+  margin-right: 10px; /* ช่องว่างระหว่างรูปภาพกับข้อความ */
+  border: none; /* เอากรอบรูปภาพออก */
+  padding: 0; /* เอาช่องว่างรอบรูปภาพออก */
+}
+
+.button-text-a {
+  text-align: left;
+  padding-left: 0;
+}

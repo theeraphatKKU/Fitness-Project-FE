@@ -10,7 +10,8 @@ import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
 import TrainerHome from './trainer/TrainerHome';
 import TrainerWorkspace from './trainer/TrainerWorkspace';
-
+import TrainerAvailability from './trainer/TrainerAvailability';
+import TrainerSchedule from './trainer/TrainerSchedule';
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}/trainer-workspace
           <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
+          <Route path="/trainer-schedule" element={<TrainerSchedule />} />
+        <Route path="/trainer-availability" element={<TrainerAvailability />} />
         </Routes>
       </div>
     </Router>

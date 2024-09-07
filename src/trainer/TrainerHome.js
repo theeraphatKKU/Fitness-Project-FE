@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 function TrainerHome() {
   return (
-    <div>
+    <div className="home-container">
       <TrainerNavbar />
         <header className="home-header">
           <h1>Welcome to CS Fitness</h1>
