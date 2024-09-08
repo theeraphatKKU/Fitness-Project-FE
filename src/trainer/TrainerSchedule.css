@@ -1,0 +1,50 @@
+/* TrainerSchedule.css */
+
+/* สไตล์สำหรับตาราง */
+.table {
+    width: 100%;
+    border-collapse: collapse; /* ทำให้ขอบของเซลล์ติดกัน */
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    table-layout: fixed; /* ทำให้ตารางมีขนาดคงที่ */
+}
+
+/* สไตล์สำหรับหัวตาราง */
+.table th {
+    background-color: #f5f5f5; /* สีพื้นหลังสำหรับหัวตาราง */
+    border: 1px solid #ddd; /* ขอบสีเทาอ่อน */
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    width: 33%; /* ให้แต่ละคอลัมน์มีขนาดเท่ากัน */
+}
+
+/* สไตล์สำหรับข้อมูลในตาราง */
+.table td {
+    border: 1px solid #ddd; /* ขอบตาราง */
+    padding: 10px;
+    vertical-align: middle; /* จัดข้อความให้อยู่กึ่งกลางแนวตั้ง */
+    text-align: center;
+}
+
+/* สไตล์สำหรับข้อความในเซลล์ที่เป็นโปรแกรม */
+.table td[rowspan] {
+    font-weight: bold;
+    background-color: #ffffff; /* สีพื้นหลังเบาๆ สำหรับช่องที่มี rowspan */
+}
+
+
+
+/* ขอบเขตของตาราง */
+.overflow-x-auto {
+    overflow-x: auto; /* ทำให้มี scroll เมื่อหน้าจอเล็ก */
+    margin-top: 20px;
+}
+
+/* ปรับสไตล์ให้ข้อความเป็นภาษาไทย */
+.table td,
+.table th {
+    font-size: 16px;
+    word-wrap: break-word; /* ทำให้คำยาวเกินไปถูกตัดบรรทัด */
+}
