@@ -1,139 +1,147 @@
 /* TrainerSchedule.css */
-.GroupTable-trainer {
+.contrainer {
+    padding-left: 60px;
 
-    /* สไตล์สำหรับตาราง */
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-        /* ทำให้ขอบของเซลล์ติดกัน */
-        margin-top: 20px;
-        font-family: Arial, sans-serif;
-        text-align: left;
-        table-layout: fixed;
-        /* ทำให้ตารางมีขนาดคงที่ */
+    .GroupTable-trainer {
+
+        /* สไตล์สำหรับตาราง */
+        .table {
+
+            width: 70%;
+            border-collapse: collapse;
+            /* ทำให้ขอบของเซลล์ติดกัน */
+
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            text-align: left;
+            table-layout: fixed;
+            /* ทำให้ตารางมีขนาดคงที่ */
+        }
+
+        /* สไตล์สำหรับหัวตาราง */
+        .table th {
+
+            background-color: #f5f5f5;
+            /* สีพื้นหลังสำหรับหัวตาราง */
+            border: 1px solid #ddd;
+            /* ขอบสีเทาอ่อน */
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            width: 33%;
+            /* ให้แต่ละคอลัมน์มีขนาดเท่ากัน */
+        }
+
+        /* สไตล์สำหรับข้อมูลในตาราง */
+        .table td {
+
+            border: 1px solid #ddd;
+            /* ขอบตาราง */
+            padding: 10px;
+            vertical-align: middle;
+            /* จัดข้อความให้อยู่กึ่งกลางแนวตั้ง */
+            text-align: center;
+        }
+
+        /* สไตล์สำหรับข้อความในเซลล์ที่เป็นโปรแกรม */
+        .table td[rowspan] {
+            font-weight: bold;
+            background-color: #ffffff;
+            /* สีพื้นหลังเบาๆ สำหรับช่องที่มี rowspan */
+        }
+
+
+
+        /* ขอบเขตของตาราง */
+        .overflow-x-auto {
+            overflow-x: auto;
+            /* ทำให้มี scroll เมื่อหน้าจอเล็ก */
+            margin-top: 20px;
+        }
+
+        /* ปรับสไตล์ให้ข้อความเป็นภาษาไทย */
+        .table td,
+        .table th {
+            font-size: 16px;
+            word-wrap: break-word;
+            /* ทำให้คำยาวเกินไปถูกตัดบรรทัด */
+        }
     }
 
-    /* สไตล์สำหรับหัวตาราง */
-    .table th {
-        background-color: #f5f5f5;
-        /* สีพื้นหลังสำหรับหัวตาราง */
-        border: 1px solid #ddd;
-        /* ขอบสีเทาอ่อน */
-        padding: 10px;
-        font-weight: bold;
-        text-align: center;
-        width: 33%;
-        /* ให้แต่ละคอลัมน์มีขนาดเท่ากัน */
+    .PrivateTable-trainer {
+        /* TrainerSchedule.css */
+
+        /* สไตล์ตาราง */
+        .table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            text-align: left;
+        }
+
+        /* หัวตาราง */
+        .table th {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* ข้อมูลในตาราง */
+        .table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* ปุ่ม pagination */
+        .join {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .join-item {
+            margin: 0 5px;
+        }
+
+        .join-item.btn {
+            padding: 10px 15px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .join-item.btn:disabled {
+            background-color: #e0e0e0;
+            cursor: not-allowed;
+        }
+
     }
 
-    /* สไตล์สำหรับข้อมูลในตาราง */
-    .table td {
-        border: 1px solid #ddd;
-        /* ขอบตาราง */
-        padding: 10px;
-        vertical-align: middle;
-        /* จัดข้อความให้อยู่กึ่งกลางแนวตั้ง */
-        text-align: center;
-    }
-
-    /* สไตล์สำหรับข้อความในเซลล์ที่เป็นโปรแกรม */
-    .table td[rowspan] {
-        font-weight: bold;
-        background-color: #ffffff;
-        /* สีพื้นหลังเบาๆ สำหรับช่องที่มี rowspan */
-    }
-
-
-
-    /* ขอบเขตของตาราง */
-    .overflow-x-auto {
-        overflow-x: auto;
-        /* ทำให้มี scroll เมื่อหน้าจอเล็ก */
-        margin-top: 20px;
-    }
-
-    /* ปรับสไตล์ให้ข้อความเป็นภาษาไทย */
-    .table td,
-    .table th {
-        font-size: 16px;
-        word-wrap: break-word;
-        /* ทำให้คำยาวเกินไปถูกตัดบรรทัด */
-    }
-}
-
-.PrivateTable-trainer {
-    /* TrainerSchedule.css */
-
-    /* สไตล์ตาราง */
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        font-family: Arial, sans-serif;
-        text-align: left;
-    }
-
-    /* หัวตาราง */
-    .table th {
-        background-color: #f5f5f5;
-        border: 1px solid #ddd;
-        padding: 10px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    /* ข้อมูลในตาราง */
-    .table td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: center;
-    }
-
-    /* ปุ่ม pagination */
-    .join {
-        margin-top: 20px;
+    /* CSS สำหรับการจัดเรียงปุ่มเปลี่ยนหน้า */
+    .pagination {
         display: flex;
         justify-content: center;
-        align-items: center;
+        margin: 20px 0;
     }
 
-    .join-item {
-        margin: 0 5px;
-    }
-
-    .join-item.btn {
-        padding: 10px 15px;
-        background-color: #f5f5f5;
-        border: 1px solid #ddd;
-        cursor: pointer;
+    .pagination-btn {
+        border: none;
+        background-color: transparent;
+        color: #000000;
         font-size: 16px;
+        margin: 0 5px;
+        padding: 10px 20px;
+        cursor: pointer;
     }
 
-    .join-item.btn:disabled {
-        background-color: #e0e0e0;
+    .pagination-btn:disabled {
         cursor: not-allowed;
+        color: #ccc;
     }
-
-}
-
-/* CSS สำหรับการจัดเรียงปุ่มเปลี่ยนหน้า */
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.pagination-btn {
-    border: none;
-    background-color: transparent;
-    color: #000000;
-    font-size: 16px;
-    margin: 0 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.pagination-btn:disabled {
-    cursor: not-allowed;
-    color: #ccc;
 }

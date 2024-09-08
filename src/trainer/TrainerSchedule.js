@@ -84,9 +84,10 @@ function TrainerSchedule() {
     };
 
     return (
+        <div className='contrainer'>
         <div>
             <TrainerNavbar />
-            <h1>ตารางการฝึกสอน</h1>
+            <h1>Schedule</h1>ดูตารางการฝึกสอน
             <h4>
                 โปรแกรมการสอนที่ได้รับผิดชอบ:
                 <span style={{ fontWeight: 'normal' }}> โปรแกรมสร้างกล้ามเนื้อ, โปรแกรมการฝึกสอนแบบส่วนตัว</span>
@@ -116,6 +117,8 @@ function TrainerSchedule() {
                     </tbody>
                 </table>
             </div>
+
+            <h4><br></br>โปรแกรมการฝึกสอนแบบส่วนตัว</h4>
 
             <div className="PrivateTable-trainer">
                 <table className="table">
@@ -154,6 +157,7 @@ function TrainerSchedule() {
                     &gt;
                 </button>
             </div>
+        </div>
         </div>
     );
 }

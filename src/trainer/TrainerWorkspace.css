@@ -1,5 +1,5 @@
 .schedule-button {
-  width: 50rem; /* ปรับขนาดปุ่ม */
+  width: 40rem; /* ปรับขนาดปุ่ม */
   height: 10rem; /* ความสูงของปุ่ม */
   font-size: 30px;
   display: flex;
@@ -24,12 +24,12 @@
 
 .button-text-s {
   text-align: left;
-  padding-left: 0;
+  padding-left: 60px;
 }
 
 
 .availability-button {
-  width: 50rem; /* ปรับขนาดปุ่ม */
+  width: 40rem; /* ปรับขนาดปุ่ม */
   height: 10rem; /* ความสูงของปุ่ม */
   font-size: 30px;
   display: flex;
@@ -54,5 +54,5 @@
 
 .button-text-a {
   text-align: left;
-  padding-left: 0;
+  padding-left: 60px;
 }
