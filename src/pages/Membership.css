@@ -1,0 +1,133 @@
+.membership-container {
+    flex: 1 1;
+    font-size: 18px;
+    font-family: 'Inria Serif', serif;
+    font-weight: 300;
+    color: black;
+    padding: 40px;
+    margin-right: 20px;
+    text-align: left;
+    border-radius: 8px;
+}
+
+.membership-breadcrumb {
+    font-size: 14px;
+    color: #716564;
+    margin-bottom: 20px;
+}
+
+.breadcrumb-link {
+    color: #716564;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb-link:hover {
+    color: #000;
+}
+
+.breadcrumb-current {
+    color: #333;
+    text-decoration: underline;
+}
+
+.membership-title {
+    font-size: 36px;
+    font-family: 'Inria Serif', serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.membership-subtitle {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.membership-info {
+    background-color: #EEEEEE;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.membership-list {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.join-now-container {
+  max-width: 1000px;
+  padding: 40px;
+  margin: 50px auto;
+  background-color: #EEEEEE;
+  border: 2px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-now-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.join-now-text {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.join-now-title {
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-family: 'Inria Serif', serif;
+  text-align: center;
+}
+
+.join-now-text p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.join-now-image {
+  flex: 1;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+
+.register-button {
+  background-color: #0D0403;
+  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.register-button:hover {
+  background-color: #333;
+}
+
+.join-now-links {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.signup, .login {
+  color: #716564;
+  font-size: 18px;
+}
+
+.login:hover {
+  text-decoration: underline;
+}
