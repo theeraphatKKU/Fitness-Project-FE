@@ -7,6 +7,8 @@ const ContactUs = () => {
     <div className="contactUs-container">
       <div className="contact-breadcrumb">
         <Link to="/" className="breadcrumb-link">Home</Link>
+        <span> </span>
+        <span>&gt;</span>
         <span className="breadcrumb-current"> Contact us</span>
       </div>
       <h1 className="contact-title">Contact</h1>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Program from './pages/Program';
 import Membership from './pages/Membership';
@@ -31,6 +32,7 @@ function App() {
           {/* Optional: Add a route for 404 */}
           <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

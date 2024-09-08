@@ -7,6 +7,8 @@ const Membership = () => {
     <div className="membership-container">
       <div className="membership-breadcrumb">
         <Link to="/" className="breadcrumb-link">Home</Link>
+        <span> </span>
+        <span>&gt;</span>
         <span className="breadcrumb-current"> Membership</span>
       </div>
       <h1 className="membership-title">Membership</h1>
