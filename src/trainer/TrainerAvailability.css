@@ -1,0 +1,115 @@
+/* จัดการตัว container ทั้งหมด */
+.container {
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: 80%;
+  }
+  
+  /* จัดการส่วนของ Title */
+  .title-section {
+    margin-top: 2rem;
+    text-align: left;
+  }
+  
+  .title-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .title-section p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  /* จัดการส่วนของฟอร์ม */
+  form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  form label {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  form input[type="date"],
+  form input[type="time"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #000;
+    border-radius: 0.25rem;
+    width: 100%;
+  }
+  
+  form input[type="date"]::placeholder,
+  form input[type="time"]::placeholder {
+    color: #bbb;
+  }
+  
+  form button[type="submit"],
+  form button[type="button"] {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  form button[type="submit"] {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  form button[type="button"] {
+    background-color: transparent;
+    color: #000;
+  }
+  
+  /* จัดการปุ่มบันทึกและยกเลิก */
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  
+  .action-buttons button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .action-buttons button.cancel {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+  }
+  
+  .action-buttons button.save {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  /* จัดการส่วนของตารางเวลาว่าง */
+  .availability-section {
+    margin-top: 2rem;
+  }
+  
+  .availability-section h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 1px solid #000;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  
+  .availability-list {
+    border: 1px solid #000;
+    height: 150px;
+    background-color: #fff;
+    margin-top: 1rem;
+  }
+  
