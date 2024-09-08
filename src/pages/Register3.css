@@ -72,11 +72,22 @@
     border-radius: 5px;
 }
 
+.left-pane2{
+    width: 48%;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 /* Image styles */
-.registration-image {
+.payment-image {
     width: 100%;
     height: auto;
-    border: 3px solid #ddd;
+    border-radius: 5px;
+}
+
+.payment-image2 {
+    width: 100%;
+    height: auto;
     border-radius: 5px;
 }
 
@@ -123,7 +134,7 @@
 }
 
 .back-link:hover {
-    color: #d32f2f;
+    color: #060000;
 }
 
 /* The same styles as Register2.css, with a few minor adjustments */

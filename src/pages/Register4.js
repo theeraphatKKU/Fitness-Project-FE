@@ -15,33 +15,32 @@ const Register4 = () => {
 
     return (
         <div className="register4-container">
-            <h1>การลงทะเบียนเสร็จสมบูรณ์</h1>
-            <div className="progress-bar">
-                <span className="step">1</span>
-                <span className="step">2</span>
-                <span className="step">3</span>
-                <span className="step active">4</span>
-            </div>
-            <div className="progress-bar-name">
-                <span className="step">กรอกข้อมูล</span>
-                <span className="step">ยืนยันลงทะเบียน</span>
-                <span className="step">รอยืนยันการชำระเงิน</span>
-                <span className="step active">เสร็จสิ้น</span>
-            </div>
-
-            <div className="register-content">
-                <div className="left-pane">
-                    <img src="https://imgr1.menshealth.de/Mit-der-richtigen-Fitnessroutine-faellt-das-Abnehmen-ganz-leicht-jsonLd1x1-9ec423ea-180471.jpg" alt="Registration Complete" className="complete-image" />
+            <div className="progress-container">
+                <h1 className="title">สมัครสมาชิก</h1>
+                <div className="progress-bar">
+                    <span className="step">1</span>
+                    <span className="step">2</span>
+                    <span className="step">3</span>
+                    <span className="step active">4</span>
                 </div>
-                <div className="right-pane">
-                    <h1>ยินดีด้วย! คุณได้ลงทะเบียนเรียบร้อยแล้ว</h1>
-                    <div className="complete-status">
-                        <p>คุณสามารถเข้าสู่ระบบหรือกลับไปหน้าแรกได้ทันทีเพื่อเริ่มต้นการใช้งานระบบ</p>
-                    </div>
-                    <div className="button-group">
-                        <button onClick={goToLogin} className="login-btn">เข้าสู่ระบบ</button>
-                        <button onClick={goToHome} className="home-btn">ไปหน้าแรก</button>
-                    </div>
+                <div className="progress-bar-name">
+                    <span className="step">กรอกข้อมูล</span>
+                    <span className="step">ยืนยันลงทะเบียน</span>
+                    <span className="step">รอยืนยันการชำระเงิน</span>
+                    <span className="step active">เสร็จสิ้น</span>
+                </div>
+            </div>
+            <div className="main-content">
+                <img 
+                    src="https://imgr1.menshealth.de/Mit-der-richtigen-Fitnessroutine-faellt-das-Abnehmen-ganz-leicht-jsonLd1x1-9ec423ea-180471.jpg" 
+                    alt="Fitness Group" 
+                    className="background-image" 
+                />
+                <div className="overlay-box">
+                    <h2>เสร็จสิ้น</h2>
+                    <p>เข้าสู่ระบบเพื่อใช้งาน</p>
+                    <button onClick={goToLogin} className="login-btn">เข้าสู่ระบบ</button>
+                    <p className="go-home-link" onClick={goToHome}>ไปหน้าหลัก</p>
                 </div>
             </div>
         </div>

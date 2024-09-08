@@ -11,7 +11,7 @@ const Register3 = () => {
     const checkPaymentConfirmation = () => {
         setLoading(true);
         setTimeout(() => {
-            const isConfirmed = Math.random() > 0.5; // Randomly simulate confirmation for testing
+            const isConfirmed = Math.random() > 0.5; // ตอนนี้เป็นแบบสุ่ม เดี๋ยวแก้ตรงนี้ให้เป็นผ่านหลังจากที่ admin ยืนยันการชำระเงิน
             setPaymentConfirmed(isConfirmed);
             setLoading(false);
             if (isConfirmed) {
@@ -22,7 +22,7 @@ const Register3 = () => {
 
     return (
         <div className="register3-container">
-            <h1>รอการยืนยันการชำระเงิน</h1>
+            <h1>สมัครสมาชิก</h1>
             <div className="progress-bar">
                 <span className="step">1</span>
                 <span className="step">2</span>
@@ -38,10 +38,13 @@ const Register3 = () => {
 
             <div className="register-content">
                 <div className="left-pane">
-                    <img src="https://imgr1.menshealth.de/Mit-der-richtigen-Fitnessroutine-faellt-das-Abnehmen-ganz-leicht-jsonLd1x1-9ec423ea-180471.jpg" alt="Waiting for Payment Confirmation" className="payment-image" />
+                    <img src="https://parade.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTkwNTc1OTc1NTk2NzYzMDA0/best-workout-apps-ftr.jpg" alt="Waiting for Payment Confirmation" className="payment-image" />
                 </div>
                 <div className="right-pane">
                     <h1>กำลังตรวจสอบการชำระเงิน</h1>
+                    <div className="left-pane2">
+                    <img src="https://icons.veryicon.com/png/o/miscellaneous/basic-icon-of-cat-line/wait-10.png" alt="Waiting for Payment Confirmation2" className="payment-image2" />
+                    </div>
                     <div className="payment-status">
                         {!loading ? (
                             <p>{paymentConfirmed ? 'การชำระเงินได้รับการยืนยันแล้ว!' : 'ยังไม่มีการยืนยัน กรุณารอ...'}</p>

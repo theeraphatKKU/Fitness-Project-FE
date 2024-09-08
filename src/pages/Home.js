@@ -1,4 +1,3 @@
-// src/pages/public/Home.js
 import React from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
@@ -12,8 +11,8 @@ function Home() {
         <p>Join us and start your fitness journey today!</p>
       </header>
 
-       {/* About Us Section */}
-       <div className="about-us-container">
+      {/* About Us Section */}
+      <div className="about-us-container">
         <img 
           src="https://pngimg.com/uploads/fitness/fitness_PNG91.png" 
           alt="About Us" 
@@ -28,35 +27,44 @@ function Home() {
       </div>
 
       {/* Promotion Section */}
-      <div className="promotion-banner">Program!!</div>
-      <div className="promotion-overlay" />
-
-      {/* Images */}
-      {/* <img src="https://pngimg.com/uploads/fitness/fitness_PNG91.png" alt="Decoration" className="decoration-image" /> */}
-      <img src="https://via.placeholder.com/380x377" alt="Fitness" className="fitness-image-1" />
-      <img src="https://via.placeholder.com/355x377" alt="Fitness" className="fitness-image-2" />
-      <img src="https://via.placeholder.com/382x377" alt="Fitness" className="fitness-image-3" />
-      <img src="https://www.rntfitness.co.uk/img/hp-hero/hp-hero-img-x2.png" alt="Extra" className="extra-image" />
+      <div className="promotion-section">
+        <h2>Promotion!!</h2>
+        <div className="promotion-slides">
+          <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/personal-training-video-instagram-facebook-design-template-447e456e861c72dd67a9db52da7322ab_screen.jpg?ts=1715527907" alt="Promotion 1" />
+          <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/yellow-gym-membership-pamphlet-design-template-0d551204689e6ead1a5126dd974dfa5c_screen.jpg?ts=1698307976" alt="Promotion 2" />
+          <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/fitness-flyer-..-design-template-463d733392e9603d70772d6d8bcc80a8_screen.jpg?ts=1636980862" alt="Promotion 3" />
+        </div>
+        {/* <div className="slide-indicator">
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+        </div> */}
+      </div>
 
       {/* Join Now Section */}
       <div className="join-now-container">
-        <div className="join-now-title">Join now</div>
         <div className="join-now-content">
-          มาเป็นส่วนหนึ่งของ CS Fitness และเริ่มต้นเส้นทางสู่การเป็นตัวคุณที่ดีกว่าวันนี้ เป้าหมายของคุณอยู่ใกล้แค่เอื้อม และเราพร้อมที่จะช่วยให้คุณบรรลุมัน
-        </div>
-        <div className="join-now-actions">
-          <Link to="/register" className="register-button">ลงทะเบียน</Link>
-          <div className="join-now-links">
-            <p className="signup">สมัครสมาชิกแล้ว?</p>
-            <Link to="/login" className="login">เข้าสู่ระบบ</Link>
+          <div className="join-now-text">
+            <div className="join-now-title">Join now</div>
+            <p>
+              มาเป็นส่วนหนึ่งของ CS Fitness และเริ่มต้นเส้นทางสู่การเป็นตัวคุณที่ดีกว่าวันนี้
+              เป้าหมายของคุณอยู่ใกล้แค่เอื้อม และเราพร้อมที่จะช่วยให้คุณบรรลุมัน
+            </p>
+            <div className="join-now-actions">
+              <Link to="/register" className="register-button">ลงทะเบียน</Link>
+              <div className="join-now-links">
+                <p className="signup">สมัครสมาชิกแล้ว?{' '}
+                <Link to="/login" className="login">เข้าสู่ระบบ</Link>
+                </p>
+             
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="footer">
-        <div className="footer-content">
-          {/* คุณสามารถเพิ่มเนื้อหาเพิ่มเติมใน footer ได้ที่นี่ */}
+          <img
+            src="https://pngimg.com/uploads/fitness/fitness_PNG4.png" 
+            alt="Join Now Illustration" 
+            className="join-now-image" 
+          />
         </div>
       </div>
     </div>
