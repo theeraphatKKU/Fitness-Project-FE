@@ -34,7 +34,6 @@ function App() {
           <Route path="/register3" element={<Register3 />} />
           <Route path="/register4" element={<Register4 />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-
           {/*************/}
           <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}
           <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
@@ -42,11 +41,10 @@ function App() {
           <Route path="/trainer-availability" element={<TrainerAvailability />} />
           <Route path="/trainer-program" element={<TrainerProgram />} />
           <Route path="/trainer-contact-us" element={<TrainerContactus />} />
-
-          
           {/* Optional: Add a route for 404 */}
           <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}
         </Routes>
+        
       </div>
     </Router>
   );

@@ -79,7 +79,7 @@ function TrainerSchedule() {
         } else if (sessionDate < currentDate) {
             return 'เสร็จสิ้น'; // หากวันที่ผ่านไปแล้ว
         } else {
-            return 'กำลังดำเนินการ'; // สถานะกำลังดำเนินการ
+            return 'จอง'; // สถานะกำลังดำเนินการ
         }
     };
 

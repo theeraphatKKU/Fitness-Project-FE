@@ -1,115 +1,192 @@
 /* จัดการตัว container ทั้งหมด */
 .container {
-    margin: 0 auto;
-    padding: 2rem;
-    max-width: 80%;
-  }
-  
-  /* จัดการส่วนของ Title */
-  .title-section {
-    margin-top: 2rem;
-    text-align: left;
-  }
-  
-  .title-section h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #000;
-  }
-  
-  .title-section p {
-    font-size: 1.5rem;
-    margin-top: 1rem;
-  }
-  
-  /* จัดการส่วนของฟอร์ม */
-  form {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  form label {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  form input[type="date"],
-  form input[type="time"] {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #000;
-    border-radius: 0.25rem;
-    width: 100%;
-  }
-  
-  form input[type="date"]::placeholder,
-  form input[type="time"]::placeholder {
-    color: #bbb;
-  }
-  
-  form button[type="submit"],
-  form button[type="button"] {
-    padding: 1rem 2rem;
-    font-size: 1.25rem;
+
+  padding: 40px;
+  margin-right: 20px;
+  max-width: 95%;
+}
+
+/* จัดการส่วนของฟอร์ม */
+form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+form input[type="date"],
+form input[type="time"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  width: 99%;
+}
+
+form input[type="date"]::placeholder,
+form input[type="time"]::placeholder {
+  color: #bbb;
+}
+
+/*ปุ่มยกเลิก/บันทึก*/
+.buttonSC {
+  padding: 50px;
+  margin-left:77%;
+}
+.btc {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.3rem;
     border-radius: 0.25rem;
     cursor: pointer;
-  }
-  
-  form button[type="submit"] {
-    background-color: #000;
-    color: #fff;
-  }
-  
-  form button[type="button"] {
     background-color: transparent;
     color: #000;
   }
-  
-  /* จัดการปุ่มบันทึกและยกเลิก */
-  .action-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-  }
-  
-  .action-buttons button {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  
-  .action-buttons button.cancel {
-    background-color: transparent;
-    border: 1px solid #000;
-    color: #000;
-  }
-  
-  .action-buttons button.save {
+
+  .bts {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.3rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
     background-color: #000;
     color: #fff;
   }
+
+/* จัดการกับโครงสร้างหลักของฟอร์ม */
+.form-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 6px;
+}
+
+/* จัดการกับส่วนโปรแกรมการฝึกสอน */
+.Program-training {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.program input {
+  width: 99%;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+/* จัดการกับส่วนเลือกวันที่ */
+.select-date {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.click-date input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #555;
+}
+
+/* จัดการกับส่วนเลือกเวลา */
+.select-time {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.click-time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.click-time input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  width: 150px;
+}
+
+.click-time span {
+  margin: 0 10px;
+}
+
+.click-time label {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #555;
+}
+
+.saved-entries{
   
-  /* จัดการส่วนของตารางเวลาว่าง */
-  .availability-section {
-    margin-top: 2rem;
-  }
-  
-  .availability-section h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    border: 1px solid #000;
-    padding: 1rem;
-    background-color: #f0f0f0;
-    color: #000;
-  }
-  
-  .availability-list {
-    border: 1px solid #000;
-    height: 150px;
-    background-color: #fff;
-    margin-top: 1rem;
-  }
-  
+.table {
+
+  width: 102.5%;
+  border-collapse: collapse;
+  /* ทำให้ขอบของเซลล์ติดกัน */
+
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  table-layout: fixed;
+  /* ทำให้ตารางมีขนาดคงที่ */
+}
+.table th {
+
+  background-color: #f5f5f5;
+  /* สีพื้นหลังสำหรับหัวตาราง */
+  border: 1px solid #ddd;
+  /* ขอบสีเทาอ่อน */
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  width: 33%;
+  /* ให้แต่ละคอลัมน์มีขนาดเท่ากัน */
+}
+
+/* สไตล์สำหรับข้อมูลในตาราง */
+.table td {
+
+  border: 1px solid #ddd;
+  /* ขอบตาราง */
+  padding: 10px;
+  vertical-align: middle;
+  /* จัดข้อความให้อยู่กึ่งกลางแนวตั้ง */
+  text-align: center;
+}
+
+/* สไตล์สำหรับข้อความในเซลล์ที่เป็นโปรแกรม */
+.table td[rowspan] {
+  font-weight: bold;
+  background-color: #ffffff;
+  /* สีพื้นหลังเบาๆ สำหรับช่องที่มี rowspan */
+}
+
+
+
+/* ขอบเขตของตาราง */
+.overflow-x-auto {
+  overflow-x: auto;
+  /* ทำให้มี scroll เมื่อหน้าจอเล็ก */
+  margin-top: 20px;
+}
+
+/* ปรับสไตล์ให้ข้อความเป็นภาษาไทย */
+.table td,
+.table th {
+  font-size: 16px;
+  word-wrap: break-word;
+  /* ทำให้คำยาวเกินไปถูกตัดบรรทัด */
+}
+}
