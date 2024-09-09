@@ -5,12 +5,17 @@ import './Navbar.css'; // ตรวจสอบการนำเข้า CSS �
 const Navbar = () => {
   return (
     <div className="navbar">
-      <img
-        src="https://www.creativefabrica.com/wp-content/uploads/2023/05/31/Gym-Logo-Fitness-Logo-Vector-Design-Graphics-70960661-1.jpg"
-        alt="Logo"
-        className="navbar-logo"
-      />
-      <div className="navbar-title">CS Fitness</div>
+      <div>
+        <Link to="/" className="logo-linkhome">
+          <img
+            src="https://www.creativefabrica.com/wp-content/uploads/2023/05/31/Gym-Logo-Fitness-Logo-Vector-Design-Graphics-70960661-1.jpg"
+            alt="Logo"
+            className="navbar-logo"
+          />
+          <div className="navbar-title">CS Fitness</div>
+        </Link>
+      </div>
+
       <div className="navbar-links">
         <Link to="/" className="navbar-link">Home</Link>
         <Link to="/program" className="navbar-link">Program</Link>

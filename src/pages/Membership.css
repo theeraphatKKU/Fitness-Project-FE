@@ -5,15 +5,20 @@
     font-weight: 300;
     color: black;
     padding: 40px;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     text-align: left;
-    border-radius: 8px;
+    /* border-radius: 8px; */
+    background-image: linear-gradient(180deg,white ,#333);
 }
 
 .membership-breadcrumb {
     font-size: 14px;
     color: #716564;
     margin-bottom: 20px;
+}
+
+.wrap-breadcrumb{
+  padding-left: 20px;
 }
 
 .breadcrumb-link {

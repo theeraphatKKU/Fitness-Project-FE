@@ -1,14 +1,16 @@
-/* src/pages/public/Login.css */
+
 .login-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-  }
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto; /* เพิ่มช่องว่างบนและล่าง */
+  padding: 20px;
+  background-color: #f4f4f4;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  
+}
+
   
   h2 {
     margin-bottom: 20px;

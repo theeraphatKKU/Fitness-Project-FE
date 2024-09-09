@@ -15,24 +15,24 @@ const ForgotPassword = () => {
 
   return (
     <div className="forgot-password-container">
-      <h2>Forgot Password</h2>
+      <h2>ลืมรหัสผ่าน</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">อีเมลของคุณ</label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder="กรุณาใส่อีเมลของคุณ"
             required
           />
         </div>
-        <button type="submit" className="submit-button">Submit</button>
+        <button type="submit" className="submit-button">ตั้งรหัสผ่านใหม่</button>
       </form>
       <div className="links">
-        <p>Remember your password? <a href="/login">Login</a></p>
-        <p>Don't have an account? <a href="/register">Sign up</a></p>
+        <p>หากจำรหัสผ่านของคุณได้ <a href="/login">เข้าสู่ระบบ</a></p>
+        <p>หากไม่มีบัญชี <a href="/register">สมัครสมาชิก</a></p>
       </div>
     </div>
   );

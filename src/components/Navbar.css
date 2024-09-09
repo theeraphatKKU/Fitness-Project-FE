@@ -20,11 +20,16 @@ body {
     padding-top: 80px; /* ปรับตามความสูงของ Navbar */
 }
 
-
+.logo-linkhome{
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
 .navbar-logo {
     height: 60px;
     width: auto;
-    margin-right: auto; /* เพิ่มระยะห่างจากด้านซ้าย */
+    margin-right: 20px; /* เพิ่มระยะห่างจากด้านซ้าย */
 }
 
 .navbar-title {
@@ -38,7 +43,8 @@ body {
     display: flex;
     gap: 20px;
     align-items: center;
-    margin: 0 auto; /* จัดกลางเมนู */
+    /* margin: 0 auto; จัดกลางเมนู */
+    margin-right: 50px;
 }
 
 .navbar-link {

@@ -1,5 +1,9 @@
 /* Home.css */
 
+body {
+  font-family: "Noto Sans Thai", sans-serif;
+}
+
 .home-container {
   display: flex;
   flex-direction: column;
@@ -7,6 +11,11 @@
   min-height: 100vh;
   padding: 0 20px;
   position: relative;
+  /* background-color: #52000088; */
+  /* background-image: linear-gradient(180deg,white ,#333); */
+  /* background-image: linear-gradient(to right, red , yellow); */
+  scrollbar-width: none; /* Firefox */
+  overflow: hidden;
 }
 
 .header-section {
@@ -16,6 +25,8 @@
 .home-header {
   width: 110%;
   height: 579px;
+  /* padding: 0; */
+  /* margin: 0; */
   background-image: url('https://images.ctfassets.net/drib7o8rcbyf/5etd2gDXxyQaoKjqIuiGMK/0f5d6ecd9aa9378b54a48f49c637425b/athletic-training.webp?fm=jpg&fl=progressive&fit=fill&w=640');
   background-size: cover;
   background-position: center;
@@ -27,6 +38,10 @@
   text-align: center;
   position: relative; /* Position relative for z-index to work */
   z-index: 1; /* Ensure the header is above other elements */
+}
+
+.home-welcome{
+  font-size: 80px !important;
 }
 
 /* Optional shadow effect */
@@ -61,7 +76,7 @@
   font-weight: 700;
   color: black;
   text-align: center;
-  margin: 50px 0 20px;
+  margin-bottom: 20px;
 }
 
 .about-us-container {
@@ -75,14 +90,15 @@
 
 .about-us-content {
   flex: 1; /* ให้เนื้อหาขยายเต็มที่ */
-  font-size: 32px;
-  font-family: 'Inria Serif', serif;
+  font-size: 26px;
   font-weight: 300;
   color: black;
-  background: #EEEEEE;
+  /* background: #EEEEEE; */
   padding: 40px;
   margin-right: 20px; /* ระยะห่างจากรูปภาพ */
   text-align: center; /* จัดเนื้อหาไปที่ด้านขวา */
+  border-radius: 100px;
+  margin-left: 20px;
 }
 
 .about-us-image {
@@ -96,11 +112,14 @@
   width: 100%;
   text-align: center;
   margin: 50px 0;
-  background-color: #9a9a9a;
+  background-color: #333;
+  padding-bottom: 50px;
+  /* background-image: url('https://www.primefitnessusa.com/cdn/shop/files/ro-t8-handles-banner_1920x820_crop_right.jpg?v=1626980099'); */
 }
 
 .promotion-section h2 {
-  font-size: 36px;
+  font-size: 60px;
+  font-family: 'Inria Serif', serif;
   color: rgb(255, 255, 255);
 }
 

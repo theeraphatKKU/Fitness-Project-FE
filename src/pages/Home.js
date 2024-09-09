@@ -7,7 +7,7 @@ function Home() {
     <div className="home-container">
       {/* Header Section */}
       <header className="home-header">
-        <h1>Welcome to CS Fitness</h1>
+        <h1 className="home-welcome">Welcome to CS Fitness</h1>
         <p>Join us and start your fitness journey today!</p>
       </header>
 

@@ -5,14 +5,16 @@ import './Membership.css';
 const Membership = () => {
   return (
     <div className="membership-container">
-      <div className="membership-breadcrumb">
-        <Link to="/" className="breadcrumb-link">Home</Link>
-        <span> </span>
-        <span>&gt;</span>
-        <span className="breadcrumb-current"> Membership</span>
+      <div className='wrap-breadcrumb'>
+        <div className="membership-breadcrumb">
+          <Link to="/" className="breadcrumb-link">Home</Link>
+          <span> </span>
+          <span>&gt;</span>
+          <span className="breadcrumb-current"> Membership</span>
+        </div>
+        <h1 className="membership-title">Membership</h1>
+        <p className="membership-subtitle">สมาชิก</p>
       </div>
-      <h1 className="membership-title">Membership</h1>
-      <p className="membership-subtitle">สมาชิก</p>
       {/* <section className="membership-info">
         <ul className="membership-list">
           <li>สมาชิกธรรมดา</li>
@@ -21,7 +23,7 @@ const Membership = () => {
           <li>Student Membership</li>
         </ul>
       </section> */}
-      
+
       {/* Join Now Section */}
       <div className="join-now-container">
         <div className="join-now-content">
@@ -35,15 +37,15 @@ const Membership = () => {
               <Link to="/register" className="register-button">ลงทะเบียน</Link>
               <div className="join-now-links">
                 <p className="signup">สมัครสมาชิกแล้ว?{' '}
-                <Link to="/login" className="login">เข้าสู่ระบบ</Link>
+                  <Link to="/login" className="login">เข้าสู่ระบบ</Link>
                 </p>
               </div>
             </div>
           </div>
           <img
-            src="https://pngimg.com/uploads/fitness/fitness_PNG4.png" 
-            alt="Join Now Illustration" 
-            className="join-now-image" 
+            src="https://pngimg.com/uploads/fitness/fitness_PNG4.png"
+            alt="Join Now Illustration"
+            className="join-now-image"
           />
         </div>
       </div>
