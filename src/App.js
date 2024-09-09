@@ -12,7 +12,8 @@ import TrainerHome from './trainer/TrainerHome';
 import TrainerWorkspace from './trainer/TrainerWorkspace';
 import TrainerAvailability from './trainer/TrainerAvailability';
 import TrainerSchedule from './trainer/TrainerSchedule';
-
+import TrainerProgram from './trainer/TrainerProgram';
+import TrainerContactus from './trainer/TrainerContactus';
 import Register2 from './pages/Register2'; // Add this import
 import Register3 from './pages/Register3'; 
 import Register4 from './pages/Register4'; 
@@ -33,10 +34,16 @@ function App() {
           <Route path="/register3" element={<Register3 />} />
           <Route path="/register4" element={<Register4 />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}/trainer-workspace
+
+          {/*************/}
+          <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}
           <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
           <Route path="/trainer-schedule" element={<TrainerSchedule />} />
-        <Route path="/trainer-availability" element={<TrainerAvailability />} />
+          <Route path="/trainer-availability" element={<TrainerAvailability />} />
+          <Route path="/trainer-program" element={<TrainerProgram />} />
+          <Route path="/trainer-contact-us" element={<TrainerContactus />} />
+
+          
           {/* Optional: Add a route for 404 */}
           <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}
         </Routes>

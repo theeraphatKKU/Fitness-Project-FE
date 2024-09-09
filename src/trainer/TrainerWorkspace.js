@@ -8,7 +8,7 @@ import './TrainerWorkspace.css';
 function TrainerWorkspace() {
   const navigate = useNavigate(); // ประกาศ navigate
   return (
-    <div>
+    <div className='Workspace-container'>
       <TrainerNavbar />
 
       <header>

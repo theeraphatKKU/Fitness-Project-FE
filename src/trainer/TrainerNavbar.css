@@ -34,8 +34,8 @@ body {
     margin-right: auto; /* เพิ่มระยะห่างจากโลโก้ */
 }
 
-.navbar-links {
-    display: flex;
+.navbar-links{
+    padding-left: 50%;
     gap: 20px;
     align-items: center;
     margin: 0 auto; /* จัดกลางเมนู */

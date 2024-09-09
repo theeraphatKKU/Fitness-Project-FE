@@ -1,0 +1,1 @@
+import TrainerNavbar from '../trainer/TrainerNavbar';

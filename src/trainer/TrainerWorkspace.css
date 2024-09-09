@@ -1,3 +1,9 @@
+.Workspace-container {
+  padding: 40px;
+    margin-right: 20px;
+}
+
+
 .schedule-button {
   width: 40rem; /* ปรับขนาดปุ่ม */
   height: 10rem; /* ความสูงของปุ่ม */
