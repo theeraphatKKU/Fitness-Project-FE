@@ -1,0 +1,169 @@
+/* คอนเทนเนอร์หลัก */
+.register-container {
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+}
+
+/* หัวเรื่อง */
+h1 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Progress bar */
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.progress-bar .step {
+  background-color: #e0e0e0;
+  color: #000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.progress-bar .step.active {
+  background-color: #000;
+  color: #fff;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #ccc;
+  z-index: 0;
+}
+
+.progress-bar-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+/* ฟอร์มใน 2 คอลัมน์ */
+.register-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.personal-info, .membership-info {
+  width: 48%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.personal-info h2, .membership-info h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* กลุ่มฟอร์ม */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"], 
+.form-group input[type="email"], 
+.form-group input[type="password"], 
+.form-group input[type="tel"], 
+.form-group input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.membership-options, .payment-options {
+  margin-bottom: 20px;
+}
+
+.membership-options label, .payment-options label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.membership-options label input, .payment-options label input {
+  margin-right: 10px;
+}
+
+.membership-options label input[type="radio"]:checked + span, 
+.payment-options label input[type="radio"]:checked + span {
+  font-weight: bold;
+  color: red;
+}
+
+/* ปรับแต่งบัตรเครดิตให้ไม่สามารถกดได้ */
+.payment-options label.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.payment-options label.disabled input {
+  cursor: not-allowed;
+}
+
+/* ปุ่มสมัคร */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #3a3a3a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+}
+
+/* ลิงก์เข้าสู่ระบบ */
+.signin-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signin-link a {
+  color: #000;
+  text-decoration: underline;
+}
