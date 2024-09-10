@@ -30,8 +30,10 @@ const Membership = () => {
           <div className="join-now-text">
             <div className="join-now-title">Join now</div>
             <p>
-              มาเป็นส่วนหนึ่งของ CS Fitness และเริ่มต้นเส้นทางสู่การเป็นตัวคุณที่ดีกว่าวันนี้
-              เป้าหมายของคุณอยู่ใกล้แค่เอื้อม และเราพร้อมที่จะช่วยให้คุณบรรลุมัน
+              มาเป็นส่วนหนึ่งของ CS Fitness <br />
+              และเริ่มต้นเส้นทางสู่การเป็นตัวคุณที่ดีกว่าวันนี้ <br />
+              เป้าหมายของคุณอยู่ใกล้แค่เอื้อม <br />
+              และเราพร้อมที่จะช่วยให้คุณบรรลุมัน
             </p>
             <div className="join-now-actions">
               <Link to="/register" className="register-button">ลงทะเบียน</Link>

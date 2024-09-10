@@ -1,3 +1,8 @@
+* {
+  font-family: "Noto Sans Thai", sans-serif;
+}
+
+
 .membership-container {
     flex: 1 1;
     font-size: 18px;
@@ -8,13 +13,14 @@
     /* margin-right: 20px; */
     text-align: left;
     /* border-radius: 8px; */
-    background-image: linear-gradient(180deg,white ,#333);
+    /* background-image: linear-gradient(180deg,white ,#333); */
 }
 
 .membership-breadcrumb {
     font-size: 14px;
     color: #716564;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .wrap-breadcrumb{
@@ -47,6 +53,7 @@
     font-size: 24px;
     color: #333;
     margin-bottom: 30px;
+    font-weight: bold;
 }
 
 .membership-info {
@@ -83,6 +90,7 @@
 .join-now-text {
   flex: 1;
   padding-right: 20px;
+  font-weight: 400;
 }
 
 .join-now-title {
@@ -96,6 +104,7 @@
   font-size: 20px;
   margin-bottom: 30px;
   text-align: center;
+  font-weight: 400;
 }
 
 .join-now-image {

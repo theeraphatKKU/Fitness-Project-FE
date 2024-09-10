@@ -32,7 +32,7 @@ const Register4 = () => {
             </div>
             <div className="main-content">
                 <img 
-                    src="https://imgr1.menshealth.de/Mit-der-richtigen-Fitnessroutine-faellt-das-Abnehmen-ganz-leicht-jsonLd1x1-9ec423ea-180471.jpg" 
+                    src="https://basebangkok.com/app/uploads/2024/08/base-group-class-pic.jpg" 
                     alt="Fitness Group" 
                     className="background-image" 
                 />
