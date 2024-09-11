@@ -8,12 +8,15 @@ import ContactUs from './pages/ContactUs';
 import Login from './pages/Login'; 
 import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
+
 import TrainerHome from './trainer/TrainerHome';
 import TrainerWorkspace from './trainer/TrainerWorkspace';
 import TrainerAvailability from './trainer/TrainerAvailability';
 import TrainerSchedule from './trainer/TrainerSchedule';
 import TrainerProgram from './trainer/TrainerProgram';
 import TrainerContactus from './trainer/TrainerContactus';
+import TrainerLogin from './trainer/TrainerLogin';
+
 import Register2 from './pages/Register2'; // Add this import
 import Register3 from './pages/Register3'; 
 import Register4 from './pages/Register4'; 
@@ -41,6 +44,7 @@ function App() {
           <Route path="/trainer-availability" element={<TrainerAvailability />} />
           <Route path="/trainer-program" element={<TrainerProgram />} />
           <Route path="/trainer-contact-us" element={<TrainerContactus />} />
+          <Route path="/trainer-login" element={<TrainerLogin />} />
           {/* Optional: Add a route for 404 */}
           <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}
         </Routes>

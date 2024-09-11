@@ -3,6 +3,9 @@ import TrainerNavbar from './TrainerNavbar';
 import './TrainerAvailability.css';
 
 function TrainerAvailability() {
+
+
+  
   // สร้าง state สำหรับเก็บค่าที่กรอกจากฟอร์ม
   const [program, setProgram] = useState('');
   const [date, setDate] = useState('');
@@ -57,16 +60,27 @@ function TrainerAvailability() {
 
           {/* ช่องเลือกโปรแกรม */}
           <div className="Program-training">
-            โปรแกรมการฝึกสอน : {/* ข้อความบอกให้ผู้ใช้เลือกโปรแกรม */}
+            โปรแกรมการฝึกสอน :
           </div>
           <div className="program">
-            <input
-              type="text"
-              value={program}
-              onChange={(e) => setProgram(e.target.value)}
-              placeholder="กรอกชื่อโปรแกรม"
-            />
+            <select value={program} onChange={(e) => setProgram(e.target.value)}>
+              <option value="">   </option>
+
+              {/* โปรแกรมแบบกลุ่ม */}
+              <optgroup label="โปรแกรมแบบกลุ่ม">
+                <option value="โปรแกรมฟิตเนสสำหรับผู้เริ่มต้น">โปรแกรมฟิตเนสสำหรับผู้เริ่มต้น</option>
+                <option value="โปรแกรมลดน้ำหนักและกระชับสัดส่วน">โปรแกรมลดน้ำหนักและกระชับสัดส่วน</option>
+                <option value="โปรแกรมสร้างกล้ามเนื้อ">โปรแกรมสร้างกล้ามเนื้อ</option>
+                <option value="โปรแกรมฟิตเนสสำหรับผู้สูงอายุ">โปรแกรมฟิตเนสสำหรับผู้สูงอายุ</option>
+              </optgroup>
+
+              {/* โปรแกรมแบบส่วนตัว */}
+              <optgroup label="โปรแกรมแบบส่วนตัว">
+                <option value="โปรแกรมการฝึกสอนแบบส่วนตัว">โปรแกรมการฝึกสอนแบบส่วนตัว</option>
+              </optgroup>
+            </select>
           </div>
+
 
           {/* ช่องเลือกวันที่ */}
           <div className="select-date">

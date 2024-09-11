@@ -3,6 +3,7 @@ import TrainerNavbar from './TrainerNavbar';
 import './TrainerSchedule.css';
 
 function TrainerSchedule() {
+    
     // ข้อมูลโปรแกรมการฝึกสอนกลุ่ม
     const trainingPrograms_Group = [
         { day: 'วันอังคาร', time: '8:00 - 9:30 น.' },

@@ -20,7 +20,7 @@ const TrainerNavbar = () => {
 
 
                 {/* ไอคอนรูปคนสำหรับไปหน้า Login */}
-                <Link to="/login" className="navbar-link">
+                <Link to="/trainer-login" className="navbar-link">
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/847/847969.png" // ลิงก์ไอคอนรูปคน
                         alt="Login"

@@ -70,6 +70,34 @@ form input[type="time"]::placeholder {
   margin-bottom: 5px;
 }
 
+.program-box {
+  width: 99%;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+}
+/* ขนาดของ dropdown */
+select {
+  width: 100%; /* ปรับให้เต็มพื้นที่ */
+  padding: 10px; /* เพิ่มระยะห่างภายใน */
+  font-size: 16px; /* ขนาดของตัวอักษร */
+  border: 1px solid #ddd; /* สีของขอบ */
+  border-radius: 4px; /* มุมโค้ง */
+  background-color: #fff; /* สีพื้นหลัง */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* เงาเบา */
+  cursor: pointer; /* แสดงเคอร์เซอร์เป็น pointer */
+  border: 1px solid #333;
+}
+
+/* ปรับขนาดของ dropdown ในกรณีที่มีขนาดใหญ่กว่า */
+select::placeholder {
+  font-size: 16px; /* ขนาดของตัวอักษรใน placeholder */
+  color: #888; /* สีของ placeholder */
+  
+}
+
 .program input {
   width: 99%;
   padding: 10px;
