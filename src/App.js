@@ -24,6 +24,7 @@ import AdminConfirmPayment from './admin/admin_ConfirmPayment';
 import AdminMemberM from './admin/admin_MemberM';
 import AdminProgramM from './admin/admin_ProgramM';
 import AdminTrainerM from './admin/admin_TrainerM';
+import AdminHome from './admin/admin_Home';
 
 
 function App() {
@@ -37,9 +38,9 @@ function App() {
         <Routes>
           {/* Public Pages */}
           <Route path="/" element={<Home />} />
-          <Route path="/program" element={<Program />} />
+          <Route path="/program" element={<Program userRole={userRole} />} />
           <Route path="/membership" element={<Membership />} />
-          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/contact-us" element={<ContactUs userRole={userRole} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/register2" element={<Register2 />} />
@@ -54,6 +55,7 @@ function App() {
           <Route path="/admin-member-management" element={<AdminMemberM />} />
           <Route path="/admin-training-program-management" element={<AdminProgramM />} />
           <Route path="/admin-trainer-management" element={<AdminTrainerM />} />
+          <Route path="/admin-home" element={<AdminHome />} />
           
 
           {/* Optional: Add a route for 404 */}

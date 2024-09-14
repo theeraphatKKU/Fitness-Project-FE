@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Program.css';
 import Modal from './Modal';
 
-const Program = () => {
+const Program = ({ userRole }) => {
   const [selectedProgram, setSelectedProgram] = useState(null);
 
   const programs = [
@@ -88,11 +88,21 @@ const Program = () => {
     setSelectedProgram(null);
   };
 
+  // Determine the home route based on the user role
+  const homeRoute = userRole === 'admin' 
+  ? '/admin-home' 
+  : userRole === 'member'
+  ? '/member-home'
+  : userRole === 'trainer'
+  ? '/trainer-home'
+  : '/';  // fallback ไปที่ '/' หาก userRole เป็น undefined
+
+
   return (
     <div className="program-container">
       <div className='wrap-breadcrumb'>
         <div className="breadcrumb">
-          <Link to="/" className="breadcrumb-link">Home</Link>
+          <Link to={homeRoute} className="breadcrumb-link">Home</Link>
           <span> &gt; </span>
           <span className="breadcrumb-current">Program</span>
         </div>

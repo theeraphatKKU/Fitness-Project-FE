@@ -17,12 +17,27 @@ const Navbar = ({ userRole }) => {
         </Link>
       </div>
 
-      {/* หน้าพื้นฐาน ไม่เปลี่ยน*/}
+
       <div className="navbar-links">
-        <Link to="/" className="navbar-link">Home</Link>
+
+        {/* หน้าHome เปลี่ยนตามrole*/}
+        {userRole ? (
+            <>
+              {userRole === 'admin' && (
+                <>
+                  <Link to="/admin-home" className="navbar-link">Home</Link>
+                </>
+              )}
+              {/* เพิ่มลิงก์สำหรับบทบาทอื่น ๆ */}
+            </>
+          ) : (
+            <Link to="home" className="navbar-link">Home</Link>
+          )}
+
+        {/* หน้าprogram ไม่เปลี่ยน*/}
         <Link to="/program" className="navbar-link">Program</Link>
         
-        {/* ถ้าเข้าสู่ระบบจะเปลี่ยนไป */}
+        {/* หน้าmembership/workspace ถ้าเข้าสู่ระบบจะเปลี่ยนไป */}
         {userRole ? (
           <>
             {userRole === 'admin' && (

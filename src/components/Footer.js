@@ -14,7 +14,7 @@ const Footer = () => {
           <p>มาเป็นส่วนหนึ่งของเราเพื่อสร้างเส้นทางการฟิตเนสที่แข็งแรงและสนุกสนาน</p>
         </div>
 
-        <div className="footer-section">
+        {/* <div className="footer-section">
           <h3>Quick Links</h3>
           <ul className="footer-links">
             <li><a href="/">Home</a></li>
@@ -22,7 +22,7 @@ const Footer = () => {
             <li><a href="/membership">Membership</a></li>
             <li><a href="/contact-us">Contact Us</a></li>
           </ul>
-        </div>
+        </div> */}
 
         <div className="footer-section">
           <h3>Contact Us</h3>

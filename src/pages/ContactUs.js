@@ -2,12 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // For navigation between pages
 import './ContactUs.css';  // Ensure this import exists
 
-const ContactUs = () => {
+const ContactUs = ({ userRole }) => {
+
+    // Determine the home route based on the user role
+    const homeRoute = userRole === 'admin' 
+    ? '/admin-home' 
+    : userRole === 'member'
+    ? '/member-home'
+    : userRole === 'trainer'
+    ? '/trainer-home'
+    : '/';
+
   return (
     <div className="contactUs-container">
       <div className='wrap-breadcrumb'>
         <div className="contact-breadcrumb">
-          <Link to="/" className="breadcrumb-link">Home</Link>
+          <Link to={homeRoute} className="breadcrumb-link">Home</Link>
           <span> </span>
           <span>&gt;</span>
           <span className="breadcrumb-current"> Contact us</span>

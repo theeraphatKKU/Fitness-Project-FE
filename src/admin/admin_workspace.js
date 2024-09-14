@@ -14,7 +14,7 @@ const AdminWorkspace = () => {
     <div className="admin-workspace-container">
       <div className="wrap-breadcrumb">
         <div className="admin-breadcrumb">
-          <Link to="/" className="breadcrumb-link">Home</Link>
+          <Link to="/admin-home" className="breadcrumb-link">Home</Link>
           <span> </span>
           <span>&gt;</span>
           <span className="breadcrumb-current"> Workspace</span>
