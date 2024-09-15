@@ -45,6 +45,7 @@ body {
     padding-left: 20px;
   }
   
+  /* ช่องค้นหา */
   .search-container {
     display: flex;
     align-items: center;
@@ -62,7 +63,7 @@ body {
   
   .search-button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #333;
     color: white;
     border: none;
     border-radius: 5px;
@@ -70,9 +71,10 @@ body {
   }
   
   .search-button:hover {
-    background-color: #0056b3;
+    background-color: #000;
   }
   
+  /* ตาราง */
   .table-container {
     width: 100%;
     display: flex;
@@ -81,15 +83,15 @@ body {
   }
 
   .member-table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
-    margin-top: 20px;
   }
   
   .member-table th, .member-table td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 12px;
     text-align: center;
+    width: 20%; /* Ensure consistent width for columns */
   }
   
   .member-table th {
