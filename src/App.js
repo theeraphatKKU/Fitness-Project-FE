@@ -25,6 +25,8 @@ import AdminMemberM from './admin/admin_MemberM';
 import AdminProgramM from './admin/admin_ProgramM';
 import AdminTrainerM from './admin/admin_TrainerM';
 import AdminHome from './admin/admin_Home';
+import AddTrainingProgram from './admin/AddTrainingProgram';
+import EditTrainingProgram from './admin/EditTrainingProgram';
 
 
 function App() {
@@ -56,7 +58,8 @@ function App() {
           <Route path="/admin-training-program-management" element={<AdminProgramM />} />
           <Route path="/admin-trainer-management" element={<AdminTrainerM />} />
           <Route path="/admin-home" element={<AdminHome />} />
-          
+          <Route path="/admin-training-edit" element={<EditTrainingProgram />} />
+          <Route path="/admin-training-add" element={<AddTrainingProgram />} />
 
           {/* Optional: Add a route for 404 */}
           <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}

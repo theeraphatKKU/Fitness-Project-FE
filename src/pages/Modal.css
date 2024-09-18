@@ -1,84 +1,78 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
-  
-  .modal-content {
-    display: flex; /* To position image and content side by side */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 800px; /* Increase the width for a larger layout */
-    width: 100%;
-    position: relative;
-    font-family: 'Inria Serif', serif;
-    display: flex;
-    margin-top: 50px;
-  }
-  
-  .modal-body {
-    display: flex; /* Flexbox layout for image and text */
-    align-items: flex-start;
-  }
-  
-  .modal-image {
-    flex-shrink: 0; /* Prevent image from shrinking */
-    width: 50%; /* Adjust the image width */
-    height: 100%; /* Auto height to maintain aspect ratio */
-    max-height: 400px; /* Max height to ensure the image doesn’t overflow */
-    border-radius: 8px;
-    object-fit: cover; /* Crop the image while maintaining aspect ratio */
-    margin-right: 20px; /* Space between image and text */
-    
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* เปลี่ยนเป็นสีพื้นหลังที่เข้มกว่า */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  z-index: 1000; /* เพิ่ม z-index เพื่อให้แน่ใจว่า modal อยู่ด้านบน */
+}
 
-  .modal-text-content {
-    flex-grow: 1; /* Allow text content to grow and occupy remaining space */
-  }
-  
-  .modal-text {
-    width: 60%; /* Adjust the width of the text section */
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 30px;
-    cursor: pointer;
-  }
-  
-  h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 20px;
-  }
-  
-  li {
-    margin-bottom: 5px;
-    font-size: 16px;
-  }
-  
-  
+.modal-content {
+  display: flex; /* จัดตำแหน่งรูปภาพและเนื้อหาเคียงข้างกัน */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px; /* เพิ่มความกว้างเพื่อให้การจัดวางใหญ่ขึ้น */
+  width: 100%;
+  position: relative;
+  font-family: 'Inria Serif', serif;
+  display: flex;
+  margin-top: 50px; /* เพิ่มระยะห่างด้านบน */
+}
+
+.modal-body {
+  display: flex; /* การจัดตำแหน่งแบบ Flexbox สำหรับรูปภาพและข้อความ */
+  align-items: flex-start;
+}
+
+.modal-image {
+  flex-shrink: 0; /* ป้องกันไม่ให้รูปภาพหดตัว */
+  width: 50%; /* ปรับขนาดรูปภาพ */
+  height: 100%; /* ความสูงอัตโนมัติเพื่อรักษาสัดส่วนภาพ */
+  max-height: 400px; /* ความสูงสูงสุดเพื่อไม่ให้รูปภาพล้น */
+  border-radius: 8px;
+  object-fit: cover; /* ตัดรูปภาพในขณะที่รักษาสัดส่วนภาพ */
+  margin-right: 20px; /* ระยะห่างระหว่างรูปภาพและข้อความ */
+}
+
+.modal-text {
+  width: 60%; /* ปรับความกว้างของข้อความ */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px; /* เพิ่มระยะห่างจากขอบขวา */
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
