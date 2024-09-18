@@ -140,14 +140,13 @@ const AdminMemberM = () => {
         <div className="modal-overlay-unique">
           <div className="modal-content-unique">
             <h2 className="modal-title-unique">ข้อมูลส่วนตัว</h2>
-            <p className="modal-member-id-unique">memberId {selectedMember.id}</p>
+            <p className="modal-member-id-unique">MemberID: {selectedMember.id}</p>
             <div className="modal-profile-icon-unique">
               <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Icon" className="user-icon-unique" />
             </div>
             <div className="modal-details-unique">
               <p><strong>ชื่อ:</strong> {selectedMember.firstName}</p>
               <p><strong>นามสกุล:</strong> {selectedMember.lastName}</p>
-              <p><strong>วันเกิด:</strong> 12/03/2001</p>
               <p><strong>เบอร์โทรศัพท์:</strong> xxx-xxxx-xxx</p>
               <p><strong>อีเมล:</strong> {selectedMember.email}</p>
               <p><strong>สถานะ:</strong> {selectedMember.status}</p>
