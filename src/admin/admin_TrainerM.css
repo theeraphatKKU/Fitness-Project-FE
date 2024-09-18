@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: "Noto Sans Thai", sans-serif !important;
 }
   
@@ -45,13 +45,13 @@ body {
     padding-left: 20px;
 }
 
-/* ช่องค้นหา */
+
   
 .search-container {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    gap: 15px; /* Adjust the gap to have more space */
+    gap: 15px;
 }
   
 #search {
@@ -74,7 +74,7 @@ body {
     background-color: #000;
 }
 
-/* ตาราง */
+
   
 .table-container {
     margin-top: 30px;
@@ -91,7 +91,7 @@ body {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: center;
-    width: 20%; /* Ensure consistent width for columns */
+    width: 20%;
 }
   
 .trainer-table th {
@@ -100,7 +100,7 @@ body {
     font-weight: bold;
 }
 
-/* Button for selecting */
+
 .select-button {
     padding: 8px 12px;
     background-color: #28a745;
@@ -116,7 +116,7 @@ body {
   }
   
 
-/* Add Trainer Button */
+
 .add-trainer-container {
     margin-top: 20px;
     text-align: right;
@@ -137,7 +137,7 @@ body {
   }
 
 
-/* Modal */
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -239,7 +239,7 @@ body {
 
 
   
-/* Back button */
+
 .back-button-container {
     margin-top: 20px;
     text-align: center;
@@ -257,4 +257,4 @@ body {
   
   .back-button:hover {
     background-color: #5a6268;
-  }
+  } */

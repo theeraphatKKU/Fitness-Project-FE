@@ -1,218 +1,231 @@
 body {
-    font-family: "Noto Sans Thai", sans-serif !important;
-  }
-  
-  .admin-member-management {
-    padding: 40px;
-  }
-  
-  .wrap-breadcrumb {
-    margin-bottom: 20px;
-  }
-  
-  .breadcrumb {
-    font-size: 14px;
-    color: #716564;
-    font-weight: bold;
-  }
-  
-  .breadcrumb-link {
-    color: #716564;
-    text-decoration: none;
-  }
-  
-  .breadcrumb-link:hover {
-    color: #000;
-  }
-  
-  .breadcrumb-current {
-    color: #333;
-    text-decoration: underline;
-  }
-  
-  .page-title {
-    font-size: 36px;
-    font-weight: bold;
-    font-family: 'Inria Serif', serif;
-    padding-left: 20px;
-  }
-  
-  .page-subtitle {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 30px;
-    font-weight: bold;
-    padding-left: 20px;
-  }
-  
-  /* ช่องค้นหา */
-  .search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    justify-content: center; /* Centers the search box */
-  }
-  
-  #search {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 300px;
-  }
-  
-  .search-button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .search-button:hover {
-    background-color: #000;
-  }
-  
-  /* ตาราง */
-  .table-container {
-    width: 100%;
-    display: flex;
-    justify-content: center; /* Centers the table */
-    margin: 20px;
-  }
+  font-family: "Noto Sans Thai", sans-serif !important; /* กำหนดฟอนต์สำหรับทั้งเว็บไซต์ */
+}
 
-  .member-table {
-    width: 90%;
-    border-collapse: collapse;
-  }
-  
-  .member-table th, .member-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: center;
-    width: 20%; /* Ensure consistent width for columns */
-  }
-  
-  .member-table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-  }
-  
-  .select-button {
-    background-color: #28a745;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .select-button:hover {
-    background-color: #218838;
-  }
-  
-  /* Modal */
-  .modal-content {
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    width: 400px; /* ปรับขนาดตามที่ต้องการ */
-    max-height: 70vh; /* จำกัดความสูงของ modal ไม่ให้เกิน 90% ของความสูงหน้าจอ */
-    overflow-y: auto; /* เพิ่มการเลื่อนถ้าเนื้อหายาวเกินไป */
-    text-align: left;
-    position: relative;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .modal-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    margin-top: 0px;
-    text-align: center;
-  }
-  
-  .modal-member-id {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .modal-profile-icon,
-  .user-icon {
-      width: 80px; /* กำหนดขนาดให้เท่ากัน */
-      height: 80px; /* ปรับขนาดให้เหมาะสม */
-      border-radius: 50%; /* ทำให้ไอคอนเป็นวงกลม */
-      object-fit: cover; /* ทำให้ภาพพอดีกับขนาดที่กำหนด */
-      margin-bottom: 20px; /* ให้ช่องว่างด้านล่าง */
-  }
-  
-  .modal-details {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-  }
-  
-  .modal-details p {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  .close-modal-button, .delete-member-button {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-    width: 48%;
-  }
-  
-  .close-modal-button {
-    background-color: #6c757d;
-    color: white;
-  }
-  
-  .close-modal-button:hover {
-    background-color: #5a6268;
-  }
-  
-  .delete-member-button {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .delete-member-button:hover {
-    background-color: #c82333;
-  }
-  
-  /* ปุ่มกลับ */
-  .back-button-container {
-    margin-top: 30px;
-  }
-  
-  .back-button {
-    background-color: #343a40;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .back-button:hover {
-    background-color: #23272b;
-  }
-  
+.admin-member-management-unique {
+  padding: 40px; /* กำหนด padding สำหรับส่วนจัดการสมาชิก */
+}
+
+/* Breadcrumb (แถบการนำทาง) */
+.wrap-breadcrumb-unique {
+  margin-bottom: 20px; /* เว้นระยะด้านล่าง breadcrumb */
+}
+
+.breadcrumb-unique {
+  font-size: 14px;
+  color: #716564; /* สีของ breadcrumb */
+  font-weight: bold; /* หนักของตัวอักษรใน breadcrumb */
+}
+
+.breadcrumb-link-unique {
+  color: #716564; /* สีของลิงก์ใน breadcrumb */
+  text-decoration: none; /* ยกเลิกเส้นใต้ของลิงก์ */
+}
+
+.breadcrumb-link-unique:hover {
+  color: #000; /* เปลี่ยนสีเมื่อ hover บนลิงก์ */
+}
+
+.breadcrumb-current-unique {
+  color: #333; /* สีของ breadcrumb ปัจจุบัน */
+  text-decoration: underline; /* ขีดเส้นใต้ breadcrumb ปัจจุบัน */
+}
+
+/* Page Title (หัวข้อหลักของหน้า) */
+.page-title-unique {
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'Inria Serif', serif; /* ใช้ฟอนต์สำหรับหัวข้อ */
+  padding-left: 20px;
+}
+
+/* Subtitle (หัวข้อรอง) */
+.page-subtitle-unique {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+/* Search box (กล่องค้นหา) */
+.search-container-unique {
+  display: flex;
+  align-items: center; /* จัดตำแหน่งให้อยู่กลางแนวนอน */
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+#search {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px; /* ปรับความมนที่มุม */
+  width: 400px; /* ปรับความยาวของกล่องค้นหา */
+}
+
+.search-button-unique {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 10px; /* ปรับความมนที่มุม */
+  cursor: pointer;
+}
+
+label {
+  font-size: 16px; /* ปรับขนาดตัวอักษรของ label */
+}
+
+
+
+.search-button-unique:hover {
+  background-color: #000; /* เปลี่ยนสีปุ่มเมื่อ hover */
+}
+
+/* Table (ตารางข้อมูลสมาชิก) */
+.table-container-unique {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* จัดตารางให้อยู่ตรงกลาง */
+  margin: 20px;
+}
+
+.member-table-unique {
+  width: 90%; /* กำหนดความกว้างของตาราง */
+  border-collapse: collapse; /* รวมเส้นขอบระหว่างเซลล์ */
+}
+
+.member-table-unique th, .member-table-unique td {
+  border: 1px solid #ddd; /* เส้นขอบของเซลล์ */
+  padding: 12px;
+  text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+  width: 20%; /* ความกว้างของแต่ละคอลัมน์ */
+}
+
+.member-table-unique th {
+  background-color: #f4f4f4; /* สีพื้นหลังของหัวตาราง */
+  font-weight: bold;
+}
+
+/* Select Button (ปุ่มเลือกสมาชิก) */
+.select-button-unique {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; /* มุมโค้งของปุ่ม */
+}
+
+.select-button-unique:hover {
+  background-color: #218838; /* เปลี่ยนสีปุ่มเมื่อ hover */
+}
+
+/* Modal (หน้าต่าง popup) */
+.modal-content-unique {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  width: 400px; /* กำหนดความกว้างของ modal */
+  max-height: 70vh; /* ความสูงสูงสุดของ modal */
+  overflow-y: auto; /* แสดงแถบเลื่อนเมื่อเกินความสูง */
+  text-align: left;
+  position: relative;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* เงาของ modal */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-title-unique {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  text-align: center; /* จัดหัวข้อ modal ให้อยู่ตรงกลาง */
+}
+
+.modal-member-id-unique {
+  font-size: 14px;
+  color: #888; /* สีของ id สมาชิก */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Profile Icon (รูปโปรไฟล์สมาชิกใน modal) */
+.modal-profile-icon-unique,
+.user-icon-unique {
+  width: 80px; 
+  height: 80px;
+  border-radius: 50%; /* ทำให้รูปเป็นวงกลม */
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.modal-details-unique {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.modal-details-unique p {
+  font-size: 16px;
+  margin-bottom: 10px; /* เว้นระยะห่างระหว่างบรรทัด */
+}
+
+/* Modal Buttons (ปุ่มใน modal) */
+.modal-buttons-unique {
+  display: flex;
+  justify-content: space-between; /* จัดปุ่มห่างกันซ้าย-ขวา */
+  width: 100%;
+  margin-top: 20px;
+}
+
+.close-modal-button-unique, .delete-member-button-unique {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 48%; /* กำหนดความกว้างของปุ่ม */
+}
+
+/* Close Button (ปุ่มปิด modal) */
+.close-modal-button-unique {
+  background-color: #6c757d;
+  color: white;
+}
+
+.close-modal-button-unique:hover {
+  background-color: #5a6268; /* เปลี่ยนสีปุ่มเมื่อ hover */
+}
+
+/* Delete Button (ปุ่มลบสมาชิก) */
+.delete-member-button-unique {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-member-button-unique:hover {
+  background-color: #c82333; /* เปลี่ยนสีปุ่มเมื่อ hover */
+}
+
+/* Back Button (ปุ่มกลับหน้าก่อนหน้า) */
+.back-button-container-unique {
+  margin-top: 30px;
+}
+
+.back-button-unique {
+  background-color: #343a40;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.back-button-unique:hover {
+  background-color: #23272b; /* เปลี่ยนสีปุ่มเมื่อ hover */
+}

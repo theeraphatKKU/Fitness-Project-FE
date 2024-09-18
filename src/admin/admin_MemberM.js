@@ -70,24 +70,24 @@ const AdminMemberM = () => {
   };
 
   return (
-    <div className="admin-member-management">
+    <div className="admin-member-management-unique">
       {/* Breadcrumb */}
       <div className="wrap-breadcrumb">
-        <div className="breadcrumb">
-          <Link to="/admin-home" className="breadcrumb-link">Home</Link>
+        <div className="breadcrumb-unique">
+          <Link to="/admin-home" className="breadcrumb-link-unique">Home</Link>
           <span> &gt; </span>
-          <Link to="/admin-workspace" className="breadcrumb-link">Workspace</Link>
+          <Link to="/admin-workspace" className="breadcrumb-link-unique">Workspace</Link>
           <span> &gt; </span>
-          <span className="breadcrumb-current">Member Management</span>
+          <span className="breadcrumb-current-unique">Member Management</span>
         </div>
-      </div>
+    </div>
 
       {/* Title */}
-      <h1 className="page-title">Member Management</h1>
-      <p className="page-subtitle">จัดการข้อมูลสมาชิก</p>
+      <h1 className="page-title-unique">Member Management</h1>
+      <p className="page-subtitle-unique">จัดการข้อมูลสมาชิก</p>
 
       {/* Search box */}
-      <div className="search-container">
+      <div className="search-container-unique">
         <label htmlFor="search">ค้นหาสมาชิก:</label>
         <input
           type="text"
@@ -96,12 +96,12 @@ const AdminMemberM = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button className="search-button" onClick={handleSearch}>ค้นหา</button>
+        <button className="search-button-unique" onClick={handleSearch}>ค้นหา</button>
       </div>
 
       {/* Member Table */}
-      <div className="table-container">
-        <table className="member-table">
+      <div className="table-container-unique">
+        <table className="member-table-unique">
           <thead>
             <tr>
               <th>memberId</th>
@@ -120,7 +120,7 @@ const AdminMemberM = () => {
                   <td>{member.phone}</td>
                   <td>{member.email}</td>
                   <td>
-                    <button className="select-button" onClick={() => handleSelect(member)}>
+                    <button className="select-button-unique" onClick={() => handleSelect(member)}>
                       เลือก
                     </button>
                   </td>
@@ -137,14 +137,14 @@ const AdminMemberM = () => {
 
       {/* Modal */}
       {showModal && selectedMember && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h2 className="modal-title">ข้อมูลส่วนตัว</h2>
-            <p className="modal-member-id">memberId {selectedMember.id}</p>
-            <div className="modal-profile-icon">
-              <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Icon" className="user-icon" />
+        <div className="modal-overlay-unique">
+          <div className="modal-content-unique">
+            <h2 className="modal-title-unique">ข้อมูลส่วนตัว</h2>
+            <p className="modal-member-id-unique">memberId {selectedMember.id}</p>
+            <div className="modal-profile-icon-unique">
+              <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Icon" className="user-icon-unique" />
             </div>
-            <div className="modal-details">
+            <div className="modal-details-unique">
               <p><strong>ชื่อ:</strong> {selectedMember.firstName}</p>
               <p><strong>นามสกุล:</strong> {selectedMember.lastName}</p>
               <p><strong>วันเกิด:</strong> 12/03/2001</p>
@@ -153,11 +153,11 @@ const AdminMemberM = () => {
               <p><strong>สถานะ:</strong> {selectedMember.status}</p>
               <p><strong>ระยะเวลา:</strong> {selectedMember.membershipStart} - {selectedMember.membershipEnd}</p>
             </div>
-            <div className="modal-buttons">
-              <button className="close-modal-button" onClick={handleCloseModal}>
+            <div className="modal-buttons-unique">
+              <button className="close-modal-button-unique" onClick={handleCloseModal}>
                 ปิด
               </button>
-              <button className="delete-member-button" onClick={handleDeleteMember}>
+              <button className="delete-member-button-unique" onClick={handleDeleteMember}>
                 ลบสมาชิก
               </button>
             </div>
@@ -166,12 +166,12 @@ const AdminMemberM = () => {
       )}
 
       {/* Back button */}
-      <div className="back-button-container">
-        <button className="back-button" onClick={handleBack}>
-          กลับ
-        </button>
+      <div className="back-button-container-unique">
+          <button className="back-button-unique" onClick={handleBack}>
+            กลับ
+          </button>
+        </div>
       </div>
-    </div>
   );
 };
 
