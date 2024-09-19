@@ -1,68 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import './TrainerProgram.css';
 import TrainerNavbar from '../trainer/TrainerNavbar';
 import { Link } from 'react-router-dom';
-
-
-const TrainerProgram = ({ userRole }) => {
-  const [programs, setPrograms] = useState([]);
-  const [selectedProgram, setSelectedProgram] = useState(null);
-
-  useEffect(() => {
-    // ดึงข้อมูลโปรแกรมจาก localStorage
-    const savedPrograms = JSON.parse(localStorage.getItem('trainingPrograms')) || [];
-    setPrograms(savedPrograms);
-  }, []);
-
-  const handleOpenModal = (program) => {
-    setSelectedProgram(program);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedProgram(null);
-  };
-
-  // กำหนดเส้นทาง Home ตามบทบาทผู้ใช้
-  const homeRoute = userRole === 'admin'
-    ? '/admin-home'
-    : userRole === 'member'
-      ? '/member-home'
-      : userRole === 'trainer'
-        ? '/trainer-home'
-        : '/'; // fallback ไปที่ '/' หาก userRole เป็น undefined
-
-  return (
-    <div className="program-container"><TrainerNavbar />
-      <div className='wrap-breadcrumb'>
-        <div className="breadcrumb">
-          <Link to={homeRoute} className="breadcrumb-link">Home</Link>
-          <span> &gt; </span>
-          <span className="breadcrumb-current">Program</span>
+const TrainerProgram = () => {
+    return (
+      <div><TrainerNavbar/>
+      <div className="T-breadcrumb">
+      <div className="TrainerProgram-breadcrumb">
+          <Link to="/trainer-home" className="breadcrumb-link">Home</Link><span> &gt; </span>
+          <Link to="/trainer-program" className="breadcrumb-link">Program</Link>
+          <div className="program-container">
         </div>
-        <h1 className="program-title">Program</h1>
-        <p className="program-subtitle">โปรแกรมการฝึกสอน</p>
-      </div>
-      <div className="program-grid">
-        {programs.length === 0 ? (
-          <p>No programs available.</p>
-        ) : (
-          programs.map((program, index) => (
-            <div className="program-card" key={index}>
-              <img src={program.image} alt={program.programName} />
-              <h3>{program.programHName}</h3>
-              <p>{program.programName}</p>
-              <button className="program-detail-link" onClick={() => handleOpenModal(program)}>
-                รายละเอียด
-              </button>
-            </div>
-          ))
-        )}
-      </div>
-
+        </div>
+        <h1>Our Fitness Programs</h1>
+        <p>Explore our range of fitness programs tailored to help you achieve your fitness goals.</p>
+        <ul>
+          <li>Beginner Fitness Program</li>
+          <li>Weight Loss & Toning Program</li>
+          <li>Muscle Building Program</li>
+          <li>Senior Fitness Program</li>
+          <li>Personal Training Program</li>
+        </ul>
+        </div>
     </div>
   );
 };
-
-
 export default TrainerProgram;
 
