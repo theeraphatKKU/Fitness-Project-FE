@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import TrainerNavbar from './TrainerNavbar';
 import './TrainerSchedule.css';
-
+import { Link } from 'react-router-dom';
 function TrainerSchedule() {
-    
+
     // ข้อมูลโปรแกรมการฝึกสอนกลุ่ม
     const trainingPrograms_Group = [
         { day: 'วันอังคาร', time: '8:00 - 9:30 น.' },
@@ -19,7 +19,7 @@ function TrainerSchedule() {
         { member: 'สมชาย ชัยโย', date: '02/09/2024', duration: '09:00 - 10.00 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว' },
         { member: 'ขวัญใจ ดีมาก', date: '05/09/2024', duration: '13:00 - 14:30 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว', status: 'ยกเลิก' },
         { member: 'Chris Evans', date: '05/11/2024', duration: '09:00 - 10.00 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว' },
-        { member: 'Emily Clark', date: '05/12/2024', duration: '13:00 - 14:30 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว',status: 'ยกเลิก' }
+        { member: 'Emily Clark', date: '05/12/2024', duration: '13:00 - 14:30 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว', status: 'ยกเลิก' }
     ];
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -85,80 +85,90 @@ function TrainerSchedule() {
     };
 
     return (
-        <div className='contrainer'>
-        <div>
+        <div className='TrainerSchedule-container'>
             <TrainerNavbar />
-            <h1>Schedule</h1>ดูตารางการฝึกสอน
-            <h4>
-                โปรแกรมการสอนที่ได้รับผิดชอบ:
-                <span style={{ fontWeight: 'normal' }}> โปรแกรมสร้างกล้ามเนื้อ, โปรแกรมการฝึกสอนแบบส่วนตัว</span>
-            </h4>
-            <h4>โปรแกรมการฝึกสอนกลุ่ม</h4>
-            <div className="GroupTable-trainer">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>โปรแกรม</th>
-                            <th>วัน</th>
-                            <th>เวลา</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowSpan={trainingPrograms_Group.length}>โปรแกรมสร้างกล้ามเนื้อ</td>
-                            <td>{trainingPrograms_Group[0].day}</td>
-                            <td>{trainingPrograms_Group[0].time}</td>
-                        </tr>
-                        {trainingPrograms_Group.slice(1).map((program, index) => (
-                            <tr key={index}>
-                                <td>{program.day}</td>
-                                <td>{program.time}</td>
+            <div className="T-breadcrumb">
+                <div className="TrainerSchedule-breadcrumb">
+                    <Link to="/trainer-home" className="breadcrumb-link">Home</Link>
+                    <span> &gt; </span>
+                    <Link to="/trainer-workspace" className="breadcrumb-link">Workspace</Link>
+                    <span> &gt; </span>
+                    <Link to="/trainer-schedule" className="breadcrumb-link">Schedule</Link>
+                </div>
+            </div>
+            <div className='contrainer'>
+
+                <h1>Schedule</h1>ดูตารางการฝึกสอน
+                <h4>
+                    โปรแกรมการสอนที่ได้รับผิดชอบ:
+                    <span style={{ fontWeight: 'normal' }}> โปรแกรมสร้างกล้ามเนื้อ, โปรแกรมการฝึกสอนแบบส่วนตัว</span>
+                </h4>
+                <h4>โปรแกรมการฝึกสอนกลุ่ม</h4>
+                <div className="GroupTable-trainer">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>โปรแกรม</th>
+                                <th>วัน</th>
+                                <th>เวลา</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-
-            <h4><br></br>โปรแกรมการฝึกสอนแบบส่วนตัว</h4>
-
-            <div className="PrivateTable-trainer">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>สมาชิก</th>
-                            <th>วันที่</th>
-                            <th>ระยะเวลา</th>
-                            <th>โปรแกรมการฝึกสอน</th>
-                            <th>สถานะ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currentRows.map((session, index) => (
-                            <tr key={index}>
-                                <td>{session.member}</td>
-                                <td>{session.date}</td>
-                                <td>{session.duration}</td>
-                                <td>{session.program}</td>
-                                <td style={getStatusStyle(session.date, session.status)}>
-                                    {getTrainingStatus(session.date, session.status)}
-                                </td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowSpan={trainingPrograms_Group.length}>โปรแกรมสร้างกล้ามเนื้อ</td>
+                                <td>{trainingPrograms_Group[0].day}</td>
+                                <td>{trainingPrograms_Group[0].time}</td>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                            {trainingPrograms_Group.slice(1).map((program, index) => (
+                                <tr key={index}>
+                                    <td>{program.day}</td>
+                                    <td>{program.time}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
 
-            {/* Pagination */}
-            <div className="pagination">
-                <button className="pagination-btn" onClick={handlePreviousPage} disabled={currentPage === 1}>
-                    &lt;
-                </button>
-                <button className="pagination-btn">{currentPage}</button>
-                <button className="pagination-btn" onClick={handleNextPage} disabled={currentPage === totalPages}>
-                    &gt;
-                </button>
+                <h4><br></br>โปรแกรมการฝึกสอนแบบส่วนตัว</h4>
+
+                <div className="PrivateTable-trainer">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>สมาชิก</th>
+                                <th>วันที่</th>
+                                <th>ระยะเวลา</th>
+                                <th>โปรแกรมการฝึกสอน</th>
+                                <th>สถานะ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentRows.map((session, index) => (
+                                <tr key={index}>
+                                    <td>{session.member}</td>
+                                    <td>{session.date}</td>
+                                    <td>{session.duration}</td>
+                                    <td>{session.program}</td>
+                                    <td style={getStatusStyle(session.date, session.status)}>
+                                        {getTrainingStatus(session.date, session.status)}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                {/* Pagination */}
+                <div className="pagination">
+                    <button className="pagination-btn" onClick={handlePreviousPage} disabled={currentPage === 1}>
+                        &lt;
+                    </button>
+                    <button className="pagination-btn">{currentPage}</button>
+                    <button className="pagination-btn" onClick={handleNextPage} disabled={currentPage === totalPages}>
+                        &gt;
+                    </button>
+                </div>
             </div>
-        </div>
         </div>
     );
 }

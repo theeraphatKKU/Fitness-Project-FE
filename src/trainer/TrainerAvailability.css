@@ -1,5 +1,27 @@
+.TrainerAvailability-breadcrumb{
+  font-size: 14px;
+  color: #716564;
+  padding: 0.1px;
+  font-weight: bold;
+  
+}
+
+.breadcrumb-link {
+  color: #716564;
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  color: #000;
+}
+
+.breadcrumb-current {
+  color: #333;
+  text-decoration: underline;
+}
+
 /* จัดการตัว container ทั้งหมด */
-.container {
+.Availability-container {
 
   padding: 40px;
   margin-right: 20px;

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import TrainerNavbar from './TrainerNavbar';
 import './TrainerAvailability.css';
-
+import { Link } from 'react-router-dom';
 function TrainerAvailability() {
 
 
-  
+
   // สร้าง state สำหรับเก็บค่าที่กรอกจากฟอร์ม
   const [program, setProgram] = useState('');
   const [date, setDate] = useState('');
@@ -41,8 +41,17 @@ function TrainerAvailability() {
   };
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="Availability-container">
       <TrainerNavbar />
+      <div className="T-breadcrumb">
+        <div className="TrainerAvailability-breadcrumb">
+          <Link to="/trainer-home" className="breadcrumb-link">Home</Link>
+          <span> &gt; </span>
+          <Link to="/trainer-workspace" className="breadcrumb-link">Workspace</Link>
+          <span> &gt; </span>
+          <Link to="/trainer-availability" className="breadcrumb-link">Availability</Link>
+        </div>
+      </div>
       <main className="Availability-contrainer">
 
         {/* ส่วนแสดงหัวข้อ */}

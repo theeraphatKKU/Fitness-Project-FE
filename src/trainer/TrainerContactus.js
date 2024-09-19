@@ -1,10 +1,19 @@
 import React from 'react';
 import './TrainerContactus.css';
 import TrainerNavbar from '../trainer/TrainerNavbar';
+import { Link } from 'react-router-dom';
 
 const TrainerContactus = () => {
   return (
-    <div><TrainerNavbar />
+    <div className="contactus"><TrainerNavbar />
+      {/* Breadcrumb */}
+      <div className="T-breadcrumb">
+        <div className="TrainerContactus-breadcrumb">
+          <Link to="/trainer-home" className="breadcrumb-link">Home</Link>
+          <span> &gt; </span>
+          <Link to="/trainer-contact-us" className="breadcrumb-link">ContactUs</Link>
+        </div>
+      </div>
       <div className="contactUs-container">
         <h1 className="contact-title">Contact</h1>
         <p className="contact-subtitle">ช่องทางการติดต่อ</p>

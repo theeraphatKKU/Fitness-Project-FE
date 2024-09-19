@@ -2,7 +2,7 @@ import React from 'react';
 import TrainerNavbar from './TrainerNavbar';
 import { useNavigate } from 'react-router-dom'; // นำเข้า useNavigate
 import './TrainerWorkspace.css';
-
+import { Link } from 'react-router-dom';
 
 
 function TrainerWorkspace() {
@@ -10,7 +10,13 @@ function TrainerWorkspace() {
   return (
     <div className='Workspace-container'>
       <TrainerNavbar />
-
+      <div className="T-breadcrumb">
+        <div className="Trainerworkspace-breadcrumb">
+          <Link to="/trainer-home" className="breadcrumb-link">Home</Link>
+          <span> &gt; </span>
+          <Link to="/trainer-workspace" className="breadcrumb-link">Workspace</Link>
+        </div>
+      </div>
       <header>
         <h1 className="text-6xl font-bold text-black max-md:max-w-full max-md:text-4xl">
           Workspace : Trainer
