@@ -93,7 +93,7 @@ function TrainerAvailability() {
 
           {/* ช่องเลือกวันที่ */}
           <div className="select-date">
-            วันที่ต้องการฝึกสอน :
+            วันที่ต้องการฝึกสอน :{/* ข้อความบอกให้ผู้ใช้เลือกวัน */}
           </div>
           <div className="click-date">
             <input
@@ -113,6 +113,7 @@ function TrainerAvailability() {
               placeholder="วว/ดด/ปปปป"
             />
           </div>
+
 
           {/* ช่องเลือกเวลา */}
           <div className="select-time">

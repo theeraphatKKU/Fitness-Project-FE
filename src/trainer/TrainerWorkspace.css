@@ -34,7 +34,7 @@
   justify-content: flex-start; /* จัดข้อความให้ชิดซ้าย */
   background-color: #F5F5F5; /* สีพื้นหลัง */
   color: #000000; /* สีข้อความ */
-  border: none; /* ซ่อนขอบปุ่ม */
+  border:2px solid #716564; /* ซ่อนขอบปุ่ม */
   padding: 0; /* เอาช่องว่างรอบปุ่มออก */
   cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อ hover */
   margin: 0 auto 40px;
@@ -45,7 +45,7 @@
   width: auto; /* ให้สัดส่วนของรูปภาพถูกต้อง */
   margin-left: 0; /* จัดรูปให้ชิดซ้ายสุด */
   margin-right: 10px; /* ช่องว่างระหว่างรูปภาพกับข้อความ */
-  border: none; /* เอากรอบรูปภาพออก */
+  border:2px solid #716564; /* เอากรอบรูปภาพออก */
   padding: 0; /* เอาช่องว่างรอบรูปภาพออก */
 }
 
@@ -64,7 +64,7 @@
   justify-content: flex-start; /* จัดข้อความให้ชิดซ้าย */
   background-color: #F5F5F5; /* สีพื้นหลัง */
   color: #000000; /* สีข้อความ */
-  border: none; /* ซ่อนขอบปุ่ม */
+  border:2px solid #716564; /* ซ่อนขอบปุ่ม */
   padding: 0; /* เอาช่องว่างรอบปุ่มออก */
   cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อ hover */
   margin: 0 auto 40px;
@@ -75,7 +75,7 @@
   width: auto; /* ให้สัดส่วนของรูปภาพถูกต้อง */
   margin-left: 0; /* จัดรูปให้ชิดซ้ายสุด */
   margin-right: 10px; /* ช่องว่างระหว่างรูปภาพกับข้อความ */
-  border: none; /* เอากรอบรูปภาพออก */
+  border:2px solid #716564; /* เอากรอบรูปภาพออก */
   padding: 0; /* เอาช่องว่างรอบรูปภาพออก */
 }
 
