@@ -92,18 +92,6 @@
 }
 
 /* Promotion Section */
-<<<<<<< HEAD
-.promotion-section {
-  width: 100%;
-  text-align: center;
-  margin: 50px 0;
-  background-color: #9a9a9a;
-}
-
-.promotion-section h2 {
-  font-size: 36px;
-  color: rgb(255, 255, 255);
-=======
 .promotion-banner {
   font-size: 60px;
   font-family: 'Inria Serif', serif;
@@ -111,7 +99,6 @@
   color: white;
   text-align: center;
   margin: 50px 0 20px;
->>>>>>> parent of 1b78524 (Merge branch 'Napasorn-branch' into FEnaja)
 }
 
 .promotion-overlay {
@@ -139,23 +126,6 @@
 /* Join Now Section */
 .join-now-container {
   border: 2px solid #333;
-<<<<<<< HEAD
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.join-now-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.join-now-text {
-  flex: 1;
-  padding-right: 20px;
-=======
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
@@ -163,7 +133,6 @@
   padding: 20px;
   max-width: 800px;
   margin: 100px auto;
->>>>>>> parent of 1b78524 (Merge branch 'Napasorn-branch' into FEnaja)
 }
 
 .join-now-title {
