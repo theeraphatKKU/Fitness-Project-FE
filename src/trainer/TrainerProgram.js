@@ -4,7 +4,7 @@ import TrainerNavbar from '../trainer/TrainerNavbar';
 import { Link } from 'react-router-dom';
 const TrainerProgram = () => {
     return (
-      <div className="TrainerProgram-container"><TrainerNavbar/>
+      <div><TrainerNavbar/>
       <div className="T-breadcrumb">
       <div className="TrainerProgram-breadcrumb">
           <Link to="/trainer-home" className="breadcrumb-link">Home</Link><span> &gt; </span>
