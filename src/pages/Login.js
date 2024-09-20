@@ -19,35 +19,35 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>ลงชื่อเข้าใช้</h2>
       <form onSubmit={handleLogin}>
         <div className="input-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">อีเมล</label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder="กรุณาใส่อีเมล"
             required
           />
         </div>
         <div className="input-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">รหัสผ่าน</label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
+            placeholder="กรุณาใส่รหัสผ่าน"
             required
           />
         </div>
-        <button type="submit" className="login-button">Login</button>
+        <button type="submit" className="login-button">เข้าสู่ระบบ</button>
       </form>
       <div className="login-links">
-        <p>Don't have an account? <Link to="/register">Sign up</Link></p>
-        <p><Link to="/forgot-password">Forgot your password?</Link></p>
+        <p>หาคุณยังไม่สมัครสมาชิก <Link to="/register">สมัครสมาชิก</Link></p>
+        <p><Link to="/forgot-password">ลืมรหัสผ่าน?</Link></p>
       </div>
     </div>
   );
