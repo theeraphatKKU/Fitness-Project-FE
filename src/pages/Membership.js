@@ -1,10 +1,10 @@
+// src/pages/public/Membership.js
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Membership.css';
 
 const Membership = () => {
   return (
     <div className="membership-container">
+<<<<<<< HEAD
       <div className='wrap-breadcrumb'>
         <div className="membership-breadcrumb">
           <Link to="/" className="breadcrumb-link">Home</Link>
@@ -50,6 +50,16 @@ const Membership = () => {
           />
         </div>
       </div>
+=======
+      <h1>Membership Plans</h1>
+      <p>Join CS Fitness today and choose the membership plan that best fits your lifestyle.</p>
+      <ul>
+        <li>Monthly Membership</li>
+        <li>Annual Membership</li>
+        <li>Family Membership</li>
+        <li>Student Membership</li>
+      </ul>
+>>>>>>> parent of 1b78524 (Merge branch 'Napasorn-branch' into FEnaja)
     </div>
   );
 };

@@ -1,12 +1,13 @@
-.contactUs-container {
+.contactUs-container{
     flex: 1 1;
-    font-size: 18px;
+    font-size: 32px;
     font-family: 'Inria Serif', serif;
     font-weight: 300;
     color: black;
-    /* background: #EEEEEE; */
+    background: #EEEEEE;
     padding: 40px;
     margin-right: 20px;
+<<<<<<< HEAD
     text-align: left;
     border-radius: 8px;
     /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
@@ -106,3 +107,7 @@
 .fa-facebook {
     color: #3b5998; 
 } */
+=======
+    text-align: center;
+}
+>>>>>>> parent of 1b78524 (Merge branch 'Napasorn-branch' into FEnaja)

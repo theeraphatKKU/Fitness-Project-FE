@@ -36,13 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-
-/* App.css */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
-@import url('./fonts.css');
-
-body {
-  font-family: "Noto Sans Thai", sans-serif;
-}

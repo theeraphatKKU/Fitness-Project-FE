@@ -1,18 +1,21 @@
-// App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+<<<<<<< HEAD
 
 
 // Import all pages
 // For public
+=======
+>>>>>>> parent of 1b78524 (Merge branch 'Napasorn-branch' into FEnaja)
 import Home from './pages/Home';
 import Program from './pages/Program';
 import Membership from './pages/Membership';
 import ContactUs from './pages/ContactUs';
-import Login from './pages/Login';
+import Login from './pages/Login'; 
 import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
+<<<<<<< HEAD
 import Register1 from './pages/Register1';
 import Register2 from './pages/Register2';
 import Register3 from './pages/Register3';
@@ -26,28 +29,23 @@ import TrainerProgram from './trainer/TrainerProgram';
 import TrainerContactus from './trainer/TrainerContactus';
 import TrainerLogin from './trainer/TrainerLogin';
 
+=======
+>>>>>>> parent of 1b78524 (Merge branch 'Napasorn-branch' into FEnaja)
 
 function App() {
-  // กำหนดบทบาทที่ต้องการทดสอบ ใช้ '' ถ้าต้องการดูหน้าสาธารณะ(public)
-  const userRole = ''; // ใช้ค่า 'member' หรือ 'trainer' เพื่อทดสอบบทบาทอื่น
-
   return (
     <Router>
       <div>
-        <Navbar userRole={userRole} />
+        <Navbar />
         <Routes>
-          {/* Public Pages */}
           <Route path="/" element={<Home />} />
-          <Route path="/program" element={<Program userRole={userRole} />} />
+          <Route path="/program" element={<Program />} />
           <Route path="/membership" element={<Membership />} />
-          <Route path="/contact-us" element={<ContactUs userRole={userRole} />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/login" element={<Login />} /> {/* เพิ่ม Route สำหรับ Login */}
           <Route path="/register" element={<Register />} />
-          <Route path="/register1" element={<Register1 />} />
-          <Route path="/register2" element={<Register2 />} />
-          <Route path="/register3" element={<Register3 />} />
-          <Route path="/register4" element={<Register4 />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+<<<<<<< HEAD
           {/*************/}
           <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}
           <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
@@ -60,6 +58,9 @@ function App() {
           <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}
         </Routes>
         
+=======
+        </Routes>
+>>>>>>> parent of 1b78524 (Merge branch 'Napasorn-branch' into FEnaja)
       </div>
     </Router>
   );
