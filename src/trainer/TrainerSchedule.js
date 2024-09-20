@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import TrainerNavbar from './TrainerNavbar';
 
 import './TrainerSchedule.css';
 import { Link } from 'react-router-dom';
@@ -73,18 +72,22 @@ function TrainerSchedule() {
 
     return (
         <div className='TrainerSchedule-container'>
-            <TrainerNavbar />
-            <div className="T-breadcrumb">
-                <div className="TrainerSchedule-breadcrumb">
-                    <Link to="/trainer-home" className="breadcrumb-link">Home</Link>
-                    <span> &gt; </span>
-                    <Link to="/trainer-workspace" className="breadcrumb-link">Workspace</Link>
-                    <span> &gt; </span>
-                    <Link to="/trainer-schedule" className="breadcrumb-link">Schedule</Link>
+            
+            <div className="wrap-breadcrumb">
+                <div className="admin-breadcrumb">
+                <Link to="/trainer-home" className="breadcrumb-link">Home</Link>
+                <span> </span>
+                <span>&gt;</span>
+                <Link to="/trainer-workspace" className="breadcrumb-link"> Workspace</Link>
+                <span> </span>
+                <span>&gt;</span>
+                <span className="breadcrumb-current"> Schedule</span>
                 </div>
+                <h1 className="admin-title">Schedule</h1>
+                <p className="admin-subtitle">ดูตารางฝึกสอน</p>
             </div>
+
             <div className='contrainer'>
-                <h1>Schedule</h1>
                 <h4>
                     โปรแกรมการสอนที่ได้รับผิดชอบ:
                     <span style={{ fontWeight: 'normal' }}> โปรแกรมสร้างกล้ามเนื้อ, โปรแกรมการฝึกสอนแบบส่วนตัว</span>

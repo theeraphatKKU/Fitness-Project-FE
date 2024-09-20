@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import TrainerNavbar from './TrainerNavbar';
 import './TrainerAvailability.css';
 import { Link } from 'react-router-dom';
 
@@ -41,7 +40,7 @@ function TrainerAvailability() {
 
     return (
         <div className="Availability-container">
-            <TrainerNavbar />
+            
             <div className="T-breadcrumb">
                 <div className="TrainerAvailability-breadcrumb">
                     <Link to="/trainer-home" className="breadcrumb-link">Home</Link>
@@ -55,9 +54,9 @@ function TrainerAvailability() {
                 <h1 className="Availability-Update">Availability Update</h1>
                 <p>อัปเดตเวลาว่าง</p>
 
-                <form className="form-detail" onSubmit={handleSubmit}>
-                    <div className="Program-training">โปรแกรมการฝึกสอน :</div>
-                    <div className="program">
+                <form className="form-detail-Availability" onSubmit={handleSubmit}>
+                    <div className="Program-training-Availability">โปรแกรมการฝึกสอน :</div>
+                    <div className="program-Availability">
                         <select value={program} onChange={(e) => setProgram(e.target.value)}>
                             <option value=""></option>
                             <optgroup label="โปรแกรมแบบกลุ่ม">
@@ -72,8 +71,8 @@ function TrainerAvailability() {
                         </select>
                     </div>
 
-                    <div className="select-date">วันที่ต้องการฝึกสอน :</div>
-                    <div className="click-date">
+                    <div className="select-date-Availability">วันที่ต้องการฝึกสอน :</div>
+                    <div className="click-date-Availability">
                         <input
                             type="date"
                             className="my-auto bg-transparent border-none"
@@ -92,8 +91,8 @@ function TrainerAvailability() {
                         />
                     </div>
 
-                    <div className="select-time">เวลาที่ต้องการฝึกสอน :</div>
-                    <div className="click-time">
+                    <div className="select-time-Availability">เวลาที่ต้องการฝึกสอน :</div>
+                    <div className="click-time-Availability">
                         <input
                             type="time"
                             id="startTime"
@@ -102,7 +101,7 @@ function TrainerAvailability() {
                             onChange={(e) => setStartTime(e.target.value)}
                             placeholder="กรุณาระบุเวลาเริ่ม"
                         />
-                        <span className="self-start">-</span>
+                        <span className="self-start-Availability">-</span>
                         <input
                             type="time"
                             id="endTime"
@@ -113,19 +112,19 @@ function TrainerAvailability() {
                         />
                     </div>
 
-                    <div className="buttonSC">
-                        <button type="button" className="btc" onClick={handleCancel}>
+                    <div className="buttonSC-Availability">
+                        <button type="button" className="btc-Availability" onClick={handleCancel}>
                             ยกเลิก
                         </button>
-                        <button type="submit" className="bts">
+                        <button type="submit" className="bts-Availability">
                             บันทึก
                         </button>
                     </div>
                 </form>
 
-                <div className="saved-entries">
+                <div className="saved-entries-Availability">
                     <h2>ตารางเวลาที่บันทึกไว้</h2>
-                    <table className="table">
+                    <table className="table-Availability">
                         <thead>
                             <tr>
                                 <th>โปรแกรมการฝึกสอน</th>

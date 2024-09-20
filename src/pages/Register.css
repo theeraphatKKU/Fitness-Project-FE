@@ -68,6 +68,24 @@ h1 {
   gap: 30px;
 }
 
+.left-pane,
+.right-pane {
+    width: 48%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* ภาพ */
+.register-image {
+  width: 100%;
+  height: auto;
+  border: 3px solid #ddd;
+  /* Increased border size */
+  border-radius: 5px;
+}
+
 
 .personal-info, .membership-info {
   width: 48%;

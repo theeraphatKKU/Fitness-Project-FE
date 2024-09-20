@@ -28,6 +28,11 @@ const Navbar = ({ userRole }) => {
                   <Link to="/admin-home" className="navbar-link">Home</Link>
                 </>
               )}
+              {userRole === 'trainer' && (
+                <>
+                  <Link to="/trainer-home" className="navbar-link">Home</Link>
+                </>
+              )}
               {/* เพิ่มลิงก์สำหรับบทบาทอื่น ๆ */}
             </>
           ) : (
@@ -45,6 +50,11 @@ const Navbar = ({ userRole }) => {
                 <Link to="/admin-workspace" className="navbar-link">Workspace</Link>
               </>
             )}
+            {userRole === 'trainer' && (
+              <>
+                <Link to="/trainer-workspace" className="navbar-link">Workspace</Link>
+              </>
+            )}
             {/* เพิ่มลิงก์สำหรับบทบาทอื่น ๆ */}
           </>
         ) : (
@@ -59,6 +69,15 @@ const Navbar = ({ userRole }) => {
           <>
             {userRole === 'admin' && (
               <Link to="/admin-profile" className="navbar-link">
+              <img
+              src="https://cdn-icons-png.flaticon.com/512/847/847969.png" // ลิงก์ไอคอนรูปคน
+              alt="Login"
+              className="navbar-icon"
+              />
+            </Link>
+            )}
+            {userRole === 'trainer' && (
+              <Link to="/trainer-login" className="navbar-link">
               <img
               src="https://cdn-icons-png.flaticon.com/512/847/847969.png" // ลิงก์ไอคอนรูปคน
               alt="Login"

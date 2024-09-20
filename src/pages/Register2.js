@@ -39,7 +39,7 @@ const Register2 = () => {
     };
 
     const handleCancel = () => {
-        navigate('/register1');
+        navigate('/register');
     };
 
     return (

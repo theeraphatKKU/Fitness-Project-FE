@@ -20,7 +20,7 @@
   text-decoration: underline;
 }
 
-/* จัดการตัว container ทั้งหมด */
+
 .Availability-container {
 
   padding: 40px;
@@ -28,8 +28,8 @@
   max-width: 95%;
 }
 
-/* จัดการส่วนของฟอร์ม */
-form {
+
+.form-Availability {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -50,12 +50,12 @@ form input[type="time"]::placeholder {
   color: #bbb;
 }
 
-/*ปุ่มยกเลิก/บันทึก*/
-.buttonSC {
+
+.buttonSC-Availability {
   padding: 50px;
   margin-left:77%;
 }
-.btc {
+.btc-Availability {
     padding: 0.5rem 1.5rem;
     font-size: 1.3rem;
     border-radius: 0.25rem;
@@ -64,7 +64,7 @@ form input[type="time"]::placeholder {
     color: #000;
   }
 
-  .bts {
+  .bts-Availability {
     padding: 0.5rem 1.5rem;
     font-size: 1.3rem;
     border-radius: 0.25rem;
@@ -73,8 +73,8 @@ form input[type="time"]::placeholder {
     color: #fff;
   }
 
-/* จัดการกับโครงสร้างหลักของฟอร์ม */
-.form-detail {
+
+.form-detail-Availability {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -85,14 +85,14 @@ form input[type="time"]::placeholder {
   border-radius: 6px;
 }
 
-/* จัดการกับส่วนโปรแกรมการฝึกสอน */
-.Program-training {
+
+.Program-training-Availability {
   font-size: 18px;
   color: #333;
   margin-bottom: 5px;
 }
 
-.program-box {
+.program-box-Availability {
   width: 99%;
   padding: 10px;
   border: 1px solid #333;
@@ -100,27 +100,27 @@ form input[type="time"]::placeholder {
   background-color: #fff;
   font-size: 16px;
 }
-/* ขนาดของ dropdown */
+
 select {
-  width: 100%; /* ปรับให้เต็มพื้นที่ */
-  padding: 10px; /* เพิ่มระยะห่างภายใน */
-  font-size: 16px; /* ขนาดของตัวอักษร */
-  border: 1px solid #ddd; /* สีของขอบ */
-  border-radius: 4px; /* มุมโค้ง */
-  background-color: #fff; /* สีพื้นหลัง */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* เงาเบา */
-  cursor: pointer; /* แสดงเคอร์เซอร์เป็น pointer */
+  width: 100%; 
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  cursor: pointer; 
   border: 1px solid #333;
 }
 
-/* ปรับขนาดของ dropdown ในกรณีที่มีขนาดใหญ่กว่า */
+
 select::placeholder {
-  font-size: 16px; /* ขนาดของตัวอักษรใน placeholder */
-  color: #888; /* สีของ placeholder */
+  font-size: 16px; 
+  color: #888; 
   
 }
 
-.program input {
+.program-Availability input {
   width: 99%;
   padding: 10px;
   border: 1px solid #333;
@@ -129,14 +129,14 @@ select::placeholder {
   font-size: 16px;
 }
 
-/* จัดการกับส่วนเลือกวันที่ */
-.select-date {
+
+.select-date-Availability {
   font-size: 18px;
   color: #333;
   margin-bottom: 5px;
 }
 
-.click-date input {
+.click-date-Availability input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -146,20 +146,20 @@ select::placeholder {
   color: #555;
 }
 
-/* จัดการกับส่วนเลือกเวลา */
-.select-time {
+
+.select-time-Availability {
   font-size: 18px;
   color: #333;
   margin-bottom: 5px;
 }
 
-.click-time {
+.click-time-Availability {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.click-time input {
+.click-time-Availability input {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -168,75 +168,74 @@ select::placeholder {
   width: 150px;
 }
 
-.click-time span {
+.click-time-Availability span {
   margin: 0 10px;
 }
 
-.click-time label {
+.click-time-Availability label {
   font-size: 16px;
   margin-right: 10px;
   color: #555;
 }
 
-.saved-entries{
+.saved-entries-Availability{
   
-.table {
+.table-Availability {
 
   width: 102.5%;
   border-collapse: collapse;
-  /* ทำให้ขอบของเซลล์ติดกัน */
+
 
   margin-top: 20px;
   font-family: Arial, sans-serif;
   text-align: left;
   table-layout: fixed;
-  /* ทำให้ตารางมีขนาดคงที่ */
+
 }
-.table th {
+.table-Availability th {
 
   background-color: #f5f5f5;
-  /* สีพื้นหลังสำหรับหัวตาราง */
+
   border: 1px solid #ddd;
-  /* ขอบสีเทาอ่อน */
+
   padding: 10px;
   font-weight: bold;
   text-align: center;
   width: 33%;
-  /* ให้แต่ละคอลัมน์มีขนาดเท่ากัน */
+
 }
 
-/* สไตล์สำหรับข้อมูลในตาราง */
-.table td {
+.table-Availability td {
 
   border: 1px solid #ddd;
-  /* ขอบตาราง */
+
   padding: 10px;
   vertical-align: middle;
-  /* จัดข้อความให้อยู่กึ่งกลางแนวตั้ง */
+
   text-align: center;
 }
 
-/* สไตล์สำหรับข้อความในเซลล์ที่เป็นโปรแกรม */
-.table td[rowspan] {
+
+.table-Availability td[rowspan] {
   font-weight: bold;
   background-color: #ffffff;
-  /* สีพื้นหลังเบาๆ สำหรับช่องที่มี rowspan */
+
 }
 
 
 
-/* ขอบเขตของตาราง */
+
 .overflow-x-auto {
   overflow-x: auto;
-  /* ทำให้มี scroll เมื่อหน้าจอเล็ก */
+
   margin-top: 20px;
 }
 
-/* ปรับสไตล์ให้ข้อความเป็นภาษาไทย */
-.table td,
-.table th {
+
+.table-Availability td,
+.table-Availability th {
   font-size: 16px;
   word-wrap: break-word;
-  /* ทำให้คำยาวเกินไปถูกตัดบรรทัด */
+
 }
 }

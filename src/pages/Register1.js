@@ -136,7 +136,7 @@ const Register1 = () => {
         </div> */}
 
         <div className="left-pane">
-            <img src="https://www.villageattimarron.com/wp-content/uploads/2022/12/GettyImages-874700028.jpg" alt="Payment Details" className="payment-image" />
+            <img src="https://ceo-digitalmag.s3.ap-southeast-2.amazonaws.com/wp-content/uploads/2023/11/30043906/TheBestVersionOfYou_MARK_Support2.jpg" alt="Payment Details" className="payment-image" />
         </div>
 
         <div className="membership-info">
@@ -188,7 +188,7 @@ const Register1 = () => {
                   checked={formData.paymentMethod === 'cash'}
                   onChange={handleInputChange}
                 />
-                เงินสด
+                เงินสด : ชำระเงินที่หน้าเคาท์เตอร์ CS Fitness
               </label>
               {/* <label>
                 <input

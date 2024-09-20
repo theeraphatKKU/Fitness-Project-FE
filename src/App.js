@@ -23,8 +23,8 @@ import TrainerHome from './trainer/TrainerHome';
 import TrainerWorkspace from './trainer/TrainerWorkspace';
 import TrainerAvailability from './trainer/TrainerAvailability';
 import TrainerSchedule from './trainer/TrainerSchedule';
-import TrainerProgram from './trainer/TrainerProgram';
-import TrainerContactus from './trainer/TrainerContactus';
+// import TrainerProgram from './trainer/TrainerProgram';
+// import TrainerContactus from './trainer/TrainerContactus';
 import TrainerLogin from './trainer/TrainerLogin';
 
 // For admin
@@ -41,7 +41,7 @@ import EditTrainingProgram from './admin/EditTrainingProgram';
 
 function App() {
   // กำหนดบทบาทที่ต้องการทดสอบ ใช้ '' ถ้าต้องการดูหน้าสาธารณะ(public)
-  const userRole = ''; // ใช้ค่า 'member' หรือ 'trainer' เพื่อทดสอบบทบาทอื่น
+  const userRole = 'trainer'; // ใช้ค่า 'member' หรือ 'trainer' เพื่อทดสอบบทบาทอื่น
 
   return (
     <Router>
@@ -62,15 +62,14 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
           {/* trainer Pages */}
-          <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}
+          <Route path="/trainer-home" element={<TrainerHome />} />
           <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
           <Route path="/trainer-schedule" element={<TrainerSchedule />} />
           <Route path="/trainer-availability" element={<TrainerAvailability />} />
-          <Route path="/trainer-program" element={<TrainerProgram />} />
-          <Route path="/trainer-contact-us" element={<TrainerContactus />} />
+          {/* <Route path="/trainer-program" element={<TrainerProgram />} /> */}
+          {/* <Route path="/trainer-contact-us" element={<TrainerContactus />} /> */}
           <Route path="/trainer-login" element={<TrainerLogin />} />
           
-          {/* Optional: Add a route for 404 */}
           {/* Admin Pages */}
           <Route path="/admin-workspace" element={<AdminWorkspace />} />
           <Route path="/admin-profile" element={<AdminProfile />} />

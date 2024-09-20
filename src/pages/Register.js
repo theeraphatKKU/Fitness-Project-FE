@@ -63,9 +63,11 @@ const Register = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="register-form">
+
         <div className="left-pane">
-          <img src="https://st4.depositphotos.com/1022135/25748/i/450/depositphotos_257486682-stock-photo-group-young-people-sportswear-talking.jpg" alt="Payment Details" className="payment-image" />
+          <img src="https://fayazneurosurgery.com/wp-content/uploads/2021/07/lasting-results.jpg" alt="Payment Details" className="register-image" />
         </div>
+
         <div className="personal-info">
           <h2>ข้อมูลส่วนตัว</h2>
           <div className="form-group">

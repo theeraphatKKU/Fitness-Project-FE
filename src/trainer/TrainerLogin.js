@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // เพิ่มบรรทัดนี้
 import './TrainerLogin.css';
-import TrainerNavbar from '../trainer/TrainerNavbar';
 
 const TrainerLogin = () => {
   return (
     <section className="profile">
-      <TrainerNavbar />
       <div className="container">
         <div className="head-edit">
           <div className="profile-picture">
