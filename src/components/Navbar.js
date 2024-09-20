@@ -54,6 +54,8 @@ const Navbar = ({ userRole }) => {
         {/* หน้า contact us ไม่เปลี่ยน */}
         <Link to="/contact-us" className="navbar-link">Contact us</Link>
 
+
+        {/* ไอคอนรูปคนสำหรับไปหน้า Login */}
         {/* ไอคอนรูปคนสำหรับ public ไปหน้าlogin สำหรับroleไปหน้าprofile*/}
         {userRole ? (
           <>

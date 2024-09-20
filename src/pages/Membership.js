@@ -23,7 +23,6 @@ const Membership = () => {
           <li>Student Membership</li>
         </ul>
       </section> */}
-
       {/* Join Now Section */}
       <div className="join-now-container">
         <div className="join-now-content">
