@@ -6,14 +6,13 @@ const Register = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    dob: '',
     phone: '',
     email: '',
     password: '',
     confirmPassword: '',
-    membershipType: 'basic',
-    paymentMethod: 'cash',
-    startDate: ''
+    // membershipType: 'basic',
+    // paymentMethod: 'cash',
+    // startDate: ''
   });
   
   const [errors, setErrors] = useState({});
@@ -32,7 +31,7 @@ const Register = () => {
     if (!formData.email) newErrors.email = 'กรุณากรอกอีเมล';
     if (!formData.password) newErrors.password = 'กรุณากรอกรหัสผ่าน';
     if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'รหัสผ่านและการยืนยันรหัสผ่านไม่ตรงกัน';
-    if (!formData.startDate) newErrors.startDate = 'กรุณากรอกวันที่เริ่มต้น';
+    // if (!formData.startDate) newErrors.startDate = 'กรุณากรอกวันที่เริ่มต้น';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -41,7 +40,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      navigate('/register2', { state: formData });
+      navigate('/register1', { state: formData });
     }
   };
 
@@ -53,15 +52,20 @@ const Register = () => {
         <span className={`step ${errors.startDate ? 'error' : ''}`}>2</span>
         <span className="step">3</span>
         <span className="step">4</span>
+        <span className="step">5</span>
       </div>
       <div className="progress-bar-name">
         <span className={`step ${errors.firstName ? 'error' : 'active'}`}>กรอกข้อมูล</span>
-        <span className={`step ${errors.startDate ? 'error' : ''}`}>ยืนยันลงทะเบียน</span>
+        <span className={`step ${errors.startDate ? 'error' : ''}`}>เลือกแผนการเป็นสมาชิก</span>
+        <span className="step">ยืนยันลงทะเบียน</span>
         <span className="step">รอยืนยันการชำระเงิน</span>
         <span className="step">เสร็จสิ้น</span>
       </div>
 
       <form onSubmit={handleSubmit} className="register-form">
+        <div className="left-pane">
+          <img src="https://st4.depositphotos.com/1022135/25748/i/450/depositphotos_257486682-stock-photo-group-young-people-sportswear-talking.jpg" alt="Payment Details" className="payment-image" />
+        </div>
         <div className="personal-info">
           <h2>ข้อมูลส่วนตัว</h2>
           <div className="form-group">
@@ -129,71 +133,6 @@ const Register = () => {
               required
             />
             {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
-          </div>
-        </div>
-
-        <div className="membership-info">
-          <h2>การเป็นสมาชิก</h2>
-          <div className="form-group">
-            <label>เลือกแผนการเป็นสมาชิก:</label>
-            <div className="membership-options">
-              <label>
-                <input
-                  type="radio"
-                  name="membershipType"
-                  value="basic"
-                  checked={formData.membershipType === 'basic'}
-                  onChange={handleInputChange}
-                />
-                แพ็คเกจธรรมดา 950/3 เดือน
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="membershipType"
-                  value="premium"
-                  checked={formData.membershipType === 'premium'}
-                  onChange={handleInputChange}
-                />
-                แพ็คเกจพิเศษ 1,555/6 เดือน !!!
-              </label>
-            </div>
-          </div>
-          <div className="form-group">
-            <label>วันที่เริ่มต้น: *</label>
-            <input
-              type="date"
-              name="startDate"
-              value={formData.startDate}
-              onChange={handleInputChange}
-              required
-            />
-            {errors.startDate && <p className="error-text">{errors.startDate}</p>}
-          </div>
-          <div className="form-group">
-            <label>เลือกวิธีชำระ:</label>
-            <div className="payment-options">
-              <label>
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="cash"
-                  checked={formData.paymentMethod === 'cash'}
-                  onChange={handleInputChange}
-                />
-                เงินสด
-              </label>
-              {/* <label>
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="credit"
-                  checked={formData.paymentMethod === 'credit'}
-                  onChange={handleInputChange}
-                />
-                บัตรเครดิต (ขณะนี้ยังไม่รองรับ)
-              </label> */}
-            </div>
           </div>
           <button type="submit" className="submit-btn">ต่อไป</button>
           <p className="signin-link">

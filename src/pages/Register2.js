@@ -39,7 +39,7 @@ const Register2 = () => {
     };
 
     const handleCancel = () => {
-        navigate('/register');
+        navigate('/register1');
     };
 
     return (
@@ -47,12 +47,14 @@ const Register2 = () => {
             <h1>สมัครสมาชิก</h1>
             <div className="progress-bar">
                 <span className="step">1</span>
-                <span className="step active">2</span>
-                <span className="step">3</span>
+                <span className="step">2</span>
+                <span className="step active">3</span>
                 <span className="step">4</span>
+                <span className="step">5</span>
             </div>
             <div className="progress-bar-name">
                 <span className="step">กรอกข้อมูล</span>
+                <span className="step">เลือกแผนการเป็นสมาชิก</span>
                 <span className="step active">ยืนยันลงทะเบียน</span>
                 <span className="step">รอยืนยันการชำระเงิน</span>
                 <span className="step">เสร็จสิ้น</span>

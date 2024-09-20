@@ -13,6 +13,7 @@ import ContactUs from './pages/ContactUs';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
+import Register1 from './pages/Register1';
 import Register2 from './pages/Register2';
 import Register3 from './pages/Register3';
 import Register4 from './pages/Register4';
@@ -31,7 +32,7 @@ import EditTrainingProgram from './admin/EditTrainingProgram';
 
 function App() {
   // กำหนดบทบาทที่ต้องการทดสอบ ใช้ '' ถ้าต้องการดูหน้าสาธารณะ(public)
-  const userRole = 'admin'; // ใช้ค่า 'member' หรือ 'trainer' เพื่อทดสอบบทบาทอื่น
+  const userRole = ''; // ใช้ค่า 'member' หรือ 'trainer' เพื่อทดสอบบทบาทอื่น
 
   return (
     <Router>
@@ -45,6 +46,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs userRole={userRole} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/register1" element={<Register1 />} />
           <Route path="/register2" element={<Register2 />} />
           <Route path="/register3" element={<Register3 />} />
           <Route path="/register4" element={<Register4 />} />
