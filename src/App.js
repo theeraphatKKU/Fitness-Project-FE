@@ -26,9 +26,6 @@ import TrainerProgram from './trainer/TrainerProgram';
 import TrainerContactus from './trainer/TrainerContactus';
 import TrainerLogin from './trainer/TrainerLogin';
 
-import Register2 from './pages/Register2'; // Add this import
-import Register3 from './pages/Register3'; 
-import Register4 from './pages/Register4'; 
 
 function App() {
   // กำหนดบทบาทที่ต้องการทดสอบ ใช้ '' ถ้าต้องการดูหน้าสาธารณะ(public)
