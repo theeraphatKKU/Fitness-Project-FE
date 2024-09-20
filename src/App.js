@@ -13,7 +13,11 @@ import ContactUs from './pages/ContactUs';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
+import Register2 from './pages/Register2'; // Remove duplicate
+import Register3 from './pages/Register3';
+import Register4 from './pages/Register4';
 
+// For trainer
 import TrainerHome from './trainer/TrainerHome';
 import TrainerWorkspace from './trainer/TrainerWorkspace';
 import TrainerAvailability from './trainer/TrainerAvailability';
@@ -21,13 +25,6 @@ import TrainerSchedule from './trainer/TrainerSchedule';
 import TrainerProgram from './trainer/TrainerProgram';
 import TrainerContactus from './trainer/TrainerContactus';
 import TrainerLogin from './trainer/TrainerLogin';
-
-import Register2 from './pages/Register2'; // Add this import
-import Register3 from './pages/Register3'; 
-import Register4 from './pages/Register4'; 
-import Register2 from './pages/Register2';
-import Register3 from './pages/Register3';
-import Register4 from './pages/Register4';
 
 // For admin
 import AdminWorkspace from './admin/admin_workspace';
@@ -39,7 +36,6 @@ import AdminTrainerM from './admin/admin_TrainerM';
 import AdminHome from './admin/admin_Home';
 import AddTrainingProgram from './admin/AddTrainingProgram';
 import EditTrainingProgram from './admin/EditTrainingProgram';
-
 
 function App() {
   // กำหนดบทบาทที่ต้องการทดสอบ ใช้ '' ถ้าต้องการดูหน้าสาธารณะ(public)
@@ -61,19 +57,16 @@ function App() {
           <Route path="/register3" element={<Register3 />} />
           <Route path="/register4" element={<Register4 />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          {/*************/}
-          <Route path="/trainer-home" element={<TrainerHome />} /> {/* กำหนด route สำหรับ TrainerHome */}
+
+          {/* Trainer Pages */}
+          <Route path="/trainer-home" element={<TrainerHome />} />
           <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
           <Route path="/trainer-schedule" element={<TrainerSchedule />} />
           <Route path="/trainer-availability" element={<TrainerAvailability />} />
           <Route path="/trainer-program" element={<TrainerProgram />} />
           <Route path="/trainer-contact-us" element={<TrainerContactus />} />
           <Route path="/trainer-login" element={<TrainerLogin />} />
-          {/* Optional: Add a route for 404 */}
-          <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}
-        </Routes>
-        
-          
+
           {/* Admin Pages */}
           <Route path="/admin-workspace" element={<AdminWorkspace />} />
           <Route path="/admin-profile" element={<AdminProfile />} />
