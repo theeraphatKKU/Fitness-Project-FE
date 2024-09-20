@@ -93,14 +93,23 @@ function TrainerAvailability() {
 
           {/* ช่องเลือกวันที่ */}
           <div className="select-date">
-            วันที่ต้องการฝึกสอน :{/* ข้อความบอกให้ผู้ใช้เลือกวัน */}
+            วันที่ต้องการฝึกสอน :
           </div>
           <div className="click-date">
             <input
               type="date"
               className="my-auto bg-transparent border-none"
               value={date}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => {
+                const selectedDate = new Date(e.target.value);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0); // ตั้งค่าเวลาเป็น 00:00 ของวันนี้
+                if (selectedDate < today) {
+                  alert("เลือกวันไม่ถูกต้อง");
+                } else {
+                  setDate(e.target.value); // อัปเดตวันที่ถ้าเลือกวันอนาคต
+                }
+              }}
               placeholder="วว/ดด/ปปปป"
             />
           </div>
