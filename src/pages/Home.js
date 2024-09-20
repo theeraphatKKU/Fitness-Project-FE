@@ -18,7 +18,7 @@ function Home() {
           alt="About Us" 
           className="about-us-image" 
         />
-        <div className="about-us-content">
+        <div className="about-us-contentt">
           <div className="about-us-title">About Us</div>
           ยินดีต้อนรับสู่ CS Fitness <br />
           จุดหมายปลายทางสำหรับสุขภาพ <br />
@@ -30,7 +30,7 @@ function Home() {
       </div>
 
       {/* Promotion Section */}
-      <div className="promotion-section">
+      <div className="promotion-sectionn">
         <h2>Promotion!!</h2>
         <div className="promotion-slides">
           <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/personal-training-video-instagram-facebook-design-template-447e456e861c72dd67a9db52da7322ab_screen.jpg?ts=1715527907" alt="Promotion 1" />

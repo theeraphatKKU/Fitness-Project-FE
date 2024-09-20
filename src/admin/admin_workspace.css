@@ -12,8 +12,8 @@ body {
 }
 
 .admin-breadcrumb {
-    font-size: 14px;
-    color: #716564;
+    font-size: 16px;
+    color: #ffffff;
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -33,14 +33,15 @@ body {
 }
 
 .admin-title {
-    font-size: 36px;
+    font-size: 50px;
     font-weight: bold;
     font-family: 'Inria Serif', serif;
+    color: #fff;
 }
 
 .admin-subtitle {
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 30px;
     font-weight: bold;
 }

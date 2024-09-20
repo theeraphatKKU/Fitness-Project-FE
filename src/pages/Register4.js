@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Register4.css';
 
 const Register4 = () => {
+    useEffect(() => {
+        document.body.classList.add('register4-page');
+    
+        return () => {
+          document.body.classList.remove('register4-page');
+        };
+      }, []);
+
     const navigate = useNavigate();
 
     const goToLogin = () => {
@@ -12,6 +20,8 @@ const Register4 = () => {
     const goToHome = () => {
         navigate('/home');
     };
+
+    
 
     return (
         <div className="register4-container">

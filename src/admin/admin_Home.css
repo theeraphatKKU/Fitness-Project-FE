@@ -2,6 +2,10 @@
 
 body {
     font-family: "Noto Sans Thai", sans-serif;
+    /* background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('https://img.freepik.com/premium-photo/gym-background-enough-blank-space-commercial-photography-natural-white-tone-style-generative-ai_527096-26806.jpg') no-repeat center center fixed;
+    background-size: cover;  */
   }
   
   .home-container {

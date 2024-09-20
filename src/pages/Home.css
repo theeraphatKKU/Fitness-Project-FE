@@ -2,6 +2,10 @@
 
 body {
   font-family: "Noto Sans Thai", sans-serif;
+  background: 
+  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* เลเยอร์สีดำโปร่งแสง */
+  url('https://img.freepik.com/premium-photo/gym-background-enough-blank-space-commercial-photography-natural-white-tone-style-generative-ai_527096-26806.jpg') no-repeat center center fixed !important;
+  background-size: cover !important; 
 }
 
 .home-container {
@@ -81,43 +85,58 @@ body {
 
 .about-us-container {
   display: flex;
-  justify-content: space-between; /* จัดเนื้อหาให้กระจายไปทางซ้ายและขวา */
-  align-items: center; /* จัดแนวกลางในแนวตั้ง */
+  justify-content: space-between; 
+  align-items: center; 
   width: 100%;
-  max-width: 1200px; /* จำกัดความกว้างสูงสุดของส่วนนี้ */
-  margin: 50px auto; /* จัดกลางและเว้นระยะห่างด้านบนและล่าง */
+  max-width: 1200px; 
+  margin: 50px auto;
 }
 
-.about-us-content {
-  flex: 1; /* ให้เนื้อหาขยายเต็มที่ */
-  font-size: 26px;
+.about-us-contentt {
+  flex: 1;
+  font-size: 18px; /* ขนาดฟอนต์ */
   font-weight: 400;
-  color: black;
-  /* background: #EEEEEE; */
+  color: #333; /* สีข้อความ */
+  background: linear-gradient(135deg, #f6f6f6, #e0e0e0); /* เพิ่ม Gradient ให้พื้นหลัง */
   padding: 40px;
-  margin-right: 20px; /* ระยะห่างจากรูปภาพ */
-  text-align: center; /* จัดเนื้อหาไปที่ด้านขวา */
-  border-radius: 100px;
+  margin-right: 20px;
   margin-left: 20px;
+  text-align: center;
+  border-radius: 0px; /* มุมมนเพื่อให้ดูเรียบหรู */
+  border: 1px solid rgba(221, 221, 221, 0.5); /* เส้นขอบจางๆ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.642); /* เพิ่มเงาที่ดูจางๆ */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* เพิ่มการเปลี่ยนแปลงเวลาโฮเวอร์ */
+  background-color: #f0f8ff; /* พื้นหลังอ่อน */
 }
+
+
 
 .about-us-image {
   flex: 1; /* ให้รูปภาพขยายเต็มที่ */
   max-width: 400px; /* จำกัดขนาดรูปภาพ */
   margin-left: 20px; /* ระยะห่างจากเนื้อหา */
+  /* transition: transform 0.3s, box-shadow 0.3s; */
 }
+
+/* .about-us-image:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.2); 
+} */
+
 
 /* Promotion Section */
-.promotion-section {
-  width: 100%;
+.promotion-sectionn {
+  width: calc(100% + 100px); /* ยาวขึ้นอีก 100px */
+  margin-left: -50px; /* ขยายออกทางซ้าย 50px */
+  margin-right: -50px; /* ขยายออกทางขวา 50px */
   text-align: center;
-  margin: 50px 0;
+  margin-top: 50px;
   background-color: #333;
   padding-bottom: 50px;
-  /* background-image: url('https://www.primefitnessusa.com/cdn/shop/files/ro-t8-handles-banner_1920x820_crop_right.jpg?v=1626980099'); */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.642); */
 }
 
-.promotion-section h2 {
+.promotion-sectionn h2 {
   font-size: 60px;
   font-family: 'Inria Serif', serif;
   color: rgb(255, 255, 255);
@@ -160,6 +179,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(255, 255, 255, 0.642); */
 }
 
 .join-now-content {

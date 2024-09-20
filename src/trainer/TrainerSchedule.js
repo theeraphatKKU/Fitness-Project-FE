@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import './TrainerSchedule.css';
 import { Link } from 'react-router-dom';
@@ -69,22 +69,30 @@ function TrainerSchedule() {
             return 'จอง';
         }
     };
+    
+    useEffect(() => {
+        document.body.classList.add('tschedule-page');
+    
+        return () => {
+          document.body.classList.remove('tschedule-page');
+        };
+      }, []);
 
     return (
         <div className='TrainerSchedule-container'>
             
             <div className="wrap-breadcrumb">
-                <div className="admin-breadcrumb">
-                <Link to="/trainer-home" className="breadcrumb-link">Home</Link>
+                <div className="breadcrumb-ts">
+                <Link to="/trainer-home" className="breadcrumb-link-ts">Home</Link>
                 <span> </span>
                 <span>&gt;</span>
-                <Link to="/trainer-workspace" className="breadcrumb-link"> Workspace</Link>
+                <Link to="/trainer-workspace" className="breadcrumb-link-ts"> Workspace</Link>
                 <span> </span>
                 <span>&gt;</span>
-                <span className="breadcrumb-current"> Schedule</span>
+                <span className="breadcrumb-current-ts"> Schedule</span>
                 </div>
-                <h1 className="admin-title">Schedule</h1>
-                <p className="admin-subtitle">ดูตารางฝึกสอน</p>
+                <h1 className="page-title-ts">Schedule</h1>
+                <p className="page-subtitle-ts">ดูตารางฝึกสอน</p>
             </div>
 
             <div className='contrainer'>

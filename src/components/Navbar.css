@@ -54,6 +54,7 @@ body {
 
 .navbar-link:hover {
     text-decoration: underline;
+    color: rgb(255, 62, 62);
 }
 
 .navbar-icon {

@@ -6,16 +6,50 @@ import './Navbar.css'; // ตรวจสอบการนำเข้า CSS �
 const Navbar = ({ userRole }) => {
   return (
     <div className="navbar">
-      <div>
-        <Link to="/" className="logo-linkhome">
-          <img
-            src="https://www.creativefabrica.com/wp-content/uploads/2023/05/31/Gym-Logo-Fitness-Logo-Vector-Design-Graphics-70960661-1.jpg"
-            alt="Logo"
-            className="navbar-logo"
-          />
-          <div className="navbar-title">CS Fitness</div>
-        </Link>
-      </div>
+      {userRole ? (
+            <>
+              {userRole === 'admin' && (
+                <>
+                <div>
+                  <Link to="/admin-home" className="logo-linkhome">
+                    <img
+                      src="https://www.creativefabrica.com/wp-content/uploads/2023/05/31/Gym-Logo-Fitness-Logo-Vector-Design-Graphics-70960661-1.jpg"
+                      alt="Logo"
+                      className="navbar-logo"
+                    />
+                    <div className="navbar-title">CS Fitness</div>
+                  </Link>
+                </div>
+                </>
+              )}
+              {userRole === 'trainer' && (
+                <>
+                <div>
+                  <Link to="/trainer-home" className="logo-linkhome">
+                    <img
+                      src="https://www.creativefabrica.com/wp-content/uploads/2023/05/31/Gym-Logo-Fitness-Logo-Vector-Design-Graphics-70960661-1.jpg"
+                      alt="Logo"
+                      className="navbar-logo"
+                    />
+                    <div className="navbar-title">CS Fitness</div>
+                  </Link>
+                </div>
+                </>
+              )}
+              {/* เพิ่มลิงก์สำหรับบทบาทอื่น ๆ */}
+            </>
+          ) : (
+            <div>
+              <Link to="/" className="logo-linkhome">
+                <img
+                  src="https://www.creativefabrica.com/wp-content/uploads/2023/05/31/Gym-Logo-Fitness-Logo-Vector-Design-Graphics-70960661-1.jpg"
+                  alt="Logo"
+                  className="navbar-logo"
+                />
+                <div className="navbar-title">CS Fitness</div>
+              </Link>
+            </div>
+          )}
 
 
       <div className="navbar-links">

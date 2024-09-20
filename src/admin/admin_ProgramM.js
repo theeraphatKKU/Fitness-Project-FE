@@ -12,6 +12,14 @@ const AdminProgramM = () => {
     setPrograms(savedPrograms);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.add('programM-page');
+
+    return () => {
+      document.body.classList.remove('programM-page');
+    };
+  }, []);
+
   const handleAddProgram = () => {
     navigate('/admin-training-add');
   };
@@ -35,11 +43,11 @@ const AdminProgramM = () => {
       {/* Breadcrumb */}
       <div className="wrap-breadcrumb">
         <div className="program-management-breadcrumb">
-          <Link to="/admin-home" className="breadcrumb-link">Home</Link>
+          <Link to="/admin-home" className="breadcrumb-link-programM">Home</Link>
           <span> &gt; </span>
-          <Link to="/admin-workspace" className="breadcrumb-link">Workspace</Link>
+          <Link to="/admin-workspace" className="breadcrumb-link-programM">Workspace</Link>
           <span> &gt; </span>
-          <span className="breadcrumb-current">Training Program Management</span>
+          <span className="breadcrumb-current-programM">Training Program Management</span>
         </div>
       </div>
       {/* Title */}

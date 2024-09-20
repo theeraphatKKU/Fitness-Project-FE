@@ -2,6 +2,10 @@ body {
     font-family: "Noto Sans Thai", sans-serif !important;
 }
 
+body.trainerM-page {
+    background: #ffffff !important;
+  }
+
 .admin-trainer-management {
     padding: 40px;
 }

@@ -1,4 +1,8 @@
 /* Container for the entire page */
+
+body.register4-page {
+    background: #ffffff !important;
+  }
 .register4-container {
     width: 100%;
     display: flex;

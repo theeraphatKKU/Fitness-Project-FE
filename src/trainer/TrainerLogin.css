@@ -1,182 +1,194 @@
-/* TrainerLogin.css */
-
 body {
   font-family: "Noto Sans Thai", sans-serif !important;
+
 }
 
-.profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* จัดกึ่งกลางแนวนอน */
-    padding: 40px;
-    gap: 20px;
-    width: 100%;
-    height: 100vh;
-    background: #f1f1f1;
-  }
+.profile-tl {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin-top: 90px;
+  gap: 20px;
+  width: 100%;
+  height: 100vh;
+}
+
+.container-tl {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px;
+  gap: 20px;
+  width: 95%;
+  max-width: 900px; /* ขยายความกว้างให้ไม่เกิน 900px */
+  background: #ffffff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* เปลี่ยนเงา */
+  border-radius: 15px; /* ปรับมุมโค้ง */
+  transition: transform 0.3s ease-in-out;
   
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* จัดชิดซ้าย */
-    padding: 20px 40px;
-    gap: 20px; /* เพิ่ม gap */
-    width: 1080px;
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-  }
+}
+
+.container-tl:hover {
+  transform: scale(1.02); /* ขยายเมื่อ Hover */
+}
+
+.head-edit-tl {
+  display: flex;
+  align-items: center; 
+  gap: 20px; 
+  width: 100%; 
+}
+
+.profile-picture-tl {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #333; /* เพิ่มกรอบรูป */
+}
+
+.profile-picture-tl img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-text-tl {
+  display: flex;
+  flex-direction: column; 
+  gap: 5px; 
+}
+
+.header-text-tl .title-tl {
+  color: #333; /* เปลี่ยนสีตัวอักษร */
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.edit-button-tl {
+  display: flex;
+  align-items: center; 
+}
+
+.edit-button-tl .edit-tl {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  background: #f1f1f1;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.edit-button-tl .edit-tl:hover {
+  background: #e1e1e1; /* เปลี่ยนสีเมื่อ Hover */
+}
+
+.edit-button-tl .edit-tl img {
+  width: 20px;
+  height: 20px;
+}
+
+.edit-button-tl .edit-tl span {
+  color: #333333;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.information-tl {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* width: 100%; */
+  width: 90%;
+  margin: 0 auto;
+}
+
+.information-tl p {
+  color: #333333;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0; 
+}
+
+.information-tl .font-bold {
+  font-weight: 700;
+  color: #333; /* สีใหม่ของข้อความ Bold */
   
-  .head-edit {
-    display: flex;
-    align-items: center; /* จัดกึ่งกลางในแนวตั้ง */
-    gap: 20px; /* เพิ่ม gap */
-    width: 100%; /* ขยายความกว้างให้เต็ม */
-  }
   
-  .profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
+}
+
+.training-style-tl {
+  color: #333333;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.training-style-tl span {
+  font-weight: 700;
+  color: #333; /* สีใหม่ของข้อความ Bold */
+}
+
+.button-group-tl {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px; 
+  width: 100%; 
+  margin-top: 20px; 
   
-  .profile-picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .header-text {
-    display: flex;
-    flex-direction: column; /* เรียง title และ button ในแนวตั้ง */
-    gap: 10px; /* เพิ่ม gap */
-  }
-  
-  .header-text .title {
-    color: #333333;
-    font-size: 32px;
-    /* font-family: 'Prompt', sans-serif; */
-    font-weight: 600;
-    margin: 0; /* ลบ margin */
-  }
-  
-  .edit-button {
-    display: flex;
-    align-items: center; /* จัดกึ่งกลางในแนวตั้ง */
-  }
-  
-  .edit-button .edit {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    gap: 10px;
-    width: 113px;
-    height: 47px;
-    background: #f1f1f1;
-    border: none;
-    border-radius: 10px;
-  }
-  
-  .edit-button .edit img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .edit-button .edit span {
-    color: #333333;
-    font-size: 18px;
-    /* font-family: 'Prompt', sans-serif; */
-    font-weight: 400;
-  }
-  
-  .information {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%; /* ขยายความกว้างให้เต็ม */
-  }
-  
-  .information p {
-    color: #333333;
-    font-size: 24px;
-    /* font-family: 'Prompt', sans-serif; */
-    font-weight: 400;
-    margin: 0; /* ลบ margin */
-  }
-  
-  .information .font-bold {
-    font-weight: 700;
-  }
-  
-  .training-style {
-    color: #333333;
-    font-size: 24px;
-    /* font-family: 'Prompt', sans-serif; */
-    font-weight: 400;
-    margin: 0; /* ลบ margin */
-  }
-  
-  .training-style span {
-    font-weight: 700;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: flex-end; /* จัดปุ่มชิดขวา */
-    gap: 20px; /* เพิ่ม gap */
-    width: 100%; /* ขยายความกว้างให้เต็ม */
-    margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
-  }
-  
-  .logout-button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    gap: 10px;
-    height: 47px;
-    background: #d93c1d;
-    border: none;
-    border-radius: 10px;
+}
+
+.logout-button-tl, .change-password-button-tl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  background: #333;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.logout-button-tl:hover {
+  background: #000; /* เปลี่ยนสีเมื่อ Hover */
+}
+
+.change-password-button-tl {
+  background: #333;
+}
+
+.change-password-button-tl:hover {
+  background: #000; /* เปลี่ยนสีเมื่อ Hover */
+}
+
+.button-text-tl {
+  color: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .container-tl {
+    width: 90%;
+    padding: 20px; 
   }
 
-  .change-password-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    gap: 10px;
-    height: 47px;
-    background: #301dd9;
-    border: none;
-    border-radius: 10px;
+  .information-tl p,
+  .training-style {
+    font-size: 18px; /* ลดขนาดตัวอักษร */
   }
-  
-  .logout-button {
-    width: 162px;
+
+  .header-text-tl .title {
+    font-size: 28px; /* ลดขนาดตัวอักษร */
   }
-  
-  .change-password-button {
-    width: 208px;
-  }
-  
-  .button-text {
-    color: #ffffff;
-    text-align: center;
-    font-size: 20px;
-    /* font-family: 'Prompt', sans-serif; */
-    font-weight: 400;
-    text-decoration: none;
-  }
-  
-  /* Media Queries สำหรับ Responsive Design */
-  @media (max-width: 768px) {
-    .container {
-      width: 90%;
-    }
-  }
+}

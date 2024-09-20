@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './TrainerAvailability.css';
 import { Link } from 'react-router-dom';
 
@@ -38,33 +38,45 @@ function TrainerAvailability() {
         }
     };
 
+    useEffect(() => {
+        document.body.classList.add('tAvailable-page');
+    
+        return () => {
+          document.body.classList.remove('tAvailable-page');
+        };
+      }, []);
+
     return (
         <div className="Availability-container">
             
-            <div className="T-breadcrumb">
-                <div className="TrainerAvailability-breadcrumb">
-                    <Link to="/trainer-home" className="breadcrumb-link">Home</Link>
-                    <span> &gt; </span>
-                    <Link to="/trainer-workspace" className="breadcrumb-link">Workspace</Link>
-                    <span> &gt; </span>
-                    <Link to="/trainer-availability" className="breadcrumb-link">Availability</Link>
+            <div className="wrap-breadcrumb">
+                <div className="breadcrumb-tav">
+                <Link to="/trainer-home" className="breadcrumb-link-tav">Home</Link>
+                <span> </span>
+                <span>&gt;</span>
+                <Link to="/trainer-workspace" className="breadcrumb-link-tav"> Workspace</Link>
+                <span> </span>
+                <span>&gt;</span>
+                <span className="breadcrumb-current-tav"> Availability Update</span>
                 </div>
+                <h1 className="page-title-tav">Availability Update</h1>
+                <p className="page-subtitle-tav">อัพเดตเวลาว่าง</p>
             </div>
-            <main className="Availability-contrainer">
-                <h1 className="Availability-Update">Availability Update</h1>
-                <p>อัปเดตเวลาว่าง</p>
+
+
+            <main className="Availability-contrainer2">
 
                 <form className="form-detail-Availability" onSubmit={handleSubmit}>
                     <div className="Program-training-Availability">โปรแกรมการฝึกสอน :</div>
                     <div className="program-Availability">
                         <select value={program} onChange={(e) => setProgram(e.target.value)}>
                             <option value=""></option>
-                            <optgroup label="โปรแกรมแบบกลุ่ม">
+                            {/* <optgroup label="โปรแกรมแบบกลุ่ม">
                                 <option value="โปรแกรมฟิตเนสสำหรับผู้เริ่มต้น">โปรแกรมฟิตเนสสำหรับผู้เริ่มต้น</option>
                                 <option value="โปรแกรมลดน้ำหนักและกระชับสัดส่วน">โปรแกรมลดน้ำหนักและกระชับสัดส่วน</option>
                                 <option value="โปรแกรมสร้างกล้ามเนื้อ">โปรแกรมสร้างกล้ามเนื้อ</option>
                                 <option value="โปรแกรมฟิตเนสสำหรับผู้สูงอายุ">โปรแกรมฟิตเนสสำหรับผู้สูงอายุ</option>
-                            </optgroup>
+                            </optgroup> */}
                             <optgroup label="โปรแกรมแบบส่วนตัว">
                                 <option value="โปรแกรมการฝึกสอนแบบส่วนตัว">โปรแกรมการฝึกสอนแบบส่วนตัว</option>
                             </optgroup>

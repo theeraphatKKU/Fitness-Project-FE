@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import './AddTrainingProgram.css';
 
@@ -58,6 +58,14 @@ const AddTrainingProgram = () => {
         }
     }, [selectedDay, selectedTime]);
 
+    useEffect(() => {
+        document.body.classList.add('memberM-page');
+    
+        return () => {
+          document.body.classList.remove('memberM-page');
+        };
+      }, []);
+
     const handleSave = () => {
         const newProgram = {
           image,
@@ -85,13 +93,13 @@ const AddTrainingProgram = () => {
             {/* Breadcrumb */}
             <div className="wrap-breadcrumb">
                 <div className="add-training-program-breadcrumb">
-                <Link to="/admin-home" className="breadcrumb-link">Home</Link>
+                <Link to="/admin-home" className="breadcrumb-link-programM">Home</Link>
                 <span> &gt; </span>
-                <Link to="/admin-workspace" className="breadcrumb-link">Workspace</Link>
+                <Link to="/admin-workspace" className="breadcrumb-link-programM">Workspace</Link>
                 <span> &gt; </span>
-                <Link to="/admin-training-program-management" className="breadcrumb-link">Training Program Management</Link>
+                <Link to="/admin-training-program-management" className="breadcrumb-link-programM">Training Program Management</Link>
                 <span> &gt; </span>
-                <span className="breadcrumb-current">Add Training Program</span>
+                <span className="breadcrumb-current-programM">Add Training Program</span>
                 </div>
             </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './admin_MemberM.css';
 
@@ -8,6 +8,14 @@ const AdminMemberM = () => {
   const [filteredMembers, setFilteredMembers] = useState([]);
   const [selectedMember, setSelectedMember] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.add('memberM-page');
+
+    return () => {
+      document.body.classList.remove('memberM-page');
+    };
+  }, []);
 
   // Mock data for testing purposes
   const mockMembers = [

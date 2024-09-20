@@ -30,6 +30,14 @@ const EditTrainingProgram = () => {
         }
     }, [programIndex]);
 
+    useEffect(() => {
+        document.body.classList.add('programM-page');
+    
+        return () => {
+          document.body.classList.remove('programM-page');
+        };
+      }, []);
+
     const handleImageChange = (e) => {
         setProgram({ ...program, image: URL.createObjectURL(e.target.files[0]) });
     };
@@ -77,13 +85,13 @@ const EditTrainingProgram = () => {
         <div className="add-training-program-container">
             <div className="wrap-breadcrumb">
                 <div className="add-training-program-breadcrumb">
-                    <Link to="/admin-home" className="breadcrumb-link">Home</Link>
+                    <Link to="/admin-home" className="breadcrumb-link-programM">Home</Link>
                     <span> &gt; </span>
-                    <Link to="/admin-workspace" className="breadcrumb-link">Workspace</Link>
+                    <Link to="/admin-workspace" className="breadcrumb-link-programM">Workspace</Link>
                     <span> &gt; </span>
-                    <Link to="/admin-training-program-management" className="breadcrumb-link">Training Program Management</Link>
+                    <Link to="/admin-training-program-management" className="breadcrumb-link-programM">Training Program Management</Link>
                     <span> &gt; </span>
-                    <span className="breadcrumb-current">Edit Training Program</span>
+                    <span className="breadcrumb-current-programM">Edit Training Program</span>
                 </div>
             </div>
 

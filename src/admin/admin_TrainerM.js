@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './admin_TrainerM.css';
 
 const AdminTrainerM = () => {
+  useEffect(() => {
+    document.body.classList.add('trainerM-page');
+
+    return () => {
+      document.body.classList.remove('trainerM-page');
+    };
+  }, []);
+
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [trainers, setTrainers] = useState([

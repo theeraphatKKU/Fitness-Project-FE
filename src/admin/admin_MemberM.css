@@ -2,6 +2,10 @@ body {
   font-family: "Noto Sans Thai", sans-serif !important; /* กำหนดฟอนต์สำหรับทั้งเว็บไซต์ */
 }
 
+body.memberM-page {
+  background: #ffffff !important;
+}
+
 .admin-member-management-unique {
   padding: 40px; /* กำหนด padding สำหรับส่วนจัดการสมาชิก */
 }

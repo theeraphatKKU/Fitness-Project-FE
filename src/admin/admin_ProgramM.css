@@ -2,24 +2,29 @@ body {
     font-family: "Noto Sans Thai", sans-serif !important;
 }
 
+body.programM-page {
+    background: #ffffff !important;
+  }
+
+
   
 .program-management-breadcrumb {
     font-size: 14px;
-    color: #716564;
+    color: #716564 ;
     margin-bottom: 20px;
     font-weight: bold;
   }
   
-  .breadcrumb-link {
+  .breadcrumb-link-programM {
     color: #716564;
     text-decoration: none;
   }
   
-  .breadcrumb-link:hover {
+  .breadcrumb-link-programM:hover {
     color: #000;
   }
   
-  .breadcrumb-current {
+  .breadcrumb-current-programM {
     color: #333;
     text-decoration: underline;
   }
@@ -30,6 +35,7 @@ body {
     font-weight: bold;
     font-family: 'Inria Serif', serif; /* ใช้ฟอนต์สำหรับหัวข้อ */
     padding-left: 20px;
+    color: #000;
   }
   
   /* Subtitle (หัวข้อรอง) */
