@@ -1,8 +1,8 @@
 import React from 'react';
-import './Home.css';
+import './admin_Home.css';
 import { Link } from 'react-router-dom';
 
-function Home() {
+function AdminHome() {
   return (
     <div className="home-container">
       {/* Header Section */}
@@ -12,7 +12,7 @@ function Home() {
       </header>
 
       {/* About Us Section */}
-      <div className="about-us-container">
+      {/* <div className="about-us-container">
         <img 
           src="https://pngimg.com/uploads/fitness/fitness_PNG91.png" 
           alt="About Us" 
@@ -27,40 +27,40 @@ function Home() {
           ที่ทุกคนไม่ว่าจะมีระดับความฟิตเนสแค่ไหน <br />
           ก็สามารถมาร่วมกันเพื่อบรรลุเป้าหมายด้านสุขภาพของตนเองได้
         </div>
-      </div>
+      </div> */}
 
       {/* Promotion Section */}
-      <div className="promotion-section">
+      {/* <div className="promotion-section">
         <h2>Promotion!!</h2>
         <div className="promotion-slides">
           <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/personal-training-video-instagram-facebook-design-template-447e456e861c72dd67a9db52da7322ab_screen.jpg?ts=1715527907" alt="Promotion 1" />
           <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/yellow-gym-membership-pamphlet-design-template-0d551204689e6ead1a5126dd974dfa5c_screen.jpg?ts=1698307976" alt="Promotion 2" />
           <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/fitness-flyer-..-design-template-463d733392e9603d70772d6d8bcc80a8_screen.jpg?ts=1636980862" alt="Promotion 3" />
-        </div>
+        </div> */}
         {/* <div className="slide-indicator">
           <span>1</span>
           <span>2</span>
           <span>3</span>
         </div> */}
-      </div>
+      {/* </div> */}
 
-      {/* Join Now Section */}
+      {/* <div className="join-now-title1">Welcome Admin</div> */}
+
+      {/* Welcome Section */}
       <div className="join-now-container">
         <div className="join-now-content">
           <div className="join-now-text">
-            <div className="join-now-title">Join now</div>
+            <div className="join-now-title">Welcome Admin</div>
             <p>
-              มาเป็นส่วนหนึ่งของ CS Fitness <br />
-              และเริ่มต้นเส้นทางสู่การเป็นตัวคุณที่ดีกว่าวันนี้ <br />
-              เป้าหมายของคุณอยู่ใกล้แค่เอื้อม <br />
-              และเราพร้อมที่จะช่วยให้คุณบรรลุมัน
+              ยินดีต้อนรับผู้ดูแล <br />
+              ไปที่ Workspace เพื่อจัดการการทำงานของคุณ! <br />
             </p>
             <div className="join-now-actions">
-              <Link to="/register" className="register-button">ลงทะเบียน</Link>
+              <Link to="/admin-workspace" className="register-button">Workspace</Link>
               <div className="join-now-links">
-                <p className="signup">สมัครสมาชิกแล้ว?{' '}
+                {/* <p className="signup">สมัครสมาชิกแล้ว?{' '}
                 <Link to="/login" className="login">เข้าสู่ระบบ</Link>
-                </p>
+                </p> */}
              
               </div>
             </div>
@@ -76,4 +76,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default AdminHome;
