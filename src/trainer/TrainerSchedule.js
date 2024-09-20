@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import TrainerNavbar from './TrainerNavbar';
+
 import './TrainerSchedule.css';
 import { Link } from 'react-router-dom';
-function TrainerSchedule() {
 
-    // ข้อมูลโปรแกรมการฝึกสอนกลุ่ม
+function TrainerSchedule() {
     const trainingPrograms_Group = [
         { day: 'วันอังคาร', time: '8:00 - 9:30 น.' },
         { day: 'วันพฤหัส', time: '9:30 - 11:00 น.' },
@@ -12,28 +12,23 @@ function TrainerSchedule() {
         { day: 'วันเสาร์', time: '14:30 - 16:00 น.' },
         { day: 'วันอาทิตย์', time: '8:00 - 9:30 น.' },
     ];
-    ////////
+
     const privateTraining = [
-        { member: 'น้องจอย', date: '05/08/2024', duration: '10:00 - 11:30 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว', },
-        { member: 'พี่พงศ์', date: '10/08/2024', duration: '13:00 - 14:30 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว', },
-        { member: 'สมชาย ชัยโย', date: '02/09/2024', duration: '09:00 - 10.00 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว' },
+        { member: 'น้องจอย', date: '05/08/2024', duration: '10:00 - 11:30 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว' },
+        { member: 'พี่พงศ์', date: '10/08/2024', duration: '13:00 - 14:30 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว' },
+        { member: 'สมชาย ชัยโย', date: '02/09/2024', duration: '09:00 - 10:00 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว' },
         { member: 'ขวัญใจ ดีมาก', date: '05/09/2024', duration: '13:00 - 14:30 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว', status: 'ยกเลิก' },
-        { member: 'Chris Evans', date: '05/11/2024', duration: '09:00 - 10.00 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว' },
+        { member: 'Chris Evans', date: '05/11/2024', duration: '09:00 - 10:00 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว' },
         { member: 'Emily Clark', date: '05/12/2024', duration: '13:00 - 14:30 น.', program: 'โปรแกรมการฝึกสอนแบบส่วนตัว', status: 'ยกเลิก' }
     ];
 
     const [currentPage, setCurrentPage] = useState(1);
-    const rowsPerPage = 4; // จำนวนแถวที่จะแสดงต่อหน้า
-
-    // คำนวณจำนวนหน้าทั้งหมด
+    const rowsPerPage = 4;
     const totalPages = Math.ceil(privateTraining.length / rowsPerPage);
-
-    // คำนวณข้อมูลที่จะแสดงในหน้าปัจจุบัน
     const indexOfLastRow = currentPage * rowsPerPage;
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
     const currentRows = privateTraining.slice(indexOfFirstRow, indexOfLastRow);
 
-    // ฟังก์ชันเพื่อเปลี่ยนหน้า
     const handlePreviousPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
@@ -46,41 +41,33 @@ function TrainerSchedule() {
         }
     };
 
-    // ฟังก์ชันเพื่อแปลงวันที่เป็นรูปแบบ Date Object
     const parseDate = (dateString) => {
-        if (!dateString) return new Date(); // ตรวจสอบให้แน่ใจว่า dateString มีค่า
+        if (!dateString) return new Date();
         const [day, month, year] = dateString.split('/');
-        if (!day || !month || !year) return new Date(); // ตรวจสอบว่า day, month, year มีค่า
         return new Date(`${year}-${month}-${day}`);
     };
 
-    // ฟังก์ชันเพื่อกำหนดสถานะอัตโนมัติ
     const getStatusStyle = (date, status) => {
-        const currentDate = new Date(); // วันที่ปัจจุบัน
-        const sessionDate = parseDate(date); // เปลี่ยนรูปแบบวันที่
-
-        // ตรวจสอบสถานะตามวันที่และสถานะที่กำหนดไว้
+        const currentDate = new Date();
+        const sessionDate = parseDate(date);
         if (status === 'ยกเลิก') {
-            return { color: 'red' }; // สถานะยกเลิกเป็นสีแดง
+            return { color: 'red' };
         } else if (sessionDate < currentDate) {
-            return { color: 'green' }; // สถานะเสร็จสิ้นหากวันที่ผ่านไปแล้วเป็นสีเขียว
+            return { color: 'green' };
         } else {
-            return { color: 'blue' }; // สถานะอื่นๆ เป็นสีน้ำเงิน
+            return { color: 'blue' };
         }
     };
 
-    // ฟังก์ชันเพื่อกำหนดสถานะ
     const getTrainingStatus = (date, status) => {
-        const currentDate = new Date(); // วันที่ปัจจุบัน
-        const sessionDate = parseDate(date); // เปลี่ยนรูปแบบวันที่
-
-        // กำหนดสถานะตามวันที่และสถานะที่กำหนดไว้
+        const currentDate = new Date();
+        const sessionDate = parseDate(date);
         if (status === 'ยกเลิก') {
-            return 'ยกเลิก'; // หากสถานะเป็นยกเลิก
+            return 'ยกเลิก';
         } else if (sessionDate < currentDate) {
-            return 'เสร็จสิ้น'; // หากวันที่ผ่านไปแล้ว
+            return 'เสร็จสิ้น';
         } else {
-            return 'จอง'; // สถานะกำลังดำเนินการ
+            return 'จอง';
         }
     };
 
@@ -97,8 +84,7 @@ function TrainerSchedule() {
                 </div>
             </div>
             <div className='contrainer'>
-
-                <h1>Schedule</h1>ดูตารางการฝึกสอน
+                <h1>Schedule</h1>
                 <h4>
                     โปรแกรมการสอนที่ได้รับผิดชอบ:
                     <span style={{ fontWeight: 'normal' }}> โปรแกรมสร้างกล้ามเนื้อ, โปรแกรมการฝึกสอนแบบส่วนตัว</span>
@@ -129,8 +115,7 @@ function TrainerSchedule() {
                     </table>
                 </div>
 
-                <h4><br></br>โปรแกรมการฝึกสอนแบบส่วนตัว</h4>
-
+                <h4><br />โปรแกรมการฝึกสอนแบบส่วนตัว</h4>
                 <div className="PrivateTable-trainer">
                     <table className="table">
                         <thead>
