@@ -38,6 +38,17 @@ import AdminHome from './admin/admin_Home';
 import AddTrainingProgram from './admin/AddTrainingProgram';
 import EditTrainingProgram from './admin/EditTrainingProgram';
 
+//For Member
+import MemberBooking from './pages/member/member_booking';
+import MemberCancel from './pages/member/member_cancel';
+import MemberChangePass from './pages/member/member_changepass';
+import MemberContactus from './pages/member/member_contactus';
+import MemberEditProfile from './pages/member/member_editprofile';
+import MemberMembership from './pages/member/member_membership';
+import MemberProfile from './pages/member/member_profile';
+import MemberProgram from './pages/member/member_program';
+import MemberSchedule from './pages/member/member_schedule';
+import MemberHome from './pages/member/member_home';
 
 function App() {
   // กำหนดบทบาทที่ต้องการทดสอบ ใช้ '' ถ้าต้องการดูหน้าสาธารณะ(public)
@@ -80,6 +91,18 @@ function App() {
           <Route path="/admin-home" element={<AdminHome />} />
           <Route path="/admin-training-edit" element={<EditTrainingProgram />} />
           <Route path="/admin-training-add" element={<AddTrainingProgram />} />
+
+          {/* Member Pages */}
+          <Route path="/member-booking" element={<MemberBooking />} />
+          <Route path="/member-cancel" element={<MemberCancel />} />
+          <Route path="/member-changepass" element={<MemberChangePass />} />
+          <Route path="/member-contactus" element={<MemberContactus />} />
+          <Route path="/member-editprofile" element={<MemberEditProfile />} />
+          <Route path="/member-membership" element={<MemberMembership />} />
+          <Route path="/member-profile" element={<MemberProfile />} />
+          <Route path="/member-program" element={<MemberProgram />} />
+          <Route path="/member-schedule" element={<MemberSchedule />} />
+          <Route path="/member-home" element={<MemberHome />} />
 
           {/* Optional: Add a route for 404 */}
           <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}
