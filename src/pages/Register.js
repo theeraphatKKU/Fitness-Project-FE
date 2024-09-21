@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
+import axios from 'axios';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    phone: '',
+    phoneNumber: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -27,7 +28,7 @@ const Register = () => {
     const newErrors = {};
     if (!formData.firstName) newErrors.firstName = 'กรุณากรอกชื่อ';
     if (!formData.lastName) newErrors.lastName = 'กรุณากรอกนามสกุล';
-    if (!formData.phone) newErrors.phone = 'กรุณากรอกหมายเลขโทรศัพท์';
+    if (!formData.phoneNumber) newErrors.phoneNumber = 'กรุณากรอกหมายเลขโทรศัพท์';
     if (!formData.email) newErrors.email = 'กรุณากรอกอีเมล';
     if (!formData.password) newErrors.password = 'กรุณากรอกรหัสผ่าน';
     if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'รหัสผ่านและการยืนยันรหัสผ่านไม่ตรงกัน';
@@ -37,11 +38,38 @@ const Register = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      navigate('/register1', { state: formData });
-    }
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      
+      if (validateForm()) {
+        try {
+          const combinedFormData = {
+            ...formData,
+            name: `${formData.firstName} ${formData.lastName}`,
+          };
+
+          
+          // Navigate to the next step or handle successful registration
+          navigate('/register1', { state: combinedFormData });
+
+          const response = await axios.post('http://localhost:8080/api/auth/register', combinedFormData, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+    
+          console.log('Registration successful', response.data);
+          
+          // Navigate to the next step or handle successful registration
+          navigate('/register2', { state: combinedFormData });
+
+    
+        } catch (error) {
+          console.error('Error:', error);
+          // Handle error (show error message to the user, etc.)
+        }
+        navigate('/register1', { state: formData });
+      }
   };
 
   return (
@@ -97,11 +125,11 @@ const Register = () => {
             <input
               type="tel"
               name="phone"
-              value={formData.phone}
+              value={formData.phoneNumebr}
               onChange={handleInputChange}
               required
             />
-            {errors.phone && <p className="error-text">{errors.phone}</p>}
+            {errors.phoneNumber && <p className="error-text">{errors.phoneNumber}</p>}
           </div>
           <div className="form-group">
             <label>อีเมล: *</label>

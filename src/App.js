@@ -1,6 +1,6 @@
 // App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -23,8 +23,6 @@ import TrainerHome from './trainer/TrainerHome';
 import TrainerWorkspace from './trainer/TrainerWorkspace';
 import TrainerAvailability from './trainer/TrainerAvailability';
 import TrainerSchedule from './trainer/TrainerSchedule';
-// import TrainerProgram from './trainer/TrainerProgram';
-// import TrainerContactus from './trainer/TrainerContactus';
 import TrainerLogin from './trainer/TrainerLogin';
 
 // For admin
@@ -38,21 +36,26 @@ import AdminHome from './admin/admin_Home';
 import AddTrainingProgram from './admin/AddTrainingProgram';
 import EditTrainingProgram from './admin/EditTrainingProgram';
 
-//For Member
-import MemberBooking from './pages/member/member_booking';
-import MemberCancel from './pages/member/member_cancel';
-import MemberChangePass from './pages/member/member_changepass';
-import MemberContactus from './pages/member/member_contactus';
-import MemberEditProfile from './pages/member/member_editprofile';
-import MemberMembership from './pages/member/member_membership';
-import MemberProfile from './pages/member/member_profile';
-import MemberProgram from './pages/member/member_program';
-import MemberSchedule from './pages/member/member_schedule';
-import MemberHome from './pages/member/member_home';
-
 function App() {
-  // กำหนดบทบาทที่ต้องการทดสอบ ใช้ '' ถ้าต้องการดูหน้าสาธารณะ(public)
-  const userRole = 'trainer'; // ใช้ค่า 'member' หรือ 'trainer' เพื่อทดสอบบทบาทอื่น
+  const [userRole, setUserRole] = useState('');
+
+  const getRole = (data) => {
+    setUserRole(data.role.toLowerCase());
+    console.log("Login successful!", data.role.toLowerCase());
+  };
+
+  const getRedirectPath = () => {    
+    switch (userRole) {
+      case 'admin':
+        return '/admin-home';
+      case 'trainer':
+        return '/trainer-home';
+      case 'member':
+        return '/membership'; // or whichever path is suitable for members
+      default:
+        return '/home';
+    }
+  };
 
   return (
     <Router>
@@ -60,11 +63,12 @@ function App() {
         <Navbar userRole={userRole} />
         <Routes>
           {/* Public Pages */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to={getRedirectPath()} />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/program" element={<Program userRole={userRole} />} />
           <Route path="/membership" element={<Membership />} />
           <Route path="/contact-us" element={<ContactUs userRole={userRole} />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login getRole={getRole} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/register1" element={<Register1 />} />
           <Route path="/register2" element={<Register2 />} />
@@ -72,15 +76,16 @@ function App() {
           <Route path="/register4" element={<Register4 />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
-          {/* trainer Pages */}
+          {/* Redirect based on role */}
+          <Route path="/redirect" element={<Navigate to={getRedirectPath()} />} />
+
+          {/* Trainer Pages */}
           <Route path="/trainer-home" element={<TrainerHome />} />
           <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
           <Route path="/trainer-schedule" element={<TrainerSchedule />} />
           <Route path="/trainer-availability" element={<TrainerAvailability />} />
-          {/* <Route path="/trainer-program" element={<TrainerProgram />} /> */}
-          {/* <Route path="/trainer-contact-us" element={<TrainerContactus />} /> */}
           <Route path="/trainer-login" element={<TrainerLogin />} />
-          
+
           {/* Admin Pages */}
           <Route path="/admin-workspace" element={<AdminWorkspace />} />
           <Route path="/admin-profile" element={<AdminProfile />} />
@@ -105,7 +110,7 @@ function App() {
           <Route path="/member-home" element={<MemberHome />} />
 
           {/* Optional: Add a route for 404 */}
-          <Route path="*" element={<Home />} /> {/* Redirect to Home or a 404 component */}
+          <Route path="*" element={<Home />} />
         </Routes>
         <Footer />
       </div>
