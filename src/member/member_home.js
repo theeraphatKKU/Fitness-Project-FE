@@ -3,7 +3,7 @@ import MemberNavbar from '../member/member_navbar';
 import './member_home.css';
 
 
-function TrainerHome() {
+function MemberHome() {
   return (
     <div><MemberNavbar />
       <div className="home-container">
@@ -47,4 +47,4 @@ function TrainerHome() {
   );
 }
 
-export default TrainerHome;
+export default MemberHome;

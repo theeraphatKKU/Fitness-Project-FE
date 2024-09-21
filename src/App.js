@@ -37,6 +37,11 @@ import AdminHome from './admin/admin_Home';
 import AddTrainingProgram from './admin/AddTrainingProgram';
 import EditTrainingProgram from './admin/EditTrainingProgram';
 
+// For member
+// import MemberMembership from './admin/admin_workspace';
+// import MemberProfile from './admin/admin_profile';
+import MemberHome from './member/member_home';
+
 function App() {
   const [userRole, setUserRole] = useState('');
 
@@ -107,8 +112,8 @@ function App() {
           <Route path="/member-membership" element={<MemberMembership />} />
           <Route path="/member-profile" element={<MemberProfile />} />
           <Route path="/member-program" element={<MemberProgram />} />
-          <Route path="/member-schedule" element={<MemberSchedule />} />
-          <Route path="/member-home" element={<MemberHome />} /> */}
+          <Route path="/member-schedule" element={<MemberSchedule />} /> */}
+          <Route path="/member-home" element={<MemberHome />} />
 
           {/* Optional: Add a route for 404 */}
           <Route path="*" element={<Home />} />
