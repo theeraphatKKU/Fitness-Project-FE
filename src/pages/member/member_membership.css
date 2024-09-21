@@ -1,0 +1,41 @@
+.membership-container {
+    padding: 20px;
+}
+
+.membership-title {
+    margin-bottom: 20px; 
+}
+
+.membership-sections {
+    display: flex; /* ใช้ flexbox เพื่อจัดแนว */
+    flex-direction: column; /* เรียงในแนวตั้ง */
+    gap: 15px; /* เว้นระยะห่างระหว่างแต่ละปุ่ม */
+}
+
+.membership-section {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none; /* Remove underline from links */
+    color: #000; /* Text color */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.membership-info h4 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.membership-info p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.membership-section:hover {
+    background-color: #eaeaea; /* เปลี่ยนสีเมื่อชี้เมาส์ */
+}
