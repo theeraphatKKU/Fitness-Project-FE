@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+
 import './Register.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    phone: '',
+    phoneNumber: '',
     email: '',
     password: '',
     confirmPassword: '',
+<<<<<<< Updated upstream
     // membershipType: 'basic',
     // paymentMethod: 'cash',
     // startDate: ''
+=======
+>>>>>>> Stashed changes
   });
   
   const [errors, setErrors] = useState({});
@@ -23,24 +28,58 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+
   const validateForm = () => {
     const newErrors = {};
     if (!formData.firstName) newErrors.firstName = 'กรุณากรอกชื่อ';
     if (!formData.lastName) newErrors.lastName = 'กรุณากรอกนามสกุล';
-    if (!formData.phone) newErrors.phone = 'กรุณากรอกหมายเลขโทรศัพท์';
+    if (!formData.phoneNumber) newErrors.phoneNumber = 'กรุณากรอกหมายเลขโทรศัพท์';
     if (!formData.email) newErrors.email = 'กรุณากรอกอีเมล';
     if (!formData.password) newErrors.password = 'กรุณากรอกรหัสผ่าน';
     if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'รหัสผ่านและการยืนยันรหัสผ่านไม่ตรงกัน';
+<<<<<<< Updated upstream
     // if (!formData.startDate) newErrors.startDate = 'กรุณากรอกวันที่เริ่มต้น';
+=======
+>>>>>>> Stashed changes
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (validateForm()) {
-      navigate('/register1', { state: formData });
+      try {
+        const combinedFormData = {
+          ...formData,
+          name: `${formData.firstName} ${formData.lastName}`,
+        };
+<<<<<<< Updated upstream
+        
+        // Navigate to the next step or handle successful registration
+        navigate('/register1', { state: combinedFormData });
+=======
+        const response = await axios.post('http://localhost:8080/api/auth/register', combinedFormData, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        console.log('Registration successful', response.data);
+        
+        // Navigate to the next step or handle successful registration
+        navigate('/register2', { state: combinedFormData });
+>>>>>>> Stashed changes
+  
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle error (show error message to the user, etc.)
+      }
     }
   };
 
@@ -96,12 +135,12 @@ const Register = () => {
             <label>หมายเลขโทรศัพท์: *</label>
             <input
               type="tel"
-              name="phone"
-              value={formData.phone}
+              name="phoneNumber"
+              value={formData.phoneNumber}
               onChange={handleInputChange}
               required
             />
-            {errors.phone && <p className="error-text">{errors.phone}</p>}
+            {errors.phoneNumber && <p className="error-text">{errors.phoneNumber}</p>}
           </div>
           <div className="form-group">
             <label>อีเมล: *</label>
@@ -136,6 +175,12 @@ const Register = () => {
             />
             {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
           </div>
+<<<<<<< Updated upstream
+=======
+        </div>
+
+        <div className="membership-info">
+>>>>>>> Stashed changes
           <button type="submit" className="submit-btn">ต่อไป</button>
           <p className="signin-link">
             สมัครสมาชิกแล้วใช่ไหม? <a href="/login">เข้าสู่ระบบ</a>
