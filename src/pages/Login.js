@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // นำเข้า Link
-import axios from 'axios';
 import './Login.css';
 
 const Login = () => {
@@ -8,37 +7,15 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-      try {  
-        const username = {
-          email : email,
-          password : password
-        };
-        const response = await axios.post('http://localhost:8080/api/auth/login', username, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-  
-        // console.log('Login successful', response.data.accessToken);
-        localStorage.setItem('token', response.data.accessToken);
-        console.log('Stored token:', localStorage.getItem('token'));
-        
-        // const accessToken = response.data.accessToken;
-        // console.log('Access Token:', accessToken);
-        // Navigate to the next step or handle successful registration
-        navigate('/', { state: response.data.accessToken
-         });
-
-        
-  
-      } catch (error) {
-        console.error('Error:', error);
-        // Handle error (show error message to the user, etc.)
-      }
-    
-};
+    // ตรวจสอบความถูกต้องของข้อมูล
+    if (email === 'user@example.com' && password === 'password123') {
+      navigate('/'); // เปลี่ยนเส้นทางไปหน้า Home เมื่อเข้าสู่ระบบสำเร็จ
+    } else {
+      alert('Email หรือ Password ไม่ถูกต้อง');
+    }
+  };
 
   return (
     <div className="login-container">

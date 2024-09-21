@@ -12,10 +12,6 @@ const Register1 = () => {
   const [formData, setFormData] = useState({
     firstName: state.firstName || '',
     lastName: state.lastName || '',
-    name: state.name || '',
-    email: state.email || '',
-    password: state.password || '',
-    phoneNumber: state.phoneNumber || '',
     membershipType: 'basic', // ค่าเริ่มต้น
     startDate: state.startDate || '',
     paymentMethod: 'cash' // ค่าเริ่มต้น
