@@ -4,9 +4,9 @@ import './member_cancel.css';
 const CancelReservation = () => {
     // Mock data for reservations (this could be fetched from an API)
     const [reservations, setReservations] = useState([
-        { id: 1, date: '2024-09-22', time: '10:00 - 11:00', activity: 'พิลาทิส', status: 'จองแล้ว' },
-        { id: 2, date: '2024-09-23', time: '13:00 - 14:00', activity: 'โยคะ', status: 'กำลังดำเนินการ' },
-        { id: 3, date: '2024-09-24', time: '08:00 - 09:00', activity: 'มวย', status: 'จองแล้ว' },
+        { id: 1, date: '2024-09-22', time: '10:00 - 11:00', activity: 'โปรแกรมพัฒนาสำหรับผู้สูงอายุ', status: 'จองแล้ว' },
+        { id: 2, date: '2024-09-23', time: '13:00 - 14:00', activity: 'โปรแกรมสร้างกล้ามเนื้อ', status: 'กำลังดำเนินการ' },
+        { id: 3, date: '2024-09-24', time: '08:00 - 09:00', activity: 'โปรแกรมพัฒนาสำหรับผู้เริ่มต้น', status: 'จองแล้ว' },
     ]);
 
     // Handle canceling a reservation
