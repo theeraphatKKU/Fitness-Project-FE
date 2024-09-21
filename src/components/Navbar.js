@@ -6,6 +6,7 @@ import './Navbar.css'; // ตรวจสอบการนำเข้า CSS �
 const Navbar = ({ userRole }) => {
   return (
     <div className="navbar">
+      {userRole +"kkkkkkkkkk"}
       {userRole ? (
             <>
               {userRole === 'admin' && (
@@ -36,11 +37,25 @@ const Navbar = ({ userRole }) => {
                 </div>
                 </>
               )}
+              {userRole === 'member' && (
+                <>
+                <div>
+                  <Link to="/member-home" className="logo-linkhome">
+                    <img
+                      src="https://www.creativefabrica.com/wp-content/uploads/2023/05/31/Gym-Logo-Fitness-Logo-Vector-Design-Graphics-70960661-1.jpg"
+                      alt="Logo"
+                      className="navbar-logo"
+                    />
+                    <div className="navbar-title">CS Fitness</div>
+                  </Link>
+                </div>
+                </>
+              )}
               {/* เพิ่มลิงก์สำหรับบทบาทอื่น ๆ */}
             </>
           ) : (
             <div>
-              <Link to="/" className="logo-linkhome">
+              <Link to="/home" className="logo-linkhome">
                 <img
                   src="https://www.creativefabrica.com/wp-content/uploads/2023/05/31/Gym-Logo-Fitness-Logo-Vector-Design-Graphics-70960661-1.jpg"
                   alt="Logo"
@@ -67,6 +82,12 @@ const Navbar = ({ userRole }) => {
                   <Link to="/trainer-home" className="navbar-link">Home</Link>
                 </>
               )}
+              {userRole === 'member' && (
+                <>
+                  <Link to="/member-home" className="navbar-link">Home</Link>
+                </>
+              )}
+              
               {/* เพิ่มลิงก์สำหรับบทบาทอื่น ๆ */}
             </>
           ) : (
@@ -87,6 +108,11 @@ const Navbar = ({ userRole }) => {
             {userRole === 'trainer' && (
               <>
                 <Link to="/trainer-workspace" className="navbar-link">Workspace</Link>
+              </>
+            )}
+            {userRole === 'member' && (
+              <>
+                <Link to="/member-workspace" className="navbar-link">Workspace</Link>
               </>
             )}
             {/* เพิ่มลิงก์สำหรับบทบาทอื่น ๆ */}
@@ -112,6 +138,15 @@ const Navbar = ({ userRole }) => {
             )}
             {userRole === 'trainer' && (
               <Link to="/trainer-login" className="navbar-link">
+              <img
+              src="https://cdn-icons-png.flaticon.com/512/847/847969.png" // ลิงก์ไอคอนรูปคน
+              alt="Login"
+              className="navbar-icon"
+              />
+            </Link>
+            )}
+            {userRole === 'member' && (
+              <Link to="/member-profile" className="navbar-link">
               <img
               src="https://cdn-icons-png.flaticon.com/512/847/847969.png" // ลิงก์ไอคอนรูปคน
               alt="Login"

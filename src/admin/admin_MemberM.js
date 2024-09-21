@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './admin_MemberM.css';
 
 const AdminMemberM = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredMembers, setFilteredMembers] = useState([]);
+  const [members, setMembers] = useState([]);
   const [selectedMember, setSelectedMember] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  // data for testing purposes
 
   useEffect(() => {
+    const fetch = async () => {
+      const response = await axios.get('http://localhost:8080/api/member', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      setMembers(response.data)
+    }
+    fetch()
     document.body.classList.add('memberM-page');
 
     return () => {
@@ -17,39 +28,16 @@ const AdminMemberM = () => {
     };
   }, []);
 
-  // Mock data for testing purposes
-  const mockMembers = [
-    {
-      id: 1,
-      firstName: 'สมชาย',
-      lastName: 'ใจดี',
-      phone: '0123456789',
-      email: 'somchai@example.com',
-      status: 'สมาชิกธรรมดา',
-      membershipStart: '2024-01-01',
-      membershipEnd: '2024-04-01',
-    },
-    {
-      id: 2,
-      firstName: 'สมหญิง',
-      lastName: 'รักดี',
-      phone: '0987654321',
-      email: 'somying@example.com',
-      status: 'สมาชิกสุดคุ้ม',
-      membershipStart: '2024-01-01',
-      membershipEnd: '2024-07-01',
-    },
-  ];
 
   // Filter members based on search term when button is clicked
   const handleSearch = () => {
-    const results = mockMembers.filter(
+    const results = members.filter(
       (member) =>
         member.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         member.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         member.phone.includes(searchTerm)
     );
-    setFilteredMembers(results);
+    setMembers(results);
   };
 
   // Open modal to show member details
@@ -67,7 +55,7 @@ const AdminMemberM = () => {
   const handleDeleteMember = () => {
     if (window.confirm('คุณแน่ใจว่าต้องการลบสมาชิกนี้หรือไม่?')) {
       alert('ลบข้อมูลสมาชิกเรียบร้อย');
-      setFilteredMembers(filteredMembers.filter((member) => member !== selectedMember));
+      setMembers(members.filter((member) => member !== selectedMember));
       setShowModal(false);
     }
   };
@@ -88,7 +76,7 @@ const AdminMemberM = () => {
           <span> &gt; </span>
           <span className="breadcrumb-current-unique">Member Management</span>
         </div>
-    </div>
+      </div>
 
       {/* Title */}
       <h1 className="page-title-unique">Member Management</h1>
@@ -120,12 +108,12 @@ const AdminMemberM = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredMembers.length > 0 ? (
-              filteredMembers.map((member) => (
+            {members.length > 0 ? (
+              members.map((member) => (
                 <tr key={member.id}>
                   <td>{member.id}</td>
-                  <td>{`${member.firstName} ${member.lastName}`}</td>
-                  <td>{member.phone}</td>
+                  <td>{member.name}</td>
+                  <td>{member.phoneNumber}</td>
                   <td>{member.email}</td>
                   <td>
                     <button className="select-button-unique" onClick={() => handleSelect(member)}>
@@ -174,11 +162,11 @@ const AdminMemberM = () => {
 
       {/* Back button */}
       <div className="back-button-container-unique">
-          <button className="back-button-unique" onClick={handleBack}>
-            กลับ
-          </button>
-        </div>
+        <button className="back-button-unique" onClick={handleBack}>
+          กลับ
+        </button>
       </div>
+    </div>
   );
 };
 

@@ -1,26 +1,44 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // นำเข้า Link
+import { useNavigate, Link } from 'react-router-dom'; 
 import './Login.css';
+import axios from 'axios';
 
-const Login = () => {
+const Login = ({ getRole }) => {  // Destructure ok from props
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // ตรวจสอบความถูกต้องของข้อมูล
-    if (email === 'user@example.com' && password === 'password123') {
-      navigate('/'); // เปลี่ยนเส้นทางไปหน้า Home เมื่อเข้าสู่ระบบสำเร็จ
-    } else {
-      alert('Email หรือ Password ไม่ถูกต้อง');
+    try {  
+      const userData = {
+        email,
+        password
+      };
+      const response = await axios.post('http://localhost:8080/api/auth/login', userData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      localStorage.setItem('token', response.data.accessToken);
+      console.log('Stored token:', localStorage.getItem('token'));
+
+      // Call the ok function if login is successful
+      if (getRole) getRole(response.data);
+
+      navigate('/', { state: response.data });
+
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error (show error message to the user, etc.)
     }
   };
 
   return (
     <div className="login-container">
       <h2>ลงชื่อเข้าใช้</h2>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin}> {/* Call handleLogin here */}
         <div className="input-group">
           <label htmlFor="email">อีเมล</label>
           <input
