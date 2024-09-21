@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import axios from 'axios';
 
 // Import all pages
 // For public
@@ -98,7 +99,7 @@ function App() {
           <Route path="/admin-training-add" element={<AddTrainingProgram />} />
 
           {/* Member Pages */}
-          <Route path="/member-booking" element={<MemberBooking />} />
+          {/* <Route path="/member-booking" element={<MemberBooking />} />
           <Route path="/member-cancel" element={<MemberCancel />} />
           <Route path="/member-changepass" element={<MemberChangePass />} />
           <Route path="/member-contactus" element={<MemberContactus />} />
@@ -107,7 +108,7 @@ function App() {
           <Route path="/member-profile" element={<MemberProfile />} />
           <Route path="/member-program" element={<MemberProgram />} />
           <Route path="/member-schedule" element={<MemberSchedule />} />
-          <Route path="/member-home" element={<MemberHome />} />
+          <Route path="/member-home" element={<MemberHome />} /> */}
 
           {/* Optional: Add a route for 404 */}
           <Route path="*" element={<Home />} />

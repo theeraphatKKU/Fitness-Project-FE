@@ -1,7 +1,6 @@
 import React from 'react';
 import './TrainerHome.css';
-import { Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom'
 function TrainerHome() {
   return (
     <div className="home-container">
