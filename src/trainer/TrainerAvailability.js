@@ -1,63 +1,89 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './TrainerAvailability.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
-function TrainerAvailability() {
+function TrainerAvailability({ user }) {
     const [entries, setEntries] = useState([]);
-    
+
     // สร้าง state สำหรับเก็บค่าที่กรอกจากฟอร์ม
-    const [program, setProgram] = useState('');
-    const [date, setDate] = useState('');
+    const [sdate, setSdate] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
+    const [trainer, setTrainer] = useState({ id: user.id });
+
+    const [available, setAvailable] = useState([]);
 
     // ฟังก์ชันรีเซ็ตฟอร์ม
     const handleCancel = () => {
-        setProgram('');
-        setDate('');
+        setSdate('');
         setStartTime('');
         setEndTime('');
     };
 
     // ฟังก์ชันบันทึกข้อมูลที่กรอก
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // ตรวจสอบว่ามีการกรอกข้อมูลครบ
-        if (program && date && startTime && endTime) {
+        if (sdate && startTime && endTime) {
+            console.log(trainer)
             const newEntry = {
-                program,
-                date,
+                sdate,
                 startTime,
                 endTime,
+                trainer
             };
-            setEntries([...entries, newEntry]); // เพิ่มข้อมูลลงใน state ของ entries
-            handleCancel(); // รีเซ็ตฟอร์มหลังจากบันทึกข้อมูล
+            console.log(newEntry)
+            try {
+                const response = await axios.post('http://localhost:8080/api/schedule', newEntry, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                // คุณสามารถอัปเดตรายการ trainers ได้ตาม response
+                setAvailable([...available, response.data]);
+                alert('เพิ่ม Trainer สำเร็จ');
+            } catch (error) {
+                console.error("Error adding trainer:", error);
+                alert('ไม่สามารถเพิ่ม Trainer ได้');
+            }
         } else {
             alert('กรุณากรอกข้อมูลให้ครบถ้วน');
         }
     };
 
     useEffect(() => {
+        const fetch = async () => {
+            const response = await axios.get('http://localhost:8080/api/trainer', {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            setAvailable(response.data);
+            console.log(response.data)
+        }
+        fetch()
         document.body.classList.add('tAvailable-page');
-    
+
         return () => {
-          document.body.classList.remove('tAvailable-page');
+            document.body.classList.remove('tAvailable-page');
         };
-      }, []);
+    }, []);
 
     return (
         <div className="Availability-container">
-            
+
             <div className="wrap-breadcrumb">
                 <div className="breadcrumb-tav">
-                <Link to="/trainer-home" className="breadcrumb-link-tav">Home</Link>
-                <span> </span>
-                <span>&gt;</span>
-                <Link to="/trainer-workspace" className="breadcrumb-link-tav"> Workspace</Link>
-                <span> </span>
-                <span>&gt;</span>
-                <span className="breadcrumb-current-tav"> Availability Update</span>
+                    <Link to="/trainer-home" className="breadcrumb-link-tav">Home</Link>
+                    <span> </span>
+                    <span>&gt;</span>
+                    <Link to="/trainer-workspace" className="breadcrumb-link-tav"> Workspace</Link>
+                    <span> </span>
+                    <span>&gt;</span>
+                    <span className="breadcrumb-current-tav"> Availability Update</span>
                 </div>
                 <h1 className="page-title-tav">Availability Update</h1>
                 <p className="page-subtitle-tav">อัพเดตเวลาว่าง</p>
@@ -67,28 +93,14 @@ function TrainerAvailability() {
             <main className="Availability-contrainer2">
 
                 <form className="form-detail-Availability" onSubmit={handleSubmit}>
-                    <div className="Program-training-Availability">โปรแกรมการฝึกสอน :</div>
-                    <div className="program-Availability">
-                        <select value={program} onChange={(e) => setProgram(e.target.value)}>
-                            <option value=""></option>
-                            {/* <optgroup label="โปรแกรมแบบกลุ่ม">
-                                <option value="โปรแกรมฟิตเนสสำหรับผู้เริ่มต้น">โปรแกรมฟิตเนสสำหรับผู้เริ่มต้น</option>
-                                <option value="โปรแกรมลดน้ำหนักและกระชับสัดส่วน">โปรแกรมลดน้ำหนักและกระชับสัดส่วน</option>
-                                <option value="โปรแกรมสร้างกล้ามเนื้อ">โปรแกรมสร้างกล้ามเนื้อ</option>
-                                <option value="โปรแกรมฟิตเนสสำหรับผู้สูงอายุ">โปรแกรมฟิตเนสสำหรับผู้สูงอายุ</option>
-                            </optgroup> */}
-                            <optgroup label="โปรแกรมแบบส่วนตัว">
-                                <option value="โปรแกรมการฝึกสอนแบบส่วนตัว">โปรแกรมการฝึกสอนแบบส่วนตัว</option>
-                            </optgroup>
-                        </select>
-                    </div>
+
 
                     <div className="select-date-Availability">วันที่ต้องการฝึกสอน :</div>
                     <div className="click-date-Availability">
                         <input
                             type="date"
                             className="my-auto bg-transparent border-none"
-                            value={date}
+                            value={sdate}
                             onChange={(e) => {
                                 const selectedDate = new Date(e.target.value);
                                 const today = new Date();
@@ -96,7 +108,7 @@ function TrainerAvailability() {
                                 if (selectedDate < today) {
                                     alert("เลือกวันไม่ถูกต้อง");
                                 } else {
-                                    setDate(e.target.value);
+                                    setSdate(e.target.value);
                                 }
                             }}
                             placeholder="วว/ดด/ปปปป"
@@ -139,22 +151,24 @@ function TrainerAvailability() {
                     <table className="table-Availability">
                         <thead>
                             <tr>
-                                <th>โปรแกรมการฝึกสอน</th>
                                 <th>ระยะเวลาที่ต้องการฝึกสอน</th>
                                 <th>เวลาที่ต้องการฝึกสอน</th>
                                 <th>ผู้ฝึกสอน</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {entries.map((entry, index) => (
-                                <tr key={index}>
-                                    <td>{entry.program}</td>
-                                    <td>{entry.date}</td>
-                                    <td>{entry.startTime} - {entry.endTime}</td>
-                                    <td>ยังไม่ระบุ</td>
-                                </tr>
+                            {available.map((trainer, index) => (
+                                trainer.available.map((entry, i) => (
+                                    <tr key={`${index}-${i}`}>
+                                        <td>{new Date(entry.sdate).toLocaleDateString('en-GB')}</td> {/* Formats as dd/mm/yyyy */}
+                                        <td>{entry.startTime.substring(0, 5)} - {entry.endTime.substring(0, 5)}</td> {/* Formats time as HH:mm */}
+                                        <td>{trainer.name}</td>
+                                    </tr>
+                                ))
                             ))}
                         </tbody>
+
+
                     </table>
                 </div>
             </main>

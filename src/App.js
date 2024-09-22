@@ -49,9 +49,12 @@ import MemberEditProfile from './member/member_editprofile';
 
 function App() {
   const [userRole, setUserRole] = useState('');
+  const [user, setUser] = useState([]);
 
   const getRole = (data) => {
     setUserRole(data.role.toLowerCase());
+    setUser(data);
+    
     console.log("Login successful!", data.role.toLowerCase());
   };
 
@@ -94,7 +97,7 @@ function App() {
           <Route path="/trainer-home" element={<TrainerHome />} />
           <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
           <Route path="/trainer-schedule" element={<TrainerSchedule />} />
-          <Route path="/trainer-availability" element={<TrainerAvailability />} />
+          <Route path="/trainer-availability" element={<TrainerAvailability user={user}/>} />
           <Route path="/trainer-login" element={<TrainerLogin />} />
 
           {/* Admin Pages */}
