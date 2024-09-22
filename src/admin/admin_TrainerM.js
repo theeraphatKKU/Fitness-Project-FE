@@ -11,7 +11,6 @@ const AdminTrainerM = () => {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.data)
       setTrainers(response.data);
       setFilteredTrainers(response.data);
     }
