@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // For navigating between routes
+import React, { useState,useEffect } from 'react';
+import { Link,useNavigate } from 'react-router-dom'; // For navigating between routes
 import './member_booking.css';
 
-const Booking = () => {
+const MemberBooking = () => {
     const [selectedDate, setSelectedDate] = useState('');
     const [selectedProgram, setSelectedProgram] = useState('');
     const [selectedTrainer, setSelectedTrainer] = useState('');
     const [error, setError] = useState('');
     const [availableTimes, setAvailableTimes] = useState([]);
+
+    useEffect(() => {
+        document.body.classList.add('mcc-page');
+    
+        return () => {
+          document.body.classList.remove('mcc-page');
+        };
+    }, []);
 
     const navigate = useNavigate(); // For navigation
 
@@ -53,17 +61,28 @@ const Booking = () => {
     };
 
     return (
-        <div>
+        <div className ="member-booking-page">
             {/* Breadcrumb */}
-            <nav className="breadcrumb">
-                <a href="#!">Home &gt; Membership &gt; Booking</a>
-            </nav>
+            <div className="wrap-breadcrumb">
+                <div className="breadcrumb-trainer">
+                    <Link to="/member-home" className="breadcrumb-link-trainer">Home</Link>
+                    <span> &gt; </span>
+                    <Link to="/member-membership" className="breadcrumb-link-trainer">Membership</Link>
+                    <span> &gt; </span>
+                    <span className="breadcrumb-current-trainer">Booking</span>
+                </div>
+            </div>
 
-            <div className="booking-container">
+            {/* Title */}
+            <h1 className="page-title-trainer">Booking</h1>
+            <p className="page-subtitle-trainer">จองการฝึกสอนหรือใช้งาน</p>
+
+            {/* booking table */}
+            <main className="booking-container-mbk">
                 <h2>จองคลาสเรียน</h2>
                 <p>กรุณาเลือกโปรแกรมและผู้ฝึกสอนที่ต้องการ</p>
 
-                <div className="form-group">
+                <div className="form-group-mbk">
                     <label htmlFor="program">โปรแกรมการฝึกสอน:</label>
                     <select id="program" value={selectedProgram} onChange={handleProgramChange} required>
                         <option value="">-- เลือกโปรแกรม --</option>
@@ -75,7 +94,7 @@ const Booking = () => {
                     </select>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-mbk">
                     <label htmlFor="trainer">ผู้ฝึกสอน:</label>
                     <select id="trainer" value={selectedTrainer} onChange={handleTrainerChange} required>
                         <option value="">-- เลือกผู้ฝึกสอน --</option>
@@ -86,7 +105,7 @@ const Booking = () => {
                     </select>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-mbk">
                     <label htmlFor="bookingDate">วันที่ต้องการจอง:</label>
                     <input type="date" id="bookingDate" value={selectedDate} onChange={handleDateChange} required />
                     {error && <p className="error-message">{error}</p>}
@@ -94,7 +113,7 @@ const Booking = () => {
 
                 {/* Class Time Selection */}
                 {availableTimes.length > 0 && (
-                    <div className="form-group">
+                    <div className="form-group-mbk">
                         <label htmlFor="classTime">เลือกเวลาเรียน:</label>
                         <select id="classTime" required>
                             <option value="">-- เลือกเวลาเรียน --</option>
@@ -105,13 +124,13 @@ const Booking = () => {
                     </div>
                 )}
 
-                <div className="form-actions">
-                    <button type="button" className="btn save" onClick={handleSchedule}>ค้นหาเวลาเรียน</button>
-                    <button type="reset" className="btn cancel" onClick={handleReset}>ยกเลิก</button>
+                <div className="form-actions-mbk">
+                    <button type="button" className="btn save-mbk" onClick={handleSchedule}>ค้นหาเวลาเรียน</button>
+                    <button type="reset" className="btn cancel-mbk" onClick={handleReset}>ยกเลิก</button>
                 </div>
-            </div>
+            </main>
         </div>
     );
 };
 
-export default Booking;
+export default MemberBooking;

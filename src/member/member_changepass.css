@@ -1,4 +1,4 @@
-/* ตั้งค่าพื้นฐาน */
+/* 
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f0f0;
@@ -10,7 +10,7 @@ body {
     height: 100vh;
   }
   
-  /* จัดกล่องให้อยู่กลางหน้าจอ */
+
   .change-password-container {
     display: flex;
     justify-content: center;
@@ -29,7 +29,7 @@ body {
     position: relative;
   }  
   
-  /* ปรับฟอร์ม */
+
   .change-password-form {
     width: 100%;
   }
@@ -40,7 +40,7 @@ body {
   }
   
   .form-group input {
-    width: calc(100% - 70px); /* ปรับให้สั้นกว่าปุ่ม */
+    width: calc(100% - 70px); 
     padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
@@ -68,7 +68,7 @@ body {
     background-color: #0056b3;
   }
   
-  /* ปุ่มขนาดเท่ากัน */
+
   .submit-button {
     padding: 10px;
     background-color: #28a745;
@@ -82,4 +82,4 @@ body {
   .submit-button:hover {
     background-color: #218838;
   }
-  
+   */

@@ -29,12 +29,12 @@ const ContactUs = ({ userRole }) => {
         <div className="contact-details">
           <div className="contact-label">ที่ตั้ง:</div>
           <div className="contact-text">
-            เลขที่ 892 หมู่ 12 หมู่บ้าน - ซอย - ถนน มข-บ้านวัดป่าโนนม่วง Mueang Khon Kaen District, Khon Kaen 40000
+            เลขที่ 123 หมู่ 12 หมู่บ้าน - ซอย 121 ถนน มข-บ้านวัดป่าโนนม่วง Mueang Khon Kaen District, Khon Kaen 40000
           </div>
         </div>
         <div className="contact-details">
           <div className="contact-label">เวลาเปิดร้าน:</div>
-          <div className="contact-text">จันทร์ - อาทิตย์ 10:00 น. - 20:00 น.</div>
+          <div className="contact-text">จันทร์ - อาทิตย์ 07.00 น. - 22:00 น.</div>
         </div>
         <div className="contact-details">
           <div className="contact-label">ช่องทางการติดต่อ:</div>

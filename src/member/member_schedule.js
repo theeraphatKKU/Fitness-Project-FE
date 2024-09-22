@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import './member_schedule.css';
 
-const Schedule = () => {
+const MemberSchedule = () => {
     const location = useLocation();
     const [scheduleData, setScheduleData] = useState([]);
     const [selectedProgram, setSelectedProgram] = useState('');
     const [selectedTrainer, setSelectedTrainer] = useState('');
     const [selectedDate, setSelectedDate] = useState('');
+
+    useEffect(() => {
+        document.body.classList.add('mcc-page');
+    
+        return () => {
+          document.body.classList.remove('mcc-page');
+        };
+    }, []);
 
     useEffect(() => {
         // Parse query parameters
@@ -31,13 +39,28 @@ const Schedule = () => {
     }, [location.search]);
 
     return (
-        <div>
-            <main className="schedule-container">
-                <nav>
-                    <a href="#!">Home &gt; Membership &gt; Schedule</a>
-                </nav>
-                <h2>ตารางการฝึกสอนสำหรับโปรแกรม: {selectedProgram}, ผู้ฝึกสอน: {selectedTrainer}</h2>
-                <p>วันที่เลือก: {selectedDate}</p>
+        <div className="member-cancel-page">
+            {/* Breadcrumb */}
+            <div className="wrap-breadcrumb">
+                <div className="breadcrumb-trainer">
+                    <Link to="/member-home" className="breadcrumb-link-trainer">Home</Link>
+                    <span> &gt; </span>
+                    <Link to="/member-membership" className="breadcrumb-link-trainer">Membership</Link>
+                    <span> &gt; </span>
+                    <span className="breadcrumb-current-trainer">Schedule</span>
+                </div>
+            </div>
+
+            {/* Title */}
+            <h1 className="page-title-trainer">Schedule</h1>
+            <p className="page-subtitle-trainer">ดูตารางการฝึกสอน</p>
+
+
+            
+            <main className="schedule-container-msc">
+                
+                {/* <h2>ตารางการฝึกสอนสำหรับโปรแกรม: {selectedProgram}, ผู้ฝึกสอน: {selectedTrainer}</h2>
+                <p>วันที่เลือก: {selectedDate}</p> */}
 
                 <table>
                     <thead>
@@ -66,8 +89,9 @@ const Schedule = () => {
                     </tbody>
                 </table>
             </main>
+            
         </div>
     );
 };
 
-export default Schedule;
+export default MemberSchedule;

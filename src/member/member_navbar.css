@@ -1,44 +1,44 @@
-/* src/components/Navbar.css */
+/* 
 .navbar {
-    position: fixed; /* ใช้ fixed ถ้าต้องการให้ Navbar คงที่เมื่อเลื่อนหน้าเว็บ */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* ให้ z-index สูงกว่าส่วนอื่น */
+    z-index: 1000; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #333;
-    padding: 0px 20px; /* เพิ่ม padding ด้านข้างให้พอดี */
+    padding: 0px 20px; 
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    height: 80px; /* ความสูงของ Navbar */
+    height: 80px; 
 }
 
-/* เพิ่มนี้เพื่อให้มีพื้นที่ว่างให้เนื้อหาหลัก */
+
 body {
     margin: 0;
-    padding-top: 80px; /* ปรับตามความสูงของ Navbar */
+    padding-top: 80px; 
 }
 
 
 .navbar-logo {
     height: 60px;
     width: auto;
-    margin-right: auto; /* เพิ่มระยะห่างจากด้านซ้าย */
+    margin-right: auto; 
 }
 
 .navbar-title {
     color: white;
     font-size: 24px;
     font-weight: bold;
-    margin-right: auto; /* เพิ่มระยะห่างจากโลโก้ */
+    margin-right: auto; 
 }
 
 .navbar-links{
     padding-left: 50%;
     gap: 20px;
     align-items: center;
-    margin: 0 auto; /* จัดกลางเมนู */
+    margin: 0 auto; 
 }
 
 .navbar-link {
@@ -53,5 +53,5 @@ body {
 .navbar-icon {
     width: 30px;
     height: 30px;
-    margin-left: 20px; /* เพิ่มระยะห่างจากไอคอน */
-}
+    margin-left: 20px; 
+} */

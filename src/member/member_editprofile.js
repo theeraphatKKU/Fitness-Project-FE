@@ -35,17 +35,17 @@ function MemberEditProfile() {
     };
 
     return (
-        <div className="profile-container">
-            <form className="edit-profile-form" onSubmit={handleSave}>
-                <div className="profile-picture-container">
-                    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile" className="profile-picture" />
+        <div className="profile-container-mep">
+            <form className="edit-profile-form-mep" onSubmit={handleSave}>
+                <div className="profile-picture-container-mep">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9f973a788df5b14c62475f3508739362688152c43702c0aa0871ff97b054f9aa?placeholderIfAbsent=true&apiKey=765867cd70bd47438cc6f11c19137da0" alt="Profile" className="profile-picture-mep" />
                 </div>
                 <h2>แก้ไขโปรไฟล์</h2>
 
                 {/* Display error message */}
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                {errorMessage && <p className="error-message-mep">{errorMessage}</p>}
 
-                <div className="form-group">
+                <div className="form-group-mep">
                     <label htmlFor="firstName">ชื่อจริง:</label>
                     <input
                         type="text"
@@ -56,7 +56,7 @@ function MemberEditProfile() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-mep">
                     <label htmlFor="lastName">นามสกุล:</label>
                     <input
                         type="text"
@@ -67,7 +67,7 @@ function MemberEditProfile() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-mep">
                     <label htmlFor="phoneNumber">เบอร์โทรศัพท์:</label>
                     <input
                         type="text"
@@ -78,9 +78,9 @@ function MemberEditProfile() {
                     />
                 </div>
 
-                <div className="form-actions">
-                    <button type="submit" className="save-button">บันทึก</button>
-                    <button type="button" className="cancel-button" onClick={handleCancel}>ยกเลิก</button>
+                <div className="form-actions-mep">
+                    <button type="submit" className="save-button-mep">บันทึก</button>
+                    <button type="button" className="cancel-button-mep" onClick={handleCancel}>ยกเลิก</button>
                 </div>
             </form>
         </div>

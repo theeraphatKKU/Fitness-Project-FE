@@ -6,7 +6,7 @@ import './Navbar.css'; // ตรวจสอบการนำเข้า CSS �
 const Navbar = ({ userRole }) => {
   return (
     <div className="navbar">
-      {userRole +"kkkkkkkkkk"}
+      {/* {userRole +"kkkkkkkkkk"} */}
       {userRole ? (
             <>
               {userRole === 'admin' && (
@@ -112,7 +112,7 @@ const Navbar = ({ userRole }) => {
             )}
             {userRole === 'member' && (
               <>
-                <Link to="/member-workspace" className="navbar-link">Workspace</Link>
+                <Link to="/member-membership" className="navbar-link">Workspace</Link>
               </>
             )}
             {/* เพิ่มลิงก์สำหรับบทบาทอื่น ๆ */}

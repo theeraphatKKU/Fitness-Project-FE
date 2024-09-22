@@ -6,7 +6,12 @@
     padding-left: 15px;
 }
 
-.schedule-container {
+.schedule-container-msc{
+    justify-content: center;
+    margin: 20px;
+}
+
+/* .schedule-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 30px;
@@ -38,7 +43,7 @@
     text-align: center;
     margin-bottom: 20px;
     color: #666;
-}
+} */
 
 table {
     width: 100%;
@@ -53,7 +58,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #4CAF50;
+    /* background-color: #4CAF50; */
     color: white;
 }
 

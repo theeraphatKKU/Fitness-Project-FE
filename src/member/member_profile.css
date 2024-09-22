@@ -1,11 +1,11 @@
-.profile-container {
+.profile-container-mpf {
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(100vh - 60px);
   }
   
-  .profile-card {
+  .profile-card-mpf {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -15,26 +15,26 @@
     position: relative;
   }
   
-  .profile-edit {
+  .profile-edit-mpf {
     position: absolute;
     top: 10px;
     right: 10px;
   }
   
-  .edit-button {
+  .edit-button-mpf {
     background: none;
     border: none;
     font-size: 0.9rem;
     cursor: pointer;
   }
   
-  .profile-picture-container {
+  .profile-picture-container-mpf {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
   }
   
-  .profile-picture {
+  .profile-picture-mpf {
     width: 140px;
     height: 140px;
     border-radius: 50%;
@@ -42,11 +42,11 @@
     border: 2px solid #ccc;
   }
   
-  .profile-info p {
+  .profile-info-mpf p {
     margin: 5px 0;
   }
   
-  .profile-actions {
+  .profile-actions-mpf {
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -54,17 +54,17 @@
     margin-bottom: 20px;
   }
   
-  .change-password {
+  .change-password-mpf {
     margin-bottom: 10px;
     display: block;
   }
   
-  .logout-button{
+  .logout-button-mpf{
     margin-bottom: 10px;
     display: block;
   }
   
-  .renew-button {
+  .renew-button-mpf {
     display: inline-block;
     padding: 10px 20px;
     background-color: #28a745; 
@@ -76,7 +76,7 @@
     margin-bottom: 15px;
   }
   
-  .renew-button:hover {
+  .renew-button-mpf:hover {
     background-color: #218838; /* Darker green on hover */
   }
   

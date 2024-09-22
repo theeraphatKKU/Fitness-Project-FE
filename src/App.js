@@ -18,6 +18,7 @@ import Register1 from './pages/Register1';
 import Register2 from './pages/Register2';
 import Register3 from './pages/Register3';
 import Register4 from './pages/Register4';
+import ErrorPage from './pages/ErrorPage';
 
 // For trainer
 import TrainerHome from './trainer/TrainerHome';
@@ -38,9 +39,13 @@ import AddTrainingProgram from './admin/AddTrainingProgram';
 import EditTrainingProgram from './admin/EditTrainingProgram';
 
 // For member
-// import MemberMembership from './admin/admin_workspace';
-// import MemberProfile from './admin/admin_profile';
+import MemberMembership from './member/member_membership';
+import MemberSchedule from './member/member_schedule';
+import MemberCancel from './member/member_cancel';
+import MemberProfile from './member/member_profile';
+import MemberBooking from './member/member_booking';
 import MemberHome from './member/member_home';
+import MemberEditProfile from './member/member_editprofile';
 
 function App() {
   const [userRole, setUserRole] = useState('');
@@ -104,19 +109,19 @@ function App() {
           <Route path="/admin-training-add" element={<AddTrainingProgram />} />
 
           {/* Member Pages */}
-          {/* <Route path="/member-booking" element={<MemberBooking />} />
+          <Route path="/member-booking" element={<MemberBooking />} />
           <Route path="/member-cancel" element={<MemberCancel />} />
-          <Route path="/member-changepass" element={<MemberChangePass />} />
-          <Route path="/member-contactus" element={<MemberContactus />} />
+          {/* <Route path="/member-changepass" element={<MemberChangePass />} /> */}
+          {/* <Route path="/member-contactus" element={<MemberContactus />} /> */}
           <Route path="/member-editprofile" element={<MemberEditProfile />} />
           <Route path="/member-membership" element={<MemberMembership />} />
           <Route path="/member-profile" element={<MemberProfile />} />
-          <Route path="/member-program" element={<MemberProgram />} />
-          <Route path="/member-schedule" element={<MemberSchedule />} /> */}
+          {/* <Route path="/member-program" element={<MemberProgram />} /> */}
+          <Route path="/member-schedule" element={<MemberSchedule />} />
           <Route path="/member-home" element={<MemberHome />} />
 
           {/* Optional: Add a route for 404 */}
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </div>

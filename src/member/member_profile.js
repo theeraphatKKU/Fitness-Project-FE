@@ -1,55 +1,89 @@
 import React from 'react';
 import './member_profile.css';
-import { useNavigate } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 
-const Profile = () => {
+const MemberProfile = () => {
   const navigate = useNavigate();
 
-  const handleEditProfile = () => {
-      navigate('/member-editprofile'); // Navigate to member-editprofile
-  };
+//   const handleEditProfile = () => {
+//       navigate('/member-editprofile'); // Navigate to member-editprofile
+//   };
 
-  const handleChangePassword = () => {
-      navigate('/member-changepass'); // Navigate to member-changepass
-  };
+//   const handleChangePassword = () => {
+//       navigate('/forgot-password'); // Navigate to member-changepass
+//   };
 
-  const handleResume = () => {
-    navigate('/Register'); 
-  };
+//   const handleResume = () => {
+//     navigate('/Register'); 
+//   };
 
-  const handleLogout = () => {
-    navigate('/Login'); 
-  };
+//   const handleLogout = () => {
+//     navigate('/Login'); 
+//   };
 
   return (
-      <div>
-          <main className="profile-container">
-              <div className="profile-card">
-                  <div className="profile-edit">
-                      <button className="edit-button" onClick={handleEditProfile}>แก้ไข</button>
-                  </div>
-                  <div className="profile-picture-container">
-                    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile" className="profile-picture" />
-                  </div>
-                  <h2>ข้อมูลส่วนตัว</h2>
-                  <div className="profile-info">
-                      <p><strong>ชื่อ:</strong> <span>{/* {member.name} */}</span></p>
-                      <p><strong>นามสกุล:</strong> {/* นามสกุล */}</p>
-                      <p><strong>วันเกิด:</strong> {/* วันเกิด */}</p>
-                      <p><strong>เบอร์โทรศัพท์:</strong> <span>{/* {member.phoneNumber} */}</span></p>
-                      <p><strong>อีเมล:</strong> <span>{/* {member.email} */}</span></p>
-                      <p><strong>สถานะ:</strong> <span>{/* {member.memberType} */}</span></p>
-                      <p><strong>ระยะเวลา:</strong> <span>{/* {member.expireDate} */}</span></p>
-                  </div>
-                  <div className="profile-actions">
-                      <button className="renew-button" onClick={handleResume}>ต่ออายุ</button>
-                      <button className="logout-button" onClick={handleLogout}>ล็อกเอาท์</button>
-                      <a href="#!" className="change-password" onClick={handleChangePassword}>เปลี่ยนรหัสผ่าน</a>
-                  </div>
-              </div>
-          </main>
+    <section className="profile-tl">
+    <div className="container-tl">
+      <div className="head-edit-tl">
+        <div className="profile-picture-tl">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/9f973a788df5b14c62475f3508739362688152c43702c0aa0871ff97b054f9aa?placeholderIfAbsent=true&apiKey=765867cd70bd47438cc6f11c19137da0"
+            alt="profile"
+          />
+        </div>
+        <div className="header-text-tl">
+          <h2 className="title-tl">ข้อมูลส่วนตัว</h2>
+          <div className="edit-button-tl">
+            <Link to="/member-editprofile" className="edit-link-tl">
+                <button className="edit-tl">
+                <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/d351945df9638427df1fa9e59e9eccb3b1d2429907c9e0d75cf0d228792b9cd0?placeholderIfAbsent=true&apiKey=765867cd70bd47438cc6f11c19137da0"
+                    alt="edit"
+                />
+                <span>แก้ไข</span>
+                </button>
+            </Link>
+            </div>
+        </div>
       </div>
+      <div className="information-tl">
+        <p>
+          <span className="font-bold">ชื่อ</span> 
+          <span className="font-bold">นามสกุล</span>
+        </p>
+        <p>
+          <span className="font-bold">เบอร์โทรศัพท์</span> xxx-xxxx-xxx
+        </p>
+        <p>
+          <span className="font-bold">สถานะ</span> สมาชิกธรรมดา
+        </p>
+        <p>
+          <span className="font-bold">ระยะเวลาการเป็นสมาชิก</span>
+        </p>
+        {/* <div className="training-style-tl">
+          รูปแบบการสอน <span>โปรแกรมสร้างกล้ามเนื้อ, โปรแกรมการฝึกสอนแบบส่วนตัว</span>
+        </div> */}
+        <p>
+          <span className="font-bold">อีเมล </span>Kengpch@gmail.com
+        </p>
+      </div>
+      <div className="button-group-tl">
+        <button className="logout-button-tl">
+          <Link to="/login" className="button-text-tl">
+            ล็อคเอาท์
+          </Link>
+        </button>
+        <button className="change-password-button-tl">
+          <Link to="/forgot-password" className="button-text-tl">
+            เปลี่ยนรหัสผ่าน
+          </Link>
+        </button>
+      </div>
+    </div>
+  </section>
   );
 }
 
-export default Profile;
+export default MemberProfile;

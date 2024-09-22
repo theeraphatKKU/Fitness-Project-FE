@@ -1,0 +1,67 @@
+/* การตั้งค่าทั่วไปสำหรับหน้า */
+.error-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: 'Noto Sans Thai', sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* กล่องเนื้อหาสำหรับข้อความแสดงข้อผิดพลาด */
+  .error-content {
+    text-align: center;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* ชื่อเรื่องสำหรับแสดงรหัสข้อผิดพลาด */
+  .error-title {
+    font-size: 96px;
+    margin: 0;
+    color: #ff6f61;
+  }
+  
+  /* ข้อความสำหรับอธิบายข้อผิดพลาด */
+  .error-message {
+    font-size: 24px;
+    color: #333;
+    margin: 20px 0;
+  }
+  
+  /* ปุ่มกลับไปหน้าแรก */
+  .error-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ff6f61;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .error-button:hover {
+    background-color: #e55a4d;
+  }
+  
+  /* สไตล์เพิ่มเติมสำหรับการตอบสนองกับหน้าจอขนาดเล็ก */
+  @media (max-width: 768px) {
+    .error-title {
+      font-size: 72px;
+    }
+  
+    .error-message {
+      font-size: 20px;
+    }
+  
+    .error-button {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  }
+  

@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './member_cancel.css';
 
-const CancelReservation = () => {
+const MemberCancel = () => {
+
+    useEffect(() => {
+        document.body.classList.add('mcc-page');
+    
+        return () => {
+          document.body.classList.remove('mcc-page');
+        };
+    }, []);
+
     // Mock data for reservations (this could be fetched from an API)
     const [reservations, setReservations] = useState([
         { id: 1, date: '2024-09-22', time: '10:00 - 11:00', activity: 'โปรแกรมพัฒนาสำหรับผู้สูงอายุ', status: 'จองแล้ว' },
@@ -19,18 +29,27 @@ const CancelReservation = () => {
         }
     };
 
-    return (
-        <div>
-            {/* Breadcrumb */}
-            <nav>
-                <a href="#!">Home &gt; Membership &gt; Cancel Reservation</a>
-            </nav>
 
-            <main className="cancel-reservation-container">
-                <h2>ยกเลิกการจอง</h2>
-                <p>ยกเลิกการจอง</p>
-                
-                <table>
+    return (
+        <div className="member-cancel-page">
+            {/* Breadcrumb */}
+            <div className="wrap-breadcrumb">
+                <div className="breadcrumb-trainer">
+                    <Link to="/member-home" className="breadcrumb-link-trainer">Home</Link>
+                    <span> &gt; </span>
+                    <Link to="/member-membership" className="breadcrumb-link-trainer">Membership</Link>
+                    <span> &gt; </span>
+                    <span className="breadcrumb-current-trainer">Cancel Reservation</span>
+                </div>
+            </div>
+
+            {/* Title */}
+            <h1 className="page-title-trainer">Cancel Reservation</h1>
+            <p className="page-subtitle-trainer">ยกเลิกการจองที่มีอยู่</p>
+
+            {/* Reservation Table */}
+            <main className="cancel-reservation-container-mcc">
+                <table className="reservation-table-mcc">
                     <thead>
                         <tr>
                             <th>วันที่</th>
@@ -64,7 +83,8 @@ const CancelReservation = () => {
                 </table>
             </main>
         </div>
+        
     );
 };
 
-export default CancelReservation;
+export default MemberCancel;
