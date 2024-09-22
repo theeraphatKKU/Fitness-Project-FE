@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './admin_ConfirmPayment.css';
+import axios from 'axios';
 
 const AdminConfirmPayment = () => {
   useEffect(() => {
+    const fetch = async () => {
+      const response = await axios.get('http://localhost:8080/api/member/onlyuser', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      setPayments(response.data)
+    }
+    fetch()
     document.body.classList.add('memberM-page');
 
     return () => {
@@ -12,6 +22,16 @@ const AdminConfirmPayment = () => {
   }, []);
 
   const navigate = useNavigate(); 
+
+  const getTotalAmount = (type) => {
+    switch (type) {
+        case 'premium':
+            return '1550';
+        case 'basic':
+        default:
+            return '950';
+    }
+};
 
   // State เก็บข้อมูลการชำระเงินของสมาชิกที่รอการอนุมัติ
   const [payments, setPayments] = useState([
@@ -44,24 +64,39 @@ const AdminConfirmPayment = () => {
 
   // ฟังก์ชันสำหรับการอนุมัติการชำระเงิน และลบออกจาก state
   const handleApprove = async (id) => {
-    // เรียก back-end API เพื่ออนุมัติการชำระเงิน
+    // ค้นหาสมาชิกที่มี id ตรงกันใน payments
+    const approveM = payments.find(member => member.id === id);
+  
+    if (!approveM) {
+      console.error('ไม่พบสมาชิกที่มี ID นี้');
+      return;
+    }
+  
+    // กำหนด role ให้เป็น "MEMBER"
+    approveM.role = 'MEMBER';
+  
     try {
-      const response = await fetch(`/api/approve-payment/${id}`, {
-        method: 'POST',
+      // เรียก back-end API เพื่ออัปเดตสมาชิก
+      const response = await fetch(`http://localhost:8080/api/user/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(approveM),
       });
-
+  
       if (response.ok) {
         // เมื่อ back-end ตอบกลับสำเร็จ ลบรายการนั้นออกจาก state
-        setPayments((prevPayments) =>
-          prevPayments.filter((payment) => payment.id !== id)
-        );
+        setPayments(prevPayments => prevPayments.filter(member => member.id !== id));
+        alert('อนุมัติสำเร็จ');
       } else {
-        console.error('การอนุมัติล้มเหลว');
+        alert('การอนุมัติล้มเหลว');
       }
     } catch (error) {
       console.error('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์:', error);
     }
   };
+  
 
   // ฟังก์ชันสำหรับการกลับไปหน้า /admin-workspace
   const handleBack = () => {
@@ -100,9 +135,9 @@ const AdminConfirmPayment = () => {
           {payments.map((payment) => (
             <tr key={payment.id} className={payment.approved ? 'approved-row' : ''}>
               <td>{payment.name}</td>
-              <td>{payment.package}</td>
-              <td>{payment.total}</td>
-              <td>{payment.paymentMethod}</td>
+              <td>{payment.memberType}</td>
+              <td>{getTotalAmount(payment.memberType)}</td>
+              <td>{"เงินสด"}</td>
               <td>
                 {payment.approved ? (
                   <span className="approved-status">อนุมัติแล้ว</span>
