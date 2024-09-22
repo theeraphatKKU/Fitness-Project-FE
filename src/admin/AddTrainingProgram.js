@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './AddTrainingProgram.css';
 
-const daysOfWeek = ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์', 'อาทิตย์'];
-const timeSlots60 = [
-    '08:00-09:00', '09:00-10:00', '10:00-11:00', '13:00-14:00', '14:00-15:00', '15:00-16:00'
-];
-const timeSlots90 = ['08:00-09:30', '09:30-11:00', '13:00-14:30', '14:30-16:00'];
 
 const AddTrainingProgram = () => {
-    const [image, setImage] = useState(null);
-    const [programHName, setProgramHName] = useState('');
+
     const [programName, setProgramName] = useState('');
     const [programType, setProgramType] = useState('');
     const [selectedDay, setSelectedDay] = useState('');
@@ -20,13 +14,7 @@ const AddTrainingProgram = () => {
     const [description, setDescription] = useState('');
     const navigate = useNavigate();
 
-    const handleImageChange = (e) => {
-        setImage(URL.createObjectURL(e.target.files[0]));
-    };
-
-    const handleDayChange = (e) => {
-        setSelectedDay(e.target.value);
-    };
+    const [sectionType, setSectionType] = useState('');  // ประกาศ state สำหรับ sectionType
 
     const handleTimeChange = (e) => {
         setSelectedTime(e.target.value);
@@ -60,28 +48,25 @@ const AddTrainingProgram = () => {
 
     useEffect(() => {
         document.body.classList.add('memberM-page');
-    
+
         return () => {
-          document.body.classList.remove('memberM-page');
+            document.body.classList.remove('memberM-page');
         };
-      }, []);
+    }, []);
 
     const handleSave = () => {
-        const newProgram = {
-          image,
-          programHName,
-          programName,
-          programType,
-          schedule,
-          description,
+        const newSection = {
+            programName,
+            schedule,
+            sectionType, // เพิ่ม sectionType ที่นี่
         };
-      
+
         let existingPrograms = JSON.parse(localStorage.getItem('trainingPrograms')) || [];
-        existingPrograms.push(newProgram);
+        existingPrograms.push(newSection);
         localStorage.setItem('trainingPrograms', JSON.stringify(existingPrograms));
-      
-        navigate('/admin-training-program-management'); // กลับไปหน้า Admin Program Management
-      };
+
+        navigate('/admin-training-section-management'); // Navigate back to Admin Program Management page
+    };
 
     const handleCancel = () => {
         navigate('/admin-training-program-management');
@@ -93,13 +78,13 @@ const AddTrainingProgram = () => {
             {/* Breadcrumb */}
             <div className="wrap-breadcrumb">
                 <div className="add-training-program-breadcrumb">
-                <Link to="/admin-home" className="breadcrumb-link-programM">Home</Link>
-                <span> &gt; </span>
-                <Link to="/admin-workspace" className="breadcrumb-link-programM">Workspace</Link>
-                <span> &gt; </span>
-                <Link to="/admin-training-program-management" className="breadcrumb-link-programM">Training Program Management</Link>
-                <span> &gt; </span>
-                <span className="breadcrumb-current-programM">Add Training Program</span>
+                    <Link to="/admin-home" className="breadcrumb-link-programM">Home</Link>
+                    <span> &gt; </span>
+                    <Link to="/admin-workspace" className="breadcrumb-link-programM">Workspace</Link>
+                    <span> &gt; </span>
+                    <Link to="/admin-training-program-management" className="breadcrumb-link-programM">Training Program Management</Link>
+                    <span> &gt; </span>
+                    <span className="breadcrumb-current-programM">Add Training Program</span>
                 </div>
             </div>
 
@@ -109,95 +94,21 @@ const AddTrainingProgram = () => {
 
             {/* form */}
             <div className="form-group-program">
-                <label>Image:</label>
-                <input type="file" onChange={handleImageChange} />
-                {image && <img src={image} alt="Program" className="program-image" />}
-            
-                <label>Program Name:</label>
-                <input
-                    type="text"
-                    value={programHName}
-                    onChange={(e) => setProgramHName(e.target.value)}
-                />
-
                 <label>ชื่อโปรแกรม:</label>
                 <input
                     type="text"
                     value={programName}
                     onChange={(e) => setProgramName(e.target.value)}
                 />
-        
+
                 <label>ประเภท:</label>
-                <select
-                    value={programType}
-                    onChange={(e) => setProgramType(e.target.value)}
-                >
+                <select value={sectionType} onChange={(e) => setSectionType(e.target.value)}>
+                    <option value="">-- เลือกเซคชัน --</option>
                     <option value="กลุ่ม">กลุ่ม</option>
                     <option value="ส่วนตัว">ส่วนตัว</option>
                 </select>
-   
-                <label>ตารางเวลา:</label>
-                <div className="time-selection-program">
-                    <div>
-                        <label>วัน:</label>
-                        <select value={selectedDay} onChange={handleDayChange}>
-                            <option value="">เลือกวัน</option>
-                            {daysOfWeek.map((day, index) => (
-                                <option key={index} value={day}>
-                                    {day}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div>
-                        <label>เวลา:</label>
-                        <select value={selectedTime} onChange={handleTimeChange}>
-                            <option value="">เลือกเวลา</option>
-                            <optgroup label="60 นาที">
-                                {timeSlots60.map((time, i) => (
-                                    <option key={i} value={time}>
-                                        {time}
-                                    </option>
-                                ))}
-                            </optgroup>
-                            <optgroup label="90 นาที">
-                                {timeSlots90.map((time, i) => (
-                                    <option key={i} value={time}>
-                                        {time}
-                                    </option>
-                                ))}
-                            </optgroup>
-                        </select>
-                    </div>
-                </div>
-                <div className="table-container-program">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>วัน</th>
-                                <th>เวลา</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {schedule.map((entry, index) => (
-                                <tr
-                                    key={index}
-                                    onClick={() => handleSelect(entry)}
-                                    style={{
-                                        cursor: 'pointer',
-                                        backgroundColor: selectedEntries.includes(entry) ? '#f0f0f0' : 'transparent'
-                                    }}
-                                >
-                                    <td>{entry.day}</td>
-                                    <td>{entry.time}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-                <button className="delete-program" onClick={handleDeleteSelected} disabled={selectedEntries.length === 0}>
-                    ลบรายการที่เลือก
-                </button>
+
+
                 <label>รายละเอียด:</label>
                 <textarea
                     value={description}

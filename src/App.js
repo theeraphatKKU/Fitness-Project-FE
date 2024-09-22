@@ -37,6 +37,9 @@ import AdminTrainerM from './admin/admin_TrainerM';
 import AdminHome from './admin/admin_Home';
 import AddTrainingProgram from './admin/AddTrainingProgram';
 import EditTrainingProgram from './admin/EditTrainingProgram';
+import TrainingSection from './admin/TrainingSection';
+import AddTrainingSection from './admin/AddTrainingSection';
+import AddTrainingSectionPrivate from './admin/AddTrainingSectionPrivate';
 
 // For member
 import MemberMembership from './member/member_membership';
@@ -110,6 +113,9 @@ function App() {
           <Route path="/admin-home" element={<AdminHome />} />
           <Route path="/admin-training-edit" element={<EditTrainingProgram />} />
           <Route path="/admin-training-add" element={<AddTrainingProgram />} />
+          <Route path="/admin-training-section-management" element={<TrainingSection />} />
+          <Route path="/admin-trainingS-add" element={<AddTrainingSection />} />
+          <Route path="/admin-trainingS-addP" element={<AddTrainingSectionPrivate />} />
 
           {/* Member Pages */}
           <Route path="/member-booking" element={<MemberBooking />} />

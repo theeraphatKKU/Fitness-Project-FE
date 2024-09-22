@@ -68,11 +68,11 @@ const AdminProgramM = () => {
           <table>
             <thead>
               <tr>
-                <th>Image</th>
-                <th>Program Name</th>
+                {/* <th>Image</th> */}
+                {/* <th>Program Name</th> */}
                 <th>ชื่อโปรแกรม</th>
                 <th>ประเภท</th>
-                <th>ตารางเวลา</th>
+                {/* <th>ตารางเวลา</th> */}
                 <th>รายละเอียด</th>
                 <th>Actions</th>
               </tr>
@@ -80,17 +80,17 @@ const AdminProgramM = () => {
             <tbody>
               {programs.map((program, index) => (
                 <tr key={index}>
-                  <td><img src={program.image} alt="Program" style={{ maxWidth: '100px' }} /></td>
-                  <td>{program.programHName}</td>
+                  {/* <td><img src={program.image} alt="Program" style={{ maxWidth: '100px' }} /></td> */}
+                  {/* <td>{program.programHName}</td> */}
                   <td>{program.programName}</td>
                   <td>{program.programType}</td>
-                  <td>
+                  {/* <td>
                     <ul>
                       {program.schedule.map((entry, i) => (
                         <li key={i}>{entry.day} {entry.time}</li>
                       ))}
                     </ul>
-                  </td>
+                  </td> */}
                   <td>{program.description}</td>
                   <td>
                     <button onClick={() => handleEditProgram(index)}>Edit</button>
