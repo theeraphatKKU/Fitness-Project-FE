@@ -1,90 +1,78 @@
-import React, { useState,useEffect } from 'react';
-import { Link,useNavigate } from 'react-router-dom'; // For navigating between routes
+import React, { useState } from 'react';
 import './member_booking.css';
 
-const MemberBooking = () => {
-    const [selectedDate, setSelectedDate] = useState('');
+const Booking = () => {
     const [selectedProgram, setSelectedProgram] = useState('');
+    const [selectedDate, setSelectedDate] = useState('');
     const [selectedTrainer, setSelectedTrainer] = useState('');
     const [error, setError] = useState('');
-    const [availableTimes, setAvailableTimes] = useState([]);
+    const [filteredClasses, setFilteredClasses] = useState([]);
 
-    useEffect(() => {
-        document.body.classList.add('mcc-page');
-    
-        return () => {
-          document.body.classList.remove('mcc-page');
-        };
-    }, []);
-
-    const navigate = useNavigate(); // For navigation
-
-    const handleDateChange = (event) => {
-        const selected = new Date(event.target.value);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Reset time part for comparison
-
-        if (selected < today) {
-            setError('คุณไม่สามารถจองวันย้อนหลังได้');
-            setAvailableTimes([]);
-        } else {
-            setError('');
-            setSelectedDate(event.target.value);
-            // Simulating class times based on date selected (you can customize based on your backend response)
-            setAvailableTimes(['08:00 - 09:00', '10:00 - 11:00', '13:00 - 14:00']);
+    const bookingClasses = [
+        {
+            program: 'program2',
+            date: '2024-09-22',
+            trainer: 'trainer1',
+            time: '08:00 - 09:00',
+            name: 'โปรแกรมสร้างกล้ามเนื้อ',
+            trainerName: 'พี่หน่วง'
+        },
+        {
+            program: 'program2',
+            date: '2024-09-22',
+            trainer: 'trainer3',
+            time: '16:00 - 17:00',
+            name: 'โปรแกรมสร้างกล้ามเนื้อ',
+            trainerName: 'พี่เก่ง พลังช้าง'
+        },
+        {
+            program: 'program1',
+            date: '2024-09-24',
+            trainer: 'trainer2',
+            time: '10:00 - 11:00',
+            name: 'โปรแกรมฟิตเนสสำหรับผู้เริ่มต้น',
+            trainerName: 'พี่เอก สายเต๊าะ'
         }
-    };
+        // Add more classes as needed
+    ];
 
-    const handleProgramChange = (event) => {
-        setSelectedProgram(event.target.value);
-    };
+    const handleSearch = () => {
+        const searchResults = [];
 
-    const handleTrainerChange = (event) => {
-        setSelectedTrainer(event.target.value);
-    };
+        // Check for matching conditions
+        bookingClasses.forEach((bookingClass) => {
+            const isProgramMatch = !selectedProgram || bookingClass.program === selectedProgram;
+            const isDateMatch = !selectedDate || bookingClass.date === selectedDate;
+            const isTrainerMatch = !selectedTrainer || bookingClass.trainer === selectedTrainer;
 
-    const handleReset = () => {
-        setSelectedDate('');
-        setSelectedProgram('');
-        setSelectedTrainer('');
-        setError('');
-        setAvailableTimes([]);
-    };
+            // If any condition is met, add to the results
+            if (isProgramMatch && isDateMatch && isTrainerMatch) {
+                searchResults.push(bookingClass);
+            }
+        });
 
-    const handleSchedule = () => {
-        if (selectedProgram && selectedTrainer && selectedDate) {
-            // Navigate to schedule page and pass program, trainer, and date as query parameters
-            navigate(`/member-schedule?program=${encodeURIComponent(selectedProgram)}&trainer=${encodeURIComponent(selectedTrainer)}&date=${encodeURIComponent(selectedDate)}`);
+        if (searchResults.length > 0) {
+            setFilteredClasses(searchResults);
+            setError('');
         } else {
-            setError('กรุณาเลือกโปรแกรม ผู้ฝึกสอน และวันที่ก่อนค้นหา');
+            setFilteredClasses([]);
+            setError('ไม่พบเวลาเรียนที่ต้องการ');
         }
     };
 
     return (
-        <div className ="member-booking-page">
-            {/* Breadcrumb */}
-            <div className="wrap-breadcrumb">
-                <div className="breadcrumb-trainer">
-                    <Link to="/member-home" className="breadcrumb-link-trainer">Home</Link>
-                    <span> &gt; </span>
-                    <Link to="/member-membership" className="breadcrumb-link-trainer">Membership</Link>
-                    <span> &gt; </span>
-                    <span className="breadcrumb-current-trainer">Booking</span>
-                </div>
-            </div>
+        <div>
+            <nav className="breadcrumb">
+                <a href="#!">Home &gt; Membership &gt; Booking</a>
+            </nav>
 
-            {/* Title */}
-            <h1 className="page-title-trainer">Booking</h1>
-            <p className="page-subtitle-trainer">จองการฝึกสอนหรือใช้งาน</p>
-
-            {/* booking table */}
-            <main className="booking-container-mbk">
+            <div className="booking-container">
                 <h2>จองคลาสเรียน</h2>
                 <p>กรุณาเลือกโปรแกรมและผู้ฝึกสอนที่ต้องการ</p>
 
-                <div className="form-group-mbk">
+                <div className="form-group">
                     <label htmlFor="program">โปรแกรมการฝึกสอน:</label>
-                    <select id="program" value={selectedProgram} onChange={handleProgramChange} required>
+                    <select id="program" value={selectedProgram} onChange={(e) => setSelectedProgram(e.target.value)}>
                         <option value="">-- เลือกโปรแกรม --</option>
                         <option value="program1">โปรแกรมฟิตเนสสำหรับผู้เริ่มต้น</option>
                         <option value="program2">โปรแกรมสร้างกล้ามเนื้อ</option>
@@ -94,9 +82,19 @@ const MemberBooking = () => {
                     </select>
                 </div>
 
-                <div className="form-group-mbk">
+                <div className="form-group">
+                    <label htmlFor="bookingDate">วันที่ต้องการจอง:</label>
+                    <input
+                        type="date"
+                        id="bookingDate"
+                        value={selectedDate}
+                        onChange={(e) => setSelectedDate(e.target.value)}
+                    />
+                </div>
+
+                <div className="form-group">
                     <label htmlFor="trainer">ผู้ฝึกสอน:</label>
-                    <select id="trainer" value={selectedTrainer} onChange={handleTrainerChange} required>
+                    <select id="trainer" value={selectedTrainer} onChange={(e) => setSelectedTrainer(e.target.value)}>
                         <option value="">-- เลือกผู้ฝึกสอน --</option>
                         <option value="trainer1">พี่หน่วง</option>
                         <option value="trainer2">พี่เอก สายเต๊าะ</option>
@@ -105,32 +103,29 @@ const MemberBooking = () => {
                     </select>
                 </div>
 
-                <div className="form-group-mbk">
-                    <label htmlFor="bookingDate">วันที่ต้องการจอง:</label>
-                    <input type="date" id="bookingDate" value={selectedDate} onChange={handleDateChange} required />
-                    {error && <p className="error-message">{error}</p>}
+                <div className="form-actions">
+                    <button type="button" className="btn search" onClick={handleSearch}>ค้นหาเวลาเรียน</button>
+                    <button type="reset" className="btn cancel" onClick={() => { setSelectedProgram(''); setSelectedDate(''); setSelectedTrainer(''); setFilteredClasses([]); }}>ยกเลิก</button>
                 </div>
 
                 {/* Class Time Selection */}
-                {availableTimes.length > 0 && (
-                    <div className="form-group-mbk">
-                        <label htmlFor="classTime">เลือกเวลาเรียน:</label>
-                        <select id="classTime" required>
-                            <option value="">-- เลือกเวลาเรียน --</option>
-                            {availableTimes.map((time, index) => (
-                                <option key={index} value={time}>{time}</option>
-                            ))}
-                        </select>
-                    </div>
-                )}
-
-                <div className="form-actions-mbk">
-                    <button type="button" className="btn save-mbk" onClick={handleSchedule}>ค้นหาเวลาเรียน</button>
-                    <button type="reset" className="btn cancel-mbk" onClick={handleReset}>ยกเลิก</button>
+                <div className="class-selection">
+                    <h3>เลือกเวลาเรียน:</h3>
+                    {filteredClasses.length > 0 ? (
+                        filteredClasses.map((cls, index) => (
+                            <div className="class-option" key={index}>
+                                <p>{cls.date} - {cls.name} ({cls.trainerName})</p>
+                                <p>{cls.time}</p>
+                                <button className="btn select">เลือก</button>
+                            </div>
+                        ))
+                    ) : (
+                        <p className="error-message">{error || 'เลือกโปรแกรมการฝึกสอน วันที่ หรือผู้ฝึกสอนเพื่อค้นหาเวลาเรียน'}</p>
+                    )}
                 </div>
-            </main>
+            </div>
         </div>
     );
 };
 
-export default MemberBooking;
+export default Booking;

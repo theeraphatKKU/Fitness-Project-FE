@@ -1,103 +1,183 @@
-/* booking.css */
-
-.member-booking-page {
-    padding: 40px;
+/* General page layout and container settings */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
 }
 
-.booking-container-mbk{
-    /* width: 100%; */
-    /* display: flex; */
-    justify-content: center;
-    margin: 20px;
-}
-.breadcrumb-mbk {
-    margin: 20px 0;
-    font-size: 14px;
-    text-align: left;
-    padding-left: 15px;
+.breadcrumb {
+    padding: 10px;
+    background-color: #eee;
+    margin-bottom: 20px;
 }
 
-.breadcrumb-mbk a {
-    color: #333;
+.breadcrumb a {
+    color: #007BFF;
     text-decoration: none;
+    font-size: 14px;
 }
 
-.breadcrumb-mbk a:hover {
+.breadcrumb a:hover {
     text-decoration: underline;
 }
 
-.booking-container-mbk {
+/* Booking Form Container */
+.booking-container {
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    padding: 30px;
-    background-color: #f9f9f9;
+    padding: 20px;
+    background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.booking-container-mbk h2 {
+h2 {
     text-align: center;
-    margin-bottom: 20px;
     color: #333;
-}
-
-.booking-container-mbk p {
-    text-align: center;
     margin-bottom: 20px;
-    color: #666;
 }
 
-.form-group-mbk {
-    margin-bottom: 15px;
+/* Form elements styles */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.form-group-mbk label {
+label {
     display: block;
+    font-weight: bold;
     margin-bottom: 5px;
     color: #333;
 }
 
-.form-group-mbk select,
-.form-group-mbk input[type="date"] {
+select, input[type="date"], input[type="text"] {
     width: 100%;
+    max-width: 400px; /* Ensures the dropdowns are consistently sized */
     padding: 10px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-}
-
-.error-message-mbk {
-    color: red;
-    font-size: 14px;
+    background-color: #fff;
     margin-top: 5px;
+    margin-bottom: 10px;
 }
 
-.form-actions-mbk {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.form-actions-mbk .btn {
+/* Buttons */
+button {
     padding: 10px 20px;
+    font-size: 14px;
+    background-color: #007BFF;
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.form-actions-mbk .btn.save-mbk {
-    background-color: #4CAF50;
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Cancel and Submit button styles */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn.cancel {
+    background-color: #6c757d;
+}
+
+.btn.save {
+    background-color: #007BFF;
+}
+
+.btn.cancel:hover {
+    background-color: #5a6268;
+}
+
+.btn.save:hover {
+    background-color: #0056b3;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Class Times Table */
+.class-time-container {
+    margin-top: 20px;
+}
+
+.class-time-header {
+    font-weight: bold;
+    text-align: left;
+}
+
+.class-time-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.class-time-table td, .class-time-table th {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.class-time-table th {
+    background-color: #f2f2f2;
+}
+
+.class-time-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.class-time-button {
+    background-color: #007BFF;
     color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.form-actions-mbk .btn.cancel-mbk {
-    background-color: #f44336;
+.class-time-button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer and miscellaneous styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
     color: white;
+    margin-top: 50px;
 }
 
-.form-group-mbk select:focus,
-.form-group-mbk input[type="date"]:focus {
-    outline: none;
-    border-color: #4CAF50;
-}
+@media (max-width: 768px) {
+    .booking-container {
+        padding: 10px;
+    }
 
+    .form-group {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
