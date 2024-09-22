@@ -21,8 +21,8 @@ const Login = ({ getRole }) => {  // Destructure ok from props
         },
       });
 
-      localStorage.setItem('token', response.data.accessToken);
-      console.log('Stored token:', localStorage.getItem('token'));
+      // localStorage.setItem('token', response.data.accessToken);
+      // console.log('Stored token:', localStorage.getItem('token'));
 
       // Call the ok function if login is successful
       if (getRole) getRole(response.data);

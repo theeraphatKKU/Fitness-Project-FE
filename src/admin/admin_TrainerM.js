@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './admin_TrainerM.css';
+import axios from 'axios';
 
 const AdminTrainerM = () => {
   useEffect(() => {
+    const fetch = async () => {
+      const response = await axios.get('http://localhost:8080/api/trainer', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(response.data)
+      setTrainers(response.data);
+      setFilteredTrainers(response.data);
+    }
+    fetch()
     document.body.classList.add('trainerM-page');
 
     return () => {
@@ -18,7 +30,7 @@ const AdminTrainerM = () => {
       id: 1,
       firstName: 'พี่หน่วง',
       lastName: 'แหนกระโสน',
-      phone: '0123456789',
+      phoneNumber: '0123456789',
       email: 'piyapong@example.com',
       programs: ['fitness-beginners']
     },
@@ -26,13 +38,19 @@ const AdminTrainerM = () => {
       id: 2,
       firstName: 'พี่เก่ง',
       lastName: 'พลังช้าง',
-      phone: '0987654321',
+      phoneNumber: '0987654321',
       email: 'narumon@example.com',
       programs: ['weight-loss-toning', 'muscle-building']
     },
   ]);
   const [filteredTrainers, setFilteredTrainers] = useState([]);
-  const [newTrainer, setNewTrainer] = useState({ firstName: '', lastName: '', phone: '', email: '' });
+  const [newTrainer, setNewTrainer] = useState({
+    firstName: '',
+    lastName: '',
+    phoneNumberNumber: '',
+    email: '',
+    password: '', // เพิ่มฟิลด์สำหรับรหัสผ่าน
+  });
   const [selectedPrograms, setSelectedPrograms] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedTrainer, setSelectedTrainer] = useState(null);
@@ -44,15 +62,21 @@ const AdminTrainerM = () => {
       (trainer) =>
         trainer.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         trainer.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        trainer.phone.includes(searchTerm)
+        trainer.phoneNumber.includes(searchTerm)
     );
     setFilteredTrainers(results);
   };
 
   // Function to open modal with trainer details
   const handleSelect = (trainer) => {
-    setSelectedTrainer(trainer);
-    setSelectedPrograms(trainer.programs || []);
+    const [firstName, lastName] = trainer.name.split(' ');
+    const edit_trainer = {
+      ...trainer,
+      firstName:firstName,
+      lastName:lastName
+    };
+    setSelectedTrainer(edit_trainer);
+    setSelectedPrograms(trainer.specialization || []);
     setIsEditing(false);
     setShowModal(true);
   };
@@ -61,16 +85,26 @@ const AdminTrainerM = () => {
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedTrainer(null);
-    setNewTrainer({ firstName: '', lastName: '', phone: '', email: '' });
+    setNewTrainer({ firstName: '', lastName: '', phoneNumber: '', email: '' });
     setSelectedPrograms([]);
   };
 
   // Function to delete trainer
-  const handleDeleteTrainer = () => {
+  const handleDeleteTrainer = async () => {
     if (window.confirm('คุณแน่ใจว่าต้องการลบ Trainer นี้หรือไม่?')) {
-      setTrainers(trainers.filter((trainer) => trainer !== selectedTrainer));
-      setFilteredTrainers(filteredTrainers.filter((trainer) => trainer !== selectedTrainer));
-      setShowModal(false);
+      try {
+        await axios.delete(`http://localhost:8080/api/trainer/${selectedTrainer.id}`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setTrainers(trainers.filter((trainer) => trainer.id !== selectedTrainer.id)); // Update members list
+        setShowModal(false);
+        alert('ลบข้อมูล Trainer เรียบร้อย');
+      } catch (error) {
+        console.error("Error deleting Trainer:", error);
+        alert('ไม่สามารถลบ Trainer ได้');
+      }
     }
   };
 
@@ -80,13 +114,32 @@ const AdminTrainerM = () => {
   };
 
   // Function to add a new trainer
-  const handleAddTrainer = () => {
-    if (newTrainer.firstName && newTrainer.lastName && newTrainer.phone && newTrainer.email) {
-      const newTrainerData = { ...newTrainer, id: trainers.length + 1, programs: selectedPrograms };
-      const updatedTrainers = [...trainers, newTrainerData];
-      setTrainers(updatedTrainers);
-      alert('เพิ่ม Trainer สำเร็จ');
-      handleCloseModal();
+  const handleAddTrainer = async () => {
+    if (true) {
+      const fullname = newTrainer.firstName + ' ' + newTrainer.lastName;
+      const newTrainerData = { 
+        ...newTrainer,
+        name: fullname,
+        specialization: selectedPrograms.join(', '), 
+        role: "TRAINER",
+      };
+      console.log(newTrainerData)
+  
+      try {
+        const response = await axios.post('http://localhost:8080/api/trainer', newTrainerData, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        // คุณสามารถอัปเดตรายการ trainers ได้ตาม response
+        setTrainers([...trainers, response.data]);
+        alert('เพิ่ม Trainer สำเร็จ');
+        handleCloseModal();
+      } catch (error) {
+        console.error("Error adding trainer:", error);
+        alert('ไม่สามารถเพิ่ม Trainer ได้');
+      }
     } else {
       alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     }
@@ -100,7 +153,7 @@ const AdminTrainerM = () => {
   // Function to save changes after editing
   const handleSaveChanges = () => {
     const updatedTrainers = trainers.map((trainer) =>
-      trainer.id === selectedTrainer.id ? { ...selectedTrainer, programs: selectedPrograms } : trainer
+      trainer.id === selectedTrainer.id ? { ...selectedTrainer, specialization: selectedPrograms } : trainer
     );
     setTrainers(updatedTrainers);
     setFilteredTrainers(updatedTrainers);
@@ -188,8 +241,8 @@ const AdminTrainerM = () => {
               filteredTrainers.map((trainer) => (
                 <tr key={trainer.id}>
                   <td>{trainer.id}</td>
-                  <td>{`${trainer.firstName} ${trainer.lastName}`}</td>
-                  <td>{trainer.phone}</td>
+                  <td>{trainer.name}</td>
+                  <td>{trainer.phoneNumber}</td>
                   <td>{trainer.email}</td>
                   <td>
                     <button className="select-button-trainer" onClick={() => handleSelect(trainer)}>เลือก</button>
@@ -222,9 +275,9 @@ const AdminTrainerM = () => {
                 <div className="modal-details-trainer">
                   <p><strong>ชื่อ:</strong> {selectedTrainer.firstName}</p>
                   <p><strong>นามสกุล:</strong> {selectedTrainer.lastName}</p>
-                  <p><strong>เบอร์โทร:</strong> {selectedTrainer.phone}</p>
+                  <p><strong>เบอร์โทร:</strong> {selectedTrainer.phoneNumber}</p>
                   <p><strong>อีเมล:</strong> {selectedTrainer.email}</p>
-                  <p><strong>โปรแกรมที่ฝึกสอน:</strong> {selectedTrainer.programs.map(getProgramLabel).join(', ')}</p>
+                  <p><strong>โปรแกรมที่ฝึกสอน:</strong> {selectedTrainer.specialization}</p>
                 </div>
                 <div className="modal-buttons-trainer">
                   <button className="close-modal-button-trainer" onClick={handleCloseModal}>
@@ -282,12 +335,12 @@ const AdminTrainerM = () => {
                     </label>
                     <input
                       type="text"
-                      name="phone"
+                      name="phoneNumber"
                       placeholder="เบอร์โทร"
-                      value={isEditing ? selectedTrainer.phone : newTrainer.phone}
+                      value={isEditing ? selectedTrainer.phoneNumber : newTrainer.phoneNumber}
                       onChange={(e) => {
                         isEditing
-                          ? setSelectedTrainer({ ...selectedTrainer, phone: e.target.value })
+                          ? setSelectedTrainer({ ...selectedTrainer, phoneNumber: e.target.value })
                           : handleInputChange(e);
                       }}
                       className="modal-input-field-trainer"
@@ -305,6 +358,23 @@ const AdminTrainerM = () => {
                       onChange={(e) => {
                         isEditing
                           ? setSelectedTrainer({ ...selectedTrainer, email: e.target.value })
+                          : handleInputChange(e);
+                      }}
+                      className="modal-input-field-trainer"
+                    />
+                    </div>
+                    <div className="modal-input-group-trainer">
+                    <label htmlFor="firstName" className="modal-input-label-trainer">
+                    <strong>รหัสผ่าน:</strong>
+                    </label>
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="รหัสผ่าน"
+                      value={isEditing ? selectedTrainer.password : newTrainer.password}
+                      onChange={(e) => {
+                        isEditing
+                          ? setSelectedTrainer({ ...selectedTrainer, password: e.target.value })
                           : handleInputChange(e);
                       }}
                       className="modal-input-field-trainer"

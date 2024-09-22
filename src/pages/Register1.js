@@ -46,6 +46,7 @@ const Register1 = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
+      console.log('Form Data:', formData);
       navigate('/register2', { state: formData });
     }
   };

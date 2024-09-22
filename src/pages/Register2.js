@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import bcrypt from 'bcryptjs';
 import axios from 'axios';
 import './Register2.css';
 
@@ -12,10 +11,11 @@ const Register2 = () => {
     console.log(state);
 
     // ประกาศ formData และ setFormData
+    const fullName = state.firstName + ' ' + state.lastName;
     const [formData] = useState({
         firstName: state.firstName || '',
         lastName: state.lastName || '',
-        name: state.name || '',
+        name: fullName || '',
         email: state.email || '',
         password: state.password || '',
         phoneNumber: state.phoneNumber || '',
@@ -64,12 +64,11 @@ const Register2 = () => {
     const handleConfirm = async (e) => {
         e.preventDefault();
         try {
-            const hashedPassword = await bcrypt.hash(formData.password, 10);
             const inputData = {
                 name: formData.name,
                 phoneNumber: formData.phoneNumber,
                 email: formData.email,
-                password: hashedPassword,
+                password: formData.password,
                 memberType: formData.membershipType,
                 role: formData.role,
                 expireDate: getEXPdate()

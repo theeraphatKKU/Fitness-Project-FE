@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Register.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -50,18 +50,19 @@ const Register = () => {
 
           
           // Navigate to the next step or handle successful registration
+          console.log('Form Data:', combinedFormData);
           navigate('/register1', { state: combinedFormData });
 
-          const response = await axios.post('http://localhost:8080/api/auth/register', combinedFormData, {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
+          // const response = await axios.post('http://localhost:8080/api/auth/register', combinedFormData, {
+          //   headers: {
+          //     'Content-Type': 'application/json',
+          //   },
+          // });
     
-          console.log('Registration successful', response.data);
+          // console.log('Registration successful', response.data);
           
           // Navigate to the next step or handle successful registration
-          navigate('/register2', { state: combinedFormData });
+          // navigate('/register2', { state: combinedFormData });
 
     
         } catch (error) {
@@ -124,7 +125,7 @@ const Register = () => {
             <label>หมายเลขโทรศัพท์: *</label>
             <input
               type="tel"
-              name="phone"
+              name="phoneNumber"
               value={formData.phoneNumebr}
               onChange={handleInputChange}
               required

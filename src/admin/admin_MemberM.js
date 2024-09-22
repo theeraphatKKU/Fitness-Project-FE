@@ -28,6 +28,15 @@ const AdminMemberM = () => {
     };
   }, []);
 
+  // Format date to dd-mm-yyyy
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
 
   // Filter members based on search term when button is clicked
   const handleSearch = () => {
@@ -40,10 +49,33 @@ const AdminMemberM = () => {
     setMembers(results);
   };
 
-  // Open modal to show member details
-  const handleSelect = (member) => {
-    setSelectedMember(member);
-    setShowModal(true);
+  // Fetch detailed data for the selected member and split the name
+  const handleSelect = async (member) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/api/member/${member.id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      // Assume `response.data.name` contains the full name
+      const fullName = response.data.name;
+      
+      // Split the name into first and last name based on space
+      const [firstName, lastName] = fullName.split(' ');
+
+      // Update the selectedMember with the split name
+      setSelectedMember({
+        ...response.data,
+        firstName: firstName || '',
+        lastName: lastName || '',
+        expireDate: formatDate(response.data.expireDate),
+      });
+      
+      setShowModal(true); // Show the modal
+    } catch (error) {
+      console.error("Error fetching member details:", error);
+    }
   };
 
   // Close modal
@@ -52,13 +84,25 @@ const AdminMemberM = () => {
   };
 
   // Delete member with confirmation
-  const handleDeleteMember = () => {
-    if (window.confirm('คุณแน่ใจว่าต้องการลบสมาชิกนี้หรือไม่?')) {
-      alert('ลบข้อมูลสมาชิกเรียบร้อย');
-      setMembers(members.filter((member) => member !== selectedMember));
+const handleDeleteMember = async () => {
+  if (window.confirm('คุณแน่ใจว่าต้องการลบสมาชิกนี้หรือไม่?')) {
+    try {
+      await axios.delete(`http://localhost:8080/api/member/${selectedMember.id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      // Remove the deleted member from the local state
+      setMembers(members.filter((member) => member.id !== selectedMember.id)); // Update members list
       setShowModal(false);
+      alert('ลบข้อมูลสมาชิกเรียบร้อย');
+    } catch (error) {
+      console.error("Error deleting member:", error);
+      alert('ไม่สามารถลบสมาชิกได้');
     }
-  };
+  }
+};
 
   // Back to workspace
   const handleBack = () => {
@@ -145,8 +189,8 @@ const AdminMemberM = () => {
               <p><strong>นามสกุล:</strong> {selectedMember.lastName}</p>
               <p><strong>เบอร์โทรศัพท์:</strong> xxx-xxxx-xxx</p>
               <p><strong>อีเมล:</strong> {selectedMember.email}</p>
-              <p><strong>สถานะ:</strong> {selectedMember.status}</p>
-              <p><strong>ระยะเวลา:</strong> {selectedMember.membershipStart} - {selectedMember.membershipEnd}</p>
+              <p><strong>สถานะ:</strong> {selectedMember.memberType}</p>
+              <p><strong>วันหมดอายุของสมาชิก:</strong> {selectedMember.expireDate}</p>
             </div>
             <div className="modal-buttons-unique">
               <button className="close-modal-button-unique" onClick={handleCloseModal}>
