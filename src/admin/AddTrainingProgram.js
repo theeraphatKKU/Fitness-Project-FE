@@ -1,50 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './AddTrainingProgram.css';
+import axios from 'axios'
 
 
 const AddTrainingProgram = () => {
 
     const [programName, setProgramName] = useState('');
     const [programType, setProgramType] = useState('');
-    const [selectedDay, setSelectedDay] = useState('');
-    const [selectedTime, setSelectedTime] = useState('');
-    const [schedule, setSchedule] = useState([]);
-    const [selectedEntries, setSelectedEntries] = useState([]);
+
     const [description, setDescription] = useState('');
     const navigate = useNavigate();
-
-    const [sectionType, setSectionType] = useState('');  // ประกาศ state สำหรับ sectionType
-
-    const handleTimeChange = (e) => {
-        setSelectedTime(e.target.value);
-    };
-
-    const handleSelect = (entry) => {
-        setSelectedEntries(prevSelectedEntries => {
-            if (prevSelectedEntries.includes(entry)) {
-                return prevSelectedEntries.filter(e => e !== entry);
-            } else {
-                return [...prevSelectedEntries, entry];
-            }
-        });
-    };
-
-    const handleDeleteSelected = () => {
-        setSchedule(prevSchedule => prevSchedule.filter(entry => !selectedEntries.includes(entry)));
-        setSelectedEntries([]);  // เคลียร์การเลือกหลังจากลบ
-    };
-
-    React.useEffect(() => {
-        if (selectedDay && selectedTime) {
-            setSchedule(prevSchedule => [
-                ...prevSchedule.filter(entry => entry.day !== selectedDay || entry.time !== selectedTime),
-                { day: selectedDay, time: selectedTime }
-            ]);
-            setSelectedDay('');  // รีเซ็ตช่องเลือกวัน
-            setSelectedTime(''); // รีเซ็ตช่องเลือกเวลา
-        }
-    }, [selectedDay, selectedTime]);
 
     useEffect(() => {
         document.body.classList.add('memberM-page');
@@ -54,16 +20,32 @@ const AddTrainingProgram = () => {
         };
     }, []);
 
-    const handleSave = () => {
-        const newSection = {
+    const handleSave = async() => {
+        const newProgram = {
             programName,
-            schedule,
-            sectionType, // เพิ่ม sectionType ที่นี่
+            description,
+            programType
         };
+        try {  
+              const response = await axios.post('http://localhost:8080/api/programs', newProgram, {
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+        
+              // localStorage.setItem('token', response.data.accessToken);
+              // console.log('Stored token:', localStorage.getItem('token'));
+        
+              // Call the ok function if login is successful
+        
+            } catch (error) {
+              console.error('Error:', error);
+              // Handle error (show error message to the user, etc.)
+            }
 
-        let existingPrograms = JSON.parse(localStorage.getItem('trainingPrograms')) || [];
-        existingPrograms.push(newSection);
-        localStorage.setItem('trainingPrograms', JSON.stringify(existingPrograms));
+        // let existingPrograms = JSON.parse(localStorage.getItem('trainingPrograms')) || [];
+        // existingPrograms.push(newSection);
+        // localStorage.setItem('trainingPrograms', JSON.stringify(existingPrograms));
 
         navigate('/admin-training-section-management'); // Navigate back to Admin Program Management page
     };
@@ -102,7 +84,7 @@ const AddTrainingProgram = () => {
                 />
 
                 <label>ประเภท:</label>
-                <select value={sectionType} onChange={(e) => setSectionType(e.target.value)}>
+                <select value={programType} onChange={(e) => setProgramType(e.target.value)}>
                     <option value="">-- เลือกเซคชัน --</option>
                     <option value="กลุ่ม">กลุ่ม</option>
                     <option value="ส่วนตัว">ส่วนตัว</option>

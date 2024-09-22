@@ -44,10 +44,10 @@ function TrainerAvailability({ user }) {
 
                 // คุณสามารถอัปเดตรายการ trainers ได้ตาม response
                 setAvailable([...available, response.data]);
-                alert('เพิ่ม Trainer สำเร็จ');
+                alert('เพิ่มสำเร็จ');
             } catch (error) {
                 console.error("Error adding trainer:", error);
-                alert('ไม่สามารถเพิ่ม Trainer ได้');
+                alert('ไม่สามารถเพิ่มได้');
             }
         } else {
             alert('กรุณากรอกข้อมูลให้ครบถ้วน');

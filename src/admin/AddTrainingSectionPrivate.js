@@ -1,87 +1,112 @@
 import React, { useState, useEffect } from 'react'; 
 import { Link, useNavigate } from 'react-router-dom';
 import './AddTrainingProgram.css';
+import axios from 'axios';
 
 const AddTrainingSectionPrivate = () => {
-    const daysOfWeek = ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์', 'อาทิตย์'];
-    const timeSlots60 = ['08:00-09:00', '09:00-10:00', '10:00-11:00', '13:00-14:00', '14:00-15:00', '15:00-16:00'];
-    const timeSlots90 = ['08:00-09:30', '09:30-11:00', '13:00-14:30', '14:30-16:00'];
-
     const [programName, setProgramName] = useState('');
-    const [selectedDay, setSelectedDay] = useState('');
-    const [selectedTime, setSelectedTime] = useState('');
+    const [selectedSchedule, setSelectedSchedule] = useState('');
     const [schedule, setSchedule] = useState([]);
-    const [selectedEntries, setSelectedEntries] = useState([]);
-    const [groupPrograms, setGroupPrograms] = useState([]);
+    const [trainers, setTrainers] = useState([]); // Store trainers
+    const [selectedProgram, setSelectedProgram] = useState([]);
     const navigate = useNavigate();
 
-    // Load programs from localStorage and filter both group and private programs
+    // Load programs, trainers, and schedule data
     useEffect(() => {
-        const existingPrograms = JSON.parse(localStorage.getItem('trainingPrograms')) || [];
-        const filteredPrograms = existingPrograms.filter(program => program.type === 'ส่วนตัว');
-        setGroupPrograms(filteredPrograms);
-    }, []);
-    
-
-    const handleDayChange = (e) => {
-        setSelectedDay(e.target.value);
-    };
-
-    const handleTimeChange = (e) => {
-        setSelectedTime(e.target.value);
-    };
-
-    const handleSelect = (entry) => {
-        setSelectedEntries(prevSelectedEntries => {
-            if (prevSelectedEntries.includes(entry)) {
-                return prevSelectedEntries.filter(e => e !== entry);
-            } else {
-                return [...prevSelectedEntries, entry];
+        const fetchPrograms = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/programs', {
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                setSelectedProgram(response.data);
+            } catch (error) {
+                console.error('Error fetching programs:', error);
             }
-        });
-    };
-
-    const handleDeleteSelected = () => {
-        setSchedule(prevSchedule => prevSchedule.filter(entry => !selectedEntries.includes(entry)));
-        setSelectedEntries([]);  // Clear selections after deleting
-    };
-
-    useEffect(() => {
-        if (selectedDay && selectedTime) {
-            setSchedule(prevSchedule => [
-                ...prevSchedule.filter(entry => entry.day !== selectedDay || entry.time !== selectedTime),
-                { day: selectedDay, time: selectedTime }
-            ]);
-            setSelectedDay('');  // Reset day selection
-            setSelectedTime(''); // Reset time selection
-        }
-    }, [selectedDay, selectedTime]);
-
-    useEffect(() => {
-        document.body.classList.add('memberM-page');
-
-        return () => {
-            document.body.classList.remove('memberM-page');
         };
+
+        const fetchSchedule = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/schedule', {
+                    headers: { 'Content-Type': 'application/json' },
+                });
+
+                const combinedSchedule = response.data.map(entry => ({
+                    ...entry,
+                    combined: `${new Date(entry.sdate).toLocaleDateString('en-GB')} ${entry.startTime} - ${entry.endTime}`
+                }));
+
+                setSchedule(combinedSchedule);
+            } catch (error) {
+                console.error('Error fetching schedule:', error);
+            }
+        };
+
+        const fetchTrainers = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/trainer', {
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                setTrainers(response.data); // Store trainers
+            } catch (error) {
+                console.error('Error fetching trainers:', error);
+            }
+        };
+
+        fetchPrograms();
+        fetchSchedule();
+        fetchTrainers();
     }, []);
 
-    const handleSave = () => {
-        const newSection = {
-            programName,
-            schedule,
-            type: 'ส่วนตัว' // เพิ่มชนิดเป็นส่วนตัว
+    const handleScheduleChange = (e) => {
+        setSelectedSchedule(e.target.value);
+    };
+
+    const handleSave = async (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+
+        const selectedScheduleEntry = schedule.find(entry => entry.combined === selectedSchedule);
+
+        if (!selectedScheduleEntry) {
+            console.error('No matching schedule found for the selected date and time.');
+            return;
+        }
+
+        // Find the trainer based on availability
+        const trainer = trainers.find(trainer =>
+            trainer.available.some(available =>
+                new Date(available.sdate).toLocaleDateString('en-GB') === new Date(selectedScheduleEntry.sdate).toLocaleDateString('en-GB') &&
+                available.startTime === selectedScheduleEntry.startTime &&
+                available.endTime === selectedScheduleEntry.endTime
+            )
+        );
+
+        if (!trainer) {
+            console.error('No trainer available for the selected schedule.');
+            return;
+        }
+
+        const newSession = {
+            memberId: null, // Set this appropriately based on your application logic
+            trainer: trainer.id, // Use the found trainer's ID
+            schedule: selectedScheduleEntry.id, // Assuming the schedule ID is in the entry
+            status: "ว่าง",
+            program: selectedProgram.find(program => program.programName === programName)?.programId // Find the program ID by name
         };
 
-        let existingPrograms = JSON.parse(localStorage.getItem('trainingPrograms')) || [];
-        existingPrograms.push(newSection);
-        localStorage.setItem('trainingPrograms', JSON.stringify(existingPrograms));
+        try {
+            console.log(newSession)
+            const response = await axios.post('http://localhost:8080/api/session', newSession, {
+                headers: { 'Content-Type': 'application/json' },
+            });
+            console.log('Session created successfully:', response.data);
+        } catch (error) {
+            console.error('Error Posting Session:', error);
+        }
 
         navigate('/admin-training-section-management'); // Navigate back to Admin Program Management page
     };
 
-    const handleCancel = () => {
-        navigate('/admin-training-section-management');
-    };
+    const handleCancel = () => navigate('/admin-training-section-management');
 
     return (
         <div className="add-training-program-container">
@@ -102,14 +127,15 @@ const AddTrainingSectionPrivate = () => {
             <h1 className="add-training-program-title">Add Training Section</h1>
             <p className="add-training-program-subtitle">เพิ่มเซคชันการฝึกสอนแบบส่วนตัว</p>
 
-            {/* form */}
-            <div className="form-group-program">
-                <div><label>เลือกโปรแกรม:</label>
+            {/* Form */}
+            <form className="form-group-program" onSubmit={handleSave}>
+                <div>
+                    <label>เลือกโปรแกรม:</label>
                     <select value={programName} onChange={(e) => setProgramName(e.target.value)}>
                         <option value="">เลือกโปรแกรม</option>
-                        {groupPrograms.map(program => (
-                            <option key={program.id} value={program.name}>
-                                {program.name}
+                        {selectedProgram.map(program => (
+                            <option key={program.programId} value={program.programName}>
+                                {program.programName}
                             </option>
                         ))}
                     </select>
@@ -118,71 +144,22 @@ const AddTrainingSectionPrivate = () => {
                 <label>ตารางเวลา:</label>
                 <div className="time-selection-program">
                     <div>
-                        <label>วัน:</label>
-                        <select value={selectedDay} onChange={handleDayChange}>
-                            <option value="">เลือกวัน</option>
-                            {daysOfWeek.map((day, index) => (
-                                <option key={index} value={day}>
-                                    {day}
+                        <label>เลือกวันและเวลา:</label>
+                        <select value={selectedSchedule} onChange={handleScheduleChange}>
+                            <option value="">เลือกวันและเวลา</option>
+                            {schedule.map((entry, index) => (
+                                <option key={index} value={entry.combined}>
+                                    {entry.combined}
                                 </option>
                             ))}
                         </select>
                     </div>
-                    <div>
-                        <label>เวลา:</label>
-                        <select value={selectedTime} onChange={handleTimeChange}>
-                            <option value="">เลือกเวลา</option>
-                            <optgroup label="60 นาที">
-                                {timeSlots60.map((time, i) => (
-                                    <option key={i} value={time}>
-                                        {time}
-                                    </option>
-                                ))}
-                            </optgroup>
-                            <optgroup label="90 นาที">
-                                {timeSlots90.map((time, i) => (
-                                    <option key={i} value={time}>
-                                        {time}
-                                    </option>
-                                ))}
-                            </optgroup>
-                        </select>
-                    </div>
                 </div>
-                <div className="table-container-program">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>วัน</th>
-                                <th>เวลา</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {schedule.map((entry, index) => (
-                                <tr
-                                    key={index}
-                                    onClick={() => handleSelect(entry)}
-                                    style={{
-                                        cursor: 'pointer',
-                                        backgroundColor: selectedEntries.includes(entry) ? '#f0f0f0' : 'transparent'
-                                    }}
-                                >
-                                    <td>{entry.day}</td>
-                                    <td>{entry.time}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                <div className="button-container">
+                    <button type="submit" className="save-button">Save</button>
+                    <button type="button" onClick={handleCancel} className="cancel-button">Cancel</button>
                 </div>
-                <button className="delete-program" onClick={handleDeleteSelected} disabled={selectedEntries.length === 0}>
-                    ลบรายการที่เลือก
-                </button>
-            </div>
-
-            <div className="button-container">
-                <button onClick={handleSave} className="save-button">Save</button>
-                <button onClick={handleCancel} className="cancel-button">Cancel</button>
-            </div>
+            </form>
         </div>
     );
 };

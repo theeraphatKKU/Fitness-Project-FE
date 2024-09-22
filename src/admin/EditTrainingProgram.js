@@ -99,7 +99,7 @@ const EditTrainingProgram = () => {
             <p className="add-training-program-subtitle">แก้ไขโปรแกรมการฝึกอบรม</p>
 
             <div className="form-group-program">
-                <label>Image:</label>
+                {/* <label>Image:</label>
                 <input type="file" onChange={handleImageChange} />
                 {program.image && <img src={program.image} alt="Program" className="program-image" />}
                 
@@ -109,7 +109,7 @@ const EditTrainingProgram = () => {
                     name="programHName"
                     value={program.programHName}
                     onChange={handleInputChange}
-                />
+                /> */}
 
                 <label>ชื่อโปรแกรม:</label>
                 <input
