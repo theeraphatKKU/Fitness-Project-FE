@@ -67,12 +67,12 @@ return(
           <span> &gt; </span>
           <Link to="/admin-workspace" className="breadcrumb-link-programM">Workspace</Link>
           <span> &gt; </span>
-          <span className="breadcrumb-current-programM">Training Section Management</span>
+          <span className="breadcrumb-current-programM">Training Session Management</span>
         </div>
       </div>
       {/* Title */}
-      <h1 className="page-title-programM">Training section Management</h1>
-      <p className="page-subtitle-programM">จัดการเซคชันการฝึกสอน</p>
+      <h1 className="page-title-programM">Training Session Management</h1>
+      <p className="page-subtitle-programM">จัดการเซสชันการฝึกสอน</p>
 
       {/* Add Program Button */}
       <div className="add-program-container-program">
