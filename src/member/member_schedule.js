@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link,useLocation } from 'react-router-dom';
 import './member_schedule.css';
+import axios from 'axios';
 
-const MemberSchedule = () => {
+const MemberSchedule = ({user}) => {
     const location = useLocation();
     const [scheduleData, setScheduleData] = useState([]);
     const [selectedProgram, setSelectedProgram] = useState('');
     const [selectedTrainer, setSelectedTrainer] = useState('');
     const [selectedDate, setSelectedDate] = useState('');
+    const [session, setSession] = useState([]);
+    const [groupSession, setGroupSession] = useState([]);
+    const [allSession, setAllSession] = useState([]);
 
     useEffect(() => {
         document.body.classList.add('mcc-page');
@@ -19,24 +23,55 @@ const MemberSchedule = () => {
 
     useEffect(() => {
         // Parse query parameters
-        const params = new URLSearchParams(location.search);
-        const program = params.get('program');
-        const trainer = params.get('trainer');
-        const date = params.get('date');
+        // const params = new URLSearchParams(location.search);
+        // const program = params.get('program');
+        // const trainer = params.get('trainer');
+        // const date = params.get('date');
 
-        setSelectedProgram(program);
-        setSelectedTrainer(trainer);
-        setSelectedDate(date);
+        // setSelectedProgram(program);
+        // setSelectedTrainer(trainer);
+        // setSelectedDate(date);
 
         // Fetch or simulate fetching schedule data based on selected program and trainer
-        const data = [
-            { date: '2024-09-21', time: '08:00 - 09:00', activity: 'โปรแกรมสร้างกล้ามเนื้อ', status: 'กำลังดำเนินการ' },
-            { date: '2024-09-22', time: '10:00 - 11:00', activity: 'โปรแกรมลดน้ำหนักและกระชับสัดส่วน', status: 'จองแล้ว' },
-            { date: '2024-09-23', time: '13:00 - 14:00', activity: 'โปรแกรมสร้างกล้ามเนื้อ', status: 'ยกเลิก' },
-        ];
+        // const data = [
+        //     { date: '2024-09-21', time: '08:00 - 09:00', activity: 'โปรแกรมสร้างกล้ามเนื้อ', status: 'กำลังดำเนินการ' },
+        //     { date: '2024-09-22', time: '10:00 - 11:00', activity: 'โปรแกรมลดน้ำหนักและกระชับสัดส่วน', status: 'จองแล้ว' },
+        //     { date: '2024-09-23', time: '13:00 - 14:00', activity: 'โปรแกรมสร้างกล้ามเนื้อ', status: 'ยกเลิก' },
+        // ];
+        const fetchSession= async () =>{
+            try {
+                const response = await axios.get('http://localhost:8080/api/session', {
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                const filteredSession = response.data.filter(session => session.member.id === user.id);
+                setSession(filteredSession);
+            } catch (error) {
+                console.error('Error fetching programs:', error);
+            }
+        }
+        const fetchGroupSession= async () =>{
+            try {
+                const response = await axios.get('http://localhost:8080/api/groupsessions', {
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                const filteredSession = response.data.filter(session => 
+                    session.members.some(member => member.id === user.id)
+                );
+                setGroupSession(filteredSession);
+                
+            } catch (error) {
+                console.error('Error fetching programs:', error);
+            }
+        }  
+        fetchSession()
+        fetchGroupSession()
+    }, [user.id]);
 
-        setScheduleData(data);
-    }, [location.search]);
+    useEffect(() => {
+        if (session.length > 0 || groupSession.length > 0) {
+            setAllSession([...session, ...groupSession]);
+        }
+    }, [session, groupSession]);
 
     return (
         <div className="member-cancel-page">
@@ -72,12 +107,13 @@ const MemberSchedule = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {scheduleData.length > 0 ? (
-                            scheduleData.map((entry, index) => (
+                        {console.log(allSession)}
+                        {allSession.length > 0 ? (
+                            allSession.map((entry,index) => (
                                 <tr key={index}>
-                                    <td>{entry.date}</td>
-                                    <td>{entry.time}</td>
-                                    <td>{entry.activity}</td>
+                                    <td>{new Date(entry.dateSession.sdate).toLocaleDateString('th-TH')}</td>
+                                    <td>{entry.dateSession.startTime.substring(0,5)} - {entry.dateSession.endTime.substring(0,5)}</td>
+                                    <td>{entry.program.programName}</td>
                                     <td>{entry.status}</td>
                                 </tr>
                             ))

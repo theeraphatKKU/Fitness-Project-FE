@@ -119,14 +119,14 @@ function App() {
 
           {/* Member Pages */}
           <Route path="/member-booking" element={<MemberBooking user={user}/>} />
-          <Route path="/member-cancel" element={<MemberCancel />} />
+          <Route path="/member-cancel" element={<MemberCancel user={user}/>} />
           {/* <Route path="/member-changepass" element={<MemberChangePass />} /> */}
           {/* <Route path="/member-contactus" element={<MemberContactus />} /> */}
           <Route path="/member-editprofile" element={<MemberEditProfile />} />
           <Route path="/member-membership" element={<MemberMembership />} />
           <Route path="/member-profile" element={<MemberProfile />} />
           {/* <Route path="/member-program" element={<MemberProgram />} /> */}
-          <Route path="/member-schedule" element={<MemberSchedule />} />
+          <Route path="/member-schedule" element={<MemberSchedule user={user} />} />
           <Route path="/member-home" element={<MemberHome />} />
 
           {/* Optional: Add a route for 404 */}

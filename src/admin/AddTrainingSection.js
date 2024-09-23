@@ -38,7 +38,7 @@ const AddTrainingSection = () => {
                     ...entry,
                     combined: `${new Date(entry.sdate).toLocaleDateString('en-GB')} ${entry.startTime.substring(0, 5)} - ${entry.endTime.substring(0, 5)}`
                 }));
-                console.log(combinedSchedule)
+                // console.log(combinedSchedule)
                 const filteredSchedule = combinedSchedule.filter(schedule => schedule.status === 'ว่าง');
                 setSchedule(filteredSchedule);
             } catch (error) {
@@ -140,7 +140,7 @@ const AddTrainingSection = () => {
             console.log('Session created successfully:', response.data);
 
             // Update the dateSession status to "ไม่ว่าง"
-            console.log(selectedScheduleEntry)
+            // console.log(selectedScheduleEntry)
             await axios.put(`http://localhost:8080/api/schedule/${selectedScheduleEntry.id}`, {
                 ...selectedScheduleEntry,
                 status: "ไม่ว่าง" // Update the status to "ไม่ว่าง"
@@ -184,6 +184,7 @@ const AddTrainingSection = () => {
                     <label>เลือกโปรแกรม:</label>
                     <select value={programName} onChange={(e) => setProgramName(e.target.value)}>
                         <option value="">เลือกโปรแกรม</option>
+                        {console.log(selectedProgram)}
                         {selectedProgram.map(program => (
                             <option key={program.programId} value={program.programName}>
                                 {program.programName}

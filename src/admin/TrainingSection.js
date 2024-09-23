@@ -41,7 +41,7 @@ const TrainingSection = () => {
     }, []);
 
     useEffect(() => {
-      if (sessions.length > 0 && groupsession.length > 0) {
+      if (sessions.length > 0 || groupsession.length > 0) {
           setAllSession([...sessions, ...groupsession]);
       }
   }, [sessions, groupsession]);
@@ -125,8 +125,6 @@ return(
       </button>
       </div>
       <div className="program-list">
-        {console.log(sessions)}
-        {console.log(groupsession)}
         {console.log(allSession)}
         {allSession.length === 0 ? (
           <p>No training programs available.</p>
@@ -149,6 +147,7 @@ return(
                 <tr key={index}>
 
                   {/* Program Name */}
+                  {console.log(session)}
                   <td>{session.program.programName}</td>
 
                   {/* Program Type */}
