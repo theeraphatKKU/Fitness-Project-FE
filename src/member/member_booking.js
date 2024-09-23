@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './member_booking.css';
 
 const Booking = () => {
@@ -31,6 +32,17 @@ const Booking = () => {
         }
         fetchProgram()
         fetchTrainer()
+    }, []);
+
+            // Add or Remove class to body for styling the page
+    useEffect(() => {
+        // เพิ่มคลาส 'full-page-background' ให้กับ body เมื่อคอมโพเนนต์นี้ถูกแสดงผล
+        document.body.classList.add('full-page-background');
+
+        // ลบคลาสออกเมื่อคอมโพเนนต์นี้ถูกทำลาย
+        return () => {
+            document.body.classList.remove('full-page-background');
+        };
     }, []);
 
 
@@ -132,13 +144,25 @@ const Booking = () => {
     };
     
     return (
-        <div>
-            <nav className="breadcrumb-mbk">
-                <a href="#!">Home &gt; Membership &gt; Booking</a>
-            </nav>
+        <div className ="member-booking-page">
+            {/* Breadcrumb */}
+            <div className="wrap-breadcrumb">
+                <div className="breadcrumb-trainer">
+                    <Link to="/member-home" className="breadcrumb-link-trainer">Home</Link>
+                    <span> &gt; </span>
+                    <Link to="/member-membership" className="breadcrumb-link-trainer">Membership</Link>
+                    <span> &gt; </span>
+                    <span className="breadcrumb-current-trainer">Booking</span>
+                </div>
+            </div>
 
-            <div className="booking-container-mbk">
-                <h2>จองคลาสเรียน</h2>
+             {/* Title */}
+             <h1 className="page-title-trainer">Booking</h1>
+            <p className="page-subtitle-trainer">จองการฝึกสอนหรือใช้งาน</p>
+
+            {/* booking table */}
+            <main className="booking-container-mbk">
+                {/* <h2>จองคลาสเรียน</h2> */}
                 <p>กรุณาเลือกโปรแกรมและผู้ฝึกสอนที่ต้องการ</p>
 
                 <div className="form-group-mbk">
@@ -176,8 +200,8 @@ const Booking = () => {
                 </div>
 
                 <div className="form-actions-mbk">
-                    <button type="button" className="btn search" onClick={handleSearch}>ค้นหาเวลาเรียน</button>
-                    <button type="reset" className="btn cancel" onClick={() => { setSelectedProgram(''); setSelectedDate(''); setSelectedTrainer(''); setFilteredClasses([]); }}>ยกเลิก</button>
+                    <button type="button" className="btn-search-mbk" onClick={handleSearch}>ค้นหาเวลาเรียน</button>
+                    <button type="reset" className="btn-cancel-mbk" onClick={() => { setSelectedProgram(''); setSelectedDate(''); setSelectedTrainer(''); setFilteredClasses([]); }}>ยกเลิก</button>
                 </div>
 
                 {/* Class Time Selection */}
@@ -210,7 +234,7 @@ const Booking = () => {
                                 </span>
                             </td>
                             <td>
-                                <button className="btn select" onClick={() => handleSelectClass(cls)}>จอง</button>
+                                <button className="btn-select-mbk" onClick={() => handleSelectClass(cls)}>จอง</button>
                             </td>
                         </tr>
                     ))}
@@ -221,7 +245,7 @@ const Booking = () => {
     )}
 </div>
 
-            </div>
+            </main>
         </div>
     );
 };
