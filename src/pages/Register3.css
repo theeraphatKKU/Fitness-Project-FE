@@ -1,9 +1,8 @@
 /* Main container */
 .register3-container {
-    display: flex;
-    flex-direction: column;
+    border-radius: 10px;
     width: 80%;
-    margin: 50px auto;
+    margin: 150px auto;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #dcdcdc;

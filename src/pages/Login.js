@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; 
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ const Login = ({ getRole }) => {  // Destructure ok from props
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {  
+    try {
       const userData = {
         email,
         password
@@ -36,36 +36,38 @@ const Login = ({ getRole }) => {  // Destructure ok from props
   };
 
   return (
-    <div className="login-container">
-      <h2>ลงชื่อเข้าใช้</h2>
-      <form onSubmit={handleLogin}> {/* Call handleLogin here */}
-        <div className="input-group">
-          <label htmlFor="email">อีเมล</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="กรุณาใส่อีเมล"
-            required
-          />
+    <div className="flexx_v2">
+      <div className='login-container'>
+        <h2>ลงชื่อเข้าใช้</h2>
+        <form onSubmit={handleLogin}> {/* Call handleLogin here */}
+          <div className="input-group">
+            <label htmlFor="email">อีเมล</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="กรุณาใส่อีเมล"
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">รหัสผ่าน</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="กรุณาใส่รหัสผ่าน"
+              required
+            />
+          </div>
+          <button type="submit" className="login-button">เข้าสู่ระบบ</button>
+        </form>
+        <div className="login-links">
+          <p>หาคุณยังไม่สมัครสมาชิก <Link to="/register">สมัครสมาชิก</Link></p>
+          <p><Link to="/forgot-password">ลืมรหัสผ่าน?</Link></p>
         </div>
-        <div className="input-group">
-          <label htmlFor="password">รหัสผ่าน</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="กรุณาใส่รหัสผ่าน"
-            required
-          />
-        </div>
-        <button type="submit" className="login-button">เข้าสู่ระบบ</button>
-      </form>
-      <div className="login-links">
-        <p>หาคุณยังไม่สมัครสมาชิก <Link to="/register">สมัครสมาชิก</Link></p>
-        <p><Link to="/forgot-password">ลืมรหัสผ่าน?</Link></p>
       </div>
     </div>
   );

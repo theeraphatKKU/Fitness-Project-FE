@@ -1,7 +1,8 @@
 /* คอนเทนเนอร์หลัก */
 .register-container {
+  border-radius: 10px;
   width: 80%;
-  margin: 50px auto;
+  margin: 150px auto;
   padding: 20px;
   background-color: #fff;
   border: 1px solid #dcdcdc;
@@ -54,12 +55,12 @@ h1 {
 }
 
 .progress-bar-name {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    position: relative;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+}
 
 /* ฟอร์มใน 2 คอลัมน์ */
 .register-form {
@@ -70,11 +71,11 @@ h1 {
 
 .left-pane,
 .right-pane {
-    width: 48%;
-    padding: 20px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+  width: 48%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 5px;
 }
 
 /* ภาพ */
@@ -87,7 +88,8 @@ h1 {
 }
 
 
-.personal-info, .membership-info {
+.personal-info,
+.membership-info {
   width: 48%;
   padding: 20px;
   border: 1px solid #ddd;
@@ -95,7 +97,8 @@ h1 {
   border-radius: 5px;
 }
 
-.personal-info h2, .membership-info h2 {
+.personal-info h2,
+.membership-info h2 {
   font-size: 18px;
   margin-bottom: 20px;
 }
@@ -112,10 +115,10 @@ h1 {
   margin-bottom: 5px;
 }
 
-.form-group input[type="text"], 
-.form-group input[type="email"], 
-.form-group input[type="password"], 
-.form-group input[type="tel"], 
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"],
 .form-group input[type="date"] {
   width: 100%;
   padding: 10px;
@@ -125,11 +128,13 @@ h1 {
   width: calc(100% - 20px) !important;
 }
 
-.membership-options, .payment-options {
+.membership-options,
+.payment-options {
   margin-bottom: 20px;
 }
 
-.membership-options label, .payment-options label {
+.membership-options label,
+.payment-options label {
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -141,12 +146,13 @@ h1 {
   cursor: pointer;
 }
 
-.membership-options label input, .payment-options label input {
+.membership-options label input,
+.payment-options label input {
   margin-right: 10px;
 }
 
-.membership-options label input[type="radio"]:checked + span, 
-.payment-options label input[type="radio"]:checked + span {
+.membership-options label input[type="radio"]:checked+span,
+.payment-options label input[type="radio"]:checked+span {
   font-weight: bold;
   color: red;
 }
