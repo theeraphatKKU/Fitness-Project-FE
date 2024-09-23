@@ -4,15 +4,22 @@ import './TrainingSection.css';
 import axios from 'axios';
 const TrainingSection = () => {
     const [programs, setPrograms] = useState([]);
+    const [sessions, setSessions] = useState([]);
     const navigate = useNavigate();
   
     useEffect(() => {
-      // โหลดข้อมูลโปรแกรมจาก localStorage
-      const savedPrograms = JSON.parse(localStorage.getItem('trainingPrograms')) || [];
-      setPrograms(savedPrograms);
-    }, []);
-  
-    useEffect(() => {
+      const fetchSession = async () =>{
+        try {
+          const response = await axios.get('http://localhost:8080/api/session', {
+            headers: { 'Content-Type': 'application/json' },
+        });
+        console.log(response.data)
+        setSessions(response.data)
+        } catch (error) {
+          
+        }
+      }
+      fetchSession()
       document.body.classList.add('programM-page');
   
       return () => {
@@ -32,15 +39,25 @@ const TrainingSection = () => {
       navigate('/admin-training-edit', { state: { programIndex: index } });
     };
   
-    const handleDeleteProgram = (index) => {
+    const handleDeleteProgram = async (id) => {
+      console.log(id)
       const confirmDelete = window.confirm("Are you sure you want to delete this program?");
-      if (confirmDelete) {
-        let existingPrograms = JSON.parse(localStorage.getItem('trainingPrograms')) || [];
-        existingPrograms.splice(index, 1);
-        localStorage.setItem('trainingPrograms', JSON.stringify(existingPrograms));
-        setPrograms(existingPrograms);
+    if (confirmDelete) {
+      try {
+        await axios.delete(`http://localhost:8080/api/session/${id}`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        // setSessions(sessions.filter((program) => program.id !== id)); // Update programs list
+        alert('ลบข้อมูล Session เรียบร้อย');
+      } catch (error) {
+        console.error("Error deleting Session:", error);
+        alert('ไม่สามารถลบ Session ได้');
       }
-    };
+    }
+  };
 return(
       <div className="admin-ProgramM">
       {/* Breadcrumb */}
@@ -71,7 +88,7 @@ return(
       </button>
       </div>
       <div className="program-list">
-        {programs.length === 0 ? (
+        {sessions.length === 0 ? (
           <p>No training programs available.</p>
         ) : (
           <table>
@@ -79,6 +96,7 @@ return(
               <tr>
                 {/* <th>Image</th> */}
                 {/* <th>Program Name</th> */}
+                <th>Session ID</th>
                 <th>ชื่อโปรแกรม</th>
                 <th>ประเภท</th>
                 <th>ตารางเวลา</th>
@@ -87,29 +105,34 @@ return(
               </tr>
             </thead>
             <tbody>
-              {programs.map((program, index) => (
+              {sessions.map((session, index) => (
                 <tr key={index}>
-                  {/* <td><img src={program.image} alt="Program" style={{ maxWidth: '100px' }} /></td>
-                  <td>{program.programHName}</td> */}
-                  <td>{program.programName}</td>
-                  <td>{program.programType}</td>
+                  {/* Session ID */}
+                  <td>{session.sessionId}</td> {/* Displaying session ID */}
+
+                  {/* Program Name */}
+                  <td>{session.program.programName}</td>
+
+                  {/* Program Type */}
+                  <td>{session.program.programType}</td>
+
+                  {/* Schedule */}
                   <td>
-                    <ul>
-                      {program.schedule.map((entry, i) => (
-                        <li key={i}>{entry.day} {entry.time}</li>
-                      ))}
-                    </ul>
+                    {new Date(session.dateSession.sdate).toLocaleDateString('th-TH')}<br />
+                    {session.dateSession.startTime} - {session.dateSession.endTime}
                   </td>
-                  <td>{program.description}</td>
+
+                  {/* Description */}
+                  <td>{session.program.description}</td>
+
+                  {/* Actions */}
                   <td>
-                    <button onClick={() => handleEditProgram(index)}>Edit</button>
-                    <button className="delete" onClick={() => handleDeleteProgram(index)}>Delete</button>
+                    <button className="delete" onClick={() => handleDeleteProgram(session.sessionId)}>Delete</button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-
         )}
       </div>
     </div>   

@@ -18,7 +18,8 @@ const AddTrainingSectionPrivate = () => {
                 const response = await axios.get('http://localhost:8080/api/programs', {
                     headers: { 'Content-Type': 'application/json' },
                 });
-                setSelectedProgram(response.data);
+                const filteredPrograms = response.data.filter(program => program.programType === 'ส่วนตัว');
+                setSelectedProgram(filteredPrograms);
             } catch (error) {
                 console.error('Error fetching programs:', error);
             }
@@ -34,8 +35,9 @@ const AddTrainingSectionPrivate = () => {
                     ...entry,
                     combined: `${new Date(entry.sdate).toLocaleDateString('en-GB')} ${entry.startTime} - ${entry.endTime}`
                 }));
-
-                setSchedule(combinedSchedule);
+                console.log(combinedSchedule)
+                const filteredSchedule = combinedSchedule.filter(schedule => schedule.status === 'ว่าง');
+                setSchedule(filteredSchedule);
             } catch (error) {
                 console.error('Error fetching schedule:', error);
             }
@@ -88,19 +90,31 @@ const AddTrainingSectionPrivate = () => {
         const newSession = {
             memberId: null, // Set this appropriately based on your application logic
             trainer: trainer.id, // Use the found trainer's ID
-            schedule: selectedScheduleEntry.id, // Assuming the schedule ID is in the entry
+            dateSession: selectedScheduleEntry, // Assuming the schedule ID is in the entry
             status: "ว่าง",
             program: selectedProgram.find(program => program.programName === programName)?.programId // Find the program ID by name
         };
 
         try {
-            console.log(newSession)
+            // Create the new session
             const response = await axios.post('http://localhost:8080/api/session', newSession, {
                 headers: { 'Content-Type': 'application/json' },
             });
+
             console.log('Session created successfully:', response.data);
+
+            // Update the dateSession status to "ไม่ว่าง"
+            console.log(selectedScheduleEntry)
+            await axios.put(`http://localhost:8080/api/schedule/${selectedScheduleEntry.id}`, {
+                ...selectedScheduleEntry,
+                status: "ไม่ว่าง" // Update the status to "ไม่ว่าง"
+            }, {
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            console.log('Schedule status updated to "ไม่ว่าง"');
         } catch (error) {
-            console.error('Error Posting Session:', error);
+            console.error('Error Posting Session or updating schedule:', error);
         }
 
         navigate('/admin-training-section-management'); // Navigate back to Admin Program Management page

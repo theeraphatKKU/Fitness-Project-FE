@@ -32,7 +32,8 @@ function TrainerAvailability({ user }) {
                 sdate,
                 startTime,
                 endTime,
-                trainer
+                trainer,
+                status:"ว่าง"
             };
             console.log(newEntry)
             try {
