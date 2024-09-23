@@ -193,7 +193,7 @@ const AddTrainingSection = () => {
                     </select>
                 </div>
 
-                <label>ตารางเวลา:</label>
+                {/* <label>ตารางเวลา:</label> */}
                 <div className="time-selection-program">
                     <div>
                         <label>เลือกวันและเวลา:</label>

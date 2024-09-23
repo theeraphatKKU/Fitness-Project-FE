@@ -2,8 +2,9 @@ import React, { useState,useEffect } from 'react';
 
 import './TrainerSchedule.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-function TrainerSchedule() {
+function TrainerSchedule({user}) {
     const trainingPrograms_Group = [
         { day: 'วันอังคาร', time: '8:00 - 9:30 น.' },
         { day: 'วันพฤหัส', time: '9:30 - 11:00 น.' },
@@ -27,6 +28,7 @@ function TrainerSchedule() {
     const indexOfLastRow = currentPage * rowsPerPage;
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
     const currentRows = privateTraining.slice(indexOfFirstRow, indexOfLastRow);
+    const [session, setSessions] = useState([]);
 
     const handlePreviousPage = () => {
         if (currentPage > 1) {
@@ -71,6 +73,18 @@ function TrainerSchedule() {
     };
     
     useEffect(() => {
+        const fetchScheduleOfTrainer = async () =>{
+            try {
+                const response = await axios.get('http://localhost:8080/api/schedule', {
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                const filteredTrainer = response.data.filter(session => session.trainer.id === user);
+                setSessions(filteredTrainer);
+            } catch (error) {
+                console.error('Error fetching programs:', error);
+            }
+        } 
+        fetchScheduleOfTrainer()
         document.body.classList.add('tschedule-page');
     
         return () => {
@@ -96,10 +110,10 @@ function TrainerSchedule() {
             </div>
 
             <div className='contrainer'>
-                <h4>
+                {/* <h4>
                     โปรแกรมการสอนที่ได้รับผิดชอบ:
                     <span style={{ fontWeight: 'normal' }}> โปรแกรมสร้างกล้ามเนื้อ, โปรแกรมการฝึกสอนแบบส่วนตัว</span>
-                </h4>
+                </h4> */}
                 <h4>โปรแกรมการฝึกสอนกลุ่ม</h4>
                 <div className="GroupTable-trainer">
                     <table className="table">

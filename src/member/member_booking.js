@@ -50,7 +50,8 @@ const Booking = () => {
                 const matchesProgram = !selectedProgram || session.program?.programName === selectedProgram;
                 const matchesDate = !selectedDate || session.dateSession?.sdate.slice(0, 10) === selectedDate;
                 const matchesTrainer = !selectedTrainer || session.trainer?.name === selectedTrainer;
-                return matchesProgram && matchesDate && matchesTrainer;
+                const notReservered = session.status === "ว่าง";
+                return matchesProgram && matchesDate && matchesTrainer && notReservered;
             }).map(session => ({
                 programName: session.program ? session.program.programName : 'N/A',
                 trainerName: session.trainer ? session.trainer.name : 'N/A',
@@ -116,7 +117,7 @@ const Booking = () => {
         console.log(bookingDetails)
 
         try {
-            const response = await axios.put('http://10.153.55.214:8080/api/session/${sessionToBook.sessionId}', bookingDetails, {
+            const response = await axios.put('http://10.153.55.214:8080/api/session/'+sessionToBook.sessionId, bookingDetails, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -180,21 +181,44 @@ const Booking = () => {
                 </div>
 
                 {/* Class Time Selection */}
-                <div className="class-selection-mbk">
-                    <h3>เลือกเวลาเรียน:</h3>
-                    {filteredClasses.length > 0 ? (
-                        filteredClasses.map((cls, index) => (
-                            <div className="class-option" key={index}>
-                                <p>{new Date(cls.scheduleDate).toLocaleDateString('en-GB')} - {cls.programName} </p>
-                                <p>({cls.trainerName})</p>
-                                <p>{cls.startTime.substring(0, 5)} - {cls.endTime.substring(0, 5)}</p>
-                                <button className="btn select" onClick={() => handleSelectClass(cls)}>เลือก</button>
-                            </div>
-                        ))
-                    ) : (
-                        <p className="error-message">{error || 'เลือกโปรแกรมการฝึกสอน วันที่ หรือผู้ฝึกสอนเพื่อค้นหาเวลาเรียน'}</p>
-                    )}
-                </div>
+<div className="class-selection-mbk">
+    <h3>เลือกเวลาเรียน:</h3>
+    {filteredClasses.length > 0 ? (
+        <table className="class-table">
+            <thead>
+                <tr>
+                    <th>วันที่</th>
+                    <th>โปรแกรม</th>
+                    <th>ผู้ฝึกสอน</th>
+                    <th>เวลา</th>
+                    <th>สถานะ</th>
+                    <th>เลือก</th>
+                </tr>
+            </thead>
+            <tbody>
+                {filteredClasses.map((cls, index) => (
+                    <tr key={index}>
+                        <td>{new Date(cls.scheduleDate).toLocaleDateString('en-GB')}</td>
+                        <td>{cls.programName}</td>
+                        <td>{cls.trainerName}</td>
+                        <td>{cls.startTime.substring(0, 5)} - {cls.endTime.substring(0, 5)}</td>
+                        <td>
+                            <span className={"status-available"}>
+                                ว่าง
+                            </span>
+                        </td>
+                        <td>
+                            <button className="btn select" onClick={() => handleSelectClass(cls)}>เลือก</button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    ) : (
+        <p className="error-message">{error || 'เลือกโปรแกรมการฝึกสอน วันที่ หรือผู้ฝึกสอนเพื่อค้นหาเวลาเรียน'}</p>
+    )}
+</div>
+
             </div>
         </div>
     );

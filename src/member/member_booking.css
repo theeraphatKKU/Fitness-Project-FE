@@ -11,6 +11,10 @@ body {
     background-color: #eee;
     margin-bottom: 20px;
 }
+.status-available {
+    color: green;
+    font-weight: bold;
+}
 
 .breadcrumb-mbk a {
     color: #007BFF;

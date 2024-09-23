@@ -99,7 +99,7 @@ function App() {
           {/* Trainer Pages */}
           <Route path="/trainer-home" element={<TrainerHome />} />
           <Route path="/trainer-workspace" element={<TrainerWorkspace />} />
-          <Route path="/trainer-schedule" element={<TrainerSchedule />} />
+          <Route path="/trainer-schedule" element={<TrainerSchedule user={user}/>} />
           <Route path="/trainer-availability" element={<TrainerAvailability user={user}/>} />
           <Route path="/trainer-login" element={<TrainerLogin />} />
 

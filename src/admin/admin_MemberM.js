@@ -146,7 +146,7 @@ const handleDeleteMember = async () => {
             <tr>
               <th>memberId</th>
               <th>ชื่อ-นามสกุล</th>
-              <th>เบอร์โทร</th>
+              {/* <th>เบอร์โทร</th> */}
               <th>อีเมล</th>
               <th>ตัวเลือก</th>
             </tr>
@@ -157,7 +157,7 @@ const handleDeleteMember = async () => {
                 <tr key={member.id}>
                   <td>{member.id}</td>
                   <td>{member.name}</td>
-                  <td>{member.phoneNumber}</td>
+                  {/* <td>{member.phoneNumber}</td> */}
                   <td>{member.email}</td>
                   <td>
                     <button className="select-button-unique" onClick={() => handleSelect(member)}>
@@ -187,7 +187,7 @@ const handleDeleteMember = async () => {
             <div className="modal-details-unique">
               <p><strong>ชื่อ:</strong> {selectedMember.firstName}</p>
               <p><strong>นามสกุล:</strong> {selectedMember.lastName}</p>
-              <p><strong>เบอร์โทรศัพท์:</strong> xxx-xxxx-xxx</p>
+              <p><strong>เบอร์โทรศัพท์:</strong>{selectedMember.phoneNumber}</p>
               <p><strong>อีเมล:</strong> {selectedMember.email}</p>
               <p><strong>สถานะ:</strong> {selectedMember.memberType}</p>
               <p><strong>วันหมดอายุของสมาชิก:</strong> {selectedMember.expireDate}</p>
