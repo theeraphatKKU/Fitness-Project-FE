@@ -116,7 +116,7 @@ function TrainerSchedule({user}) {
                 </h4> */}
                 <h4>โปรแกรมการฝึกสอนกลุ่ม</h4>
                 <div className="GroupTable-trainer">
-                    <table className="table">
+                    <table className="table-ts">
                         <thead>
                             <tr>
                                 <th>โปรแกรม</th>
@@ -142,7 +142,7 @@ function TrainerSchedule({user}) {
 
                 <h4><br />โปรแกรมการฝึกสอนแบบส่วนตัว</h4>
                 <div className="PrivateTable-trainer">
-                    <table className="table">
+                    <table className="table-ts">
                         <thead>
                             <tr>
                                 <th>สมาชิก</th>

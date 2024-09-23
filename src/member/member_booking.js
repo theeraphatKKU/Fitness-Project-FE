@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './member_booking.css';
 
 const Booking = ({ user }) => {
@@ -33,6 +34,17 @@ const Booking = ({ user }) => {
         }
         fetchProgram()
         fetchTrainer()
+    }, []);
+
+            // Add or Remove class to body for styling the page
+    useEffect(() => {
+        // เพิ่มคลาส 'full-page-background' ให้กับ body เมื่อคอมโพเนนต์นี้ถูกแสดงผล
+        document.body.classList.add('full-page-background');
+
+        // ลบคลาสออกเมื่อคอมโพเนนต์นี้ถูกทำลาย
+        return () => {
+            document.body.classList.remove('full-page-background');
+        };
     }, []);
 
 
@@ -189,13 +201,25 @@ const Booking = ({ user }) => {
     };
 
     return (
-        <div>
-            <nav className="breadcrumb-mbk">
-                <a href="#!">Home &gt; Membership &gt; Booking</a>
-            </nav>
+        <div className ="member-booking-page">
+            {/* Breadcrumb */}
+            <div className="wrap-breadcrumb">
+                <div className="breadcrumb-trainer">
+                    <Link to="/member-home" className="breadcrumb-link-trainer">Home</Link>
+                    <span> &gt; </span>
+                    <Link to="/member-membership" className="breadcrumb-link-trainer">Membership</Link>
+                    <span> &gt; </span>
+                    <span className="breadcrumb-current-trainer">Booking</span>
+                </div>
+            </div>
 
-            <div className="booking-container-mbk">
-                <h2>จองคลาสเรียน</h2>
+             {/* Title */}
+             <h1 className="page-title-trainer">Booking</h1>
+            <p className="page-subtitle-trainer">จองการฝึกสอนหรือใช้งาน</p>
+
+            {/* booking table */}
+            <main className="booking-container-mbk">
+                {/* <h2>จองคลาสเรียน</h2> */}
                 <p>กรุณาเลือกโปรแกรมและผู้ฝึกสอนที่ต้องการ</p>
 
                 <div className="form-group-mbk">
@@ -233,52 +257,52 @@ const Booking = ({ user }) => {
                 </div>
 
                 <div className="form-actions-mbk">
-                    <button type="button" className="btn search" onClick={handleSearch}>ค้นหาเวลาเรียน</button>
-                    <button type="reset" className="btn cancel" onClick={() => { setSelectedProgram(''); setSelectedDate(''); setSelectedTrainer(''); setFilteredClasses([]); }}>ยกเลิก</button>
+                    <button type="button" className="btn-search-mbk" onClick={handleSearch}>ค้นหาเวลาเรียน</button>
+                    <button type="reset" className="btn-cancel-mbk" onClick={() => { setSelectedProgram(''); setSelectedDate(''); setSelectedTrainer(''); setFilteredClasses([]); }}>ยกเลิก</button>
                 </div>
 
                 {/* Class Time Selection */}
-                <div className="class-selection-mbk">
-                    <h3>เลือกเวลาเรียน:</h3>
-                    {filteredClasses.length > 0 ? (
-                        <table className="class-table">
-                            <thead>
-                                <tr>
-                                    <th>วันที่</th>
-                                    <th>เวลา</th>
-                                    <th>โปรแกรม</th>
-                                    <th>ผู้ฝึกสอน</th>
-                                    <th>สถานะ</th>
-                                    <th>เลือก</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filteredClasses
-                                    .sort((a, b) => new Date(a.scheduleDate) - new Date(b.scheduleDate)) // Sort by date
-                                    .map((cls, index) => (
-                                        <tr key={index}>
-                                            <td>{new Date(cls.scheduleDate).toLocaleDateString('en-GB')}</td>
-                                            <td>{cls.startTime.substring(0, 5)} - {cls.endTime.substring(0, 5)}</td>
-                                            <td>{cls.programName}</td>
-                                            <td>{cls.trainerName}</td>
-                                            <td>
-                                                <span className="status-available">
-                                                    ว่าง
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <button className="btn select" onClick={() => handleSelectClass(cls)}>จอง</button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                            </tbody>
-                        </table>
-                    ) : (
-                        <p className="error-message">{error || 'เลือกโปรแกรมการฝึกสอน วันที่ หรือผู้ฝึกสอนเพื่อค้นหาเวลาเรียน'}</p>
-                    )}
-                </div>
+<div className="class-selection-mbk">
+    <h3>เลือกเวลาเรียน:</h3>
+    {filteredClasses.length > 0 ? (
+        <table className="class-table">
+            <thead>
+                <tr>
+                    <th>วันที่</th>
+                    <th>เวลา</th>
+                    <th>โปรแกรม</th>
+                    <th>ผู้ฝึกสอน</th>
+                    <th>สถานะ</th>
+                    <th>เลือก</th>
+                </tr>
+            </thead>
+            <tbody>
+                {filteredClasses
+                    .sort((a, b) => new Date(a.scheduleDate) - new Date(b.scheduleDate)) // Sort by date
+                    .map((cls, index) => (
+                        <tr key={index}>
+                            <td>{new Date(cls.scheduleDate).toLocaleDateString('en-GB')}</td>
+                            <td>{cls.startTime.substring(0, 5)} - {cls.endTime.substring(0, 5)}</td>
+                            <td>{cls.programName}</td>
+                            <td>{cls.trainerName}</td>
+                            <td>
+                                <span className="status-available">
+                                    ว่าง
+                                </span>
+                            </td>
+                            <td>
+                                <button className="btn-select-mbk" onClick={() => handleSelectClass(cls)}>จอง</button>
+                            </td>
+                        </tr>
+                    ))}
+            </tbody>
+        </table>
+    ) : (
+        <p className="error-message">{error || 'เลือกโปรแกรมการฝึกสอน วันที่ หรือผู้ฝึกสอนเพื่อค้นหาเวลาเรียน'}</p>
+    )}
+</div>
 
-            </div>
+            </main>
         </div>
     );
 };
