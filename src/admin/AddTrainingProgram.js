@@ -47,7 +47,7 @@ const AddTrainingProgram = () => {
         // existingPrograms.push(newSection);
         // localStorage.setItem('trainingPrograms', JSON.stringify(existingPrograms));
 
-        navigate('/admin-training-section-management'); // Navigate back to Admin Program Management page
+        navigate('/admin-training-add'); // Navigate back to Admin Program Management page
     };
 
     const handleCancel = () => {
@@ -85,7 +85,7 @@ const AddTrainingProgram = () => {
 
                 <label>ประเภท:</label>
                 <select value={programType} onChange={(e) => setProgramType(e.target.value)}>
-                    <option value="">-- เลือกเซคชัน --</option>
+                    <option value="">-- เลือกประเภท --</option>
                     <option value="กลุ่ม">กลุ่ม</option>
                     <option value="ส่วนตัว">ส่วนตัว</option>
                 </select>

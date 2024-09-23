@@ -27,7 +27,22 @@ const Login = ({ getRole }) => {  // Destructure ok from props
       // Call the ok function if login is successful
       if (getRole) getRole(response.data);
 
-      navigate('/', { state: response.data });
+      const userRole = response.data; // ข้อมูล role ที่ได้รับจาก backend
+
+      // navigate('/', { state: response.data });
+
+      // ใช้ navigate ไปยังเส้นทางตาม role
+      if (userRole === 'admin') {
+        navigate('/admin-home');
+      } else if (userRole === 'trainer') {
+        navigate('/trainer-home');
+      } else if (userRole === 'member') {
+        navigate('/member-home');
+      } else {
+        // กรณีที่ไม่ทราบ role หรือ role เป็น public
+        navigate('/home');
+      }
+      
 
     } catch (error) {
       console.error('Error:', error);

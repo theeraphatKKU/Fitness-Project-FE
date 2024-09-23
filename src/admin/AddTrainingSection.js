@@ -170,13 +170,13 @@ const AddTrainingSection = () => {
                 <span> &gt; </span>
                 <Link to="/admin-training-section-management" className="breadcrumb-link-programM">Training Section Management</Link>
                 <span> &gt; </span>
-                <span className="breadcrumb-current-programM">Add Training Section</span>
+                <span className="breadcrumb-current-programM">Add Training Session</span>
                 </div>
             </div>
 
             {/* Title */}
-            <h1 className="add-training-program-title">Add Training Section</h1>
-            <p className="add-training-program-subtitle">เพิ่มเซคชันการฝึกสอนแบบกลุ่ม</p>
+            <h1 className="add-training-program-title">Add Training Session</h1>
+            <p className="add-training-program-subtitle">เพิ่มเซสชันการฝึกสอนแบบกลุ่ม</p>
 
             {/* Form */}
             <form className="form-group-program" onSubmit={handleSave}>
