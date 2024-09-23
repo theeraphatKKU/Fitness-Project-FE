@@ -14,8 +14,9 @@ const MemberCancel = ({user}) => {
                 const response = await axios.get('http://localhost:8080/api/session', {
                     headers: { 'Content-Type': 'application/json' },
                 });
-                const filteredSession = response.data.filter(session => session.member.id === user.id);
-                setSession(filteredSession);
+                const filteredSession = response.data && Array.isArray(response.data)
+                ? response.data.filter(session => session.member && session.member.id === user.id)
+                : null;                setSession(filteredSession);
             } catch (error) {
                 console.error('Error fetching programs:', error);
             }
@@ -25,9 +26,11 @@ const MemberCancel = ({user}) => {
                 const response = await axios.get('http://localhost:8080/api/groupsessions', {
                     headers: { 'Content-Type': 'application/json' },
                 });
-                const filteredSession = response.data.filter(session => 
-                    session.members.some(member => member.id === user.id)
-                );
+                const filteredSession = response.data && Array.isArray(response.data)
+            ? response.data.filter(session => 
+                session.members && session.members.some(member => member.id === user.id)
+              )
+            : [];
                 setGroupSession(filteredSession);
                 
             } catch (error) {
@@ -162,7 +165,8 @@ const MemberCancel = ({user}) => {
                                     <td>{new Date(reservation.dateSession.sdate).toLocaleDateString('th-TH')}</td>
                                     <td>{reservation.dateSession.startTime.substring(0,5)} - {reservation.dateSession.endTime.substring(0,5)}</td>
                                     <td>{reservation.program.programName}</td>
-                                    <td>{reservation.status}</td>
+                                    <td>จองแล้ว</td> 
+                                    {/* จองแล้วสำหรับมุมมองสมาชิกเท่านั้น  */}
                                     <td>
                                         <button className="cancel-button" onClick={() => handleCancel(reservation)}>
                                             ยกเลิก

@@ -42,9 +42,6 @@ function TrainerAvailability({ user }) {
                         'Content-Type': 'application/json',
                     },
                 });
-
-                // คุณสามารถอัปเดตรายการ trainers ได้ตาม response
-                setAvailable([...available, response.data]);
                 alert('เพิ่มสำเร็จ');
             } catch (error) {
                 console.error("Error adding trainer:", error);
@@ -71,7 +68,7 @@ function TrainerAvailability({ user }) {
         return () => {
             document.body.classList.remove('tAvailable-page');
         };
-    }, []);
+    }, [available]);
 
     return (
         <div className="Availability-container">

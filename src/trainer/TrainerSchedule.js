@@ -169,7 +169,7 @@ function TrainerSchedule({user}) {
                                     <td>{new Date(session.dateSession.sdate).toLocaleDateString('th-TH')}</td>
                                     <td>{session.dateSession.startTime.substring(0,5)} - {session.dateSession.endTime.substring(0,5)}</td>
                                     <td>{session.program.programName}</td>
-                                    <td>{session.member.name}</td>
+                                    <td>{session.member ? session.member.name : '-'}</td>
                                     {/* <td style={getStatusStyle(session.date, session.status)}>
                                         {getTrainingStatus(session.date, session.status)}
                                     </td> */}

@@ -285,9 +285,9 @@ const AdminTrainerM = () => {
                   <button className="delete-trainer-button-trainer" onClick={handleDeleteTrainer}>
                     ลบ Trainer
                   </button>
-                  <button className="edit-trainer-button-trainer" onClick={handleEditTrainer}>
+                  {/* <button className="edit-trainer-button-trainer" onClick={handleEditTrainer}>
                     แก้ไขข้อมูลส่วนตัว
-                  </button>
+                  </button> */}
                 </div>
               </>
             ) : (
