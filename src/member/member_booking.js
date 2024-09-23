@@ -1,20 +1,22 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './member_booking.css';
 
-const Booking = () => {
+const Booking = ({ user }) => {
     const [selectedProgram, setSelectedProgram] = useState('');
     const [selectedDate, setSelectedDate] = useState('');
     const [selectedTrainer, setSelectedTrainer] = useState('');
     const [error, setError] = useState('');
     const [filteredClasses, setFilteredClasses] = useState([]);
     const [programs, setPrograms] = useState([]);
-    const [trainers, setTrainers] = useState([])
-    const [sessions, setSessions] = useState([])
+    const [trainers, setTrainers] = useState([]);
+    const [sessions, setSessions] = useState([]);
+    const [groupsession, setGroupSession] = useState([]);
+    const [allSession, setAllSession] = useState([]);
 
     useEffect(() => {
         const fetchProgram = async () => {
-            const response = await axios.get('http://10.153.55.214:8080/api/programs', {
+            const response = await axios.get('http://localhost:8080/api/programs', {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -22,7 +24,7 @@ const Booking = () => {
             setPrograms(response.data)
         }
         const fetchTrainer = async () => {
-            const response = await axios.get('http://10.153.55.214:8080/api/trainer', {
+            const response = await axios.get('http://localhost:8080/api/trainer', {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -37,29 +39,41 @@ const Booking = () => {
     const handleSearch = async () => {
         try {
             const fetchSession = async () => {
-                const response = await axios.get('http://10.153.55.214:8080/api/session', {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            setSessions(response.data)
-        }
-        fetchSession();
-    
-            const filteredSessions = sessions.filter(session => {
+                const response = await axios.get('http://localhost:8080/api/session', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                setSessions(response.data)
+            }
+            const fetchGroupSession = async () => {
+                try {
+                    const response = await axios.get('http://localhost:8080/api/groupsessions', {
+                        headers: { 'Content-Type': 'application/json' },
+                    });
+                    setGroupSession(response.data)
+                } catch (error) {
+
+                }
+            }
+            fetchGroupSession();
+            fetchSession();
+
+            const filteredSessions = allSession.filter(session => {
                 const matchesProgram = !selectedProgram || session.program?.programName === selectedProgram;
                 const matchesDate = !selectedDate || session.dateSession?.sdate.slice(0, 10) === selectedDate;
                 const matchesTrainer = !selectedTrainer || session.trainer?.name === selectedTrainer;
                 const notReservered = session.status === "ว่าง";
                 return matchesProgram && matchesDate && matchesTrainer && notReservered;
             }).map(session => ({
+                type: session.program ? session.program.programType : 'N/A',
                 programName: session.program ? session.program.programName : 'N/A',
                 trainerName: session.trainer ? session.trainer.name : 'N/A',
                 scheduleDate: session.dateSession ? session.dateSession.sdate : 'N/A',
                 startTime: session.dateSession ? session.dateSession.startTime : 'N/A',
                 endTime: session.dateSession ? session.dateSession.endTime : 'N/A',
             }));
-            
+
             setFilteredClasses(filteredSessions);
             setError('');
         } catch (error) {
@@ -67,14 +81,20 @@ const Booking = () => {
             setError('เกิดข้อผิดพลาดในการดึงข้อมูลเวลาเรียน');
         }
     };
+    useEffect(() => {
+        if (sessions.length > 0 && groupsession.length > 0) {
+            setAllSession([...sessions, ...groupsession]);
+        }
+    }, [sessions, groupsession]);
+
     const findSessionToBook = (cls) => {
-        return sessions.find(session => {
+        return allSession.find(session => {
             const isProgramMatch = session.program?.programName === cls.programName;
             const isDateMatch = session.dateSession?.sdate === cls.scheduleDate;
             const isStartTimeMatch = session.dateSession?.startTime === cls.startTime;
             const isEndTimeMatch = session.dateSession?.endTime === cls.endTime;
             const isTrainerMatch = session.trainer?.name === cls.trainerName;
-    
+
             // Log comparisons for debugging
             console.log('Comparing session:', {
                 programMatch: isProgramMatch,
@@ -83,54 +103,91 @@ const Booking = () => {
                 endTimeMatch: isEndTimeMatch,
                 trainerMatch: isTrainerMatch,
             });
-    
+
             return isProgramMatch && isDateMatch && isStartTimeMatch && isEndTimeMatch && isTrainerMatch;
         });
     };
 
     const handleSelectClass = async (cls) => {
         console.log(cls)
-        
-        
+
+
         const sessionToBook = findSessionToBook(cls);
         console.log(sessionToBook)
         if (!sessionToBook) {
             setError('ไม่พบการจองที่ตรงกัน');
             return;
         }
-    
-        const bookingDetails = {
-            program: {
-                id: sessionToBook.program.programId // Assuming programId is available
-            },
-            dateSession: {
-                id: sessionToBook.dateSession.id // Assuming dateSession ID is available
-            },
-            trainer: {
-                id: sessionToBook.trainer.id // Assuming trainer ID is available
-            },
-            member: {
-                id: 11
-            },
-            status: "จองแล้ว"
-        };
-        console.log(bookingDetails)
+        const confirmReserve = window.confirm("Are you sure you want to Reserve this program?");
+        if (confirmReserve) {
+            if (cls.type == "ส่วนตัว") {
+                const bookingDetails = {
+                    program: {
+                        programId: sessionToBook.program.programId // Assuming programId is available
+                    },
+                    dateSession: {
+                        id: sessionToBook.dateSession.id // Assuming dateSession ID is available
+                    },
+                    trainer: {
+                        id: sessionToBook.trainer.id // Assuming trainer ID is available
+                    },
+                    member: {
+                        id: user.id
+                    },
+                    status: "จองแล้ว"
+                };
+                console.log(bookingDetails)
 
-        try {
-            const response = await axios.put('http://10.153.55.214:8080/api/session/'+sessionToBook.sessionId, bookingDetails, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-        
-            console.log('Booking successful:', response.data); // Check if this line runs
-        } catch (error) {
-            console.error('Error booking class:', error.response ? error.response.data : error.message);
-            setError('เกิดข้อผิดพลาดในการจองคลาส');
+                try {
+                    const response = await axios.put('http://localhost:8080/api/session/' + sessionToBook.sessionId, bookingDetails, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    alert('จอง Session เรียบร้อย');
+                } catch (error) {
+                    console.error("Error deleting Session:", error);
+                    alert('ไม่สามารถจอง Session ได้');
+                }
+            } if (cls.type == "กลุ่ม") {
+                const bookingDetails = {
+                    program: {
+                        programId: sessionToBook.program.programId // Assuming programId is available
+                    },
+                    dateSession: {
+                        id: sessionToBook.dateSession.id // Assuming dateSession ID is available
+                    },
+                    trainer: {
+                        id: sessionToBook.trainer.id // Assuming trainer ID is available
+                    },
+                    members: [
+                        {
+                            id: user.id
+                        }
+                    ],
+                    status: "ว่าง"
+                };
+                console.log(bookingDetails)
+
+                try {
+                    const response = await axios.put('http://localhost:8080/api/groupsessions/' + sessionToBook.sessionId, bookingDetails, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    alert('จอง Session เรียบร้อย');
+                } catch (error) {
+                    console.error("Error deleting Session:", error);
+                    alert('ไม่สามารถจอง Session ได้');
+                }
+            } else {
+                alert('ไม่สามารถจอง Session ได้');
+            }
         }
-        
     };
-    
+
     return (
         <div>
             <nav className="breadcrumb-mbk">
@@ -181,45 +238,45 @@ const Booking = () => {
                 </div>
 
                 {/* Class Time Selection */}
-<div className="class-selection-mbk">
-    <h3>เลือกเวลาเรียน:</h3>
-    {filteredClasses.length > 0 ? (
-        <table className="class-table">
-            <thead>
-                <tr>
-                    <th>วันที่</th>
-                    <th>เวลา</th>
-                    <th>โปรแกรม</th>
-                    <th>ผู้ฝึกสอน</th>
-                    <th>สถานะ</th>
-                    <th>เลือก</th>
-                </tr>
-            </thead>
-            <tbody>
-                {filteredClasses
-                    .sort((a, b) => new Date(a.scheduleDate) - new Date(b.scheduleDate)) // Sort by date
-                    .map((cls, index) => (
-                        <tr key={index}>
-                            <td>{new Date(cls.scheduleDate).toLocaleDateString('en-GB')}</td>
-                            <td>{cls.startTime.substring(0, 5)} - {cls.endTime.substring(0, 5)}</td>
-                            <td>{cls.programName}</td>
-                            <td>{cls.trainerName}</td>
-                            <td>
-                                <span className="status-available">
-                                    ว่าง
-                                </span>
-                            </td>
-                            <td>
-                                <button className="btn select" onClick={() => handleSelectClass(cls)}>จอง</button>
-                            </td>
-                        </tr>
-                    ))}
-            </tbody>
-        </table>
-    ) : (
-        <p className="error-message">{error || 'เลือกโปรแกรมการฝึกสอน วันที่ หรือผู้ฝึกสอนเพื่อค้นหาเวลาเรียน'}</p>
-    )}
-</div>
+                <div className="class-selection-mbk">
+                    <h3>เลือกเวลาเรียน:</h3>
+                    {filteredClasses.length > 0 ? (
+                        <table className="class-table">
+                            <thead>
+                                <tr>
+                                    <th>วันที่</th>
+                                    <th>เวลา</th>
+                                    <th>โปรแกรม</th>
+                                    <th>ผู้ฝึกสอน</th>
+                                    <th>สถานะ</th>
+                                    <th>เลือก</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredClasses
+                                    .sort((a, b) => new Date(a.scheduleDate) - new Date(b.scheduleDate)) // Sort by date
+                                    .map((cls, index) => (
+                                        <tr key={index}>
+                                            <td>{new Date(cls.scheduleDate).toLocaleDateString('en-GB')}</td>
+                                            <td>{cls.startTime.substring(0, 5)} - {cls.endTime.substring(0, 5)}</td>
+                                            <td>{cls.programName}</td>
+                                            <td>{cls.trainerName}</td>
+                                            <td>
+                                                <span className="status-available">
+                                                    ว่าง
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <button className="btn select" onClick={() => handleSelectClass(cls)}>จอง</button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <p className="error-message">{error || 'เลือกโปรแกรมการฝึกสอน วันที่ หรือผู้ฝึกสอนเพื่อค้นหาเวลาเรียน'}</p>
+                    )}
+                </div>
 
             </div>
         </div>

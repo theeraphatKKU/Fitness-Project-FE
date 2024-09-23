@@ -4,65 +4,45 @@ import './admin_ConfirmPayment.css';
 import axios from 'axios';
 
 const AdminConfirmPayment = () => {
-  useEffect(() => {
-    const fetch = async () => {
-      const response = await axios.get('http://localhost:8080/api/member/onlyuser', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      setPayments(response.data)
-    }
-    fetch()
-    document.body.classList.add('memberM-page');
+  const navigate = useNavigate(); 
 
+  // State to hold payment data from the backend
+  const [payments, setPayments] = useState([]);
+
+  // Fetch data on component mount
+  useEffect(() => {
+    const fetchPayments = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/member/onlyuser', {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setPayments(response.data);
+      } catch (error) {
+        console.error('Error fetching payments:', error);
+      }
+    };
+
+    fetchPayments();
+    
+    document.body.classList.add('memberM-page');
     return () => {
       document.body.classList.remove('memberM-page');
     };
   }, []);
 
-  const navigate = useNavigate(); 
-
   const getTotalAmount = (type) => {
     switch (type) {
-        case 'premium':
-            return '1550';
-        case 'basic':
-        default:
-            return '950';
+      case 'premium':
+        return '1550';
+      case 'basic':
+      default:
+        return '950';
     }
-};
+  };
 
-  // State เก็บข้อมูลการชำระเงินของสมาชิกที่รอการอนุมัติ
-  const [payments, setPayments] = useState([
-    {
-      id: 1,
-      name: 'สมใจ ใจดี',
-      package: 'แพ็คเกจสมาชิกธรรมดา',
-      total: 950,
-      paymentMethod: 'เงินสด',
-      approved: false,
-    },
-    {
-      id: 2,
-      name: 'สุดหล่อ หล่อสุด',
-      package: 'แพ็คเกจสมาชิกสุดคุ้ม',
-      total: 1555,
-      paymentMethod: 'เงินสด',
-      approved: false,
-    },
-  ]);
-
-    // ฟังก์ชันสำหรับการอนุมัติการชำระเงิน
-    // const handleApprove = (id) => {
-    //   setPayments((prevPayments) =>
-    //     prevPayments.map((payment) =>
-    //       payment.id === id ? { ...payment, approved: true } : payment
-    //     )
-    //   );
-    // };
-
-  // ฟังก์ชันสำหรับการอนุมัติการชำระเงิน และลบออกจาก state
+  // Function to handle approving payment
   const handleApprove = async (id) => {
     // ค้นหาสมาชิกที่มี id ตรงกันใน payments
     const approveM = payments.find(member => member.id === id);
@@ -75,6 +55,9 @@ const AdminConfirmPayment = () => {
     // กำหนด role ให้เป็น "MEMBER"
     approveM.role = 'MEMBER';
   
+    // Remove password from approveM object before sending it to the API
+    const { password, ...memberWithoutPassword } = approveM;
+  
     try {
       // เรียก back-end API เพื่ออัปเดตสมาชิก
       const response = await fetch(`http://localhost:8080/api/user/${id}`, {
@@ -82,7 +65,7 @@ const AdminConfirmPayment = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(approveM),
+        body: JSON.stringify(memberWithoutPassword), // Send without password
       });
   
       if (response.ok) {
@@ -95,10 +78,10 @@ const AdminConfirmPayment = () => {
     } catch (error) {
       console.error('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์:', error);
     }
-  };
-  
+};
 
-  // ฟังก์ชันสำหรับการกลับไปหน้า /admin-workspace
+
+  // Handle the back button to navigate to the workspace page
   const handleBack = () => {
     navigate('/admin-workspace');
   };
@@ -155,7 +138,7 @@ const AdminConfirmPayment = () => {
         </tbody>
       </table>
 
-      {/* ปุ่มกลับ */}
+      {/* Back button */}
       <div className="back-button-container">
         <button className="back-button" onClick={handleBack}>
           กลับ

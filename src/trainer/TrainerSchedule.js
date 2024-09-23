@@ -28,7 +28,7 @@ function TrainerSchedule({user}) {
     const indexOfLastRow = currentPage * rowsPerPage;
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
     const currentRows = privateTraining.slice(indexOfFirstRow, indexOfLastRow);
-    const [session, setSessions] = useState([]);
+    const [session, setSession] = useState([]);
 
     const handlePreviousPage = () => {
         if (currentPage > 1) {
@@ -79,7 +79,7 @@ function TrainerSchedule({user}) {
                     headers: { 'Content-Type': 'application/json' },
                 });
                 const filteredTrainer = response.data.filter(session => session.trainer.id === user);
-                setSessions(filteredTrainer);
+                setSession(filteredTrainer);
             } catch (error) {
                 console.error('Error fetching programs:', error);
             }
@@ -126,9 +126,9 @@ function TrainerSchedule({user}) {
                         </thead>
                         <tbody>
                             <tr>
-                                <td rowSpan={trainingPrograms_Group.length}>โปรแกรมสร้างกล้ามเนื้อ</td>
-                                <td>{trainingPrograms_Group[0].day}</td>
-                                <td>{trainingPrograms_Group[0].time}</td>
+                                <td rowSpan={session.length}>โปรแกรมสร้างกล้ามเนื้อ</td>
+                                <td>{session}</td>
+                                <td>{session}</td>
                             </tr>
                             {trainingPrograms_Group.slice(1).map((program, index) => (
                                 <tr key={index}>

@@ -118,7 +118,7 @@ function App() {
           <Route path="/admin-trainingS-addP" element={<AddTrainingSectionPrivate />} />
 
           {/* Member Pages */}
-          <Route path="/member-booking" element={<MemberBooking />} />
+          <Route path="/member-booking" element={<MemberBooking user={user}/>} />
           <Route path="/member-cancel" element={<MemberCancel />} />
           {/* <Route path="/member-changepass" element={<MemberChangePass />} /> */}
           {/* <Route path="/member-contactus" element={<MemberContactus />} /> */}

@@ -36,7 +36,7 @@ const AddTrainingSection = () => {
 
                 const combinedSchedule = response.data.map(entry => ({
                     ...entry,
-                    combined: `${new Date(entry.sdate).toLocaleDateString('en-GB')} ${entry.startTime} - ${entry.endTime}`
+                    combined: `${new Date(entry.sdate).toLocaleDateString('en-GB')} ${entry.startTime.substring(0, 5)} - ${entry.endTime.substring(0, 5)}`
                 }));
                 console.log(combinedSchedule)
                 const filteredSchedule = combinedSchedule.filter(schedule => schedule.status === 'ว่าง');
@@ -125,7 +125,6 @@ const AddTrainingSection = () => {
         }
 
         const newSession = {
-            memberId: null, // Set this appropriately based on your application logic
             trainer: trainer.id, // Use the found trainer's ID
             dateSession: selectedScheduleEntry, // Assuming the schedule ID is in the entry
             status: "ว่าง",
@@ -134,7 +133,7 @@ const AddTrainingSection = () => {
 
         try {
             // Create the new session
-            const response = await axios.post('http://localhost:8080/api/session', newSession, {
+            const response = await axios.post('http://localhost:8080/api/groupsessions', newSession, {
                 headers: { 'Content-Type': 'application/json' },
             });
 

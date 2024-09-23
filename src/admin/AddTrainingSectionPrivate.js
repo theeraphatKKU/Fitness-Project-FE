@@ -44,7 +44,7 @@ const AddTrainingSectionPrivate = () => {
 
                 const combinedSchedule = response.data.map(entry => ({
                     ...entry,
-                    combined: `${new Date(entry.sdate).toLocaleDateString('en-GB')} ${entry.startTime} - ${entry.endTime}`
+                    combined: `${new Date(entry.sdate).toLocaleDateString('en-GB')} ${entry.startTime.substring(0, 5)} - ${entry.endTime.substring(0, 5)}`
                 }));
                 console.log(combinedSchedule)
                 const filteredSchedule = combinedSchedule.filter(schedule => schedule.status === 'ว่าง');
