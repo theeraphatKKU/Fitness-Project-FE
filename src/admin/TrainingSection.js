@@ -115,13 +115,13 @@ return(
       <div className="add-program-container-program">
         <button className="add-program-button-program" onClick={handleAddProgramP}>
         <img src="https://cdn-icons-png.freepik.com/512/5974/5974633.png" alt="Add Icon" className="add-program-icon" />
-        เพิ่มเซคชันการฝึกสอนแบบส่วนตัว
+        เพิ่มเซสชันการฝึกสอนแบบส่วนตัว
       </button>
       </div>
       <div className="add-program-container-program">
         <button className="add-program-button-program" onClick={handleAddProgram}>
         <img src="https://cdn-icons-png.freepik.com/512/5974/5974633.png" alt="Add Icon" className="add-program-icon" />
-        เพิ่มเซคชันการฝึกสอนแบบกลุ่ม
+        เพิ่มเซสชันการฝึกสอนแบบกลุ่ม
       </button>
       </div>
       <div className="program-list">

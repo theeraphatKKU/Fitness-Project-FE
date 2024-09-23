@@ -126,7 +126,7 @@ function TrainerSchedule({user}) {
                 {/* Group Training Programs */}
                 <h4>โปรแกรมการฝึกสอนกลุ่ม</h4>
                 <div className="GroupTable-trainer">
-                    <table className="table">
+                    <table className="table-ts">
                         <thead>
                             <tr>
                                 <th>โปรแกรม</th>
