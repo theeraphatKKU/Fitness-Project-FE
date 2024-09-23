@@ -188,30 +188,32 @@ const Booking = () => {
             <thead>
                 <tr>
                     <th>วันที่</th>
+                    <th>เวลา</th>
                     <th>โปรแกรม</th>
                     <th>ผู้ฝึกสอน</th>
-                    <th>เวลา</th>
                     <th>สถานะ</th>
                     <th>เลือก</th>
                 </tr>
             </thead>
             <tbody>
-                {filteredClasses.map((cls, index) => (
-                    <tr key={index}>
-                        <td>{new Date(cls.scheduleDate).toLocaleDateString('en-GB')}</td>
-                        <td>{cls.programName}</td>
-                        <td>{cls.trainerName}</td>
-                        <td>{cls.startTime.substring(0, 5)} - {cls.endTime.substring(0, 5)}</td>
-                        <td>
-                            <span className={"status-available"}>
-                                ว่าง
-                            </span>
-                        </td>
-                        <td>
-                            <button className="btn select" onClick={() => handleSelectClass(cls)}>เลือก</button>
-                        </td>
-                    </tr>
-                ))}
+                {filteredClasses
+                    .sort((a, b) => new Date(a.scheduleDate) - new Date(b.scheduleDate)) // Sort by date
+                    .map((cls, index) => (
+                        <tr key={index}>
+                            <td>{new Date(cls.scheduleDate).toLocaleDateString('en-GB')}</td>
+                            <td>{cls.startTime.substring(0, 5)} - {cls.endTime.substring(0, 5)}</td>
+                            <td>{cls.programName}</td>
+                            <td>{cls.trainerName}</td>
+                            <td>
+                                <span className="status-available">
+                                    ว่าง
+                                </span>
+                            </td>
+                            <td>
+                                <button className="btn select" onClick={() => handleSelectClass(cls)}>จอง</button>
+                            </td>
+                        </tr>
+                    ))}
             </tbody>
         </table>
     ) : (
