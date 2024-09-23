@@ -6,24 +6,24 @@ body {
     background-color: #f9f9f9;
 }
 
-.breadcrumb {
+.breadcrumb-mbk {
     padding: 10px;
     background-color: #eee;
     margin-bottom: 20px;
 }
 
-.breadcrumb a {
+.breadcrumb-mbk a {
     color: #007BFF;
     text-decoration: none;
     font-size: 14px;
 }
 
-.breadcrumb a:hover {
+.breadcrumb-mbk a:hover {
     text-decoration: underline;
 }
 
 /* Booking Form Container */
-.booking-container {
+.booking-container-mbk {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -40,7 +40,7 @@ h2 {
 }
 
 /* Form elements styles */
-.form-group {
+.form-group-mbk {
     margin-bottom: 20px;
     text-align: left;
 }
@@ -66,7 +66,7 @@ select, input[type="date"], input[type="text"] {
 }
 
 /* Buttons */
-button {
+button-mbk {
     padding: 10px 20px;
     font-size: 14px;
     background-color: #007BFF;
@@ -76,7 +76,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button-mbk:hover {
     background-color: #0056b3;
 }
 

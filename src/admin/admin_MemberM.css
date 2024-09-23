@@ -98,15 +98,16 @@ label {
   border-collapse: collapse; /* รวมเส้นขอบระหว่างเซลล์ */
 }
 
-.member-table-unique th, .member-table-unique td {
+.member-table-unique thead th, .member-table-unique tbody td {
   border: 1px solid #ddd; /* เส้นขอบของเซลล์ */
   padding: 12px;
   text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
   width: 20%; /* ความกว้างของแต่ละคอลัมน์ */
 }
 
-.member-table-unique th {
-  background-color: #f4f4f4; /* สีพื้นหลังของหัวตาราง */
+.member-table-unique thead th {
+  background-color: #f1f1f1;
+  color: #333;
   font-weight: bold;
 }
 

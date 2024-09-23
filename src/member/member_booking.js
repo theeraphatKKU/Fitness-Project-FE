@@ -132,15 +132,15 @@ const Booking = () => {
     
     return (
         <div>
-            <nav className="breadcrumb">
+            <nav className="breadcrumb-mbk">
                 <a href="#!">Home &gt; Membership &gt; Booking</a>
             </nav>
 
-            <div className="booking-container">
+            <div className="booking-container-mbk">
                 <h2>จองคลาสเรียน</h2>
                 <p>กรุณาเลือกโปรแกรมและผู้ฝึกสอนที่ต้องการ</p>
 
-                <div className="form-group">
+                <div className="form-group-mbk">
                     <label htmlFor="program">โปรแกรมการฝึกสอน:</label>
                     <select id="program" value={selectedProgram} onChange={(e) => setSelectedProgram(e.target.value)}>
                         <option value="">-- เลือกโปรแกรม --</option>
@@ -152,7 +152,7 @@ const Booking = () => {
                     </select>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-mbk">
                     <label htmlFor="bookingDate">วันที่ต้องการจอง:</label>
                     <input
                         type="date"
@@ -162,7 +162,7 @@ const Booking = () => {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group-mbk">
                     <label htmlFor="trainer">ผู้ฝึกสอน:</label>
                     <select id="trainer" value={selectedTrainer} onChange={(e) => setSelectedTrainer(e.target.value)}>
                         <option value="">-- เลือกผู้ฝึกสอน --</option>
@@ -174,13 +174,13 @@ const Booking = () => {
                     </select>
                 </div>
 
-                <div className="form-actions">
+                <div className="form-actions-mbk">
                     <button type="button" className="btn search" onClick={handleSearch}>ค้นหาเวลาเรียน</button>
                     <button type="reset" className="btn cancel" onClick={() => { setSelectedProgram(''); setSelectedDate(''); setSelectedTrainer(''); setFilteredClasses([]); }}>ยกเลิก</button>
                 </div>
 
                 {/* Class Time Selection */}
-                <div className="class-selection">
+                <div className="class-selection-mbk">
                     <h3>เลือกเวลาเรียน:</h3>
                     {filteredClasses.length > 0 ? (
                         filteredClasses.map((cls, index) => (

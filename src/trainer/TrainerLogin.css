@@ -25,6 +25,7 @@ body {
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* เปลี่ยนเงา */
   border-radius: 15px; /* ปรับมุมโค้ง */
   transition: transform 0.3s ease-in-out;
+  margin-top: 40px;
   
 }
 
@@ -94,10 +95,15 @@ body {
   height: 20px;
 }
 
+.edit-button-tl a {
+  text-decoration: none;
+}
+
 .edit-button-tl .edit-tl span {
   color: #333333;
   font-size: 18px;
   font-weight: 400;
+  text-decoration: none;
 }
 
 .information-tl {
