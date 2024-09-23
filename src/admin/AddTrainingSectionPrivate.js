@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { Link, useNavigate } from 'react-router-dom';
-import './AddTrainingProgram.css';
+import './AddTrainingSectionPrivate.css';
 import axios from 'axios';
 
 const AddTrainingSectionPrivate = () => {
@@ -10,6 +10,17 @@ const AddTrainingSectionPrivate = () => {
     const [trainers, setTrainers] = useState([]); // Store trainers
     const [selectedProgram, setSelectedProgram] = useState([]);
     const navigate = useNavigate();
+
+        // Add or Remove class to body for styling the page
+    useEffect(() => {
+        // เพิ่มคลาส 'full-page-background' ให้กับ body เมื่อคอมโพเนนต์นี้ถูกแสดงผล
+        document.body.classList.add('full-page-background');
+
+        // ลบคลาสออกเมื่อคอมโพเนนต์นี้ถูกทำลาย
+        return () => {
+            document.body.classList.remove('full-page-background');
+        };
+    }, []);
 
     // Load programs, trainers, and schedule data
     useEffect(() => {
@@ -41,6 +52,7 @@ const AddTrainingSectionPrivate = () => {
             } catch (error) {
                 console.error('Error fetching schedule:', error);
             }
+            
         };
 
         const fetchTrainers = async () => {
@@ -155,7 +167,7 @@ const AddTrainingSectionPrivate = () => {
                     </select>
                 </div>
 
-                <label>ตารางเวลา:</label>
+                {/* <label>ตารางเวลา:</label> */}
                 <div className="time-selection-program">
                     <div>
                         <label>เลือกวันและเวลา:</label>
