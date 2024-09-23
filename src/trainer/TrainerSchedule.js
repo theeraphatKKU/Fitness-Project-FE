@@ -28,6 +28,7 @@ function TrainerSchedule({user}) {
     const indexOfLastRow = currentPage * rowsPerPage;
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
     const currentRows = privateTraining.slice(indexOfFirstRow, indexOfLastRow);
+    const [groupSession, setGroupSession] = useState([]);
     const [session, setSession] = useState([]);
 
     const handlePreviousPage = () => {
@@ -73,24 +74,36 @@ function TrainerSchedule({user}) {
     };
     
     useEffect(() => {
-        const fetchScheduleOfTrainer = async () =>{
+        const fetchSession= async () =>{
             try {
-                const response = await axios.get('http://localhost:8080/api/schedule', {
+                const response = await axios.get('http://localhost:8080/api/session', {
                     headers: { 'Content-Type': 'application/json' },
                 });
-                const filteredTrainer = response.data.filter(session => session.trainer.id === user);
+                const filteredTrainer = response.data.filter(session => session.trainer.id === user.id);
                 setSession(filteredTrainer);
             } catch (error) {
                 console.error('Error fetching programs:', error);
             }
         } 
-        fetchScheduleOfTrainer()
+        const fetchGroupSession = async () =>{
+            try {
+                const response = await axios.get('http://localhost:8080/api/groupsessions', {
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                const filteredTrainer = response.data.filter(session => session.trainer.id === user.id);
+                setGroupSession(filteredTrainer);
+            } catch (error) {
+                console.error('Error fetching programs:', error);
+            }
+        }
+        fetchSession()
+        fetchGroupSession()
         document.body.classList.add('tschedule-page');
     
         return () => {
           document.body.classList.remove('tschedule-page');
         };
-      }, []);
+      }, [user.id]);
 
     return (
         <div className='TrainerSchedule-container'>
@@ -110,13 +123,10 @@ function TrainerSchedule({user}) {
             </div>
 
             <div className='contrainer'>
-                {/* <h4>
-                    โปรแกรมการสอนที่ได้รับผิดชอบ:
-                    <span style={{ fontWeight: 'normal' }}> โปรแกรมสร้างกล้ามเนื้อ, โปรแกรมการฝึกสอนแบบส่วนตัว</span>
-                </h4> */}
+                {/* Group Training Programs */}
                 <h4>โปรแกรมการฝึกสอนกลุ่ม</h4>
                 <div className="GroupTable-trainer">
-                    <table className="table-ts">
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th>โปรแกรม</th>
@@ -125,17 +135,19 @@ function TrainerSchedule({user}) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td rowSpan={session.length}>โปรแกรมสร้างกล้ามเนื้อ</td>
-                                <td>{session}</td>
-                                <td>{session}</td>
-                            </tr>
-                            {trainingPrograms_Group.slice(1).map((program, index) => (
-                                <tr key={index}>
-                                    <td>{program.day}</td>
-                                    <td>{program.time}</td>
+                            {groupSession.length > 0 ? (
+                                groupSession.map((groupSession, index) => (
+                                    <tr key={index}>
+                                        <td>{groupSession.program.programName}</td>
+                                        <td>{new Date(groupSession.dateSession.sdate).toLocaleDateString('th-TH')}</td>
+                                        <td>{groupSession.dateSession.startTime.substring(0,5)} - {groupSession.dateSession.endTime.substring(0,5)}</td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="3">No Group Sessions Available</td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </table>
                 </div>
@@ -145,23 +157,22 @@ function TrainerSchedule({user}) {
                     <table className="table-ts">
                         <thead>
                             <tr>
-                                <th>สมาชิก</th>
                                 <th>วันที่</th>
                                 <th>ระยะเวลา</th>
                                 <th>โปรแกรมการฝึกสอน</th>
-                                <th>สถานะ</th>
+                                <th>สมาชิก</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {currentRows.map((session, index) => (
+                            {session.map((session, index) => (
                                 <tr key={index}>
-                                    <td>{session.member}</td>
-                                    <td>{session.date}</td>
-                                    <td>{session.duration}</td>
-                                    <td>{session.program}</td>
-                                    <td style={getStatusStyle(session.date, session.status)}>
+                                    <td>{new Date(session.dateSession.sdate).toLocaleDateString('th-TH')}</td>
+                                    <td>{session.dateSession.startTime.substring(0,5)} - {session.dateSession.endTime.substring(0,5)}</td>
+                                    <td>{session.program.programName}</td>
+                                    <td>{session.member.name}</td>
+                                    {/* <td style={getStatusStyle(session.date, session.status)}>
                                         {getTrainingStatus(session.date, session.status)}
-                                    </td>
+                                    </td> */}
                                 </tr>
                             ))}
                         </tbody>
