@@ -1,14 +1,23 @@
-/* src/pages/public/Login.css */
+
+.flexx_v2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .login-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-  }
+  width: 100%;
+  max-width: 400px;
+  margin: 100px auto; /* เพิ่มช่องว่างบนและล่าง */
+  padding: 20px;
+  background-color: #f4f4f4;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  
+}
+
   
   h2 {
     margin-bottom: 20px;
@@ -26,12 +35,13 @@
   }
   
   .input-group input {
-    width: 100%;
+    width: calc(100% - 20px) !important; /* ลดความกว้างลง 20px */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
+    margin: 0 auto; /* จัดกลาง input */
+}
   
   .login-button {
     width: 100%;

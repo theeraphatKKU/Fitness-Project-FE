@@ -1,11 +1,117 @@
-.contactUs-container{
+.contactUs-container {
     flex: 1 1;
-    font-size: 32px;
+    font-size: 18px;
     font-family: 'Inria Serif', serif;
     font-weight: 300;
     color: black;
-    background: #EEEEEE;
+    /* background: #EEEEEE; */
     padding: 40px;
-    margin-right: 20px;
-    text-align: center;
+    /* margin-right: 20px; */
+    text-align: left;
+    /* border-radius: 8px; */
+    /* background-image: linear-gradient(180deg,white ,#333); */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
 }
+
+.wrap-breadcrumb{
+    padding-left: 20px;
+}
+
+.contact-breadcrumb {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.breadcrumb-link {
+    color: #716564;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb-link:hover {
+    /* text-decoration: underline; */
+    color: #000;
+}
+
+.breadcrumb-current {
+    color: #333;
+    text-decoration: underline;
+}
+
+.contact-title {
+    font-size: 50px;
+    color: #ffffff;
+    font-family: 'Inria Serif', serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contact-subtitle {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.contact-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-weight: 400;
+}
+
+.contact-details {
+    margin-bottom: 20px;
+}
+
+.contact-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contact-text {
+    color: #333;
+    font-size: 16px;
+}
+
+/* Resize the images */
+.phone-image,
+.Line-image,
+.fb-image {
+    width: 20px; /* Adjust this size if needed */
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* .contact-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap: 10px;
+}
+
+.contact-item i {
+    font-size: 20px;
+}
+
+.fa-phone {
+    color: #25D366; 
+}
+
+.fa-line {
+    color: #00c300;
+}
+
+.fa-facebook {
+    color: #3b5998; 
+} */

@@ -1,0 +1,210 @@
+/* General page layout and container settings */
+/* body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+} */
+
+.member-booking-page {
+    padding: 40px;
+}
+
+.breadcrumb-mbk {
+    padding: 10px;
+    background-color: #eee;
+    margin-bottom: 20px;
+}
+.status-available {
+    color: rgb(0, 207, 0);
+    font-weight: bold;
+}
+
+.breadcrumb-mbk a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.breadcrumb-mbk a:hover {
+    text-decoration: underline;
+}
+
+/* Booking Form Container */
+.booking-container-mbk {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 100px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form elements styles */
+.form-group-mbk {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.booking-container-mbk select,
+.booking-container-mbk input[type="date"],
+.booking-container-mbk input[type="text"] {
+    width: 100%;
+    max-width: 400px; /* กำหนดขนาดสูงสุดให้ dropdown เท่ากัน */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+/* Buttons */
+button-mbk {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button-mbk:hover {
+    background-color: #0056b3;
+}
+
+/* Cancel and Submit button styles */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-cancel-mbk,.btn-search-mbk {
+    width: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-select-mbk {
+    width: 50px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #505cff;
+    color: whitesmoke;
+}
+
+.btn-select-mbk:hover {
+    background-color: #353dab;
+}
+
+.btn-cancel-mbk {
+    background-color: #333;
+    color: white;
+    margin-left: 20px; /* เพิ่มระยะห่างด้านขวาของปุ่ม Cancel */
+}
+
+.btn-search-mbk {
+    background-color: #333;
+    color: white;
+}
+
+.btn-cancel-mbk:hover {
+    background-color: black;
+}
+
+.btn-search-mbk:hover {
+    background-color: black;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Class Times Table */
+.class-time-container {
+    margin-top: 20px;
+}
+
+.class-time-header {
+    font-weight: bold;
+    text-align: left;
+}
+
+.class-time-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.class-time-table td, .class-time-table th {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.class-time-table th {
+    background-color: #f2f2f2;
+}
+
+.class-time-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.class-time-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.class-time-button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer and miscellaneous styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .booking-container {
+        padding: 10px;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

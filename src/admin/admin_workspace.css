@@ -1,0 +1,103 @@
+body {
+    font-family: "Noto Sans Thai", sans-serif !important;
+}
+
+.admin-workspace-container {
+    padding: 40px;
+    /* text-align: center; */
+}
+
+.wrap-breadcrumb {
+    padding-left: 20px;
+}
+
+.admin-breadcrumb {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.breadcrumb-link {
+    color: #716564;
+    text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+    color: #000;
+}
+
+.breadcrumb-current {
+    color: #333;
+    text-decoration: underline;
+}
+
+.admin-title {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Inria Serif', serif;
+    color: #fff;
+}
+
+.admin-subtitle {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Admin Card Layout (Vertical and Centered) */
+.admin-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Centering the cards */
+    justify-content: center;
+}
+
+.admin-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: 500px; /* Ensures all cards have the same width */
+    max-width: 100%; /* Responsive width */
+    min-height: 150px; /* Ensures all cards have the same height */
+}
+
+.admin-card:hover {
+    transform: scale(1.05);
+}
+
+.admin-card img {
+    max-width: 80px;
+    margin-right: 20px;
+}
+
+.admin-card-text h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+.admin-card-text p {
+    font-size: 16px;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .admin-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .admin-card img {
+        margin-bottom: 10px;
+    }
+}

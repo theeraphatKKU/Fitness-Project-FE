@@ -1,0 +1,342 @@
+body.tAvailable-page {
+  background: #ffffff !important;
+}
+
+/* Breadcrumb (แถบการนำทาง) */
+.wrap-breadcrumb {
+  margin-bottom: 20px;
+}
+
+.breadcrumb-tav {
+  font-size: 14px;
+  color: #716564;
+  font-weight: bold;
+}
+
+.breadcrumb-link-tav {
+  color: #716564;
+  text-decoration: none;
+}
+
+.breadcrumb-link-tav:hover {
+  color: #000;
+}
+
+.breadcrumb-current-tav {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* Page Title (หัวข้อหลักของหน้า) */
+.page-title-tav {
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'Inria Serif', serif;
+
+}
+
+/* Subtitle (หัวข้อรอง) */
+.page-subtitle-tav {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* .TrainerAvailability-breadcrumb{
+  font-size: 14px;
+  color: #716564;
+  padding: 0.1px;
+  font-weight: bold;
+  
+}
+
+.breadcrumb-link {
+  color: #716564;
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  color: #000;
+}
+
+.breadcrumb-current {
+  color: #333;
+  text-decoration: underline;
+} */
+
+
+.Availability-container {
+  padding: 40px;
+  margin-right: 20px;
+  max-width: 95%;
+}
+
+.Availability-contrainer2 {
+  padding: 20px 80px;
+  margin-right: 20px;
+}
+
+
+.form-Availability {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+form input[type="date"],
+form input[type="time"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  width: 99%;
+}
+
+form input[type="date"]::placeholder,
+form input[type="time"]::placeholder {
+  color: #bbb;
+}
+
+
+/* ปรับแต่งคอนเทนเนอร์ของปุ่ม */
+.buttonSC-Availability {
+  display: flex; /* จัดปุ่มในแนวนอน */
+  justify-content: flex-end; /* จัดปุ่มให้ชิดขวา */
+  align-items: flex-start; /* จัดให้อยู่ด้านบน */
+  gap: 15px; /* ระยะห่างระหว่างปุ่ม */
+  margin: 10px 0; /* ระยะห่างจากคอนเทนเนอร์ด้านบนและล่าง */
+  padding: 0; /* ยกเลิก padding */
+  margin-left: auto; /* ดันปุ่มไปทางขวา */
+  margin-right: 20px; /* ปรับระยะห่างจากขอบขวา */
+}
+
+/* ปรับแต่งปุ่มยกเลิก */
+.btc-Availability {
+  padding: 10px 20px; /* ขนาดของปุ่ม */
+  font-size: 16px; /* ขนาดตัวอักษร */
+  background-color: #333; /* สีพื้นหลังปุ่มยกเลิก */
+  color: #fff; /* สีตัวอักษร */
+  /* border: 1px solid #f5c6cb;  */
+  /* ขอบสีชมพูอ่อน */
+  cursor: pointer; /* เคอร์เซอร์รูปมือ */
+  /* transition: all 0.3s ease;  */
+  /* การเปลี่ยนแปลงเมื่อ hover */
+  margin: 0; /* ยกเลิก margin */
+  border-radius: 5px; /* ขอบโค้งของปุ่ม */
+}
+
+/* ปรับแต่งปุ่มบันทึก */
+.bts-Availability {
+  padding: 10px 20px; /* ขนาดของปุ่ม */
+  font-size: 16px; /* ขนาดตัวอักษร */
+  background-color: #333; /* สีพื้นหลังปุ่มบันทึก */
+  color: #fff; /* สีตัวอักษร */
+  /* border: 1px solid #c3e6cb;  */
+  /* ขอบสีเขียวอ่อน */
+  cursor: pointer; /* เคอร์เซอร์รูปมือ */
+  /* transition: all 0.3s ease;  */
+  /* การเปลี่ยนแปลงเมื่อ hover */
+  margin: 0; /* ยกเลิก margin */
+  border-radius: 5px; /* ขอบโค้งของปุ่ม */
+}
+
+/* เมื่อเลื่อนเมาส์ไปที่ปุ่มยกเลิก */
+.btc-Availability:hover {
+  background-color: #111; 
+  /* เปลี่ยนสีพื้นหลัง */
+  /* color: #a71d2a;  */
+  /* เปลี่ยนสีตัวอักษร */
+  transform: scale(1.05); /* ขยายขนาดเล็กน้อย */
+}
+
+/* เมื่อเลื่อนเมาส์ไปที่ปุ่มบันทึก */
+.bts-Availability:hover {
+  background-color: #111; /* เปลี่ยนสีพื้นหลัง */
+  /* color: #0b2e13;  */
+  /* เปลี่ยนสีตัวอักษร */
+  transform: scale(1.05); /* ขยายขนาดเล็กน้อย */
+}
+
+/* เมื่อปุ่มถูกกด */
+.btc-Availability:active,
+.bts-Availability:active {
+  transform: scale(0.98); /* ลดขนาดเล็กน้อยเมื่อคลิก */
+}
+
+/* ทำให้ข้อความใน select อยู่ชิดซ้าย */
+.program-Availability select {
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+.form-detail-Availability {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 6px;
+}
+
+
+.Program-training-Availability {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.program-box-Availability {
+  width: 99%;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+select {
+  width: 100%; 
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  cursor: pointer; 
+  border: 1px solid #333;
+}
+
+
+select::placeholder {
+  font-size: 16px; 
+  color: #888; 
+  
+}
+
+.program-Availability input {
+  width: 99%;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+
+.select-date-Availability {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.click-date-Availability input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #555;
+}
+
+
+.select-time-Availability {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.click-time-Availability {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.click-time-Availability input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  width: 150px;
+}
+
+.click-time-Availability span {
+  margin: 0 10px;
+}
+
+.click-time-Availability label {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #555;
+}
+
+.saved-entries-Availability{
+  
+.table-Availability {
+
+  width: 102.5%;
+  border-collapse: collapse;
+
+
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  text-align: left;
+  table-layout: fixed;
+
+
+}
+.table-Availability th {
+
+  background-color: #f5f5f5;
+
+  border: 1px solid #ddd;
+  color: #333;
+
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  width: 33%;
+
+}
+
+.table-Availability td {
+
+  border: 1px solid #ddd;
+
+  padding: 10px;
+  vertical-align: middle;
+
+  text-align: center;
+}
+
+
+.table-Availability td[rowspan] {
+  font-weight: bold;
+  background-color: #ffffff;
+
+}
+
+
+
+
+.overflow-x-auto {
+  overflow-x: auto;
+
+  margin-top: 20px;
+}
+
+
+.table-Availability td,
+.table-Availability th {
+  font-size: 16px;
+  word-wrap: break-word;
+
+}
+}

@@ -1,0 +1,102 @@
+body {
+  font-family: "Noto Sans Thai", sans-serif !important;
+}
+
+.TrainerWorkspace-container {
+  padding: 40px;
+}
+
+.wrap-breadcrumb {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.admin-breadcrumb {
+  font-size: 14px;
+  color: #716564;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.breadcrumb-link {
+  color: #716564;
+  text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+  color: #000;
+}
+
+.breadcrumb-current {
+  color: #333;
+  text-decoration: underline;
+}
+
+.admin-title {
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'Inria Serif', serif;
+}
+
+.admin-subtitle {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* Trainer Card Layout (เหมือนกับ admin) */
+.admin-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center; /* Centering the cards */
+  justify-content: center;
+}
+
+.admin-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  width: 500px; /* กำหนดความกว้างการ์ด */
+  max-width: 100%; /* ความกว้าง responsive */
+  min-height: 150px; /* ความสูงขั้นต่ำ */
+}
+
+.admin-card:hover {
+  transform: scale(1.05);
+}
+
+.admin-card img {
+  max-width: 80px;
+  margin-right: 20px;
+}
+
+.admin-card-text h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+.admin-card-text p {
+  font-size: 16px;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .admin-card {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .admin-card img {
+      margin-bottom: 10px;
+  }
+}

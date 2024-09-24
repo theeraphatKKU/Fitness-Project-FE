@@ -1,0 +1,171 @@
+body {
+    font-family: "Noto Sans Thai", sans-serif !important;
+}
+
+body.programM-page {
+    background: #ffffff !important;
+  }
+
+
+  
+.program-management-breadcrumb {
+    font-size: 14px;
+    color: #716564 ;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .breadcrumb-link-programM {
+    color: #716564;
+    text-decoration: none;
+  }
+  
+  .breadcrumb-link-programM:hover {
+    color: #000;
+  }
+  
+  .breadcrumb-current-programM {
+    color: #333;
+    text-decoration: underline;
+  }
+
+/* Page Title (หัวข้อหลักของหน้า) */
+.page-title-programM {
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Inria Serif', serif; /* ใช้ฟอนต์สำหรับหัวข้อ */
+    padding-left: 20px;
+    color: #000;
+  }
+  
+  /* Subtitle (หัวข้อรอง) */
+  .page-subtitle-programM {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+    padding-left: 20px;
+  }
+
+  /* ปุ่มเพิ่มprogram */
+  .add-program-container-program {
+    display: flex;
+    justify-content: center; /* จัดกลางในแนวนอน */
+    margin-top: 40px; /* ระยะห่างด้านบน */
+    margin-bottom: 40px; /* ระยะห่างด้านล่าง */
+}
+
+.add-program-button-program {
+    padding: 20px 20px;
+    background-color: #f1f1f1 !important;
+    color: black !important;
+    border: 2px solid #ddd !important; /* เพิ่มกรอบที่มีความกว้าง 2px และสีเป็นสีฟ้า */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center; /* จัดกลางในแนวตั้ง */
+    gap: 8px; /* เว้นระยะระหว่างไอคอนกับข้อความ */
+    font-size: 16px; /* ขนาดฟอนต์สำหรับข้อความ */
+}
+
+
+.add-program-icon {
+    width: 16px; /* ขนาดของไอคอน */
+    height: 16px; /* ขนาดของไอคอน */
+}
+
+.add-program-button-program:hover {
+    background-color: #c4ffce !important;
+}
+
+/*  */
+
+.admin-ProgramM {
+    padding: 40px;
+    margin-bottom: 20px;
+}
+
+.admin-ProgramM h1 {
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Inria Serif', serif;
+    margin-bottom: 20px;
+}
+
+.admin-ProgramM button {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.admin-ProgramM button:hover {
+    background-color: #e0a800;
+}
+
+.program-list {
+    margin-top: 20px;
+}
+
+.program-list p {
+    font-size: 18px;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+td img {
+    max-width: 100px;
+    height: auto;
+}
+
+button.edit {
+    background-color: #ffc107;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button.edit:hover {
+    background-color: #e0a800;
+}
+
+button.delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button.delete:hover {
+    background-color: #c82333;
+}
