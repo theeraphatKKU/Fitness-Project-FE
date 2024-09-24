@@ -122,9 +122,9 @@ function App() {
           <Route path="/member-cancel" element={<MemberCancel user={user}/>} />
           {/* <Route path="/member-changepass" element={<MemberChangePass />} /> */}
           {/* <Route path="/member-contactus" element={<MemberContactus />} /> */}
-          <Route path="/member-editprofile" element={<MemberEditProfile />} />
+          <Route path="/member-editprofile" element={<MemberEditProfile user={user}/>} />
           <Route path="/member-membership" element={<MemberMembership />} />
-          <Route path="/member-profile" element={<MemberProfile />} />
+          <Route path="/member-profile" element={<MemberProfile user={user}/>} />
           {/* <Route path="/member-program" element={<MemberProgram />} /> */}
           <Route path="/member-schedule" element={<MemberSchedule user={user} />} />
           <Route path="/member-home" element={<MemberHome />} />

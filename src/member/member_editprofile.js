@@ -1,16 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import axios from 'axios'; // Import axios
 import './member_editprofile.css';
 
-function MemberEditProfile() {
+function MemberEditProfile({ user }) { // Accept user prop to get user ID
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [profileData, setProfileData] = useState({}); // State for profile data
 
     const navigate = useNavigate(); // Initialize useNavigate for redirection
 
-    const handleSave = (e) => {
+    // Fetch existing profile data on component mount
+    useEffect(() => {
+        const fetchProfileData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/member/${user.id}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+            setProfileData(response.data)
+            } catch (error) {
+                console.error('Error fetching profile data:', error);
+                setErrorMessage('ไม่สามารถดึงข้อมูลโปรไฟล์ได้ โปรดลองอีกครั้ง');
+            }
+        };
+
+        fetchProfileData();
+    }, [user.id]); // Only re-run the effect if user.id changes
+
+    const handleSave = async (e) => {
         e.preventDefault(); // Prevent default form submission
 
         // Check if any field is empty
@@ -19,14 +40,31 @@ function MemberEditProfile() {
             return;
         }
 
-        // Simulate saving data (you can replace with actual API call)
-        console.log('Saving:', { firstName, lastName, phoneNumber });
+        // Prepare the updated profile data
+        const updatedProfileData = {
+            ...profileData,
+            name: `${firstName} ${lastName}`,
+            phoneNumber,
+        };
 
-        // Clear the error message after successful save
-        setErrorMessage('');
+        try {
+            console.log(updatedProfileData)
+            // Send a PUT request to update the profile data
+            await axios.put(`http://localhost:8080/api/member/${user.id}`, updatedProfileData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
 
-        // Navigate to member profile page after successful save
-        navigate('/member-profile');
+            // Clear the error message after successful save
+            setErrorMessage('');
+
+            // Navigate to member profile page after successful save
+            navigate('/member-profile');
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            setErrorMessage('ไม่สามารถบันทึกข้อมูลได้ โปรดลองอีกครั้ง');
+        }
     };
 
     const handleCancel = () => {
