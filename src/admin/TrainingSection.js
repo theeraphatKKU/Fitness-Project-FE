@@ -42,9 +42,27 @@ const TrainingSection = () => {
 
     useEffect(() => {
       if (sessions.length > 0 || groupsession.length > 0) {
-          setAllSession([...sessions, ...groupsession]);
+        // Merge sessions and groupsession into allSession
+        const mergedSessions = [...sessions, ...groupsession];
+
+        // Sort by sdate first and then by startTime
+        mergedSessions.sort((a, b) => {
+          const dateA = new Date(a.dateSession.sdate);
+          const dateB = new Date(b.dateSession.sdate);
+
+          if (dateA < dateB) return -1;
+          if (dateA > dateB) return 1;
+
+          // If dates are the same, sort by startTime
+          const timeA = a.dateSession.startTime;
+          const timeB = b.dateSession.startTime;
+
+          return timeA.localeCompare(timeB);
+        });
+
+        setAllSession(mergedSessions);
       }
-  }, [sessions, groupsession]);
+    }, [sessions, groupsession]);
   
     const handleAddProgram = () => {
       navigate('/admin-trainingS-add');

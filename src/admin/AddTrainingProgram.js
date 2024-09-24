@@ -33,21 +33,15 @@ const AddTrainingProgram = () => {
                 },
               });
         
-              // localStorage.setItem('token', response.data.accessToken);
-              // console.log('Stored token:', localStorage.getItem('token'));
-        
               // Call the ok function if login is successful
-        
+              alert("เพิ่มโปรแกรมสำเร็จ")
             } catch (error) {
               console.error('Error:', error);
+              alert("ไม่สามารถเพิ่มโปรแกรมได้")
               // Handle error (show error message to the user, etc.)
             }
 
-        // let existingPrograms = JSON.parse(localStorage.getItem('trainingPrograms')) || [];
-        // existingPrograms.push(newSection);
-        // localStorage.setItem('trainingPrograms', JSON.stringify(existingPrograms));
-
-        navigate('/admin-training-add'); // Navigate back to Admin Program Management page
+        navigate('/admin-training-program-management'); // Navigate back to Admin Program Management page
     };
 
     const handleCancel = () => {

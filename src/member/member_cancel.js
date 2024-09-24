@@ -3,67 +3,82 @@ import { Link } from 'react-router-dom';
 import './member_cancel.css';
 import axios from 'axios';
 
-
-const MemberCancel = ({user}) => {
-    const [session, setSession] = useState([]);
-    const [groupSession, setGroupSession] = useState([]);
+const MemberCancel = ({ user }) => {
+    const [sessions, setSession] = useState([]);
+    const [groupsession, setGroupSession] = useState([]);
     const [allSession, setAllSession] = useState([]);
-    useEffect(() => {
-        const fetchSession= async () =>{
-            try {
-                const response = await axios.get('http://localhost:8080/api/session', {
-                    headers: { 'Content-Type': 'application/json' },
-                });
-                const filteredSession = response.data && Array.isArray(response.data)
+
+    // Function to fetch sessions
+    const fetchSessions = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/api/session', {
+                headers: { 'Content-Type': 'application/json' },
+            });
+            const filteredSession = response.data && Array.isArray(response.data)
                 ? response.data.filter(session => session.member && session.member.id === user.id)
-                : null;                setSession(filteredSession);
-            } catch (error) {
-                console.error('Error fetching programs:', error);
-            }
+                : [];
+            setSession(filteredSession);
+        } catch (error) {
+            console.error('Error fetching sessions:', error);
         }
-        const fetchGroupSession= async () =>{
-            try {
-                const response = await axios.get('http://localhost:8080/api/groupsessions', {
-                    headers: { 'Content-Type': 'application/json' },
-                });
-                const filteredSession = response.data && Array.isArray(response.data)
-            ? response.data.filter(session => 
-                session.members && session.members.some(member => member.id === user.id)
-              )
-            : [];
-                setGroupSession(filteredSession);
-                
-            } catch (error) {
-                console.error('Error fetching programs:', error);
-            }
-        }  
-        fetchSession()
-        fetchGroupSession()
+    };
+
+    // Function to fetch group sessions
+    const fetchGroupSessions = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/api/groupsessions', {
+                headers: { 'Content-Type': 'application/json' },
+            });
+            const filteredSession = response.data && Array.isArray(response.data)
+                ? response.data.filter(session =>
+                    session.members && session.members.some(member => member.id === user.id)
+                )
+                : [];
+            setGroupSession(filteredSession);
+        } catch (error) {
+            console.error('Error fetching group sessions:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchSessions();
+        fetchGroupSessions();
         document.body.classList.add('mcc-page');
-    
+
         return () => {
-          document.body.classList.remove('mcc-page');
+            document.body.classList.remove('mcc-page');
         };
     }, [user.id]);
 
     useEffect(() => {
-        if (session.length > 0 || groupSession.length > 0) {
-            setAllSession([...session, ...groupSession]);
-        }
-    }, [session, groupSession]);
-
-    // Mock data for reservations (this could be fetched from an API)
-    // const [reservations, setReservations] = useState([
-    //     { id: 1, date: '2024-09-22', time: '10:00 - 11:00', activity: 'โปรแกรมพัฒนาสำหรับผู้สูงอายุ', status: 'จองแล้ว' },
-    //     { id: 2, date: '2024-09-23', time: '13:00 - 14:00', activity: 'โปรแกรมสร้างกล้ามเนื้อ', status: 'กำลังดำเนินการ' },
-    //     { id: 3, date: '2024-09-24', time: '08:00 - 09:00', activity: 'โปรแกรมพัฒนาสำหรับผู้เริ่มต้น', status: 'จองแล้ว' },
-    // ]);
+        if (sessions.length > 0 || groupsession.length > 0) {
+            // Merge sessions and groupsession into allSession
+            const mergedSessions = [...sessions, ...groupsession];
+    
+            // Sort by sdate first and then by startTime
+            mergedSessions.sort((a, b) => {
+              const dateA = new Date(a.dateSession.sdate);
+              const dateB = new Date(b.dateSession.sdate);
+    
+              if (dateA < dateB) return -1;
+              if (dateA > dateB) return 1;
+    
+              // If dates are the same, sort by startTime
+              const timeA = a.dateSession.startTime;
+              const timeB = b.dateSession.startTime;
+    
+              return timeA.localeCompare(timeB);
+            });
+    
+            setAllSession(mergedSessions);
+          }
+        }, [sessions, groupsession]);
 
     // Handle canceling a reservation
     const handleCancel = async (sess) => {
         const confirmed = window.confirm("คุณต้องการยกเลิกการจองนี้หรือไม่?");
         if (confirmed) {
-            if (sess.program.programType == "ส่วนตัว") {
+            if (sess.program.programType === "ส่วนตัว") {
                 const sessionDetails = {
                     program: {
                         programId: sess.program.programId // Assuming programId is available
@@ -82,18 +97,21 @@ const MemberCancel = ({user}) => {
                     status: "ว่าง"
                 };
                 try {
-                    const response = await axios.put(`http://localhost:8080/api/session/${sess.sessionId}`, sessionDetails,{
+                    await axios.put(`http://localhost:8080/api/session/${sess.sessionId}`, sessionDetails, {
                         headers: {
                             'Content-Type': 'application/json',
                         },
                     });
 
                     alert('ยกเลิก Session เรียบร้อย');
+                    // Re-fetch sessions after successful cancellation
+                    fetchSessions();
+                    fetchGroupSessions();
                 } catch (error) {
                     console.error("Error deleting Session:", error);
                     alert('ไม่สามารถจอง Session ได้');
                 }
-            } if (sess.program.programType == "กลุ่ม") {
+            } else if (sess.program.programType === "กลุ่ม") {
                 const sessionDetails = {
                     program: {
                         programId: sess.program.programId
@@ -105,21 +123,23 @@ const MemberCancel = ({user}) => {
                         id: sess.trainer.id
                     },
                     members: (sess.members && sess.member)
-        ? sess.members
-            .filter(member => member.id !== sess.member.id) // กรองสมาชิกที่ถูกยกเลิกออก
-            .map(member => ({ id: member.id }))
-            : null,
+                        ? sess.members
+                            .filter(member => member.id !== sess.member.id) // Filter out the canceled member
+                            .map(member => ({ id: member.id }))
+                        : null,
                     status: "ว่าง"
                 };
-                console.log(sessionDetails);
-    
+
                 try {
-                    const response = await axios.put(`http://localhost:8080/api/groupsessions/${sess.sessionId}`, sessionDetails, { // Use correct endpoint for group sessions
+                    await axios.put(`http://localhost:8080/api/groupsessions/${sess.sessionId}`, sessionDetails, {
                         headers: {
                             'Content-Type': 'application/json',
                         },
                     });
                     alert('ยกเลิกการจองกลุ่มเรียบร้อย');
+                    // Re-fetch sessions after successful cancellation
+                    fetchSessions();
+                    fetchGroupSessions();
                 } catch (error) {
                     console.error("Error canceling group Session:", error);
                     alert('ไม่สามารถยกเลิกการจองกลุ่มได้');
@@ -127,7 +147,6 @@ const MemberCancel = ({user}) => {
             }
         }
     };
-
 
     return (
         <div className="member-cancel-page">
@@ -154,6 +173,7 @@ const MemberCancel = ({user}) => {
                             <th>วันที่</th>
                             <th>เวลา</th>
                             <th>การฝึกสอนหรือใช้งาน</th>
+                            <th>ผู้ฝึกสอน</th>
                             <th>สถานะ</th>
                             <th>ยกเลิก</th>
                         </tr>
@@ -163,9 +183,10 @@ const MemberCancel = ({user}) => {
                             allSession.map((reservation) => (
                                 <tr key={reservation.sessionId}>
                                     <td>{new Date(reservation.dateSession.sdate).toLocaleDateString('th-TH')}</td>
-                                    <td>{reservation.dateSession.startTime.substring(0,5)} - {reservation.dateSession.endTime.substring(0,5)}</td>
+                                    <td>{reservation.dateSession.startTime.substring(0, 5)} - {reservation.dateSession.endTime.substring(0, 5)}</td>
                                     <td>{reservation.program.programName}</td>
-                                    <td>จองแล้ว</td> 
+                                    <td>{reservation.trainer.name}</td>
+                                    <td>จองแล้ว</td>
                                     {/* จองแล้วสำหรับมุมมองสมาชิกเท่านั้น  */}
                                     <td>
                                         <button className="cancel-button" onClick={() => handleCancel(reservation)}>
@@ -183,7 +204,6 @@ const MemberCancel = ({user}) => {
                 </table>
             </main>
         </div>
-        
     );
 };
 

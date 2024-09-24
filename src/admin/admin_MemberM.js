@@ -57,10 +57,10 @@ const AdminMemberM = () => {
           'Content-Type': 'application/json',
         },
       });
-      
+
       // Assume `response.data.name` contains the full name
       const fullName = response.data.name;
-      
+
       // Split the name into first and last name based on space
       const [firstName, lastName] = fullName.split(' ');
 
@@ -71,7 +71,7 @@ const AdminMemberM = () => {
         lastName: lastName || '',
         expireDate: formatDate(response.data.expireDate),
       });
-      
+
       setShowModal(true); // Show the modal
     } catch (error) {
       console.error("Error fetching member details:", error);
@@ -84,25 +84,29 @@ const AdminMemberM = () => {
   };
 
   // Delete member with confirmation
-const handleDeleteMember = async () => {
-  if (window.confirm('คุณแน่ใจว่าต้องการลบสมาชิกนี้หรือไม่?')) {
-    try {
-      await axios.delete(`http://localhost:8080/api/member/${selectedMember.id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+  const handleDeleteMember = async () => {
+    if (window.confirm('คุณแน่ใจว่าต้องการลบสมาชิกนี้หรือไม่?')) {
+      try {
+        await axios.delete(`http://localhost:8080/api/member/${selectedMember.id}`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-      // Remove the deleted member from the local state
-      setMembers(members.filter((member) => member.id !== selectedMember.id)); // Update members list
-      setShowModal(false);
-      alert('ลบข้อมูลสมาชิกเรียบร้อย');
-    } catch (error) {
-      console.error("Error deleting member:", error);
-      alert('ไม่สามารถลบสมาชิกได้');
+        const response = await axios.get('http://localhost:8080/api/member', {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setMembers(response.data)
+        setShowModal(false);
+        alert('ลบข้อมูลสมาชิกเรียบร้อย');
+      } catch (error) {
+        console.error("Error deleting member:", error);
+        alert('ไม่สามารถลบสมาชิกได้');
+      }
     }
-  }
-};
+  };
 
   // Back to workspace
   const handleBack = () => {
@@ -148,6 +152,7 @@ const handleDeleteMember = async () => {
               <th>ชื่อ-นามสกุล</th>
               {/* <th>เบอร์โทร</th> */}
               <th>อีเมล</th>
+              <th>สถานะการชำระเงิน</th>
               <th>ตัวเลือก</th>
             </tr>
           </thead>
@@ -159,6 +164,10 @@ const handleDeleteMember = async () => {
                   <td>{member.name}</td>
                   {/* <td>{member.phoneNumber}</td> */}
                   <td>{member.email}</td>
+                  <td>{member.role === "MEMBER"
+                    ? "ชำระเงินเรียบร้อย"
+                    : "อยู่ระหว่างตรวจสอบการชำระเงิน"}
+                  </td>
                   <td>
                     <button className="select-button-unique" onClick={() => handleSelect(member)}>
                       เลือก

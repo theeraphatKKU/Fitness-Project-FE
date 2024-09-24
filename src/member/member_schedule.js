@@ -4,8 +4,8 @@ import './member_schedule.css';
 import axios from 'axios';
 
 const MemberSchedule = ({ user }) => {
-    const [session, setSession] = useState([]);
-    const [groupSession, setGroupSession] = useState([]);
+    const [sessions, setSession] = useState([]);
+    const [groupsession, setGroupSession] = useState([]);
     const [allSession, setAllSession] = useState([]);
 
     useEffect(() => {
@@ -66,10 +66,28 @@ const MemberSchedule = ({ user }) => {
     }, [user.id]);
 
     useEffect(() => {
-        // Ensure session and groupSession are arrays, even if one is null
-        const combinedSessions = [...(session || []), ...(groupSession || [])];
-        setAllSession(combinedSessions);
-    }, [session, groupSession]);
+        if (sessions.length > 0 || groupsession.length > 0) {
+            // Merge sessions and groupsession into allSession
+            const mergedSessions = [...sessions, ...groupsession];
+    
+            // Sort by sdate first and then by startTime
+            mergedSessions.sort((a, b) => {
+              const dateA = new Date(a.dateSession.sdate);
+              const dateB = new Date(b.dateSession.sdate);
+    
+              if (dateA < dateB) return -1;
+              if (dateA > dateB) return 1;
+    
+              // If dates are the same, sort by startTime
+              const timeA = a.dateSession.startTime;
+              const timeB = b.dateSession.startTime;
+    
+              return timeA.localeCompare(timeB);
+            });
+    
+            setAllSession(mergedSessions);
+          }
+        }, [sessions, groupsession]);
 
     return (
         <div className="member-cancel-page">
@@ -101,6 +119,7 @@ const MemberSchedule = ({ user }) => {
                             <th>วันที่</th>
                             <th>เวลา</th>
                             <th>การฝึกสอนหรือใช้งาน</th>
+                            <th>ผู้ฝึกสอน</th>
                             <th>สถานะ</th>
                         </tr>
                     </thead>
@@ -113,6 +132,7 @@ const MemberSchedule = ({ user }) => {
                                     <td>{new Date(entry.dateSession.sdate).toLocaleDateString('th-TH')}</td>
                                     <td>{entry.dateSession.startTime.substring(0, 5)} - {entry.dateSession.endTime.substring(0, 5)}</td>
                                     <td>{entry.program.programName}</td>
+                                    <td>{entry.trainer.name}</td>
                                     <td>จองแล้ว</td>
                                     {/* จองแล้วสำหรับมุมมองสมาชิกเท่านั้น  */}
                                 </tr>

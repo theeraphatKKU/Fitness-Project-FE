@@ -11,8 +11,7 @@ function TrainerAvailability({ user }) {
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [trainer, setTrainer] = useState({ id: user.id });
-
-    const [available, setAvailable] = useState([]);
+    const [trainerData, setTrainerData] = useState(null); 
 
     // ฟังก์ชันรีเซ็ตฟอร์ม
     const handleCancel = () => {
@@ -42,6 +41,12 @@ function TrainerAvailability({ user }) {
                         'Content-Type': 'application/json',
                     },
                 });
+                const updatedResponse = await axios.get(`http://localhost:8080/api/trainer/${user.id}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                setTrainerData(updatedResponse.data);
                 alert('เพิ่มสำเร็จ');
             } catch (error) {
                 console.error("Error adding trainer:", error);
@@ -54,13 +59,13 @@ function TrainerAvailability({ user }) {
 
     useEffect(() => {
         const fetch = async () => {
-            const response = await axios.get('http://localhost:8080/api/trainer', {
+            const response = await axios.get(`http://localhost:8080/api/trainer/${user.id}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-            setAvailable(response.data);
-            console.log(response.data)
+            // console.log(response.data)
+            setTrainerData(response.data);
         }
         fetch()
         document.body.classList.add('tAvailable-page');
@@ -68,7 +73,7 @@ function TrainerAvailability({ user }) {
         return () => {
             document.body.classList.remove('tAvailable-page');
         };
-    }, [available]);
+    }, [user.id]);
 
     return (
         <div className="Availability-container">
@@ -155,18 +160,14 @@ function TrainerAvailability({ user }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {available.map((trainer, index) => (
-                                trainer.available.map((entry, i) => (
-                                    <tr key={`${index}-${i}`}>
-                                        <td>{new Date(entry.sdate).toLocaleDateString('en-GB')}</td> {/* Formats as dd/mm/yyyy */}
-                                        <td>{entry.startTime.substring(0, 5)} - {entry.endTime.substring(0, 5)}</td> {/* Formats time as HH:mm */}
-                                        <td>{trainer.name}</td>
-                                    </tr>
-                                ))
+                            {trainerData && trainerData.available.map((entry, index) => (
+                                <tr key={index}>
+                                    <td>{new Date(entry.sdate).toLocaleDateString('en-GB')}</td>
+                                    <td>{`${entry.startTime.substring(0, 5)} - ${entry.endTime.substring(0, 5)}`}</td>
+                                    <td>{trainerData.name}</td>
+                                </tr>
                             ))}
                         </tbody>
-
-
                     </table>
                 </div>
             </main>

@@ -148,7 +148,7 @@ const Booking = ({ user }) => {
                     },
                     status: "จองแล้ว"
                 };
-                console.log(bookingDetails)
+                // console.log(bookingDetails)
 
                 try {
                     const response = await axios.put('http://localhost:8080/api/session/' + sessionToBook.sessionId, bookingDetails, {
@@ -194,8 +194,6 @@ const Booking = ({ user }) => {
                     console.error("Error deleting Session:", error);
                     alert('ไม่สามารถจอง Session ได้');
                 }
-            } else {
-                alert('ไม่สามารถจอง Session ได้');
             }
         }
     };
